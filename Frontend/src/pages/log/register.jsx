@@ -40,23 +40,193 @@ const years = Array.from({ length: 50 }, (_, i) => {
 });
 
 const states = [
-  { value: "Maharashtra", label: "Maharashtra" },
+  { value: "Andhra Pradesh", label: "Andhra Pradesh" },
+  { value: "Arunachal Pradesh", label: "Arunachal Pradesh" },
+  { value: "Assam", label: "Assam" },
+  { value: "Bihar", label: "Bihar" },
+  { value: "Chhattisgarh", label: "Chhattisgarh" },
+  { value: "Goa", label: "Goa" },
+  { value: "Gujarat", label: "Gujarat" },
+  { value: "Haryana", label: "Haryana" },
+  { value: "Himachal Pradesh", label: "Himachal Pradesh" },
+  { value: "Jharkhand", label: "Jharkhand" },
   { value: "Karnataka", label: "Karnataka" },
-  { value: "Delhi", label: "Delhi" },
-  // ...add more states
+  { value: "Kerala", label: "Kerala" },
+  { value: "Madhya Pradesh", label: "Madhya Pradesh" },
+  { value: "Maharashtra", label: "Maharashtra" },
+  { value: "Manipur", label: "Manipur" },
+  { value: "Meghalaya", label: "Meghalaya" },
+  { value: "Mizoram", label: "Mizoram" },
+  { value: "Nagaland", label: "Nagaland" },
+  { value: "Odisha", label: "Odisha" },
+  { value: "Punjab", label: "Punjab" },
+  { value: "Rajasthan", label: "Rajasthan" },
+  { value: "Sikkim", label: "Sikkim" },
+  { value: "Tamil Nadu", label: "Tamil Nadu" },
+  { value: "Telangana", label: "Telangana" },
+  { value: "Tripura", label: "Tripura" },
+  { value: "Uttar Pradesh", label: "Uttar Pradesh" },
+  { value: "Uttarakhand", label: "Uttarakhand" },
+  { value: "West Bengal", label: "West Bengal" }
 ];
 
-const cities = [
-  { value: "Mumbai", label: "Mumbai" },
-  { value: "Bangalore", label: "Bangalore" },
-  { value: "Delhi", label: "Delhi" },
-  // ...add more cities
-];
+const citiesByState = {
+  "Andhra Pradesh": [
+    { value: "Visakhapatnam", label: "Visakhapatnam" },
+    { value: "Vijayawada", label: "Vijayawada" },
+    { value: "Guntur", label: "Guntur" },
+    { value: "Nellore", label: "Nellore" }
+  ],
+  "Arunachal Pradesh": [
+    { value: "Itanagar", label: "Itanagar" },
+    { value: "Naharlagun", label: "Naharlagun" }
+  ],
+  "Assam": [
+    { value: "Guwahati", label: "Guwahati" },
+    { value: "Silchar", label: "Silchar" },
+    { value: "Dibrugarh", label: "Dibrugarh" }
+  ],
+  "Bihar": [
+    { value: "Patna", label: "Patna" },
+    { value: "Gaya", label: "Gaya" },
+    { value: "Muzaffarpur", label: "Muzaffarpur" },
+    { value: "Bhagalpur", label: "Bhagalpur" },
+    { value: "Purnia", label: "Purnia" },
+    { value: "Darbhanga", label: "Darbhanga" },
+    { value: "Arrah", label: "Arrah" },
+    { value: "Siwan", label: "Siwan" },
+    { value: "Begusarai", label: "Begusarai"},
+    { value: "samastipur", label: "samastipur" },
+  ],
+  "Chhattisgarh": [
+    { value: "Raipur", label: "Raipur" },
+    { value: "Bhilai", label: "Bhilai" },
+    { value: "Bilaspur", label: "Bilaspur" }
+  ],
+  "Goa": [
+    { value: "Panaji", label: "Panaji" },
+    { value: "Margao", label: "Margao" },
+    { value: "Vasco da Gama", label: "Vasco da Gama" }
+  ],
+  "Gujarat": [
+    { value: "Ahmedabad", label: "Ahmedabad" },
+    { value: "Surat", label: "Surat" },
+    { value: "Vadodara", label: "Vadodara" },
+    { value: "Rajkot", label: "Rajkot" }
+  ],
+  "Haryana": [
+    { value: "Faridabad", label: "Faridabad" },
+    { value: "Gurugram", label: "Gurugram" },
+    { value: "Panipat", label: "Panipat" }
+  ],
+  "Himachal Pradesh": [
+    { value: "Shimla", label: "Shimla" },
+    { value: "Mandi", label: "Mandi" },
+    { value: "Solan", label: "Solan" }
+  ],
+  "Jharkhand": [
+    { value: "Ranchi", label: "Ranchi" },
+    { value: "Jamshedpur", label: "Jamshedpur" },
+    { value: "Dhanbad", label: "Dhanbad" }
+  ],
+  "Karnataka": [
+    { value: "Bengaluru", label: "Bengaluru" },
+    { value: "Mysuru", label: "Mysuru" },
+    { value: "Hubli", label: "Hubli" }
+  ],
+  "Kerala": [
+    { value: "Thiruvananthapuram", label: "Thiruvananthapuram" },
+    { value: "Kochi", label: "Kochi" },
+    { value: "Kozhikode", label: "Kozhikode" }
+  ],
+  "Madhya Pradesh": [
+    { value: "Bhopal", label: "Bhopal" },
+    { value: "Indore", label: "Indore" },
+    { value: "Gwalior", label: "Gwalior" }
+  ],
+  "Maharashtra": [
+    { value: "Mumbai", label: "Mumbai" },
+    { value: "Pune", label: "Pune" },
+    { value: "Nagpur", label: "Nagpur" },
+    { value: "Nashik", label: "Nashik" }
+  ],
+  "Manipur": [
+    { value: "Imphal", label: "Imphal" }
+  ],
+  "Meghalaya": [
+    { value: "Shillong", label: "Shillong" }
+  ],
+  "Mizoram": [
+    { value: "Aizawl", label: "Aizawl" }
+  ],
+  "Nagaland": [
+    { value: "Kohima", label: "Kohima" },
+    { value: "Dimapur", label: "Dimapur" }
+  ],
+  "Odisha": [
+    { value: "Bhubaneswar", label: "Bhubaneswar" },
+    { value: "Cuttack", label: "Cuttack" },
+    { value: "Rourkela", label: "Rourkela" }
+  ],
+  "Punjab": [
+    { value: "Ludhiana", label: "Ludhiana" },
+    { value: "Amritsar", label: "Amritsar" },
+    { value: "Jalandhar", label: "Jalandhar" }
+  ],
+  "Rajasthan": [
+    { value: "Jaipur", label: "Jaipur" },
+    { value: "Jodhpur", label: "Jodhpur" },
+    { value: "Udaipur", label: "Udaipur" }
+  ],
+  "Sikkim": [
+    { value: "Gangtok", label: "Gangtok" }
+  ],
+  "Tamil Nadu": [
+    { value: "Chennai", label: "Chennai" },
+    { value: "Coimbatore", label: "Coimbatore" },
+    { value: "Madurai", label: "Madurai" }
+  ],
+  "Telangana": [
+    { value: "Hyderabad", label: "Hyderabad" },
+    { value: "Warangal", label: "Warangal" },
+    { value: "Nizamabad", label: "Nizamabad" }
+  ],
+  "Tripura": [
+    { value: "Agartala", label: "Agartala" }
+  ],
+  "Uttar Pradesh": [
+    { value: "Lucknow", label: "Lucknow" },
+    { value: "Kanpur", label: "Kanpur" },
+    { value: "Varanasi", label: "Varanasi" },
+    { value: "Agra", label: "Agra" },
+    { value: "Prayagraj", label: "Prayagraj" }
+  ],
+  "Uttarakhand": [
+    { value: "Dehradun", label: "Dehradun" },
+    { value: "Haridwar", label: "Haridwar" },
+    { value: "Haldwani", label: "Haldwani" }
+  ],
+  "West Bengal": [
+    { value: "Kolkata", label: "Kolkata" },
+    { value: "Asansol", label: "Asansol" },
+    { value: "Siliguri", label: "Siliguri" }
+  ]
+};
+
 
 export default function Register() {
   const [selectedYear, setSelectedYear] = useState();
   const [selectedState, setSelectedState] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
+
+  // Filter cities based on selected state
+  const filteredCities = selectedState ? citiesByState[selectedState.value] || [] : [];
+
+  // Reset city when state changes
+  const handleStateChange = (newState) => {
+    setSelectedState(newState);
+    setSelectedCity(null); // Reset city when state changes
+  };
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-300 font-['Poppins']">
@@ -94,7 +264,7 @@ export default function Register() {
               <Select
                 options={states}
                 value={selectedState}
-                onChange={setSelectedState}
+                onChange={handleStateChange}
                 placeholder="Select your state"
                 className="react-select-container w-full"
                 classNamePrefix="react-select"
@@ -104,10 +274,11 @@ export default function Register() {
             <div>
               <label className="block text-sm font-medium pl-2 text-gray-700 mb-1">City</label>
               <Select
-                options={cities}
+                options={filteredCities}
                 value={selectedCity}
                 onChange={setSelectedCity}
-                placeholder="Select your city"
+                placeholder={selectedState ? "Select your city" : "Please select a state first"}
+                isDisabled={!selectedState}
                 className="react-select-container w-full"
                 classNamePrefix="react-select"
                 styles={customSelectStyles}
