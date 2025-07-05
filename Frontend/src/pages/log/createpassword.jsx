@@ -1,6 +1,6 @@
 import React from 'react'
 
-function createpassword() {
+function Createpassword() {
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-300 font-['Poppins']">
       {/* Create Password Form */}
@@ -51,4 +51,4 @@ function createpassword() {
   )
 }
 
-export default createpassword
+export default Createpassword

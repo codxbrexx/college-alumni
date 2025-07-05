@@ -1,20 +1,21 @@
-import Login from './pages/log/login'
+import Login from './Pages/log/Login'
 import './App.css'
-import Forgot from './pages/log/forgot'
-import Createpassword from './pages/log/createpassword'
-import Register from './pages/log/register'
-
+import Forgot from './Pages/log/Forgot'
+import Createpassword from './Pages/log/Createpassword'
+import Register from './Pages/log/Register'
+import Navbar from './Components/Navbar/Navbar'
+import Header from './Components/Header/Header'
 
 function App() {
   
 
   return (
      <div>
-      <Login />
+      {/* <Login />
       <Register />
       <Forgot/>
-      <Createpassword />
-
+      <Createpassword /> */}
+      <Header/>
      </div>
   )
 }

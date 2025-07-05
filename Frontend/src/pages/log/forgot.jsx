@@ -1,7 +1,7 @@
 
 import { TbShieldCheckFilled } from "react-icons/tb";
 
-export default function forgot() {
+export default function Forgot() {
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-300 font-['Poppins']">
       {/* Right Side - Forgot Form */}
