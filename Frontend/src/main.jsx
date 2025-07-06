@@ -8,23 +8,30 @@ import Layout from './Layout.jsx'
 import Register from './Pages/log/Register.jsx'
 import Login from './Pages/log/Login.jsx'
 import Forgot from './Pages/log/Forgot.jsx'
+import Home from './Pages/Home/Home.jsx'
+import Profile from './Components/Profile/Profile.jsx'
+import Alumni from './Pages/Alumni/Alumni.jsx'
+import Job from './Pages/Job/Job.jsx'
+import News from './Pages/News/News.jsx'
+import AboutUs from './Pages/AboutUs/AboutUs.jsx'
+import ContactUs from './Pages/ContactUs/ContactUs.jsx'
+import Createpassword from './Pages/log/Createpassword.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout/>}>
-      <Route path='/' element={<Home />}/> 
-      <Route path='/register' element={<Register />}/>
-      <Route path='/login' element={<Login />}/>
-      <Route path='/forgot' element={<Forgot />}/>
-      <Route path='/createpassword' element='Createpassword'/>
-      <Route path='/profile' element='Profile'/>
-      <Route path='/alumni' element='Alumni'/>
-      <Route path='/intern' element='Intern'/>
-      <Route path='/news' element='News'/>
-      <Route path='/placement' element='Placement'/>
-      <Route path='/aboutus' element='AboutUs'/>
-      <Route path='/contactus' element='ContactUs'/>
-      <Route path='/logout' element='Logout'/>
+      <Route path='home' element={<Home />}/> 
+      <Route path='register' element={<Register />}/>
+      <Route path='login' element={<Login />}/>
+      <Route path='forgot' element={<Forgot />}/>
+      <Route path='createpassword' element={<Createpassword />}/>
+      <Route path='profile' element={<Profile />}/>
+      <Route path='alumni' element={<Alumni />}/>
+      <Route path='job' element={<Job />}/>
+      <Route path='news' element={<News />}/>
+      {/* <Route path='/placement' element='Placement'/> */}
+      <Route path='about' element={<AboutUs />}/>
+      <Route path='contact' element={<ContactUs />}/>
     </Route>
   )
 )
@@ -32,6 +39,5 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router}/>
-    <App />
   </StrictMode>,
 )

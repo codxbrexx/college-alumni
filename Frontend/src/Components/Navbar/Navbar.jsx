@@ -5,23 +5,35 @@ function Navbar() {
   return (
     <>
         <div className='flex gap-8 items-center'>
-            <NavLink to='/home' style={({isActive}) => (isActive ? "text-blue-700" : "text-gray-600")}>
-                Home
-            </NavLink>
             <div>
-                Alumni
+                <NavLink to='home' className={({isActive}) => (isActive ? "text-blue-700" : "text-gray-600")}>
+                    Home
+                </NavLink>
             </div>
             <div>
-                Intern
+                <NavLink to='alumni' className={({isActive}) => (isActive ? "text-blue-700" : "text-gray-600")}>
+                    Alumni
+                </NavLink>
             </div>
             <div>
-                News
+                <NavLink to='job' className={({isActive}) => (isActive ? "text-blue-700" : "text-gray-600")}>
+                    Job
+                </NavLink>
             </div>
             <div>
-                Placement
+                <NavLink to='news' className={({isActive}) => (isActive ? "text-blue-700" : "text-gray-600")}>
+                    News
+                </NavLink>
             </div>
             <div>
-                About Us
+                <NavLink to='about' className={({isActive}) => (isActive ? "text-blue-700" : "text-gray-600")}>
+                    About Us
+                </NavLink>
+            </div>
+            <div>
+                <NavLink to='contact' className={({isActive}) => (isActive ? "text-blue-700" : "text-gray-600")}>
+                    Contact Us
+                </NavLink>
             </div>
         </div>
     </>

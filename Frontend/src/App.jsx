@@ -1,5 +1,4 @@
 import Login from './Pages/log/Login'
-import './App.css'
 import Forgot from './Pages/log/Forgot'
 import Createpassword from './Pages/log/Createpassword'
 import Register from './Pages/log/Register'
