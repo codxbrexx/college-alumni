@@ -10,12 +10,13 @@ import Login from './Pages/log/Login.jsx'
 import Forgot from './Pages/log/Forgot.jsx'
 import Home from './Pages/Home/Home.jsx'
 import Profile from './Components/Profile/Profile.jsx'
-import Alumni from './Pages/Alumni/Alumni.jsx'
+import Alumni from './pages/Alumni/Alumni.jsx'
 import Job from './Pages/Job/Job.jsx'
 import News from './Pages/News/News.jsx'
 import AboutUs from './Pages/AboutUs/AboutUs.jsx'
 import ContactUs from './Pages/ContactUs/ContactUs.jsx'
 import Createpassword from './Pages/log/Createpassword.jsx'
+import Placements from './pages/Placements/Placements.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,7 +30,7 @@ const router = createBrowserRouter(
       <Route path='alumni' element={<Alumni />}/>
       <Route path='job' element={<Job />}/>
       <Route path='news' element={<News />}/>
-      {/* <Route path='/placement' element='Placement'/> */}
+      <Route path='placement' element= {<Placements />} />
       <Route path='about' element={<AboutUs />}/>
       <Route path='contact' element={<ContactUs />}/>
     </Route>
