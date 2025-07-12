@@ -1,9 +1,14 @@
 import React from 'react'
+import { useTheme } from '../../context/ThemeContext'
 
 function Post() {
+  const { isDarkMode } = useTheme();
+
   return (
     <>
-        <div className='h-30 w-2xs text-green-800'>
+        <div className={`h-30 w-2xs transition-colors duration-300 ${
+          isDarkMode ? 'text-green-400' : 'text-green-800'
+        }`}>
             <div><img src="https://cdn.britannica.com/16/254816-050-41C9577A/Google-logo-Googleplex-headquarters-Mountain-View-California.jpg" alt="job" /></div>
             <div className='flex'>
                 <div>role</div>

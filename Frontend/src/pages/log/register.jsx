@@ -11,7 +11,6 @@ import Select from "react-select";
       boxShadow: state.isFocused ? '0 0 0 1px #14b8a6, 0 1px 2px 0 rgb(0 0 0 / 0.05)' : '0 1px 2px 0 rgb(0 0 0 / 0.05)',
       
       minHeight: '3rem', // h-12
-      // backgroundColor: 'rgba(255,255,255,0.5)',
     }),
     menu: (provided) => ({
       ...provided,
@@ -38,7 +37,7 @@ const years = Array.from({ length: 50 }, (_, i) => {
   const year = new Date().getFullYear()+4 - i;
   return { value: year, label: year };
 });
-
+// this is the simple data we will use it in backend 
 const states = [
   { value: "Andhra Pradesh", label: "Andhra Pradesh" },
   { value: "Arunachal Pradesh", label: "Arunachal Pradesh" },
@@ -229,7 +228,7 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-300 font-['Poppins']">
+    <div className="min-h-screen flex justify-center items-center bg-white font-['Poppins']">
       <div className="w-full max-w-md rounded-2xl flex flex-col items-center justify-center p-12 bg-white/50 border border-white/30 shadow-2xl backdrop-blur-md">
         <div className="w-full max-w-md">
           {/* hdr */}

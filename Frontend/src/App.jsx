@@ -1,9 +1,10 @@
-import Login from './Pages/log/Login'
-import Forgot from './Pages/log/Forgot'
-import Createpassword from './Pages/log/Createpassword'
-import Register from './Pages/log/Register'
+import Login from './pages/log/Login'
+import Forgot from './pages/log/Forgot'
+import Createpassword from './pages/log/Createpassword'
+import Register from './pages/log/Register'
 import Navbar from './Components/Navbar/Navbar'
 import Header from './Components/Header/Header'
+import Footer from './Components/Footer/Footer'
 
 function App() {
   
@@ -14,7 +15,9 @@ function App() {
       <Register />
       <Forgot/>
       <Createpassword /> */}
-      <Header/>
+      {/* <Header/> */}
+       {/* <Footer/> */}
+
      </div>
   )
 }

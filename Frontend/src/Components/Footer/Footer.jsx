@@ -1,21 +1,34 @@
 import React from "react";
+import { useTheme } from "../../context/ThemeContext";
 
 function Footer() {
+  const { isDarkMode } = useTheme();
+
   return (
-    <footer className="bg-[#23272f] text-white py-10 px-4 mt-8">
+    <footer className={`py-10 px-4  transition-colors duration-300 ${
+      isDarkMode 
+        ? 'bg-gray-800 text-white border-t border-gray-700' 
+        : 'bg-gray-200 text-gray-900 border-t border-gray-200'
+    }`}>
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-        {/* Logo & Description */}
         <div className="flex flex-col items-center md:items-start">
-          <img className="w-24 h-24 mb-3" src="/NetGrudDarkTheme.png" alt="NetGrud Logo" />
+          <img 
+            className="w-24 h-24 mb-3" 
+            src={isDarkMode ? "/NetGrudDarkTheme.png" : "/NetGrud.png"} 
+            alt="NetGrud Logo" 
+          />
           <h2 className="text-xl font-bold mb-2">Connect with alumni </h2>
-          <p className="text-sm text-gray-300 mb-2 text-center md:text-left">
+          <p className={`text-sm mb-2 text-center md:text-left ${
+            isDarkMode ? 'text-gray-300' : 'text-gray-600'
+          }`}>
             Building lifelong connections between alumni, students, and the college. Stay connected, share opportunities, and grow your network.
           </p>
         </div>
-        {/* Quick Links */}
         <div>
           <h3 className="font-semibold mb-3">Quick Links</h3>
-          <ul className="space-y-2 text-gray-300">
+          <ul className={`space-y-2 ${
+            isDarkMode ? 'text-gray-300' : 'text-gray-600'
+          }`}>
             <li><a href="/home" className="hover:text-teal-400 transition-colors">Home</a></li>
             <li><a href="/alumni" className="hover:text-teal-400 transition-colors">Alumni</a></li>
             <li><a href="/job" className="hover:text-teal-400 transition-colors">Jobs</a></li>
@@ -24,16 +37,16 @@ function Footer() {
             <li><a href="/contact" className="hover:text-teal-400 transition-colors">Contact</a></li>
           </ul>
         </div>
-        {/* Contact Info */}
         <div>
           <h3 className="font-semibold mb-3">Contact</h3>
-          <ul className="text-gray-300 text-sm space-y-2">
+          <ul className={`text-sm space-y-2 ${
+            isDarkMode ? 'text-gray-300' : 'text-gray-600'
+          }`}>
             <li>Email: <a href="mailto:info@netgrud.com" className="hover:text-teal-400">info@netgrud.com</a></li>
             <li>Phone: <a href="tel:+1234567890" className="hover:text-teal-400">+1 234 567 890</a></li>
             <li>Address: 123 College Ave, City, Country</li>
           </ul>
         </div>
-        {/* Social Media */}
         <div className="flex flex-col items-center md:items-start">
           <h3 className="font-semibold mb-3">Connect with us</h3>
           <div className="flex space-x-4 mb-2">
@@ -47,10 +60,17 @@ function Footer() {
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11.75 20h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76c.97 0 1.75.79 1.75 1.76s-.78 1.76-1.75 1.76zm15.25 12.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-11h2.89v1.5h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59v6.45z"/></svg>
             </a>
           </div>
-          <span className="text-xs text-gray-400">Follow us for updates</span>
+          <span className={`text-xs ${
+            isDarkMode ? 'text-gray-400' : 'text-gray-500'
+          }`}>Follow us for updates</span>
         </div>
       </div>
-      <div className="border-t border-gray-700 mt-8 pt-4 text-center text-gray-400 text-xs">
+      
+      <div className={`border-t mt-4 pt-4 text-center text-xs ${
+        isDarkMode 
+          ? 'border-gray-700 text-gray-400' 
+          : 'border-gray-200 text-gray-500'
+      }`}>
         © 2025 Net Grud Inc. All rights reserved.
       </div>
     </footer>

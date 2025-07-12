@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext";
 
 const navItems = [
   { to: "home", label: "Home" },
@@ -12,6 +13,8 @@ const navItems = [
 ];
 
 function Navbar({ navClass }) {
+  const { isDarkMode } = useTheme();
+
   return (
     <nav
       className={
@@ -25,13 +28,17 @@ function Navbar({ navClass }) {
           to={item.to}
           className={({ isActive }) =>
             `group relative px-2 py-0.5 whitespace-nowrap transition-colors duration-300  
-            ${isActive ? "text-teal-600" : "text-gray-600 hover:text-teal-500"}
+            ${isActive 
+              ? isDarkMode 
+                ? "text-teal-400" 
+                : "text-teal-600" 
+              : isDarkMode 
+                ? "text-gray-300 hover:text-teal-400" 
+                : "text-gray-600 hover:text-teal-500"
+            }
             hover:scale-102 transition-transform duration-300   
             after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:rounded-full
             after:bg-teal-500 after:transition-[width,opacity] after:duration-500 after:ease-in-out
-
-
-            
             ${isActive ? "after:w-full after:opacity-100" : "after:w-0 after:opacity-0 group-hover:after:w-full group-hover:after:opacity-100"}`
           }
         >

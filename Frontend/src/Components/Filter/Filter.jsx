@@ -1,6 +1,6 @@
 import React from 'react';
 import FilterButton from './FilterButton';
-
+import { useTheme } from '../../context/ThemeContext';
 
 let year=[];
 for (let index = 2019; index <= 2025; index++) {
@@ -96,9 +96,15 @@ for (let index = 1; index <= 60; index++){
 }
 
 function Filter() {
+  const { isDarkMode } = useTheme();
+
   return (
     <div className="w-full flex justify-center items-center mt-4 gap-4">
-      <div className="w-full max-w-4xl flex items-center bg-white/80 rounded-lg shadow-md p-2 gap-3">
+      <div className={`w-full max-w-4xl flex items-center rounded-lg shadow-md p-2 gap-3 transition-colors duration-300 ${
+        isDarkMode 
+          ? 'bg-gray-800/80 text-white' 
+          : 'bg-white/80'
+      }`}>
         <FilterButton labelName="Year" filterOptions={year} className="min-w-[120px]" />
         <FilterButton labelName="branch" filterOptions={branch} className="min-w-[120px]" />
         <FilterButton labelName="Skills" filterOptions={skills} className="min-w-[120px]" />
@@ -108,9 +114,7 @@ function Filter() {
       </div>
       <div>
       </div>
-
     </div>
-
   );
 }
 
