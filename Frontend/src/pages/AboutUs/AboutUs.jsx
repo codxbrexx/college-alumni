@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
 
-const reunionImg = 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=facearea&w=400&h=400&facepad=2'; // Placeholder reunion scene
-const storyImg = 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=facearea&w=600&h=400&q=80'; // Unique, modern placeholder image
 
+const reunionImg = 'https://wpcdn.us-midwest-1.vip.tn-cloud.net/www.charlotteparent.com/content/uploads/data-import/a86308ab/shutterstock_658847998.jpg';
+const storyImg = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.deJFtz_PtCM1_81dZRtfewHaE8%3Fr%3D0%26pid%3DApi&f=1&ipt=f11132ca61f98975e30c4bf6f7b47c4b7bee7ed97e3a35ee5fae8fd8f572dc61&ipo=images'; 
 function AboutUs() {
   const { isDarkMode } = useTheme();
 
