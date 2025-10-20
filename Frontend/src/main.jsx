@@ -22,7 +22,8 @@ import { ThemeProvider } from './context/ThemeContext.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Layout/>}>
+
+    <Route path='/' element={<Layout />}>
       <Route path='home' element={<Home />}/> 
       <Route path='register' element={<Login />}/>
       <Route path='login' element={<Login />}/>
