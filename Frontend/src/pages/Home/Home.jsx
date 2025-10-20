@@ -235,30 +235,47 @@ function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className={`py-20 ${
-        isDarkMode ? 'bg-gradient-to-b from-gray-800 to-gray-700' : 'bg-gradient-to-b from-teal-30 to-teal-20'
+      <section className={`py-20 relative overflow-hidden ${
+        isDarkMode ? 'bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800' : 'bg-gradient-to-br from-teal-50 via-white to-blue-50'
       }`}>
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-500">
+        {/* Animated Background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className={`absolute top-10 left-10 w-64 h-64 rounded-full opacity-20 blur-3xl ${
+            isDarkMode ? 'bg-teal-500' : 'bg-teal-300'
+          }`} />
+          <div className={`absolute bottom-10 right-10 w-80 h-80 rounded-full opacity-20 blur-3xl ${
+            isDarkMode ? 'bg-blue-500' : 'bg-blue-300'
+          }`} />
+        </div>
+
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <h2 className={`text-3xl md:text-4xl font-bold mb-6 ${
+            isDarkMode ? 'text-white' : 'text-gray-900'
+          }`}>
             Ready to Join Our Growing Community?
           </h2>
-          <p className="text-lg md:text-xl mb-8 text-gray-400">
+          <p className={`text-lg md:text-xl mb-8 ${
+            isDarkMode ? 'text-gray-300' : 'text-gray-600'
+          }`}>
             Connect with thousands of alumni, discover opportunities, and take your career to the next level.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/register">
-              <button className={`px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-x ${
-                isDarkMode ? 'bg-white text-teal-600 hover:bg-gray-100' : 'bg-white text-teal-600 border border-gray-200 hover:bg-gray-50'
+              <button className={`group px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center gap-2 ${
+                isDarkMode 
+                  ? 'bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-500 hover:to-blue-500 text-white' 
+                  : 'bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white'
               }`}>
                 Create Account
+                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
               </button>
             </Link>
             <Link to="/about">
-              <button className={`px-8 py-4 border-2 rounded-xl font-semibold transition-all duration-300 ${
+              <button className={`px-8 py-4 border-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                 isDarkMode 
-                  ? 'bg-transparent border-white text-white hover:bg-white hover:text-teal-600' 
-                  : 'bg-transparent border-gray-200 text-gray-400 hover:bg-white hover:text-teal-600'
+                  ? 'bg-transparent border-teal-500 text-teal-400 hover:bg-teal-500/10' 
+                  : 'bg-transparent border-teal-600 text-teal-600 hover:bg-teal-50'
               }`}>
                 Learn More
               </button>

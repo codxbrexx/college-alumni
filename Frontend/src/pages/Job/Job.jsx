@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Herojob from "../../Components/Hero/Herojob";
 import JobCard from './JobCard';
 import { useTheme } from '../../context/ThemeContext';
+import { FaFilter, FaSearch, FaBriefcase, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 
 // that  ahve to handle by post data
 const jobs = [
@@ -61,6 +62,22 @@ const jobs = [
 
 export default function Job() {
   const { isDarkMode } = useTheme();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedType, setSelectedType] = useState('All');
+  const [selectedLocation, setSelectedLocation] = useState('All');
+  const [showFilters, setShowFilters] = useState(false);
+
+  const jobTypes = ['All', 'Full Time', 'Contract', 'Internship'];
+  const locations = ['All', 'Remote', 'Bangalore', 'Mountain View', 'Hybrid'];
+
+  const filteredJobs = jobs.filter(job => {
+    const matchesSearch = job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         job.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         job.skills.some(skill => skill.toLowerCase().includes(searchTerm.toLowerCase()));
+    const matchesType = selectedType === 'All' || job.type === selectedType;
+    const matchesLocation = selectedLocation === 'All' || job.location === selectedLocation;
+    return matchesSearch && matchesType && matchesLocation;
+  });
 
   return (
     <div className={`min-h-screen pb-16 transition-colors duration-300 ${
@@ -70,11 +87,134 @@ export default function Job() {
         <Herojob />
       </div>
 
-      {/* Jobs Grid */}
+      {/* Main Content */}
       <section className="max-w-7xl mx-auto px-4 mt-8 mb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {jobs.length > 0 ? (
-            jobs.map(job => <JobCard key={job.id} job={job} />)
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <span className={`inline-block px-4 py-2 rounded-full font-semibold mb-4 shadow ${
+            isDarkMode ? 'bg-teal-900/80 text-teal-300' : 'bg-teal-100 text-teal-700'
+          }`}>Career Opportunities</span>
+          <h2 className={`text-4xl md:text-5xl font-extrabold mb-4 tracking-tight gradient-text`}>
+            Discover Your Next Role
+          </h2>
+          <p className={`text-lg max-w-2xl mx-auto ${
+            isDarkMode ? 'text-gray-400' : 'text-gray-600'
+          }`}>
+            Exclusive job opportunities shared by our alumni network
+          </p>
+        </div>
+
+        {/* Search and Filter Bar */}
+        <div className={`mb-8 p-6 rounded-2xl shadow-lg border ${
+          isDarkMode 
+            ? 'bg-gray-800/50 border-teal-900 backdrop-blur-sm' 
+            : 'bg-white/80 border-teal-100 backdrop-blur-sm'
+        }`}>
+          {/* Search Bar */}
+          <div className="flex flex-col md:flex-row gap-4 mb-4">
+            <div className="flex-1 relative">
+              <FaSearch className={`absolute left-4 top-1/2 transform -translate-y-1/2 ${
+                isDarkMode ? 'text-gray-400' : 'text-gray-500'
+              }`} />
+              <input
+                type="text"
+                placeholder="Search by title, company, or skills..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 outline-none transition-all duration-300 ${
+                  isDarkMode 
+                    ? 'bg-gray-900 border-gray-700 text-white placeholder-gray-500 focus:border-teal-500' 
+                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-teal-500'
+                }`}
+              />
+            </div>
+            <button
+              onClick={() => setShowFilters(!showFilters)}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+                isDarkMode 
+                  ? 'bg-teal-600 hover:bg-teal-500 text-white' 
+                  : 'bg-teal-600 hover:bg-teal-700 text-white'
+              }`}
+            >
+              <FaFilter />
+              Filters
+            </button>
+          </div>
+
+          {/* Filters */}
+          {showFilters && (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t ${
+              isDarkMode ? 'border-gray-700' : 'border-gray-200'
+            }">
+              <div>
+                <label className={`block text-sm font-semibold mb-2 ${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <FaBriefcase className="inline mr-2" />
+                  Job Type
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {jobTypes.map(type => (
+                    <button
+                      key={type}
+                      onClick={() => setSelectedType(type)}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                        selectedType === type
+                          ? isDarkMode
+                            ? 'bg-teal-600 text-white'
+                            : 'bg-teal-600 text-white'
+                          : isDarkMode
+                            ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      {type}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <label className={`block text-sm font-semibold mb-2 ${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
+                }`}>
+                  <FaMapMarkerAlt className="inline mr-2" />
+                  Location
+                </label>
+                <div className="flex flex-wrap gap-2">
+                  {locations.map(location => (
+                    <button
+                      key={location}
+                      onClick={() => setSelectedLocation(location)}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                        selectedLocation === location
+                          ? isDarkMode
+                            ? 'bg-teal-600 text-white'
+                            : 'bg-teal-600 text-white'
+                          : isDarkMode
+                            ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      {location}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Results Count */}
+        <div className={`mb-6 text-center ${
+          isDarkMode ? 'text-gray-400' : 'text-gray-600'
+        }`}>
+          <span className="font-semibold">{filteredJobs.length}</span> opportunities found
+        </div>
+
+        {/* Jobs Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredJobs.length > 0 ? (
+            filteredJobs.map(job => <JobCard key={job.id} job={job} />)
           ) : (
             <div className={`col-span-full text-center py-12 ${
               isDarkMode ? 'text-gray-400' : 'text-gray-500'
@@ -93,7 +233,7 @@ export default function Job() {
               }`}>No opportunities found</h3>
               <p className={`text-sm ${
                 isDarkMode ? 'text-gray-400' : 'text-gray-500'
-              }`}>Check back later for new opportunities</p>
+              }`}>Try adjusting your filters or search criteria</p>
             </div>
           )}
         </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Heronews from '../../Components/Hero/Heronews';
 import Postnews from './Postnews';
 import { useTheme } from '../../context/ThemeContext';
+import { FaHeart, FaRegHeart, FaBookmark, FaRegBookmark, FaEye, FaClock, FaCalendar, FaUser, FaSearch, FaFilter, FaMapMarkerAlt, FaUsers, FaNewspaper } from 'react-icons/fa';
 
 // Sample news data - will be handled by backend 
 const newsArticles = [
@@ -73,145 +74,164 @@ function NewsCard({ news }) {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   return (
-    <div className={`rounded-xl shadow-md border hover:shadow-lg transition-all duration-300 p-6 ${
+    <div className={`group relative overflow-hidden rounded-2xl border shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-effect ${
       isDarkMode 
-        ? 'bg-gray-800 border-gray-700 text-white' 
-        : 'bg-white border-gray-100'
+        ? 'bg-gradient-to-br from-gray-800 to-gray-900/80 border-teal-900 hover:border-teal-500/50' 
+        : 'bg-white/80 border-teal-100 hover:border-teal-500/50'
     }`}>
-
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+      {/* Header with Gradient */}
+      <div className={`relative h-20 bg-gradient-to-br ${
+        news.isEvent
+          ? isDarkMode 
+            ? 'from-blue-700 via-blue-800 to-purple-900' 
+            : 'from-blue-300 via-blue-400 to-purple-400'
+          : isDarkMode 
+            ? 'from-teal-700 via-teal-800 to-blue-900' 
+            : 'from-teal-300 via-teal-400 to-blue-400'
+      }`}>
+        <div className="absolute inset-0 bg-black/10" />
+        
+        {/* Category Badge */}
+        <div className="absolute top-4 left-6">
+          <span className={`px-4 py-1.5 rounded-full text-xs font-bold shadow ${
             news.isEvent 
               ? isDarkMode 
-                ? 'bg-blue-900 text-blue-300' 
-                : 'bg-blue-100 text-blue-700'
+                ? 'bg-blue-900/80 text-blue-300 border border-blue-700' 
+                : 'bg-blue-100 text-blue-700 border border-blue-200'
               : isDarkMode 
-                ? 'bg-teal-900 text-teal-300' 
-                : 'bg-teal-100 text-teal-700'
+                ? 'bg-teal-900/80 text-teal-300 border border-teal-700' 
+                : 'bg-teal-100 text-teal-700 border border-teal-200'
           }`}>
             {news.category}
           </span>
-
         </div>
-        <div className={`flex items-center gap-2 text-sm ${
-          isDarkMode ? 'text-gray-400' : 'text-gray-500'
-        }`}>
-          <span>{news.date}</span>
-          <span>•</span>
-          <span>{news.readTime}</span>
-        </div>
-      </div>
 
-      <h3 className={`text-xl font-bold mb-3 hover:text-teal-600 transition-colors cursor-pointer ${
-        isDarkMode ? 'text-white' : 'text-gray-800'
-      }`}>
-        {news.title}
-      </h3>
-
-      <p className={`mb-4 leading-relaxed ${
-        isDarkMode ? 'text-gray-300' : 'text-gray-600'
-      }`}>
-        {news.excerpt}
-      </p>
-
-      {news.isEvent && (
-        <div className={`mb-4 p-4 rounded-lg border ${
-          isDarkMode 
-            ? 'bg-blue-900/50 border-blue-700' 
-            : 'bg-blue-50 border-blue-100'
-        }`}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
-            <div className="flex items-center gap-2">
-              <span className="text-blue-600"></span>
-              <span className={isDarkMode ? 'text-gray-300' : 'text-gray-700'}>{news.location}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-blue-600"></span>
-              <span className={isDarkMode ? 'text-gray-300' : 'text-gray-700'}>{news.time}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-blue-600"></span>
-              <span className={isDarkMode ? 'text-gray-300' : 'text-gray-700'}>{news.attendees} attendees</span>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div className="flex flex-wrap gap-2 mb-4">
-        {news.tags.map((tag, index) => (
-          <span key={index} className={`px-2 py-1 rounded text-xs ${
+        {/* Bookmark Button */}
+        <button
+          onClick={() => setIsBookmarked(!isBookmarked)}
+          className={`absolute top-4 right-6 p-2 rounded-full transition-all duration-300 ${
             isDarkMode 
-              ? 'bg-gray-700 text-gray-300' 
-              : 'bg-gray-100 text-gray-700'
-          }`}>
-            #{tag}
-          </span>
-        ))}
+              ? 'bg-gray-900/50 hover:bg-gray-900/80 backdrop-blur-sm' 
+              : 'bg-white/50 hover:bg-white/80 backdrop-blur-sm'
+          }`}
+        >
+          {isBookmarked ? (
+            <FaBookmark className={`w-4 h-4 ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'}`} />
+          ) : (
+            <FaRegBookmark className={`w-4 h-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`} />
+          )}
+        </button>
       </div>
 
-      <div className={`flex justify-between items-center pt-4 border-t ${
-        isDarkMode ? 'border-gray-700' : 'border-gray-100'
-      }`}>
-        <div className="flex items-center gap-4">
-          <div className={`flex items-center gap-2 text-sm ${
-            isDarkMode ? 'text-gray-400' : 'text-gray-500'
-          }`}>
-            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-            By {news.author}
+      <div className="relative p-6 pt-6">
+        {/* Title */}
+        <h3 className={`text-2xl font-bold mb-3 leading-tight gradient-text hover:underline cursor-pointer`}>
+          {news.title}
+        </h3>
+
+        {/* Date and Read Time */}
+        <div className={`flex items-center gap-4 mb-4 text-sm ${
+          isDarkMode ? 'text-gray-400' : 'text-gray-600'
+        }`}>
+          <div className="flex items-center gap-2">
+            <FaCalendar className={`w-4 h-4 ${isDarkMode ? 'text-teal-400' : 'text-teal-600'}`} />
+            <span className="font-medium">{news.date}</span>
           </div>
-          
-          <div className={`flex items-center gap-4 text-sm ${
-            isDarkMode ? 'text-gray-400' : 'text-gray-500'
-          }`}>
-            <span className="flex items-center gap-1">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              {news.views}
-            </span>
-            <span className="flex items-center gap-1">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-              {news.likes}
-            </span>
+          <span className={isDarkMode ? 'text-gray-600' : 'text-gray-400'}>•</span>
+          <div className="flex items-center gap-2">
+            <FaClock className={`w-4 h-4 ${isDarkMode ? 'text-teal-400' : 'text-teal-600'}`} />
+            <span className="font-medium">{news.readTime}</span>
           </div>
         </div>
-        
-        <div className="flex items-center gap-2">
-          <button 
-            onClick={() => setIsLiked(!isLiked)}
-            className={`p-2 rounded-full transition-colors ${
-              isLiked 
-                ? 'bg-red-100 text-red-500' 
-                : isDarkMode 
-                  ? 'bg-gray-700 text-gray-400 hover:bg-red-900 hover:text-red-400' 
-                  : 'bg-gray-100 text-gray-500 hover:bg-red-100 hover:text-red-500'
-            }`}
-          >
-            <svg className="w-4 h-4" fill={isLiked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
-          </button>
+
+        {/* Excerpt */}
+        <p className={`text-base mb-4 line-clamp-3 leading-relaxed ${
+          isDarkMode ? 'text-gray-300' : 'text-gray-600'
+        }`}>
+          {news.excerpt}
+        </p>
+
+        {/* Event Details */}
+        {news.isEvent && (
+          <div className={`mb-4 p-4 rounded-xl border ${
+            isDarkMode 
+              ? 'bg-blue-900/30 border-blue-700/50' 
+              : 'bg-blue-50 border-blue-200'
+          }`}>
+            <div className="grid grid-cols-1 gap-2 text-sm">
+              <div className="flex items-center gap-2">
+                <FaClock className={`w-4 h-4 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+                <span className={`font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{news.time}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaMapMarkerAlt className={`w-4 h-4 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+                <span className={`font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{news.location}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaUsers className={`w-4 h-4 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+                <span className={`font-medium ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{news.attendees} attendees</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {news.tags.map((tag, index) => (
+            <span key={index} className={`px-3 py-1 rounded-full text-xs font-semibold shadow ${
+              isDarkMode 
+                ? 'bg-gray-700/60 text-gray-300' 
+                : 'bg-gray-100 text-gray-700'
+            }`}>
+              #{tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Footer */}
+        <div className={`flex justify-between items-center pt-4 border-t ${
+          isDarkMode ? 'border-gray-700' : 'border-gray-200'
+        }`}>
+          <div className="flex items-center gap-4">
+            {/* Author */}
+            <div className="flex items-center gap-2">
+              <FaUser className={`w-4 h-4 ${isDarkMode ? 'text-teal-400' : 'text-teal-600'}`} />
+              <span className={`text-sm font-medium ${
+                isDarkMode ? 'text-gray-300' : 'text-gray-600'
+              }`}>
+                {news.author}
+              </span>
+            </div>
+            
+            {/* Stats */}
+            <div className={`flex items-center gap-3 text-sm ${
+              isDarkMode ? 'text-gray-400' : 'text-gray-500'
+            }`}>
+              <div className="flex items-center gap-1">
+                <FaEye className="w-4 h-4" />
+                <span>{news.views}</span>
+              </div>
+              <button
+                onClick={() => setIsLiked(!isLiked)}
+                className={`flex items-center gap-1 transition-colors ${
+                  isLiked ? 'text-red-500' : ''
+                }`}
+              >
+                {isLiked ? <FaHeart className="w-4 h-4" /> : <FaRegHeart className="w-4 h-4" />}
+                <span>{news.likes + (isLiked ? 1 : 0)}</span>
+              </button>
+            </div>
+          </div>
           
-          <button 
-            onClick={() => setIsBookmarked(!isBookmarked)}
-            className={`p-2 rounded-full transition-colors ${
-              isBookmarked 
-                ? 'bg-yellow-100 text-yellow-500' 
-                : isDarkMode 
-                  ? 'bg-gray-700 text-gray-400 hover:bg-yellow-900 hover:text-yellow-400' 
-                  : 'bg-gray-100 text-gray-500 hover:bg-yellow-100 hover:text-yellow-500'
-            }`}
-          >
-            <svg className="w-4 h-4" fill={isBookmarked ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-            </svg>
-          </button>
-          
-          <button className="px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white font-medium rounded-lg transition-colors text-sm">
+          <button className={`px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover-glow ${
+            news.isEvent
+              ? isDarkMode 
+                ? 'bg-blue-600 hover:bg-blue-500 text-white' 
+                : 'bg-blue-600 hover:bg-blue-700 text-white'
+              : isDarkMode 
+                ? 'bg-teal-600 hover:bg-teal-500 text-white' 
+                : 'bg-teal-600 hover:bg-teal-700 text-white'
+          }`}>
             {news.isEvent ? 'Register' : 'Read More'}
           </button>
         </div>
@@ -226,6 +246,13 @@ export default function News() {
   const [category, setCategory] = useState('all');
   const [activeTab, setActiveTab] = useState('all');
 
+  const categories = ['All', 'Placements', 'Infrastructure', 'Alumni', 'Events'];
+  const tabs = [
+    { id: 'all', label: 'All Content', icon: FaNewspaper },
+    { id: 'news', label: 'News', icon: FaNewspaper },
+    { id: 'events', label: 'Events', icon: FaCalendar }
+  ];
+
   const filteredNews = newsArticles.filter(news => {
     const matchesSearch =
       news.title.toLowerCase().includes(search.toLowerCase()) ||
@@ -238,30 +265,6 @@ export default function News() {
     return matchesSearch && matchesCategory && matchesTab;
   });
 
-  const [form, setForm] = useState({
-    title: '',
-    category: '',
-    description: '',
-    author: '',
-    date: '',
-    time: '',
-    location: '',
-    isEvent: false,
-  });
-
-  const handleFormChange = e => {
-    const { name, value, type, checked } = e.target;
-    setForm({ ...form, [name]: type === 'checkbox' ? checked : value });
-  };
-
-  const handleFormSubmit = e => {
-    e.preventDefault();
-    alert('News/Event submitted! (This is a placeholder, no backend yet)');
-    setForm({
-      title: '', category: '', description: '', author: '', date: '', time: '', location: '', isEvent: false
-    });
-  };
-
   return (
     <div className={`min-h-screen pb-16 transition-colors duration-300 ${
       isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
@@ -270,30 +273,140 @@ export default function News() {
         <Heronews />
       </div>
 
-      <section className="max-w-6xl mx-auto px-4 mt-20 mb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Main Content */}
+      <section className="max-w-7xl mx-auto px-4 mt-8 mb-16">
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <span className={`inline-block px-4 py-2 rounded-full font-semibold mb-4 shadow ${
+            isDarkMode ? 'bg-teal-900/80 text-teal-300' : 'bg-teal-100 text-teal-700'
+          }`}>Latest Updates</span>
+          <h2 className={`text-4xl md:text-5xl font-extrabold mb-4 tracking-tight gradient-text`}>
+            News & Events
+          </h2>
+          <p className={`text-lg max-w-2xl mx-auto ${
+            isDarkMode ? 'text-gray-400' : 'text-gray-600'
+          }`}>
+            Stay updated with the latest news, achievements, and upcoming events
+          </p>
+        </div>
+
+        {/* Tabs */}
+        <div className="flex justify-center mb-8">
+          <div className={`inline-flex gap-2 p-2 rounded-xl ${
+            isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200 shadow'
+          }`}>
+            {tabs.map(tab => {
+              const Icon = tab.icon;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                    activeTab === tab.id
+                      ? isDarkMode
+                        ? 'bg-teal-600 text-white'
+                        : 'bg-teal-600 text-white'
+                      : isDarkMode
+                        ? 'text-gray-400 hover:text-white hover:bg-gray-700'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Search and Filter */}
+        <div className={`mb-8 p-6 rounded-2xl shadow-lg border ${
+          isDarkMode 
+            ? 'bg-gray-800/50 border-teal-900 backdrop-blur-sm' 
+            : 'bg-white/80 border-teal-100 backdrop-blur-sm'
+        }`}>
+          {/* Search Bar */}
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex-1 relative">
+              <FaSearch className={`absolute left-4 top-1/2 transform -translate-y-1/2 ${
+                isDarkMode ? 'text-gray-400' : 'text-gray-500'
+              }`} />
+              <input
+                type="text"
+                placeholder="Search news, events, or tags..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 outline-none transition-all duration-300 ${
+                  isDarkMode 
+                    ? 'bg-gray-900 border-gray-700 text-white placeholder-gray-500 focus:border-teal-500' 
+                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-teal-500'
+                }`}
+              />
+            </div>
+          </div>
+
+          {/* Category Filters */}
+          <div className="mt-4 pt-4 border-t ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}">
+            <label className={`block text-sm font-semibold mb-3 ${
+              isDarkMode ? 'text-gray-300' : 'text-gray-700'
+            }`}>
+              <FaFilter className="inline mr-2" />
+              Filter by Category
+            </label>
+            <div className="flex flex-wrap gap-2">
+              {categories.map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => setCategory(cat.toLowerCase())}
+                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                    category === cat.toLowerCase()
+                      ? isDarkMode
+                        ? 'bg-teal-600 text-white'
+                        : 'bg-teal-600 text-white'
+                      : isDarkMode
+                        ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Results Count */}
+        <div className={`mb-6 text-center ${
+          isDarkMode ? 'text-gray-400' : 'text-gray-600'
+        }`}>
+          <span className="font-semibold">{filteredNews.length}</span> {activeTab === 'all' ? 'items' : activeTab} found
+        </div>
+
+        {/* News Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {filteredNews.length > 0 ? (
             filteredNews.map(news => <NewsCard key={news.id} news={news} />)
           ) : (
             <div className={`col-span-full text-center py-12 ${
               isDarkMode ? 'text-gray-400' : 'text-gray-500'
             }`}>
-              <svg className={`w-16 h-16 mx-auto mb-4 ${
-                isDarkMode ? 'text-gray-600' : 'text-gray-300'
-              }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              <p className="text-lg">No {activeTab === 'all' ? 'content' : activeTab} found.</p>
+              <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
+                isDarkMode ? 'bg-gray-800' : 'bg-gray-200'
+              }`}>
+                <FaSearch className={`w-8 h-8 ${
+                  isDarkMode ? 'text-gray-600' : 'text-gray-400'
+                }`} />
+              </div>
+              <h3 className={`text-lg font-medium mb-2 ${
+                isDarkMode ? 'text-gray-300' : 'text-gray-700'
+              }`}>No {activeTab === 'all' ? 'content' : activeTab} found</h3>
               <p className={`text-sm ${
                 isDarkMode ? 'text-gray-500' : 'text-gray-400'
-              }`}>Try adjusting your search or filters.</p>
+              }`}>Try adjusting your search or filters</p>
             </div>
           )}
         </div>
       </section>
-
-      {/* <Postnews /> */}
-      
     </div>
   );
 }

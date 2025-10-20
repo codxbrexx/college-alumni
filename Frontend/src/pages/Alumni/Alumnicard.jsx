@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+// import { useState } from 'react';
 import { FaLinkedin, FaMapMarkerAlt, FaBriefcase, FaGraduationCap, FaEnvelope } from "react-icons/fa";
 import { ImTwitter } from "react-icons/im";
 import { useTheme } from '../../context/ThemeContext';
@@ -104,117 +104,92 @@ const alumni = [
 
 function Alumnicard() {
   const { isDarkMode } = useTheme();
-  const [hoveredCard, setHoveredCard] = useState(null);
 
   return (
     <div className={`py-12 px-4 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-            isDarkMode ? 'text-white' : 'text-gray-900'
-          }`}>
-            Meet Our Alumni
-          </h2>
-          <p className={`text-lg ${
+          <span className={`inline-block px-4 py-2 rounded-full font-semibold mb-4 shadow ${
+            isDarkMode ? 'bg-teal-900/80 text-teal-300' : 'bg-teal-100 text-teal-700'
+          }`}>Alumni Network</span>
+          <h2 className={`text-4xl md:text-5xl font-extrabold mb-4 tracking-tight gradient-text`}>Meet Our Alumni</h2>
+          <p className={`text-lg max-w-2xl mx-auto ${
             isDarkMode ? 'text-gray-400' : 'text-gray-600'
           }`}>
             Discover and connect with talented professionals from our community
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {alumni.map((alum, idx) => (
             <div
               key={idx}
-              onMouseEnter={() => setHoveredCard(idx)}
-              onMouseLeave={() => setHoveredCard(null)}
-              className={`group relative rounded-2xl shadow-lg overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl ${
+              className={`group relative rounded-2xl shadow-xl overflow-hidden glass-effect transition-shadow duration-300 ${
                 isDarkMode 
-                  ? 'bg-gradient-to-br from-gray-800 to-gray-800/90 border border-gray-700 hover:border-teal-500/50' 
-                  : 'bg-white border border-gray-100 hover:border-teal-500/50'
+                  ? 'bg-gradient-to-br from-gray-800 to-gray-900/80 border border-teal-900 hover:border-teal-500/50' 
+                  : 'bg-white/80 border border-teal-100 hover:border-teal-500/50'
               }`}
             >
               {/* Header with Gradient */}
-              <div className={`relative h-28 bg-gradient-to-br ${
+              <div className={`relative h-32 bg-gradient-to-br ${
                 isDarkMode 
-                  ? 'from-teal-600 via-teal-700 to-blue-800' 
-                  : 'from-teal-400 via-teal-500 to-blue-500'
+                  ? 'from-teal-700 via-teal-800 to-blue-900' 
+                  : 'from-teal-300 via-teal-400 to-blue-400'
               }`}>
                 <div className="absolute inset-0 bg-black/10" />
-                
                 {/* Profile Image */}
-                <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2">
+                <div className="absolute -bottom-14 left-1/2 transform -translate-x-1/2">
                   <div className="relative">
                     <img
                       src={alum.image}
                       alt={alum.name}
-                      className="w-24 h-24 rounded-full border-4 border-white shadow-xl object-cover transition-transform duration-300 group-hover:scale-110"
+                      className="w-28 h-28 rounded-full border-4 border-white shadow-xl object-cover transition-transform duration-300 group-hover:scale-110"
                     />
-                    <div className={`absolute bottom-1 right-1 w-5 h-5 rounded-full border-2 border-white ${
-                      isDarkMode ? 'bg-green-500' : 'bg-green-400'
-                    }`} title="Available for mentoring" />
+                    <span className={`absolute -top-2 -right-2 px-3 py-1 text-xs font-bold rounded-full shadow ${
+                      isDarkMode ? 'bg-green-700 text-white' : 'bg-green-200 text-green-800'
+                    }`}>Mentor</span>
                   </div>
                 </div>
               </div>
 
               {/* Card Content */}
-              <div className="pt-14 pb-6 px-6">
+              <div className="pt-16 pb-8 px-8">
                 {/* Name and Title */}
                 <div className="text-center mb-4">
-                  <h3 className={`text-xl font-bold mb-1 ${
-                    isDarkMode ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    {alum.name}
-                  </h3>
-                  <p className={`text-sm font-semibold mb-1 ${
-                    isDarkMode ? 'text-teal-400' : 'text-teal-600'
-                  }`}>
-                    {alum.profession}
-                  </p>
-                  <div className={`flex items-center justify-center gap-1 text-sm ${
-                    isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                  }`}>
-                    <FaBriefcase className="w-3 h-3" />
-                    <span>{alum.experience} at {alum.company}</span>
+                  <h3 className={`text-2xl font-bold mb-1 gradient-text`}>{alum.name}</h3>
+                  <p className={`text-base font-semibold mb-1 ${isDarkMode ? 'text-teal-300' : 'text-teal-600'}`}>{alum.profession}</p>
+                  <div className={`flex items-center justify-center gap-2 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                    <FaBriefcase className="w-4 h-4" />
+                    <span>{alum.experience} at <span className="font-bold">{alum.company}</span></span>
                   </div>
                 </div>
 
                 {/* About */}
-                <p className={`text-sm text-center mb-4 line-clamp-2 ${
-                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                }`}>
-                  {alum.about}
-                </p>
+                <p className={`text-base text-center mb-4 line-clamp-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{alum.about}</p>
 
                 {/* Details Grid */}
-                <div className={`space-y-2 text-sm mb-4 ${
-                  isDarkMode ? 'text-gray-300' : 'text-gray-700'
-                }`}>
-                  <div className="flex items-center gap-2">
-                    <FaGraduationCap className={`w-4 h-4 ${
-                      isDarkMode ? 'text-teal-400' : 'text-teal-600'
-                    }`} />
+                <div className={`space-y-2 text-base mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <div className="flex items-center gap-2 justify-center">
+                    <FaGraduationCap className={`w-5 h-5 ${isDarkMode ? 'text-teal-400' : 'text-teal-600'}`} />
                     <span className="font-medium">{alum.branch}</span>
                     <span className={isDarkMode ? 'text-gray-500' : 'text-gray-400'}>•</span>
                     <span>Class of {alum.passingYear}</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <FaMapMarkerAlt className={`w-4 h-4 ${
-                      isDarkMode ? 'text-teal-400' : 'text-teal-600'
-                    }`} />
+                  <div className="flex items-center gap-2 justify-center">
+                    <FaMapMarkerAlt className={`w-5 h-5 ${isDarkMode ? 'text-teal-400' : 'text-teal-600'}`} />
                     <span>{alum.city}</span>
                   </div>
                 </div>
 
                 {/* Skills */}
                 <div className="mb-4">
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 justify-center">
                     {alum.skills.slice(0, 4).map((skill, i) => (
                       <span
                         key={i}
-                        className={`px-3 py-1 text-xs font-medium rounded-full transition-colors ${
+                        className={`px-4 py-1 text-xs font-semibold rounded-full transition-colors shadow ${
                           isDarkMode 
-                            ? 'bg-teal-900/50 text-teal-300 border border-teal-700/50' 
+                            ? 'bg-teal-900/60 text-teal-300 border border-teal-700/50' 
                             : 'bg-teal-50 text-teal-700 border border-teal-200'
                         }`}
                       >
@@ -222,18 +197,14 @@ function Alumnicard() {
                       </span>
                     ))}
                     {alum.skills.length > 4 && (
-                      <span className={`px-3 py-1 text-xs font-medium rounded-full ${
-                        isDarkMode ? 'text-gray-400' : 'text-gray-500'
-                      }`}>
-                        +{alum.skills.length - 4}
-                      </span>
+                      <span className={`px-4 py-1 text-xs font-semibold rounded-full ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>+{alum.skills.length - 4}</span>
                     )}
                   </div>
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-2">
-                  <button className={`flex-1 py-2.5 px-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 ${
+                <div className="flex gap-2 justify-center mt-2">
+                  <button className={`flex-1 py-2.5 px-4 rounded-lg font-semibold transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-teal-600 hover:bg-teal-500 text-white' 
                       : 'bg-teal-600 hover:bg-teal-700 text-white'
@@ -244,7 +215,7 @@ function Alumnicard() {
                     href={alum.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-2.5 rounded-lg transition-all duration-300 transform hover:scale-110 ${
+                    className={`p-2.5 rounded-lg transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 hover:bg-gray-600 text-teal-400' 
                         : 'bg-gray-100 hover:bg-gray-200 text-teal-600'
@@ -257,7 +228,7 @@ function Alumnicard() {
                     href={alum.social}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-2.5 rounded-lg transition-all duration-300 transform hover:scale-110 ${
+                    className={`p-2.5 rounded-lg transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 hover:bg-gray-600 text-teal-400' 
                         : 'bg-gray-100 hover:bg-gray-200 text-teal-600'
@@ -268,7 +239,7 @@ function Alumnicard() {
                   </a>
                   <a
                     href={`mailto:${alum.email}`}
-                    className={`p-2.5 rounded-lg transition-all duration-300 transform hover:scale-110 ${
+                    className={`p-2.5 rounded-lg transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 hover:bg-gray-600 text-teal-400' 
                         : 'bg-gray-100 hover:bg-gray-200 text-teal-600'
@@ -279,17 +250,6 @@ function Alumnicard() {
                   </a>
                 </div>
               </div>
-
-              {/* Hover Effect Overlay */}
-              <div className={`absolute inset-0 pointer-events-none transition-opacity duration-300 ${
-                hoveredCard === idx ? 'opacity-100' : 'opacity-0'
-              }`}>
-                <div className={`absolute inset-0 bg-gradient-to-br ${
-                  isDarkMode 
-                    ? 'from-teal-500/5 to-blue-500/5' 
-                    : 'from-teal-500/5 to-blue-500/5'
-                }`} />
-              </div>
             </div>
           ))}
         </div>
@@ -299,3 +259,4 @@ function Alumnicard() {
 }
 
 export default Alumnicard;
+
