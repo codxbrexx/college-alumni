@@ -1,10 +1,10 @@
-import Login from './pages/log/Login'
-import Forgot from './pages/log/Forgot'
-import Createpassword from './pages/log/Createpassword'
-import Register from './pages/log/Register'
-import Navbar from './Components/Navbar/Navbar'
-import Header from './Components/Header/Header'
-import Footer from './Components/Footer/Footer'
+import Login from './pages/log/Login.jsx'
+import Forgot from './pages/log/Forgot.jsx'
+import Createpassword from './pages/log/Createpassword.jsx'
+import Register from './pages/log/register.jsx'
+import Navbar from './Components/Navbar/Navbar.jsx'
+import Header from './Components/Header/Header.jsx'
+import Footer from './Components/Footer/Footer.jsx'
 
 function App() {
   
