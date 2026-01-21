@@ -18,10 +18,5 @@ const startServer = async () => {
 
 startServer()
 
-process.on("unhandledRejection", (reason) => {
-    console.error("Unhandled Rejection:", reason)
-})
-
-process.on("uncaughtException", (error) => {
-    console.error("Uncaught Exception:", error)
-})
+// Export app for Vercel
+export default app;
