@@ -1,43 +1,15 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Select from "react-select";
-
-
-  
-  const customSelectStyles = {
-    control: (provided, state) => ({
-      ...provided,
-      borderRadius: '0.75rem',
-      borderColor: state.isFocused ? '#14b8a6' : '#f3f4f6', 
-      boxShadow: state.isFocused ? '0 0 0 1px #14b8a6, 0 1px 2px 0 rgb(0 0 0 / 0.05)' : '0 1px 2px 0 rgb(0 0 0 / 0.05)',
-      
-      minHeight: '3rem', // h-12
-    }),
-    menu: (provided) => ({
-      ...provided,
-      borderRadius: '0.75rem',
-      zIndex: 20,
-    }),
-    option: (provided, state) => ({
-      ...provided,
-      backgroundColor: state.isFocused ? '#99f6e4' : 'white', // teal-100 on hover
-      color: '#0f172a', // slate-900
-      cursor: 'pointer',
-    }),
-    singleValue: (provided) => ({
-      ...provided,
-      color: '#0f172a', // slate-900
-    }),
-    placeholder: (provided) => ({
-      ...provided,
-      color: '#64748b', // slate-400
-    }),
-  };
+import { useTheme } from "../../context/ThemeContext";
+import { useAuth } from "../../hooks/useAuth";
+import { FaUser, FaEnvelope, FaLock, FaIdCard, FaSpinner, FaEye, FaEyeSlash } from "react-icons/fa";
 
 const years = Array.from({ length: 50 }, (_, i) => {
-  const year = new Date().getFullYear()+4 - i;
+  const year = new Date().getFullYear() + 4 - i;
   return { value: year, label: year };
 });
-// this is the simple data we will use it in backend 
+
 const states = [
   { value: "Andhra Pradesh", label: "Andhra Pradesh" },
   { value: "Arunachal Pradesh", label: "Arunachal Pradesh" },
@@ -70,21 +42,6 @@ const states = [
 ];
 
 const citiesByState = {
-  "Andhra Pradesh": [
-    { value: "Visakhapatnam", label: "Visakhapatnam" },
-    { value: "Vijayawada", label: "Vijayawada" },
-    { value: "Guntur", label: "Guntur" },
-    { value: "Nellore", label: "Nellore" }
-  ],
-  "Arunachal Pradesh": [
-    { value: "Itanagar", label: "Itanagar" },
-    { value: "Naharlagun", label: "Naharlagun" }
-  ],
-  "Assam": [
-    { value: "Guwahati", label: "Guwahati" },
-    { value: "Silchar", label: "Silchar" },
-    { value: "Dibrugarh", label: "Dibrugarh" }
-  ],
   "Bihar": [
     { value: "Patna", label: "Patna" },
     { value: "Gaya", label: "Gaya" },
@@ -92,238 +49,529 @@ const citiesByState = {
     { value: "Bhagalpur", label: "Bhagalpur" },
     { value: "Purnia", label: "Purnia" },
     { value: "Darbhanga", label: "Darbhanga" },
-    { value: "Arrah", label: "Arrah" },
-    { value: "Siwan", label: "Siwan" },
-    { value: "Begusarai", label: "Begusarai"},
-    { value: "samastipur", label: "samastipur" },
-  ],
-  "Chhattisgarh": [
-    { value: "Raipur", label: "Raipur" },
-    { value: "Bhilai", label: "Bhilai" },
-    { value: "Bilaspur", label: "Bilaspur" }
-  ],
-  "Goa": [
-    { value: "Panaji", label: "Panaji" },
-    { value: "Margao", label: "Margao" },
-    { value: "Vasco da Gama", label: "Vasco da Gama" }
-  ],
-  "Gujarat": [
-    { value: "Ahmedabad", label: "Ahmedabad" },
-    { value: "Surat", label: "Surat" },
-    { value: "Vadodara", label: "Vadodara" },
-    { value: "Rajkot", label: "Rajkot" }
-  ],
-  "Haryana": [
-    { value: "Faridabad", label: "Faridabad" },
-    { value: "Gurugram", label: "Gurugram" },
-    { value: "Panipat", label: "Panipat" }
-  ],
-  "Himachal Pradesh": [
-    { value: "Shimla", label: "Shimla" },
-    { value: "Mandi", label: "Mandi" },
-    { value: "Solan", label: "Solan" }
-  ],
-  "Jharkhand": [
-    { value: "Ranchi", label: "Ranchi" },
-    { value: "Jamshedpur", label: "Jamshedpur" },
-    { value: "Dhanbad", label: "Dhanbad" }
   ],
   "Karnataka": [
     { value: "Bengaluru", label: "Bengaluru" },
     { value: "Mysuru", label: "Mysuru" },
     { value: "Hubli", label: "Hubli" }
   ],
-  "Kerala": [
-    { value: "Thiruvananthapuram", label: "Thiruvananthapuram" },
-    { value: "Kochi", label: "Kochi" },
-    { value: "Kozhikode", label: "Kozhikode" }
-  ],
-  "Madhya Pradesh": [
-    { value: "Bhopal", label: "Bhopal" },
-    { value: "Indore", label: "Indore" },
-    { value: "Gwalior", label: "Gwalior" }
-  ],
   "Maharashtra": [
     { value: "Mumbai", label: "Mumbai" },
     { value: "Pune", label: "Pune" },
     { value: "Nagpur", label: "Nagpur" },
-    { value: "Nashik", label: "Nashik" }
-  ],
-  "Manipur": [
-    { value: "Imphal", label: "Imphal" }
-  ],
-  "Meghalaya": [
-    { value: "Shillong", label: "Shillong" }
-  ],
-  "Mizoram": [
-    { value: "Aizawl", label: "Aizawl" }
-  ],
-  "Nagaland": [
-    { value: "Kohima", label: "Kohima" },
-    { value: "Dimapur", label: "Dimapur" }
-  ],
-  "Odisha": [
-    { value: "Bhubaneswar", label: "Bhubaneswar" },
-    { value: "Cuttack", label: "Cuttack" },
-    { value: "Rourkela", label: "Rourkela" }
-  ],
-  "Punjab": [
-    { value: "Ludhiana", label: "Ludhiana" },
-    { value: "Amritsar", label: "Amritsar" },
-    { value: "Jalandhar", label: "Jalandhar" }
-  ],
-  "Rajasthan": [
-    { value: "Jaipur", label: "Jaipur" },
-    { value: "Jodhpur", label: "Jodhpur" },
-    { value: "Udaipur", label: "Udaipur" }
-  ],
-  "Sikkim": [
-    { value: "Gangtok", label: "Gangtok" }
-  ],
-  "Tamil Nadu": [
-    { value: "Chennai", label: "Chennai" },
-    { value: "Coimbatore", label: "Coimbatore" },
-    { value: "Madurai", label: "Madurai" }
-  ],
-  "Telangana": [
-    { value: "Hyderabad", label: "Hyderabad" },
-    { value: "Warangal", label: "Warangal" },
-    { value: "Nizamabad", label: "Nizamabad" }
-  ],
-  "Tripura": [
-    { value: "Agartala", label: "Agartala" }
   ],
   "Uttar Pradesh": [
     { value: "Lucknow", label: "Lucknow" },
     { value: "Kanpur", label: "Kanpur" },
     { value: "Varanasi", label: "Varanasi" },
-    { value: "Agra", label: "Agra" },
-    { value: "Prayagraj", label: "Prayagraj" }
   ],
-  "Uttarakhand": [
-    { value: "Dehradun", label: "Dehradun" },
-    { value: "Haridwar", label: "Haridwar" },
-    { value: "Haldwani", label: "Haldwani" }
-  ],
-  "West Bengal": [
-    { value: "Kolkata", label: "Kolkata" },
-    { value: "Asansol", label: "Asansol" },
-    { value: "Siliguri", label: "Siliguri" }
-  ]
 };
 
-
 export default function Register() {
-  const [selectedYear, setSelectedYear] = useState();
-  const [selectedState, setSelectedState] = useState(null);
-  const [selectedCity, setSelectedCity] = useState(null);
+  const { isDarkMode } = useTheme();
+  const { register, error: authError } = useAuth();
+  const navigate = useNavigate();
 
-  // Filter cities based on selected state
-  const filteredCities = selectedState ? citiesByState[selectedState.value] || [] : [];
+  const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
-  // Reset city when state changes
-  const handleStateChange = (newState) => {
-    setSelectedState(newState);
-    setSelectedCity(null); // Reset city when state changes
+  const [formData, setFormData] = useState({
+    fullName: "",
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    rollNo: "",
+    yearOfPassout: null,
+    state: null,
+    city: null,
+    profession: "",
+    linkedInProfileLink: "",
+    companyExperience: "",
+    aboutYou: "",
+    skills: ""
+  });
+
+  const filteredCities = formData.state ? citiesByState[formData.state.value] || [] : [];
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    setError("");
   };
 
+  const handleSelectChange = (name, value) => {
+    setFormData(prev => ({ ...prev, [name]: value }));
+    if (name === "state") {
+      setFormData(prev => ({ ...prev, city: null }));
+    }
+    setError("");
+  };
+
+  const validateStep1 = () => {
+    if (!formData.fullName || !formData.username) {
+      setError("Please fill in all required fields");
+      return false;
+    }
+    return true;
+  };
+
+  const validateStep2 = () => {
+    if (!formData.email || !formData.rollNo || !formData.password || !formData.confirmPassword) {
+      setError("Please fill in all required fields");
+      return false;
+    }
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match");
+      return false;
+    }
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return false;
+    }
+    return true;
+  };
+
+  const validateStep3 = () => {
+    return true;
+  };
+
+  const handleNextStep = () => {
+    setError("");
+    if (step === 1 && validateStep1()) {
+      setStep(2);
+    } else if (step === 2 && validateStep2()) {
+      setStep(3);
+    } else if (step === 3 && validateStep3()) {
+      setStep(4);
+    }
+  };
+
+  const handlePrevStep = () => {
+    setError("");
+    setStep(prev => prev - 1);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (step < 4) {
+      handleNextStep();
+      return;
+    }
+
+    setLoading(true);
+    try {
+      await register({
+        fullName: formData.fullName,
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+        rollNo: formData.rollNo,
+        yearOfPassout: formData.yearOfPassout?.value,
+        state: formData.state?.value,
+        city: formData.city?.value,
+        profession: formData.profession,
+        linkedInProfileLink: formData.linkedInProfileLink,
+        companyExperience: formData.companyExperience ? parseInt(formData.companyExperience) : undefined,
+        aboutYou: formData.aboutYou,
+        skills: formData.skills
+      });
+      navigate("/home");
+    } catch (err) {
+      setError(err.message || "Registration failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const customSelectStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      borderRadius: '0.5rem',
+      borderColor: state.isFocused
+        ? '#14b8a6'
+        : isDarkMode ? '#4b5563' : '#d1d5db',
+      backgroundColor: isDarkMode ? '#374151' : 'white',
+      boxShadow: state.isFocused ? '0 0 0 2px rgba(20, 184, 166, 0.2)' : 'none',
+      minHeight: '2.75rem',
+      '&:hover': {
+        borderColor: '#14b8a6'
+      }
+    }),
+    menu: (provided) => ({
+      ...provided,
+      borderRadius: '0.5rem',
+      backgroundColor: isDarkMode ? '#1f2937' : 'white',
+      border: isDarkMode ? '1px solid #374151' : '1px solid #e5e7eb',
+      zIndex: 20,
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      backgroundColor: state.isFocused
+        ? isDarkMode ? '#374151' : '#f0fdfa'
+        : 'transparent',
+      color: isDarkMode ? '#e5e7eb' : '#111827',
+      cursor: 'pointer',
+    }),
+    singleValue: (provided) => ({
+      ...provided,
+      color: isDarkMode ? '#e5e7eb' : '#111827',
+    }),
+    placeholder: (provided) => ({
+      ...provided,
+      color: isDarkMode ? '#6b7280' : '#9ca3af',
+    }),
+    input: (provided) => ({
+      ...provided,
+      color: isDarkMode ? '#e5e7eb' : '#111827',
+    }),
+  };
+
+  const inputClassName = `w-full h-11 pl-10 pr-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
+    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
+    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+    }`;
+
   return (
-    <div className="min-h-screen flex justify-center items-center bg-white font-['Poppins']">
-      <div className="w-full max-w-md rounded-2xl flex flex-col items-center justify-center p-12 bg-white/50 border border-white/30 shadow-2xl backdrop-blur-md">
-        <div className="w-full max-w-md">
-          {/* hdr */}
-          <div className="text-center mb-8">
-            <h1 className="text-2xl font-semibold text-gray-900 mb-6">Welcome to Net Gurd</h1>
-            {/* Tab button */}
-            <div className="inline-flex bg-gray-100 shadow-md rounded-full p-1 mb-8">
-              <button className="px-8 py-2 rounded-full text-sm font-medium cursor-pointer text-gray-600">Login</button>
-              <button className="px-8 py-2 rounded-full text-sm font-medium bg-teal-400 cursor-pointer text-white">Register</button>
-            </div>
-            <p className="text-gray-600 text-sm mb-8">
-              Create your account to connect with college.
+    <div className={`min-h-screen flex justify-center items-center font-['Inter'] transition-colors duration-200 px-4 py-12 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+      }`}>
+      <div className={`w-full max-w-lg rounded-2xl p-8 md:p-10 shadow-lg transition-all duration-200 ${isDarkMode
+        ? 'bg-gray-800 border border-gray-700'
+        : 'bg-white border border-gray-200'
+        }`}>
+        <div className="w-full">
+          {/* Header */}
+          <div className="mb-8">
+            <h1 className={`text-2xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+              Create Account
+            </h1>
+            <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              Join the alumni network
             </p>
           </div>
 
-          {/* from section */}
-          <form className="space-y-5">
-            <div>
-              <label className="block text-sm font-medium pl-2 text-gray-700  mb-1">Year of Passing</label>
-              <Select
-                options={years}
-                value={selectedYear}
-                onChange={setSelectedYear}
-                placeholder="Select year of passing"
-                className="react-select-container w-full"
-                classNamePrefix="react-select"
-                styles={customSelectStyles}
-              />
+          {/* Tab Toggle */}
+          <div className={`flex gap-2 p-1 mb-8 rounded-lg ${isDarkMode ? 'bg-gray-700/50' : 'bg-gray-100'
+            }`}>
+            <Link to="/login" className={`flex-1 py-2.5 rounded-md text-sm font-medium text-center transition-all ${isDarkMode ? 'text-gray-400 hover:text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+              }`}>
+              Login
+            </Link>
+            <div className={`flex-1 py-2.5 rounded-md text-sm font-medium text-center transition-all ${isDarkMode
+              ? 'bg-teal-600 text-white shadow-sm'
+              : 'bg-white text-gray-900 shadow-sm'
+              }`}>
+              Register
             </div>
-            <div>
-              <label className="block text-sm font-medium pl-2 text-gray-700 mb-1">State</label>
-              <Select
-                options={states}
-                value={selectedState}
-                onChange={handleStateChange}
-                placeholder="Select your state"
-                className="react-select-container w-full"
-                classNamePrefix="react-select"
-                styles={customSelectStyles}
-              />
+          </div>
+
+          {/* Progress Steps */}
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <div className={`w-2.5 h-2.5 rounded-full transition-all ${step >= 1 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-8 h-0.5 rounded transition-all ${step >= 2 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-2.5 h-2.5 rounded-full transition-all ${step >= 2 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-8 h-0.5 rounded transition-all ${step >= 3 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-2.5 h-2.5 rounded-full transition-all ${step >= 3 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-8 h-0.5 rounded transition-all ${step >= 4 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-2.5 h-2.5 rounded-full transition-all ${step >= 4 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+          </div>
+
+          {/* Error Message */}
+          {(error || authError) && (
+            <div className={`mb-6 p-3.5 rounded-lg text-sm ${isDarkMode
+              ? 'bg-red-500/10 text-red-400 border border-red-500/20'
+              : 'bg-red-50 text-red-700 border border-red-100'
+              }`}>
+              {error || authError}
             </div>
-            <div>
-              <label className="block text-sm font-medium pl-2 text-gray-700 mb-1">City</label>
-              <Select
-                options={filteredCities}
-                value={selectedCity}
-                onChange={setSelectedCity}
-                placeholder={selectedState ? "Select your city" : "Please select a state first"}
-                isDisabled={!selectedState}
-                className="react-select-container w-full"
-                classNamePrefix="react-select"
-                styles={customSelectStyles}
-              />
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {step === 1 && (
+              <>
+                {/* Step 1: Basic Identity */}
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    Full Name *
+                  </label>
+                  <div className="relative">
+                    <FaUser className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`} />
+                    <input
+                      type="text"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      placeholder="Enter your full name"
+                      className={inputClassName}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    Username *
+                  </label>
+                  <div className="relative">
+                    <FaUser className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`} />
+                    <input
+                      type="text"
+                      name="username"
+                      value={formData.username}
+                      onChange={handleChange}
+                      placeholder="Choose a username"
+                      className={inputClassName}
+                    />
+                  </div>
+                </div>
+              </>
+            )}
+
+            {step === 2 && (
+              <>
+                {/* Step 2: Credentials */}
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    Email *
+                  </label>
+                  <div className="relative">
+                    <FaEnvelope className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`} />
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="Enter your email"
+                      className={inputClassName}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    Roll Number *
+                  </label>
+                  <div className="relative">
+                    <FaIdCard className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`} />
+                    <input
+                      type="text"
+                      name="rollNo"
+                      value={formData.rollNo}
+                      onChange={handleChange}
+                      placeholder="Enter your roll number"
+                      className={inputClassName}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    Password *
+                  </label>
+                  <div className="relative">
+                    <FaLock className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`} />
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      placeholder="Create a password"
+                      className={`${inputClassName} pr-11`}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className={`absolute right-3.5 top-1/2 -translate-y-1/2 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}
+                    >
+                      {showPassword ? <FaEyeSlash className="w-4 h-4" /> : <FaEye className="w-4 h-4" />}
+                    </button>
+                  </div>
+                </div>
+
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    Confirm Password *
+                  </label>
+                  <div className="relative">
+                    <FaLock className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`} />
+                    <input
+                      type="password"
+                      name="confirmPassword"
+                      value={formData.confirmPassword}
+                      onChange={handleChange}
+                      placeholder="Confirm your password"
+                      className={inputClassName}
+                    />
+                  </div>
+                </div>
+              </>
+            )}
+
+            {step === 3 && (
+              <>
+                {/* Step 3: Professional Info */}
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    Year of Passing
+                  </label>
+                  <Select
+                    options={years}
+                    value={formData.yearOfPassout}
+                    onChange={(v) => handleSelectChange("yearOfPassout", v)}
+                    placeholder="Select year"
+                    styles={customSelectStyles}
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                      State
+                    </label>
+                    <Select
+                      options={states}
+                      value={formData.state}
+                      onChange={(v) => handleSelectChange("state", v)}
+                      placeholder="Select state"
+                      styles={customSelectStyles}
+                    />
+                  </div>
+                  <div>
+                    <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                      City
+                    </label>
+                    <Select
+                      options={filteredCities}
+                      value={formData.city}
+                      onChange={(v) => handleSelectChange("city", v)}
+                      placeholder="Select city"
+                      isDisabled={!formData.state}
+                      styles={customSelectStyles}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    Profession
+                  </label>
+                  <input
+                    type="text"
+                    name="profession"
+                    value={formData.profession}
+                    onChange={handleChange}
+                    placeholder="e.g., Software Engineer"
+                    className={`w-full h-11 px-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
+                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
+                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                      }`}
+                  />
+                </div>
+              </>
+            )}
+
+            {step === 4 && (
+              <>
+                {/* Step 4: Additional Details */}
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    LinkedIn Profile
+                  </label>
+                  <input
+                    type="url"
+                    name="linkedInProfileLink"
+                    value={formData.linkedInProfileLink}
+                    onChange={handleChange}
+                    placeholder="https://linkedin.com/in/yourprofile"
+                    className={`w-full h-11 px-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
+                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
+                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                      }`}
+                  />
+                </div>
+
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    Skills (comma separated)
+                  </label>
+                  <input
+                    type="text"
+                    name="skills"
+                    value={formData.skills}
+                    onChange={handleChange}
+                    placeholder="React, Node.js, Python"
+                    className={`w-full h-11 px-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
+                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
+                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                      }`}
+                  />
+                </div>
+
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                    About You
+                  </label>
+                  <textarea
+                    name="aboutYou"
+                    value={formData.aboutYou}
+                    onChange={handleChange}
+                    placeholder="Tell us about yourself..."
+                    rows={3}
+                    className={`w-full px-4 py-2.5 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all resize-none ${isDarkMode
+                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
+                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                      }`}
+                  />
+                </div>
+              </>
+            )}
+
+            {/* Action Buttons */}
+            <div className={`flex gap-3 pt-2`}>
+              {step > 1 && (
+                <button
+                  type="button"
+                  onClick={handlePrevStep}
+                  className={`flex-1 h-11 rounded-lg font-medium transition-all border ${isDarkMode
+                    ? 'border-gray-600 text-gray-300 hover:border-teal-500 hover:text-teal-400'
+                    : 'border-gray-300 text-gray-700 hover:border-teal-500 hover:text-teal-600'
+                    }`}
+                >
+                  Back
+                </button>
+              )}
+              <button
+                type="submit"
+                disabled={loading}
+                className={`${step === 1 ? 'w-full' : 'flex-1'} h-11 rounded-lg font-medium text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${isDarkMode
+                  ? 'bg-teal-600 hover:bg-teal-700'
+                  : 'bg-teal-600 hover:bg-teal-700'
+                  }`}
+              >
+                {loading ? (
+                  <>
+                    <FaSpinner className="w-4 h-4 animate-spin" />
+                    Creating Account...
+                  </>
+                ) : step < 4 ? (
+                  'Continue'
+                ) : (
+                  'Create Account'
+                )}
+              </button>
             </div>
-            <div>
-              <label className="block text-sm font-medium pl-2 text-gray-700 mb-1">Profession</label>
-              <input
-                type="text"
-                placeholder="Enter your profession"
-                styles={customSelectStyles}
-                className="w-full h-12 px-4 rounded-xl border border-gray-50 bg-white shadow-sm focus:border-teal-500 hover:border-gray-400 focus:outline-none focus:ring-1 focus:ring-teal-500 "
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium pl-2 text-gray-700 mb-1">LinkedIn URL</label>
-              <input
-                type="text"
-                placeholder="Enter your LinkedIn URL"
-                className="w-full h-12 px-4 rounded-xl border bg-white border-gray-50 shadow-sm hover:border-gray-400 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 "
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium pl-2 text-gray-700 mb-1">Work Experience</label>
-              <input
-                type="text"
-                placeholder="Enter your work experience"
-                className="w-full h-12 px-4 rounded-xl bg-white border border-gray-50 shadow-sm hover:border-gray-400 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 "
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium pl-2 text-gray-700 mb-1">About You</label>
-              <textarea
-                placeholder="About You"
-                rows={3}
-                className="w-full px-4 py-2 rounded-xl border bg-white border-gray-50 shadow-sm hover:border-gray-400 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500  resize-none"
-              />
-            </div>
-            
-            <button
-              type="submit"
-              className="w-full h-12 bg-teal-500 shadow-md hover:bg-teal-600 text-white font-medium rounded-xl transition-colors mt-2"
-            >
-              submit
-            </button>
           </form>
+
+          {/* Login Link */}
+          <p className={`text-center mt-6 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+            Already have an account?{' '}
+            <Link to="/login" className={`font-medium ${isDarkMode ? 'text-teal-400 hover:text-teal-300' : 'text-teal-600 hover:text-teal-700'}`}>
+              Sign In
+            </Link>
+          </p>
         </div>
       </div>
     </div>

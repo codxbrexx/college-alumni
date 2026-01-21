@@ -1,15 +1,15 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 
 const navItems = [
   { to: "home", label: "Home" },
   { to: "alumni", label: "Alumni" },
-  { to: "job", label: "Job" },
+  { to: "job", label: "Jobs" },
   { to: "news", label: "News" },
-  { to: "placement", label: "Placement"},
-  { to: "about", label: "About Us" },
-  { to: "contact", label: "Contact Us" },
+  { to: "placement", label: "Placements"},
+  { to: "about", label: "About" },
+  { to: "contact", label: "Contact" },
 ];
 
 function Navbar({ navClass }) {
@@ -19,7 +19,7 @@ function Navbar({ navClass }) {
     <nav
       className={
         navClass ||
-        "flex items-center gap-2 text-sm sm:gap-3 sm:text-base lg:gap-8 lg:text-lg"
+        "flex items-center gap-1 text-sm sm:gap-2 sm:text-sm lg:gap-6 lg:text-base"
       }
     >
       {navItems.map((item) => (
@@ -27,19 +27,15 @@ function Navbar({ navClass }) {
           key={item.to}
           to={item.to}
           className={({ isActive }) =>
-            `group relative px-2 py-0.5 whitespace-nowrap transition-colors duration-300  
+            `relative px-3 py-2 whitespace-nowrap font-medium rounded-lg transition-all duration-200
             ${isActive 
               ? isDarkMode 
-                ? "text-teal-400" 
-                : "text-teal-600" 
+                ? "text-white bg-teal-600" 
+                : "text-white bg-teal-600" 
               : isDarkMode 
-                ? "text-gray-300 hover:text-teal-400" 
-                : "text-gray-600 hover:text-teal-500"
-            }
-            hover:scale-102 transition-transform duration-300   
-            after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:rounded-full
-            after:bg-teal-500 after:transition-[width,opacity] after:duration-500 after:ease-in-out
-            ${isActive ? "after:w-full after:opacity-100" : "after:w-0 after:opacity-0 group-hover:after:w-full group-hover:after:opacity-100"}`
+                ? "text-gray-300 hover:text-white hover:bg-gray-700" 
+                : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+            }`
           }
         >
           {item.label}

@@ -30,10 +30,6 @@ const router = createBrowserRouter(
       <Route path='/' element={<Landing />} />
       <Route path='/' element={<Layout />}>
         <Route path='home' element={<Home />} />
-        <Route path='register' element={<Register />} />
-        <Route path='login' element={<Login />} />
-        <Route path='forgot' element={<Forgot />} />
-        <Route path='createpassword' element={<Createpassword />} />
         <Route path='profile' element={<Postprofile />} />
         <Route path='alumni' element={<Alumni />} />
         <Route path='job' element={<Job />} />
@@ -45,6 +41,10 @@ const router = createBrowserRouter(
         <Route path='contact' element={<ContactUs />} />
         <Route path='*' element={<NotFound />} />
       </Route>
+      <Route path='register' element={<Register />} />
+      <Route path='login' element={<Login />} />
+      <Route path='forgot' element={<Forgot />} />
+      <Route path='createpassword' element={<Createpassword />} />
     </>
   )
 )
@@ -53,7 +53,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider>
       <AuthProvider>
-        <RouterProvider router={router}/>
+        <RouterProvider router={router} />
       </AuthProvider>
     </ThemeProvider>
   </StrictMode>,

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/useAuth';
 import { FaEye, FaEyeSlash, FaUser, FaLock, FaSpinner } from 'react-icons/fa';
 
 export default function Login() {
@@ -45,56 +45,39 @@ export default function Login() {
   };
 
   return (
-    <div className={`min-h-screen flex justify-center items-center font-['Poppins'] transition-colors duration-300 px-4 py-8 ${
-      isDarkMode ? 'bg-gray-900' : 'bg-gradient-to-br from-teal-50 via-white to-blue-50'
+    <div className={`min-h-screen flex justify-center items-center font-['Inter'] transition-colors duration-200 px-4 py-12 ${
+      isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
     }`}>
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className={`absolute top-20 -left-20 w-72 h-72 rounded-full opacity-20 blur-3xl ${
-          isDarkMode ? 'bg-teal-500' : 'bg-teal-300'
-        }`} />
-        <div className={`absolute bottom-20 -right-20 w-96 h-96 rounded-full opacity-20 blur-3xl ${
-          isDarkMode ? 'bg-blue-500' : 'bg-blue-300'
-        }`} />
-      </div>
-
       {/* Login Form Card */}
-      <div className={`relative w-full max-w-md rounded-3xl flex flex-col items-center justify-center p-8 md:p-12 border shadow-2xl backdrop-blur-md transition-all duration-300 ${
+      <div className={`w-full max-w-md rounded-2xl p-8 md:p-10 shadow-lg transition-all duration-200 ${
         isDarkMode
-          ? 'bg-gray-800/80 border-gray-700 text-white'
-          : 'bg-white/80 border-white/50 text-gray-900'
+          ? 'bg-gray-800 border border-gray-700'
+          : 'bg-white border border-gray-200'
       }`}>
         <div className="w-full">
           {/* Logo/Header */}
-          <div className="text-center mb-8">
-            <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 ${
-              isDarkMode 
-                ? 'bg-gradient-to-br from-teal-600 to-blue-600' 
-                : 'bg-gradient-to-br from-teal-500 to-blue-500'
-            }`}>
-              <FaUser className="w-8 h-8 text-white" />
-            </div>
-            <h1 className={`text-3xl font-bold mb-2 ${
+          <div className="mb-8">
+            <h1 className={`text-2xl font-bold mb-2 ${
               isDarkMode ? 'text-white' : 'text-gray-900'
             }`}>Welcome Back</h1>
             <p className={`text-sm ${
               isDarkMode ? 'text-gray-400' : 'text-gray-600'
-            }`}>Sign in to continue to NetGrud Alumni Network</p>
+            }`}>Sign in to your account to continue</p>
           </div>
 
           {/* Tab Toggle */}
-          <div className={`flex rounded-xl p-1 mb-8 ${
-            isDarkMode ? 'bg-gray-700' : 'bg-gray-100'
+          <div className={`flex gap-2 p-1 mb-8 rounded-lg ${
+            isDarkMode ? 'bg-gray-700/50' : 'bg-gray-100'
           }`}>
-            <Link to="/login" className={`flex-1 py-3 rounded-lg text-sm font-semibold text-center transition-all ${
+            <div className={`flex-1 py-2.5 rounded-md text-sm font-medium text-center transition-all ${
               isDarkMode
-                ? 'bg-gradient-to-r from-teal-600 to-blue-600 text-white shadow-lg'
-                : 'bg-gradient-to-r from-teal-500 to-blue-500 text-white shadow-lg'
+                ? 'bg-teal-600 text-white shadow-sm'
+                : 'bg-white text-gray-900 shadow-sm'
             }`}>
               Login
-            </Link>
-            <Link to="/register" className={`flex-1 py-3 rounded-lg text-sm font-semibold text-center transition-all ${
-              isDarkMode ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+            </div>
+            <Link to="/register" className={`flex-1 py-2.5 rounded-md text-sm font-medium text-center transition-all ${
+              isDarkMode ? 'text-gray-400 hover:text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
             }`}>
               Register
             </Link>
@@ -102,26 +85,26 @@ export default function Login() {
 
           {/* Error Message */}
           {(error || authError) && (
-            <div className={`mb-6 p-4 rounded-xl text-sm font-medium ${
+            <div className={`mb-6 p-3.5 rounded-lg text-sm ${
               isDarkMode 
-                ? 'bg-red-900/30 text-red-400 border border-red-800' 
-                : 'bg-red-50 text-red-600 border border-red-200'
+                ? 'bg-red-500/10 text-red-400 border border-red-500/20' 
+                : 'bg-red-50 text-red-700 border border-red-100'
             }`}>
               {error || authError}
             </div>
           )}
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {/* Username/Email Field */}
             <div>
-              <label className={`block text-sm font-semibold mb-2 ${
+              <label className={`block text-sm font-medium mb-2 ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-700'
               }`}>
                 Email or Username
               </label>
               <div className="relative">
-                <div className={`absolute left-4 top-1/2 -translate-y-1/2 ${
+                <div className={`absolute left-3.5 top-1/2 -translate-y-1/2 ${
                   isDarkMode ? 'text-gray-500' : 'text-gray-400'
                 }`}>
                   <FaUser className="w-4 h-4" />
@@ -132,10 +115,10 @@ export default function Login() {
                   value={formData.identifier}
                   onChange={handleChange}
                   placeholder="Enter your email or username"
-                  className={`w-full h-14 pl-12 pr-4 rounded-xl border-2 focus:outline-none focus:ring-2 focus:ring-teal-500/50 transition-all duration-300 ${
+                  className={`w-full h-11 pl-10 pr-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
                     isDarkMode
-                      ? 'bg-gray-700/50 border-gray-600 text-white placeholder-gray-500 focus:border-teal-500'
-                      : 'bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-teal-500'
+                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
+                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
                   }`}
                 />
               </div>
@@ -143,13 +126,13 @@ export default function Login() {
 
             {/* Password Field */}
             <div>
-              <label className={`block text-sm font-semibold mb-2 ${
+              <label className={`block text-sm font-medium mb-2 ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-700'
               }`}>
                 Password
               </label>
               <div className="relative">
-                <div className={`absolute left-4 top-1/2 -translate-y-1/2 ${
+                <div className={`absolute left-3.5 top-1/2 -translate-y-1/2 ${
                   isDarkMode ? 'text-gray-500' : 'text-gray-400'
                 }`}>
                   <FaLock className="w-4 h-4" />
@@ -160,20 +143,20 @@ export default function Login() {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Enter your password"
-                  className={`w-full h-14 pl-12 pr-14 rounded-xl border-2 focus:outline-none focus:ring-2 focus:ring-teal-500/50 transition-all duration-300 ${
+                  className={`w-full h-11 pl-10 pr-11 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
                     isDarkMode
-                      ? 'bg-gray-700/50 border-gray-600 text-white placeholder-gray-500 focus:border-teal-500'
-                      : 'bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-teal-500'
+                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
+                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
                   }`}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className={`absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded transition-colors ${
+                  className={`absolute right-3.5 top-1/2 -translate-y-1/2 p-1 rounded transition-colors ${
                     isDarkMode ? 'text-gray-500 hover:text-gray-300' : 'text-gray-400 hover:text-gray-600'
                   }`}
                 >
-                  {showPassword ? <FaEyeSlash className="w-5 h-5" /> : <FaEye className="w-5 h-5" />}
+                  {showPassword ? <FaEyeSlash className="w-4 h-4" /> : <FaEye className="w-4 h-4" />}
                 </button>
               </div>
             </div>
@@ -185,11 +168,7 @@ export default function Login() {
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className={`w-4 h-4 rounded border-2 focus:ring-teal-500 ${
-                    isDarkMode 
-                      ? 'bg-gray-700 border-gray-600 text-teal-500' 
-                      : 'bg-white border-gray-300 text-teal-600'
-                  }`}
+                  className="w-4 h-4 rounded border-2 text-teal-600 focus:ring-teal-500"
                 />
                 <span className={`ml-2 text-sm ${
                   isDarkMode ? 'text-gray-400' : 'text-gray-600'
@@ -213,15 +192,15 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full h-14 rounded-xl font-semibold text-white transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2 ${
+              className={`w-full h-11 rounded-lg font-medium text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
                 isDarkMode
-                  ? 'bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-500 hover:to-blue-500'
-                  : 'bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-600 hover:to-blue-600'
+                  ? 'bg-teal-600 hover:bg-teal-700'
+                  : 'bg-teal-600 hover:bg-teal-700'
               }`}
             >
               {loading ? (
                 <>
-                  <FaSpinner className="w-5 h-5 animate-spin" />
+                  <FaSpinner className="w-4 h-4 animate-spin" />
                   Signing in...
                 </>
               ) : (
@@ -233,23 +212,26 @@ export default function Login() {
           {/* Divider */}
           <div className="flex items-center my-6">
             <div className={`flex-1 h-px ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'}`} />
-            <span className={`px-4 text-sm ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>
-              New to NetGrud?
+            <span className={`px-3 text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+              OR
             </span>
             <div className={`flex-1 h-px ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'}`} />
           </div>
 
           {/* Register Link */}
-          <Link
-            to="/register"
-            className={`block w-full py-4 rounded-xl font-semibold text-center border-2 transition-all duration-300 hover:scale-[1.02] ${
-              isDarkMode
-                ? 'border-gray-600 text-gray-300 hover:border-teal-500 hover:text-teal-400'
-                : 'border-gray-300 text-gray-700 hover:border-teal-500 hover:text-teal-600'
-            }`}
-          >
-            Create an Account
-          </Link>
+          <p className={`text-center text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+            Don't have an account?{' '}
+            <Link
+              to="/register"
+              className={`font-medium ${
+                isDarkMode
+                  ? 'text-teal-400 hover:text-teal-300'
+                  : 'text-teal-600 hover:text-teal-700'
+              }`}
+            >
+              Create Account
+            </Link>
+          </p>
         </div>
       </div>
     </div>
