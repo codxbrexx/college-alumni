@@ -2,6 +2,7 @@ import { User } from "../model/user.model.js"
 import { ApiError } from "../utils/ApiError.utils.js"
 import { ApiResponse } from "../utils/ApiResponse.utils.js"
 import { uploadOnCloudinary } from "../utils/cloudinary.utils.js"
+import mongoose from "mongoose"
 
 const getCurrentUser = async (req, res, next) => {
     try {
@@ -164,6 +165,10 @@ const getAllAlumni = async (req, res, next) => {
 const getAlumniById = async (req, res, next) => {
     try {
         const { id } = req.params
+
+        if (!mongoose.isValidObjectId(id)) {
+            throw new ApiError(400, "Invalid alumni ID format")
+        }
 
         const alumni = await User.findById(id).select(
             "-password -refreshToken -resetPasswordToken -resetPasswordExpires"
