@@ -62,7 +62,7 @@ export default function Landing() {
       {/* Hero Section - Reference Style (Immersive Background) */}
       <section className="relative h-[600px] flex items-center justify-center text-center overflow-hidden">
         {/* Background Image with Dark Overlay */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 mt-20">
           <img
             src="/college_hero.png"
             alt="University Campus"
@@ -130,7 +130,7 @@ export default function Landing() {
       </section>
 
       {/* Featured Benefits Section */}
-      <section className={`py-24 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <section className={`py-24 ${isDarkMode ? 'bg-gray-950' : 'bg-gray-50'}`}>
         <div className="max-w-7xl mx-auto px-6 pl-12 pr-12">
           <div className="text-center mb-16">
             <h2 className={`text-3xl font-bold mb-4 font-serif ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Membership Benefits</h2>
@@ -234,7 +234,7 @@ export default function Landing() {
       </section>
 
       {/* Opportunities Preview */}
-      <section className={`py-24 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <section className={`py-24 ${isDarkMode ? 'bg-gray-950' : 'bg-gray-50'}`}>
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
 
           {/* Recent Jobs */}
@@ -274,7 +274,7 @@ export default function Landing() {
       </section>
 
       {/* FAQ Section */}
-      <section className={`py-20 border-t ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-gray-50 border-gray-200'}`}>
+      <section className={`py-20 border-t ${isDarkMode ? 'bg-gray-950 border-gray-800' : 'bg-gray-50 border-gray-200'}`}>
         <div className="max-w-4xl mx-auto px-6">
           <h2 className={`text-3xl font-bold mb-12 text-center font-serif ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Frequently Asked Questions</h2>
           <div className="space-y-4">
@@ -352,7 +352,7 @@ function StatItem({ number, label, isDark }) {
 function AlumniCard({ name, role, batch, isDark }) {
   return (
     <div className={`p-6 rounded-xl border transition-all hover:shadow-lg ${isDark ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'}`}>
-      <div className={`w-16 h-16 rounded-full mb-4 flex items-center justify-center text-xl font-bold ${isDark ? 'bg-gray-800 text-gray-300' : 'bg-gray-100 text-gray-600'}`}>
+      <div className={`w-16 h-16 rounded-full mb-4 flex items-center justify-center text-xl font-bold ${isDark ? 'bg-gray-950 text-gray-300' : 'bg-gray-100 text-gray-600'}`}>
         {name.charAt(0)}
       </div>
       <h3 className={`font-bold text-lg mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>{name}</h3>

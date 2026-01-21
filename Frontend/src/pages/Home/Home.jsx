@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { useTheme } from '../../context/ThemeContext'
 import { 
   FaUsers, 
@@ -10,7 +11,9 @@ import {
   FaLinkedin,
   FaNetworkWired,
   FaChartLine,
-  FaHandshake
+  FaHandshake,
+  FaTicketAlt,
+  FaGlobeAmericas
 } from 'react-icons/fa'
 import CountUp from 'react-countup'
 
@@ -56,235 +59,153 @@ function Home() {
   ];
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'
+    <div className={`min-h-screen font-sans transition-colors duration-300 ${
+      isDarkMode ? 'bg-gray-950 text-white' : 'bg-white text-gray-900'
     }`}>
-      {/* Hero Section */}
-      <section className={`relative overflow-hidden ${
-        isDarkMode ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' : 'bg-gradient-to-br from-teal-50 via-white to-blue-50'
-      }`}>
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className={`absolute top-20 -left-20 w-72 h-72 rounded-full opacity-20 blur-3xl ${
-            isDarkMode ? 'bg-teal-500' : 'bg-teal-300'
-          }`} />
-          <div className={`absolute bottom-20 -right-20 w-96 h-96 rounded-full opacity-20 blur-3xl ${
-            isDarkMode ? 'bg-blue-500' : 'bg-blue-300'
-          }`} />
+      {/* Hero Section with Image Background */}
+      <section className="relative h-[600px] flex items-center justify-center text-center overflow-hidden">
+        {/* Background Image with Dark Overlay */}
+        <div className="absolute inset-0">
+          <img
+            src="/college_hero.png"
+            alt="University Campus"
+            className="w-full h-full object-cover"
+          />
+          {/* Subtle dark overlay for text readability */}
+          <div className="absolute inset-0 bg-black/40" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 py-16 md:py-24 lg:py-32">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className={`inline-block px-4 py-2 rounded-full mb-6 ${
-              isDarkMode 
-                ? 'bg-teal-500/10 border border-teal-500/20 text-teal-400' 
-                : 'bg-teal-100 border border-teal-200 text-teal-700'
-            }`}>
-              <span className="text-sm font-semibold">🎓 Welcome to NetGrud Alumni Network</span>
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-white pt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="text-lg md:text-xl font-medium mb-4 tracking-wide font-serif opacity-90">
+              NetGrud Alumni Association
             </div>
-            
-            <h1 className={`text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
-            }`}>
-              Where Alumni{' '}
-              <span className={`font-extrabold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                Connect
-              </span>
-              ,{' '}
-              <span className={`font-extrabold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                Collaborate
-              </span>
-              {' '}&{' '}
-              <span className={`font-extrabold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                Succeed
-              </span>
+            <h1 className="text-6xl md:text-7xl font-bold mb-6 font-serif">
+              Welcome Home
             </h1>
-            
-            <p className={`text-lg md:text-xl mb-8 max-w-2xl mx-auto ${
-              isDarkMode ? 'text-gray-300' : 'text-gray-600'
-            }`}>
-              Join thousands of alumni building lifelong connections, sharing opportunities, 
-              and creating impact. Your next career move starts here.
+            <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto opacity-90 leading-relaxed font-light">
+              Connect, collaborate, and grow with thousands of alumni building lifelong connections.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link to="/register">
-                <button className={`group px-8 py-4 rounded-xl font-semibold text-white transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center gap-2 ${
-                  isDarkMode 
-                    ? 'bg-gradient-to-r from-teal-500 to-blue-500 hover:from-teal-600 hover:to-blue-600' 
-                    : 'bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700'
-                }`}>
-                  Get Started
-                  <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/alumni">
+                <button className="px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white rounded-md font-semibold text-lg transition-all shadow-lg hover:shadow-xl">
+                  Explore Alumni Network
                 </button>
               </Link>
-              
-              <Link to="/alumni">
-                <button className={`px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
-                  isDarkMode 
-                    ? 'bg-gray-800 text-white hover:bg-gray-700 border border-gray-700' 
-                    : 'bg-white text-gray-900 hover:bg-gray-50 border border-gray-200 shadow-lg'
-                }`}>
-                  Explore Alumni
+              <Link to="/job">
+                <button className="px-8 py-4 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/30 rounded-md font-semibold text-lg transition-all">
+                  Find Opportunities
                 </button>
               </Link>
             </div>
-          </div>
-        </div>
-
-        {/* Wave Separator */}
-        <div className="relative">
-          <svg className={`w-full h-16 ${isDarkMode ? 'text-gray-900' : 'text-gray-50'}`} viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 48h1440V0c-180 48-360 48-540 24C720 0 540 0 360 24 180 48 0 48 0 0v48z" fill="currentColor"/>
-          </svg>
+          </motion.div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className={`py-16 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {stats.map((stat) => (
-              <div
-                key={stat.id}
-                className={`relative group p-6 rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl ${
-                  isDarkMode 
-                    ? 'bg-gradient-to-br from-gray-800 to-gray-800/50 border border-gray-700 hover:border-teal-500/50' 
-                    : 'bg-white border border-gray-200 hover:border-teal-500/50 shadow-lg'
-                }`}
-              >
-                <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                  isDarkMode ? 'bg-gradient-to-br from-teal-500/10 to-blue-500/10' : 'bg-gradient-to-br from-teal-50 to-blue-50'
-                }`} />
-                
-                <div className="relative z-10">
-                  <div className={`mb-3 ${
-                    isDarkMode ? 'text-teal-400' : 'text-teal-600'
-                  }`}>
-                    {stat.icon}
-                  </div>
-                  <div className={`text-3xl md:text-4xl font-bold mb-1 ${
-                    isDarkMode ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    <CountUp end={stat.value} duration={2.5} separator="," />
-                    {stat.suffix}
-                  </div>
-                  <div className={`text-sm font-medium ${
-                    isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                  }`}>
-                    {stat.label}
-                  </div>
-                </div>
+      {/* Stats Strip */}
+      <section className={`py-12 border-y ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-gray-50 border-gray-200'}`}>
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {stats.map((stat) => (
+            <div key={stat.id} className="transition-transform duration-300 hover:scale-105">
+              <div className={`text-3xl md:text-4xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                <CountUp end={stat.value} duration={2.5} separator="," />
+                {stat.suffix}
               </div>
-            ))}
-          </div>
+              <div className={`text-sm font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className={`py-20 ${
-        isDarkMode ? 'bg-gradient-to-b from-gray-900 to-gray-800' : 'bg-gradient-to-b from-gray-50 to-white'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4">
+      {/* Featured Benefits Section */}
+      <section className={`py-24 ${isDarkMode ? 'bg-gray-950' : 'bg-gray-50'}`}>
+        <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
-            }`}>
+            <h2 className={`text-3xl md:text-4xl font-bold mb-4 font-serif ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
               Why Join NetGrud?
             </h2>
-            <p className={`text-lg max-w-2xl mx-auto ${
-              isDarkMode ? 'text-gray-400' : 'text-gray-600'
-            }`}>
-              Unlock endless possibilities with our comprehensive alumni platform
+            <p className={`text-lg max-w-2xl mx-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              Unlock a suite of exclusive resources designed to help you succeed at every stage of your career.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature) => (
-              <div
-                key={feature.id}
-                className={`group relative p-8 rounded-2xl transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl ${
-                  isDarkMode 
-                    ? 'bg-gray-800 border border-gray-700 hover:border-transparent' 
-                    : 'bg-white border border-gray-200 hover:border-transparent shadow-lg'
-                }`}
-              >
-                <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${feature.gradient}`} style={{ opacity: 0.1 }} />
-                
-                <div className="relative z-10">
-                  <div className={`inline-flex p-4 rounded-xl mb-6 bg-gradient-to-br ${feature.gradient} text-white`}>
-                    {feature.icon}
-                  </div>
-                  
-                  <h3 className={`text-xl font-bold mb-3 ${
-                    isDarkMode ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    {feature.title}
-                  </h3>
-                  
-                  <p className={`${
-                    isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                  }`}>
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-3 gap-8">
+            <BenefitCard
+              icon={<FaBriefcase />}
+              title="Career Opportunities"
+              desc="Access exclusive job boards, internships, and career resources shared by fellow alumni."
+              isDark={isDarkMode}
+            />
+            <BenefitCard
+              icon={<FaHandshake />}
+              title="Mentorship Programs"
+              desc="Connect with industry leaders or become a mentor to guide the next generation."
+              isDark={isDarkMode}
+            />
+            <BenefitCard
+              icon={<FaNetworkWired />}
+              title="Network & Connect"
+              desc="Build meaningful relationships with alumni across different batches and industries."
+              isDark={isDarkMode}
+            />
+            <BenefitCard
+              icon={<FaNewspaper />}
+              title="Stay Updated"
+              desc="Get the latest news, events, and achievements from the alumni community."
+              isDark={isDarkMode}
+            />
+            <BenefitCard
+              icon={<FaGlobeAmericas />}
+              title="Global Chapters"
+              desc="Join regional alumni chapters to stay connected wherever you live."
+              isDark={isDarkMode}
+            />
+            <BenefitCard
+              icon={<FaGraduationCap />}
+              title="Lifelong Learning"
+              desc="Access continuing education courses and professional development resources."
+              isDark={isDarkMode}
+            />
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className={`py-20 relative overflow-hidden ${
-        isDarkMode ? 'bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800' : 'bg-gradient-to-br from-teal-50 via-white to-blue-50'
-      }`}>
-        {/* Animated Background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className={`absolute top-10 left-10 w-64 h-64 rounded-full opacity-20 blur-3xl ${
-            isDarkMode ? 'bg-teal-500' : 'bg-teal-300'
-          }`} />
-          <div className={`absolute bottom-10 right-10 w-80 h-80 rounded-full opacity-20 blur-3xl ${
-            isDarkMode ? 'bg-blue-500' : 'bg-blue-300'
-          }`} />
-        </div>
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h2 className={`text-3xl md:text-4xl font-bold mb-6 ${
-            isDarkMode ? 'text-white' : 'text-gray-900'
-          }`}>
-            Ready to Join Our Growing Community?
+      <section className={`py-20 ${isDarkMode ? 'bg-gray-950' : 'bg-white'} text-center`}>
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className={`text-3xl md:text-5xl font-bold font-serif mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+            Ready to expand your network?
           </h2>
-          <p className={`text-lg md:text-xl mb-8 ${
-            isDarkMode ? 'text-gray-300' : 'text-gray-600'
-          }`}>
-            Connect with thousands of alumni, discover opportunities, and take your career to the next level.
+          <p className={`text-lg mb-8 leading-relaxed ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+            Join thousands of alumni building lifelong connections, sharing opportunities, and creating impact together.
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/register">
-              <button className={`group px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center gap-2 ${
-                isDarkMode 
-                  ? 'bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-500 hover:to-blue-500 text-white' 
-                  : 'bg-gradient-to-r from-teal-600 to-blue-600 hover:from-teal-700 hover:to-blue-700 text-white'
-              }`}>
-                Create Account
-                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </Link>
-            <Link to="/about">
-              <button className={`px-8 py-4 border-2 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
-                isDarkMode 
-                  ? 'bg-transparent border-teal-500 text-teal-400 hover:bg-teal-500/10' 
-                  : 'bg-transparent border-teal-600 text-teal-600 hover:bg-teal-50'
-              }`}>
-                Learn More
-              </button>
-            </Link>
-          </div>
+          <Link to="/alumni" className="text-teal-600 font-semibold text-lg hover:underline underline-offset-4">
+            Explore the Alumni Directory &rarr;
+          </Link>
         </div>
       </section>
     </div>
   )
+}
+
+// Helper Components
+function BenefitCard({ icon, title, desc, isDark }) {
+  return (
+    <div className={`p-6 rounded-xl border transition-all hover:-translate-y-1 hover:shadow-lg ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+      <div className={`w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 ${isDark ? 'bg-teal-900/50 text-teal-400' : 'bg-teal-50 text-teal-600'}`}>
+        {icon}
+      </div>
+      <h3 className={`font-bold text-lg mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{title}</h3>
+      <p className={`text-sm leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>{desc}</p>
+    </div>
+  );
 }
 
 export default Home

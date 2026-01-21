@@ -10,8 +10,8 @@ function AboutUs() {
   return (
     <div className={`min-h-screen pb-12 mt-1 relative overflow-hidden transition-colors duration-300 ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900' 
-        : 'bg-gradient-to-br from-gray-50 via-white to-teal-50'
+        ? 'bg-gray-900' 
+        : 'bg-gray-50'
     }`}>
       <div className={`absolute top-1/2 right-0 w-72 h-72 rounded-full opacity-20 blur-2xl z-0 ${
         isDarkMode ? 'bg-teal-400' : 'bg-teal-200'
