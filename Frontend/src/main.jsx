@@ -19,8 +19,10 @@ import ContactUs from './pages/ContactUs/ContactUs.jsx'
 import Createpassword from './pages/log/Createpassword.jsx'
 import Placements from './pages/Placements/Placements.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
+import { AuthProvider } from './context/AuthContext.jsx'
 import NotFound from './pages/NotFound.jsx'
 import Landing from './pages/Landing.jsx'
+import Register from './pages/log/register.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,7 +30,7 @@ const router = createBrowserRouter(
       <Route path='/' element={<Landing />} />
       <Route path='/' element={<Layout />}>
         <Route path='home' element={<Home />} />
-        <Route path='register' element={<Login />} />
+        <Route path='register' element={<Register />} />
         <Route path='login' element={<Login />} />
         <Route path='forgot' element={<Forgot />} />
         <Route path='createpassword' element={<Createpassword />} />
@@ -50,7 +52,9 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider>
-      <RouterProvider router={router}/>
+      <AuthProvider>
+        <RouterProvider router={router}/>
+      </AuthProvider>
     </ThemeProvider>
   </StrictMode>,
 )
