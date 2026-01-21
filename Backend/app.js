@@ -1,17 +1,34 @@
-import express from 'express';
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
+import express from "express"
+import cors from "cors"
+import cookieParser from "cookie-parser"
+import userRoutes from "./src/routes/user.routes.js"
+import jobRoutes from "./src/routes/job.routes.js"
+import newsRoutes from "./src/routes/news.routes.js"
+import alumniRoutes from "./src/routes/alumni.routes.js"
+import { errorHandler, notFoundHandler } from "./src/middleware/error.middleware.js"
 
-const app = express();
+const app = express()
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
-// app.use(cors())
+const allowedOrigins = (process.env.CORS_ORIGIN || "http://localhost:5173,http://localhost:3000")
+    .split(",")
+    .map((origin) => origin.trim())
+
+app.disable("x-powered-by")
+app.use(express.json({ limit: "1mb" }))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.static("public"))
 app.use(cors({
     credentials: true,
-    origin: process.env.CORS_ORIGIN || 'http://localhost:3000'
+    origin: allowedOrigins
 }))
 app.use(cookieParser())
 
-export {app}
+app.use("/api/auth", userRoutes)
+app.use("/api/jobs", jobRoutes)
+app.use("/api/news", newsRoutes)
+app.use("/api/alumni", alumniRoutes)
+
+app.use(notFoundHandler)
+app.use(errorHandler)
+
+export { app }

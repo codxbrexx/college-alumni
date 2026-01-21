@@ -102,6 +102,9 @@ MONGODB_URI=mongodb+srv://<user>:<pass>@<cluster>/<db>?retryWrites=true&w=majori
 
 # Auth
 ACCESS_TOKEN_SECRET=change_me_to_a_strong_secret
+REFRESH_TOKEN_SECRET=change_me_to_another_secret
+ACCESS_TOKEN_EXPIRY=1d
+REFRESH_TOKEN_EXPIRY=10d
 
 # Cloudinary
 CLOUDINARY_CLOUD_NAME=your_cloud_name

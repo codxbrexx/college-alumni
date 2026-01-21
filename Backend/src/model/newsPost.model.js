@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const newsPostSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'user',
+        ref: 'User',
         required: true
     },
     title: {

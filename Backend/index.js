@@ -1,17 +1,31 @@
-import { app } from "./app.js";
-import dotenv from 'dotenv';
-import { connectDB } from './src/database/dbConnect.js';
+import dotenv from "dotenv"
+import { app } from "./app.js"
+import { connectDB } from "./src/database/dbConnect.js"
 
 dotenv.config({
-    path: './.env'
-});
+    path: "./.env"
+})
 
-connectDB()
-    .then(() => {
-        app.listen(process.env.PORT || 8000, () => {
-            console.log(`⚙️ Server is running at port : ${process.env.PORT}`);
+const port = process.env.PORT || 8000
+
+const startServer = async () => {
+    try {
+        await connectDB()
+        app.listen(port, () => {
+            console.log(`⚙️ Server is running at port : ${port}`)
         })
-    })
-    .catch((err) => {
-        console.log("MONGO db connection failed !!! ", err);
-    })
+    } catch (error) {
+        console.error("Startup failed", error)
+        process.exit(1)
+    }
+}
+
+startServer()
+
+process.on("unhandledRejection", (reason) => {
+    console.error("Unhandled Rejection:", reason)
+})
+
+process.on("uncaughtException", (error) => {
+    console.error("Uncaught Exception:", error)
+})
