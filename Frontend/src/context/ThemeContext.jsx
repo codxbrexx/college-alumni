@@ -4,6 +4,7 @@ const ThemeContext = createContext();
 
 // we can use this for all otehr project this os the prefect darkmode toggle context
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
   const context = useContext(ThemeContext);
   if (!context) {
@@ -21,7 +22,7 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     // Save theme preference to local
     localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    
+
     // Update document class for global styles
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
