@@ -1,20 +1,33 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext';
 import { useAuth } from '../../hooks/useAuth';
-import { FaEye, FaEyeSlash, FaUser, FaLock, FaSpinner } from 'react-icons/fa';
+import { FaSpinner } from 'react-icons/fa';
+
+// Components defined outside to avoid focus loss
+const InputField = ({ label, name, type = "text", value, onChange, placeholder, icon }) => (
+  <div className="group">
+    <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2 group-focus-within:text-red-700 transition-colors">
+      {label}
+    </label>
+    <div className="relative">
+      <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="w-full px-4 py-3 bg-gray-50 border-b-2 border-gray-200 focus:border-red-700 focus:bg-white focus:outline-none transition-all duration-300 placeholder-gray-400 font-medium"
+        required
+      />
+    </div>
+  </div>
+);
 
 export default function Login() {
-  const { isDarkMode } = useTheme();
   const { login, error: authError } = useAuth();
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    identifier: '',
-    password: ''
-  });
-  const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
+  const [formData, setFormData] = useState({ identifier: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -45,193 +58,102 @@ export default function Login() {
   };
 
   return (
-    <div className={`min-h-screen flex justify-center items-center font-['Inter'] transition-colors duration-200 px-4 py-12 ${
-      isDarkMode ? 'bg-gray-950' : 'bg-gray-50'
-    }`}>
-      {/* Login Form Card */}
-      <div className={`w-full max-w-md  p-8 md:p-10 shadow-lg transition-all duration-200 ${
-        isDarkMode
-          ? 'bg-gray-900 border border-gray-700'
-          : 'bg-white border border-gray-200'
-      }`}>
-        <div className="w-full">
-          {/* Logo/Header */}
-          <div className="mb-8">
-            <h1 className={`text-2xl font-bold mb-2 ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
-            }`}>Welcome Back</h1>
-            <p className={`text-sm ${
-              isDarkMode ? 'text-gray-400' : 'text-gray-600'
-            }`}>Sign in to your account to continue</p>
+    <div className="min-h-screen bg-white py-24 px-4 font-sans no-scrollbar">
+      <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 bg-white shadow-xl border border-gray-100 mx-auto min-h-[600px]">
+
+        {/* Left Side - Info Panel */}
+        <div className="bg-gray-900 p-12 text-white flex flex-col justify-between relative overflow-hidden order-1 md:order-1">
+          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-red-800 opacity-20 rotate-45"></div>
+          <div className="absolute top-[-50px] left-[-50px] w-48 h-48 bg-red-900 opacity-20"></div>
+
+          <div>
+            <span className="text-red-500 font-bold tracking-widest uppercase text-xs mb-2 block">
+              Alumni Portal
+            </span>
+            <h2 className="text-4xl font-serif font-bold mb-6">Welcome Back</h2>
+            <p className="text-gray-400 text-lg mb-12 font-light leading-relaxed">
+              Sign in to verify your alumni status, connect with batchmates, and access exclusive career opportunities.
+            </p>
+
+            <div className="space-y-4 border-l-2 border-gray-800 pl-6">
+              <div className="relative">
+                <span className="absolute -left-[31px] top-2 w-3 h-3 rounded-full bg-red-600"></span>
+                <p className="text-gray-300 font-medium">Verified Network</p>
+              </div>
+              <div className="relative">
+                <span className="absolute -left-[31px] top-2 w-3 h-3 rounded-full bg-gray-700"></span>
+                <p className="text-gray-400">Career Support</p>
+              </div>
+              <div className="relative">
+                <span className="absolute -left-[31px] top-2 w-3 h-3 rounded-full bg-gray-700"></span>
+                <p className="text-gray-400">Event Access</p>
+              </div>
+            </div>
           </div>
 
-          {/* Tab Toggle */}
-          <div className={`flex gap-2 p-1 mb-8  ${
-            isDarkMode ? 'bg-gray-700/50' : 'bg-gray-100'
-          }`}>
-            <div className={`flex-1 py-2.5  text-sm font-medium text-center transition-all ${
-              isDarkMode
-                ? 'bg-red-600 text-white shadow-sm'
-                : 'bg-white text-gray-900 shadow-sm'
-            }`}>
-              Login
-            </div>
-            <Link to="/register" className={`flex-1 py-2.5  text-sm font-medium text-center transition-all ${
-              isDarkMode ? 'text-gray-400 hover:text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-            }`}>
-              Register
-            </Link>
+          <div className="mt-12 text-sm text-gray-500">
+            * Issues logging in? Contact alumni support.
+          </div>
+        </div>
+
+        {/* Right Side - Form */}
+        <div className="p-12 w-full flex flex-col justify-center order-2 md:order-2">
+
+          <div className="mb-10">
+            <h3 className="text-2xl font-bold font-serif text-gray-900 mb-2">Sign In</h3>
+            <p className="text-gray-500 text-sm">Use your registered credentials.</p>
           </div>
 
           {/* Error Message */}
           {(error || authError) && (
-            <div className={`mb-6 p-3.5  text-sm ${
-              isDarkMode 
-                ? 'bg-red-500/10 text-red-400 border border-red-500/20' 
-                : 'bg-red-50 text-red-700 border border-red-100'
-            }`}>
+            <div className="mb-6 px-4 py-3 bg-red-50 text-red-700 text-sm border-l-4 border-red-600 font-medium">
               {error || authError}
             </div>
           )}
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-5">
-            {/* Username/Email Field */}
-            <div>
-              <label className={`block text-sm font-medium mb-2 ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-700'
-              }`}>
-                Email or Username
-              </label>
-              <div className="relative">
-                <div className={`absolute left-3.5 top-1/2 -translate-y-1/2 ${
-                  isDarkMode ? 'text-gray-500' : 'text-gray-400'
-                }`}>
-                  <FaUser className="w-4 h-4" />
-                </div>
-                <input
-                  type="text"
-                  name="identifier"
-                  value={formData.identifier}
-                  onChange={handleChange}
-                  placeholder="Enter your email or username"
-                  className={`w-full h-11 pl-10 pr-4  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${
-                    isDarkMode
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
-                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
-                  }`}
-                />
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <InputField
+              label="Email or Username"
+              name="identifier"
+              placeholder="ENTER EMAIL OR USERNAME"
+              value={formData.identifier}
+              onChange={handleChange}
+            />
+
+            <div className="space-y-2">
+              <InputField
+                label="Password"
+                name="password"
+                type="password"
+                placeholder="ENTER PASSWORD"
+                value={formData.password}
+                onChange={handleChange}
+              />
+              <div className="flex justify-end">
+                <Link to="/forgot" className="text-xs font-bold text-red-600 hover:text-red-800 uppercase tracking-wide">
+                  Forgot Password?
+                </Link>
               </div>
             </div>
 
-            {/* Password Field */}
-            <div>
-              <label className={`block text-sm font-medium mb-2 ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-700'
-              }`}>
-                Password
-              </label>
-              <div className="relative">
-                <div className={`absolute left-3.5 top-1/2 -translate-y-1/2 ${
-                  isDarkMode ? 'text-gray-500' : 'text-gray-400'
-                }`}>
-                  <FaLock className="w-4 h-4" />
-                </div>
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  placeholder="Enter your password"
-                  className={`w-full h-11 pl-10 pr-11  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${
-                    isDarkMode
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
-                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
-                  }`}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className={`absolute right-3.5 top-1/2 -translate-y-1/2 p-1  transition-colors ${
-                    isDarkMode ? 'text-gray-500 hover:text-gray-300' : 'text-gray-400 hover:text-gray-600'
-                  }`}
-                >
-                  {showPassword ? <FaEyeSlash className="w-4 h-4" /> : <FaEye className="w-4 h-4" />}
-                </button>
-              </div>
-            </div>
-
-            {/* Remember Me & Forgot Password */}
-            <div className="flex items-center justify-between">
-              <label className="flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4  border-2 text-red-600 focus:ring-red-500"
-                />
-                <span className={`ml-2 text-sm ${
-                  isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                }`}>
-                  Remember me
-                </span>
-              </label>
-              <Link 
-                to="/forgot" 
-                className={`text-sm font-medium transition-colors ${
-                  isDarkMode 
-                    ? 'text-red-400 hover:text-red-300' 
-                    : 'text-red-600 hover:text-red-700'
-                }`}
+            <div className="pt-4">
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full py-4 bg-red-700 hover:bg-red-800 text-white font-bold text-xs uppercase tracking-widest shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center gap-2"
               >
-                Forgot Password?
-              </Link>
+                {loading && <FaSpinner className="animate-spin" />}
+                {loading ? 'Authenticating...' : 'Sign In To Account'}
+              </button>
             </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={loading}
-              className={`w-full h-11  font-medium text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
-                isDarkMode
-                  ? 'bg-red-600 hover:bg-red-700'
-                  : 'bg-red-600 hover:bg-red-700'
-              }`}
-            >
-              {loading ? (
-                <>
-                  <FaSpinner className="w-4 h-4 animate-spin" />
-                  Signing in...
-                </>
-              ) : (
-                'Sign In'
-              )}
-            </button>
           </form>
 
-          {/* Divider */}
-          <div className="flex items-center my-6">
-            <div className={`flex-1 h-px ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'}`} />
-            <span className={`px-3 text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>
-              OR
-            </span>
-            <div className={`flex-1 h-px ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'}`} />
+          <div className="mt-10 text-center pt-8 border-t border-gray-100">
+            <p className="text-gray-500 text-sm">
+              New to the network? <Link to="/register" className="text-red-700 font-bold hover:underline">Register Now</Link>
+            </p>
           </div>
 
-          {/* Register Link */}
-          <p className={`text-center text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-            Don't have an account?{' '}
-            <Link
-              to="/register"
-              className={`font-medium ${
-                isDarkMode
-                  ? 'text-red-400 hover:text-red-300'
-                  : 'text-red-600 hover:text-red-700'
-              }`}
-            >
-              Create Account
-            </Link>
-          </p>
         </div>
       </div>
     </div>

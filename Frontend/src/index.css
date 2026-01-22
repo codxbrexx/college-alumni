@@ -21,7 +21,7 @@
 
 /* Custom scrollbar styling */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -29,25 +29,24 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #14b8a6, #0d9488);
-  /* border-radius: 5px; removed */
+  background: #9ca3af;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #0d9488, #0f766e);
+  background: #dc2626;
 }
 
 /* Dark mode scrollbar */
 .dark ::-webkit-scrollbar-track {
-  background: #1f2937;
+  background: #0f172a;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #14b8a6, #0d9488);
+  background: #4b5563;
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #0d9488, #0f766e);
+  background: #ef4444;
 }
 
 /* Smooth scroll behavior */
@@ -146,7 +145,7 @@ html {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(90deg, #14b8a6, #3b82f6, #8b5cf6);
+  background: linear-gradient(90deg, #dc2626, #b91c1c, #991b1b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -178,12 +177,12 @@ html {
 }
 
 .hover-glow:hover {
-  box-shadow: 0 0 20px rgba(20, 184, 166, 0.5);
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
   transform: translateY(-2px);
 }
 
 .dark .hover-glow:hover {
-  box-shadow: 0 0 25px rgba(20, 184, 166, 0.6);
+  box-shadow: 0 0 25px rgba(220, 38, 38, 0.4);
 }
 
 /* Custom focus styles */
@@ -197,12 +196,12 @@ select:focus {
 
 /* Selection color */
 ::selection {
-  background-color: #14b8a6;
+  background-color: #dc2626;
   color: white;
 }
 
 ::-moz-selection {
-  background-color: #14b8a6;
+  background-color: #dc2626;
   color: white;
 }
 

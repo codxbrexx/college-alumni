@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Select from "react-select";
-import { useTheme } from "../../context/ThemeContext";
 import { useAuth } from "../../hooks/useAuth";
-import { FaUser, FaEnvelope, FaLock, FaIdCard, FaSpinner, FaEye, FaEyeSlash } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaSpinner, FaEye, FaEyeSlash } from "react-icons/fa";
 
+// Constants & Data
 const years = Array.from({ length: 50 }, (_, i) => {
   const year = new Date().getFullYear() + 4 - i;
   return { value: year, label: year };
@@ -67,31 +68,68 @@ const citiesByState = {
   ],
 };
 
+// UI Components
+const InputField = ({ label, name, type = "text", value, onChange, placeholder, required = false }) => (
+  <div className="group">
+    <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2 group-focus-within:text-red-700 transition-colors">
+      {label} {required && <span className="text-red-600">*</span>}
+    </label>
+    <div className="relative">
+      <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="w-full px-4 py-3 bg-gray-50 border-b-2 border-gray-200 focus:border-red-700 focus:bg-white focus:outline-none transition-all duration-300 placeholder-gray-400 font-medium"
+        required={required}
+      />
+    </div>
+  </div>
+);
+
+const customSelectStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    borderColor: 'transparent',
+    borderBottom: state.isFocused ? '2px solid #b91c1c' : '2px solid #e5e7eb', // red-700 : gray-200
+    borderRadius: 0,
+    backgroundColor: state.isFocused ? 'white' : '#f9fafb', // gray-50
+    boxShadow: 'none',
+    minHeight: '3.1rem',
+    paddingLeft: '0.5rem',
+    cursor: 'pointer',
+    '&:hover': {
+      borderColor: 'transparent',
+      borderBottom: '2px solid #b91c1c'
+    }
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    color: '#374151',
+    fontWeight: 500
+  }),
+  placeholder: (provided) => ({
+    ...provided,
+    color: '#9ca3af',
+    fontSize: '1rem'
+  })
+};
+
 export default function Register() {
-  const { isDarkMode } = useTheme();
   const { register, error: authError } = useAuth();
   const navigate = useNavigate();
 
   const [step, setStep] = useState(1);
+  const totalSteps = 4;
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
-    fullName: "",
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    rollNo: "",
-    yearOfPassout: null,
-    state: null,
-    city: null,
-    profession: "",
-    linkedInProfileLink: "",
-    companyExperience: "",
-    aboutYou: "",
-    skills: ""
+    fullName: "", username: "", email: "", password: "", confirmPassword: "",
+    rollNo: "", yearOfPassout: null, state: null, city: null,
+    profession: "", linkedInProfileLink: "", companyExperience: "", aboutYou: "", skills: ""
   });
 
   const filteredCities = formData.state ? citiesByState[formData.state.value] || [] : [];
@@ -104,49 +142,25 @@ export default function Register() {
 
   const handleSelectChange = (name, value) => {
     setFormData(prev => ({ ...prev, [name]: value }));
-    if (name === "state") {
-      setFormData(prev => ({ ...prev, city: null }));
-    }
+    if (name === "state") setFormData(prev => ({ ...prev, city: null }));
     setError("");
   };
 
-  const validateStep1 = () => {
-    if (!formData.fullName || !formData.username) {
-      setError("Please fill in all required fields");
-      return false;
+  // Validation Logic
+  const validateStep = () => {
+    if (step === 1 && (!formData.fullName || !formData.username)) return "Please fill all required fields";
+    if (step === 2) {
+      if (!formData.email || !formData.rollNo || !formData.password || !formData.confirmPassword) return "Values missing";
+      if (formData.password !== formData.confirmPassword) return "Passwords do not match";
+      if (formData.password.length < 6) return "Password too short";
     }
-    return true;
-  };
-
-  const validateStep2 = () => {
-    if (!formData.email || !formData.rollNo || !formData.password || !formData.confirmPassword) {
-      setError("Please fill in all required fields");
-      return false;
-    }
-    if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match");
-      return false;
-    }
-    if (formData.password.length < 6) {
-      setError("Password must be at least 6 characters");
-      return false;
-    }
-    return true;
-  };
-
-  const validateStep3 = () => {
-    return true;
+    return null;
   };
 
   const handleNextStep = () => {
-    setError("");
-    if (step === 1 && validateStep1()) {
-      setStep(2);
-    } else if (step === 2 && validateStep2()) {
-      setStep(3);
-    } else if (step === 3 && validateStep3()) {
-      setStep(4);
-    }
+    const err = validateStep();
+    if (err) { setError(err); return; }
+    if (step < totalSteps) setStep(prev => prev + 1);
   };
 
   const handlePrevStep = () => {
@@ -158,7 +172,7 @@ export default function Register() {
     e.preventDefault();
     setError("");
 
-    if (step < 4) {
+    if (step < totalSteps) {
       handleNextStep();
       return;
     }
@@ -188,400 +202,147 @@ export default function Register() {
     }
   };
 
-  const customSelectStyles = {
-    control: (provided, state) => ({
-      ...provided,
-      // borderRadius: '0.5rem', removed
-      borderColor: state.isFocused
-        ? isDarkMode ? '#ffffff' : '#000000'
-        : isDarkMode ? '#4b5563' : '#d1d5db',
-      backgroundColor: isDarkMode ? '#030712' : 'white',
-      boxShadow: 'none',
-      borderWidth: '1px',
-      minHeight: '3rem',
-      fontFamily: 'serif',
-      fontSize: '0.875rem',
-      '&:hover': {
-        borderColor: isDarkMode ? '#ffffff' : '#000000'
-      }
-    }),
-    menu: (provided) => ({
-      ...provided,
-      // borderRadius: '0.5rem', removed
-      backgroundColor: isDarkMode ? '#030712' : 'white',
-      border: isDarkMode ? '1px solid #374151' : '1px solid #e5e7eb',
-      zIndex: 20,
-      fontFamily: 'serif',
-    }),
-    option: (provided, state) => ({
-      ...provided,
-      backgroundColor: state.isFocused
-        ? isDarkMode ? '#1f2937' : '#f3f4f6'
-        : 'transparent',
-      color: isDarkMode ? '#e5e7eb' : '#111827',
-      cursor: 'pointer',
-      fontFamily: 'serif',
-      fontSize: '0.875rem',
-      padding: '10px 14px',
-    }),
-    singleValue: (provided) => ({
-      ...provided,
-      color: isDarkMode ? '#e5e7eb' : '#111827',
-      fontFamily: 'serif',
-    }),
-    placeholder: (provided) => ({
-      ...provided,
-      color: isDarkMode ? '#6b7280' : '#9ca3af',
-      fontFamily: 'serif',
-    }),
-    input: (provided) => ({
-      ...provided,
-      color: isDarkMode ? '#e5e7eb' : '#111827',
-      fontFamily: 'serif',
-    }),
-  };
-
-  const inputClassName = `w-full h-11 pl-10 pr-4  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${isDarkMode
-    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
-    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
-    }`;
-
   return (
-    <div className={`min-h-screen flex justify-center items-center font-['Inter'] transition-colors duration-200 px-4 py-12 ${isDarkMode ? 'bg-gray-950' : 'bg-gray-50'
-      }`}>
-      <div className={`w-full max-w-lg  p-8 md:p-10 shadow-lg transition-all duration-200 ${isDarkMode
-        ? 'bg-gray-900 border border-gray-700'
-        : 'bg-white border border-gray-200'
-        }`}>
-        <div className="w-full">
-          {/* Header */}
-          <div className="mb-8">
-            <h1 className={`text-2xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-              Create Account
-            </h1>
-            <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-              Join the alumni network
-            </p>
-          </div>
+    <div className="min-h-screen bg-white py-24 px-4 font-sans no-scrollbar">
+      <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 bg-white shadow-xl border border-gray-100 mx-auto min-h-[700px]">
 
-          {/* Tab Toggle */}
-          <div className={`flex gap-2 p-1 mb-8  ${isDarkMode ? 'bg-gray-700/50' : 'bg-gray-100'
-            }`}>
-            <Link to="/login" className={`flex-1 py-2.5  text-sm font-medium text-center transition-all ${isDarkMode ? 'text-gray-400 hover:text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-              }`}>
-              Login
-            </Link>
-            <div className={`flex-1 py-2.5  text-sm font-medium text-center transition-all ${isDarkMode
-              ? 'bg-red-600 text-white shadow-sm'
-              : 'bg-white text-gray-900 shadow-sm'
-              }`}>
-              Register
+        {/* Left Side - Info Panel */}
+        <div className="bg-gray-900 p-12 text-white flex flex-col justify-between relative overflow-hidden order-1 md:order-1">
+          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-red-800 opacity-20 rotate-45"></div>
+          <div className="absolute top-[-50px] left-[-50px] w-48 h-48 bg-red-900 opacity-20"></div>
+
+          <div>
+            <span className="text-red-500 font-bold tracking-widest uppercase text-xs mb-4 block">
+              Step {step} of {totalSteps}
+            </span>
+            <h2 className="text-4xl font-serif font-bold mb-6">Join the Community</h2>
+            <p className="text-gray-400 text-lg mb-12 font-light leading-relaxed">
+              Create your alumni profile to unlock the full potential of your network.
+            </p>
+
+            <div className="space-y-6">
+              {[
+                { id: 1, label: "Basic Identity" },
+                { id: 2, label: "Credentials" },
+                { id: 3, label: "Professional Info" },
+                { id: 4, label: "About You" }
+              ].map((item) => (
+                <div key={item.id} className="flex items-center gap-4 opacity-100">
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${step >= item.id ? 'bg-red-600 text-white' : 'bg-gray-700 text-gray-400'
+                    }`}>
+                    {item.id}
+                  </div>
+                  <span className={`text-sm font-medium tracking-wide transition-all duration-300 ${step >= item.id ? 'text-white' : 'text-gray-500'
+                    }`}>
+                    {item.label}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Progress Steps */}
-          <div className="flex items-center justify-center gap-2 mb-6">
-            <div className={`w-2.5 h-2.5  transition-all ${step >= 1 ? 'bg-red-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-8 h-0.5  transition-all ${step >= 2 ? 'bg-red-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-2.5 h-2.5  transition-all ${step >= 2 ? 'bg-red-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-8 h-0.5  transition-all ${step >= 3 ? 'bg-red-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-2.5 h-2.5  transition-all ${step >= 3 ? 'bg-red-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-8 h-0.5  transition-all ${step >= 4 ? 'bg-red-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-2.5 h-2.5  transition-all ${step >= 4 ? 'bg-red-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+          <div className="mt-12 text-sm text-gray-500">
+            * Aligns with University alumni verification policy.
+          </div>
+        </div>
+
+        {/* Right Side - Form */}
+        <div className="p-12 w-full flex flex-col relative order-2 md:order-2">
+
+          <div className="mb-6">
+            <h3 className="text-2xl font-bold font-serif text-gray-900">Create Account</h3>
+            <p className="text-gray-500 text-sm">Already a member? <Link to="/login" className="text-red-700 font-bold hover:underline">Sign In</Link></p>
           </div>
 
           {/* Error Message */}
           {(error || authError) && (
-            <div className={`mb-6 p-3.5  text-sm ${isDarkMode
-              ? 'bg-red-500/10 text-red-400 border border-red-500/20'
-              : 'bg-red-50 text-red-700 border border-red-100'
-              }`}>
+            <div className="mb-6 px-4 py-3 bg-red-50 text-red-700 text-sm border-l-4 border-red-600 font-medium">
               {error || authError}
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {step === 1 && (
-              <>
-                {/* Step 1: Basic Identity */}
-                <div>
-                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                    Full Name *
-                  </label>
-                  <div className="relative">
-                    <FaUser className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`} />
-                    <input
-                      type="text"
-                      name="fullName"
-                      value={formData.fullName}
-                      onChange={handleChange}
-                      placeholder="Enter your full name"
-                      className={inputClassName}
-                    />
-                  </div>
-                </div>
+          <form className="flex-1 flex flex-col" onSubmit={handleSubmit}>
+            <AnimatePresence mode='wait'>
+              <motion.div
+                key={step}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.2 }}
+                className="flex-1 space-y-6"
+              >
+                {step === 1 && (
+                  <>
+                    <InputField label="Full Name" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="ENTER FULL NAME" required />
+                    <InputField label="Username" name="username" value={formData.username} onChange={handleChange} placeholder="CHOOSE USERNAME" required />
+                  </>
+                )}
 
-                <div>
-                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                    Username *
-                  </label>
-                  <div className="relative">
-                    <FaUser className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`} />
-                    <input
-                      type="text"
-                      name="username"
-                      value={formData.username}
-                      onChange={handleChange}
-                      placeholder="Choose a username"
-                      className={inputClassName}
-                    />
-                  </div>
-                </div>
-              </>
-            )}
+                {step === 2 && (
+                  <>
+                    <InputField label="Email Address" name="email" value={formData.email} onChange={handleChange} placeholder="ENTER EMAIL" required type="email" />
+                    <InputField label="Roll Number" name="rollNo" value={formData.rollNo} onChange={handleChange} placeholder="COLLEGE ROLL NO" required />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <InputField label="Password" name="password" value={formData.password} onChange={handleChange} type="password" placeholder="********" required />
+                      <InputField label="Confirm Password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} type="password" placeholder="********" required />
+                    </div>
+                  </>
+                )}
 
-            {step === 2 && (
-              <>
-                {/* Step 2: Credentials */}
-                <div>
-                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                    Email *
-                  </label>
-                  <div className="relative">
-                    <FaEnvelope className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`} />
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="Enter your email"
-                      className={inputClassName}
-                    />
-                  </div>
-                </div>
+                {step === 3 && (
+                  <>
+                    <div className="group">
+                      <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2 group-focus-within:text-red-700 transition-colors">Year of Passing</label>
+                      <Select options={years} value={formData.yearOfPassout} onChange={(v) => handleSelectChange("yearOfPassout", v)} placeholder="SELECT YEAR" styles={customSelectStyles} />
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="group">
+                        <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2 group-focus-within:text-red-700 transition-colors">State</label>
+                        <Select options={states} value={formData.state} onChange={(v) => handleSelectChange("state", v)} placeholder="SELECT STATE" styles={customSelectStyles} />
+                      </div>
+                      <div className="group">
+                        <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2 group-focus-within:text-red-700 transition-colors">City</label>
+                        <Select options={filteredCities} value={formData.city} onChange={(v) => handleSelectChange("city", v)} placeholder="SELECT CITY" isDisabled={!formData.state} styles={customSelectStyles} />
+                      </div>
+                    </div>
+                    <InputField label="Current Profession" name="profession" value={formData.profession} onChange={handleChange} placeholder="e.g. Software Engineer" />
+                  </>
+                )}
 
-                <div>
-                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                    Roll Number *
-                  </label>
-                  <div className="relative">
-                    <FaIdCard className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`} />
-                    <input
-                      type="text"
-                      name="rollNo"
-                      value={formData.rollNo}
-                      onChange={handleChange}
-                      placeholder="Enter your roll number"
-                      className={inputClassName}
-                    />
-                  </div>
-                </div>
+                {step === 4 && (
+                  <>
+                    <InputField label="LinkedIn Profile" name="linkedInProfileLink" value={formData.linkedInProfileLink} onChange={handleChange} placeholder="HTTPS://LINKEDIN.COM/IN/..." type="url" />
+                    <InputField label="Skills (Comma Separate)" name="skills" value={formData.skills} onChange={handleChange} placeholder="React, Node, Java..." />
+                    <div className="group">
+                      <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2 group-focus-within:text-red-700 transition-colors">About You</label>
+                      <textarea name="aboutYou" value={formData.aboutYou} onChange={handleChange} rows="4" className="w-full px-4 py-3 bg-gray-50 border-b-2 border-gray-200 focus:border-red-700 focus:bg-white focus:outline-none resize-none transition-all duration-300 placeholder-gray-400 font-medium" placeholder="Brief bio..." />
+                    </div>
+                  </>
+                )}
+              </motion.div>
+            </AnimatePresence>
 
-                <div>
-                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                    Password *
-                  </label>
-                  <div className="relative">
-                    <FaLock className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`} />
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      name="password"
-                      value={formData.password}
-                      onChange={handleChange}
-                      placeholder="Create a password"
-                      className={`${inputClassName} pr-11`}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className={`absolute right-3.5 top-1/2 -translate-y-1/2 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}
-                    >
-                      {showPassword ? <FaEyeSlash className="w-4 h-4" /> : <FaEye className="w-4 h-4" />}
-                    </button>
-                  </div>
-                </div>
-
-                <div>
-                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                    Confirm Password *
-                  </label>
-                  <div className="relative">
-                    <FaLock className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`} />
-                    <input
-                      type="password"
-                      name="confirmPassword"
-                      value={formData.confirmPassword}
-                      onChange={handleChange}
-                      placeholder="Confirm your password"
-                      className={inputClassName}
-                    />
-                  </div>
-                </div>
-              </>
-            )}
-
-            {step === 3 && (
-              <>
-                {/* Step 3: Professional Info */}
-                <div>
-                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                    Year of Passing
-                  </label>
-                  <Select
-                    options={years}
-                    value={formData.yearOfPassout}
-                    onChange={(v) => handleSelectChange("yearOfPassout", v)}
-                    placeholder="Select year"
-                    styles={customSelectStyles}
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                      State
-                    </label>
-                    <Select
-                      options={states}
-                      value={formData.state}
-                      onChange={(v) => handleSelectChange("state", v)}
-                      placeholder="Select state"
-                      styles={customSelectStyles}
-                    />
-                  </div>
-                  <div>
-                    <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                      City
-                    </label>
-                    <Select
-                      options={filteredCities}
-                      value={formData.city}
-                      onChange={(v) => handleSelectChange("city", v)}
-                      placeholder="Select city"
-                      isDisabled={!formData.state}
-                      styles={customSelectStyles}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                    Profession
-                  </label>
-                  <input
-                    type="text"
-                    name="profession"
-                    value={formData.profession}
-                    onChange={handleChange}
-                    placeholder="e.g., Software Engineer"
-                    className={`w-full h-11 px-4  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${isDarkMode
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
-                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
-                      }`}
-                  />
-                </div>
-              </>
-            )}
-
-            {step === 4 && (
-              <>
-                {/* Step 4: Additional Details */}
-                <div>
-                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                    LinkedIn Profile
-                  </label>
-                  <input
-                    type="url"
-                    name="linkedInProfileLink"
-                    value={formData.linkedInProfileLink}
-                    onChange={handleChange}
-                    placeholder="https://linkedin.com/in/yourprofile"
-                    className={`w-full h-11 px-4  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${isDarkMode
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
-                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
-                      }`}
-                  />
-                </div>
-
-                <div>
-                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                    Skills (comma separated)
-                  </label>
-                  <input
-                    type="text"
-                    name="skills"
-                    value={formData.skills}
-                    onChange={handleChange}
-                    placeholder="React, Node.js, Python"
-                    className={`w-full h-11 px-4  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${isDarkMode
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
-                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
-                      }`}
-                  />
-                </div>
-
-                <div>
-                  <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                    About You
-                  </label>
-                  <textarea
-                    name="aboutYou"
-                    value={formData.aboutYou}
-                    onChange={handleChange}
-                    placeholder="Tell us about yourself..."
-                    rows={3}
-                    className={`w-full px-4 py-2.5  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all resize-none ${isDarkMode
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
-                      : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
-                      }`}
-                  />
-                </div>
-              </>
-            )}
-
-            {/* Action Buttons */}
-            <div className={`flex gap-3 pt-2`}>
+            <div className="flex gap-4 mt-auto pt-8">
               {step > 1 && (
                 <button
                   type="button"
                   onClick={handlePrevStep}
-                  className={`flex-1 h-11  font-medium transition-all border ${isDarkMode
-                    ? 'border-gray-600 text-gray-300 hover:border-red-500 hover:text-red-400'
-                    : 'border-gray-300 text-gray-700 hover:border-red-500 hover:text-red-600'
-                    }`}
+                  className="flex-1 py-4 bg-gray-100 hover:bg-gray-200 text-gray-900 font-bold text-xs uppercase tracking-widest transition-all duration-300"
                 >
                   Back
                 </button>
               )}
+
               <button
                 type="submit"
-                disabled={loading}
-                className={`${step === 1 ? 'w-full' : 'flex-1'} h-11  font-medium text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${isDarkMode
-                  ? 'bg-red-600 hover:bg-red-700'
-                  : 'bg-red-600 hover:bg-red-700'
-                  }`}
+                className="flex-1 py-4 bg-red-700 hover:bg-red-800 text-white font-bold text-xs uppercase tracking-widest shadow-lg hover:shadow-xl transition-all duration-300 flex justify-center items-center gap-2"
               >
-                {loading ? (
-                  <>
-                    <FaSpinner className="w-4 h-4 animate-spin" />
-                    Creating Account...
-                  </>
-                ) : step < 4 ? (
-                  'Continue'
-                ) : (
-                  'Create Account'
-                )}
+                {loading && <FaSpinner className="animate-spin" />}
+                {step < totalSteps ? 'Next Step' : (loading ? 'Creating Account...' : 'Complete Registration')}
               </button>
             </div>
-          </form>
 
-          {/* Login Link */}
-          <p className={`text-center mt-6 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-            Already have an account?{' '}
-            <Link to="/login" className={`font-medium ${isDarkMode ? 'text-red-400 hover:text-red-300' : 'text-red-600 hover:text-red-700'}`}>
-              Sign In
-            </Link>
-          </p>
+          </form>
         </div>
       </div>
     </div>

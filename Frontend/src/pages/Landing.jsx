@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import Logo, { LogoHeader } from '../Components/Logo/Logo';
 
 import {
   FaBriefcase,
@@ -21,27 +22,20 @@ export default function Landing() {
   return (
     <div className="min-h-screen font-sans transition-colors duration-300 bg-white text-gray-900">
 
-      {/* Navbar - Clean & Minimal */}
+      {/* Navbar - Clean & Minimal - FULL WIDTH */}
       <nav className="fixed w-full z-50 border-b transition-colors duration-300 bg-white/95 border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div className="w-full px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            {/* Logo */}
-            {/* Text Logo */}
-            <div className="flex items-center tracking-tighter font-sans">
-              <span className="text-4xl md:text-5xl font-extrabold text-red-700">NET</span>
-              <span className="text-4xl md:text-5xl font-extrabold text-gray-900">GRUD</span>
-              <span className="ml-1 text-xs md:text-sm font-semibold text-gray-500 self-end mb-1">ALUMNI</span>
-            </div>
+            <LogoHeader />
           </div>
 
           <div className="flex items-center gap-6">
-            {/* Theme Toggle Removed */}
             <div className="hidden md:flex items-center gap-8">
               <Link to="/login" className="font-serif uppercase tracking-widest text-sm font-medium hover:underline underline-offset-8 transition-all text-gray-600 hover:text-black decoration-red-600">
                 Log In
               </Link>
               <Link to="/register">
-                <button className="px-8 py-2.5 font-serif uppercase tracking-widest text-xs font-bold border transition-all duration-300 bg-gray-900 text-white border-gray-900 hover:bg-transparent hover:text-gray-900">
+                <button className="px-8 py-2.5 font-serif uppercase tracking-widest text-xs font-bold border transition-all duration-300 bg-white text-gray-900 hover:bg-black hover:text-white border-gray-900 hover:bg-black hover:border-black rounded-none">
                   Join Platform
                 </button>
               </Link>
@@ -50,9 +44,8 @@ export default function Landing() {
         </div>
       </nav>
 
-      {/* Hero Section - Reference Style (Immersive Background) */}
+      {/* Hero Section */}
       <section className="relative h-[660px] flex items-center justify-center text-center overflow-hidden">
-        {/* Background Image with Dark Overlay */}
         <div className="absolute inset-0 mt-12">
           <img
             src="/college_hero2.png"
@@ -61,7 +54,7 @@ export default function Landing() {
           />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8 lg:px-12 lg:py-12 text-white pt-20">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 py-12 text-white pt-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -79,12 +72,12 @@ export default function Landing() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/register">
-                <button className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white  font-semibold text-lg transition-all shadow-lg hover:shadow-xl">
+                <button className="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-semibold text-lg transition-all shadow-lg hover:shadow-xl rounded-none">
                   Join the Community
                 </button>
               </Link>
               <Link to="/home">
-                <button className="px-8 py-4 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/30  font-semibold text-lg transition-all">
+                <button className="px-8 py-4 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/30 font-semibold text-lg transition-all rounded-none">
                   Explore Directory
                 </button>
               </Link>
@@ -93,14 +86,14 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* "All Together" Section (Reference Match) - Changed to Red for Light Theme consistency */}
+      {/* "All Together" Section */}
       <section className="py-12 bg-red-900 text-white text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold font-serif mb-4">
             All Alumni, all together, <br /> all in one place.
           </h2>
           <p className="text-lg text-gray-100 mb-2 leading-relaxed">
-            The Alumni Directory is your gateway to the global community. Update your profile, connect with old friends, and unlock exclusive opportunities. It's safe, verified, and built for you.
+            The Alumni Directory is your gateway to the global community. Update your profile, connect with old friends, and unlock exclusive opportunities.
           </p>
           <Link to="/home" className="text-red-200 font-semibold text-lg hover:underline underline-offset-4">
             Explore the Directory &rarr;
@@ -156,7 +149,7 @@ export default function Landing() {
             />
             <BenefitCard
               icon={<FaUserGraduate />}
-              title="Giving Back"
+              title="Give Back"
               desc="Opportunities to volunteer, donate, and support current students."
             />
           </div>
@@ -272,28 +265,30 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 bg-white text-gray-900">
+      {/* Footer - Branding Updated */}
+      <footer className="py-12 bg-white text-gray-900 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div className="col-span-1 md:col-span-2">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Alumni Connect</h3>
-              <p className="text-gray-400 max-w-xs">
-                The official professional network for graduates. Fostering lifelong connections since 2015.
+              <div className="mb-4">
+                <Logo />
+              </div>
+              <p className="text-gray-500 max-w-xs leading-relaxed">
+                The official professional network for graduates. Fostering lifelong connections, career growth, and community impact since 2015.
               </p>
             </div>
             <div>
-              <h4 className="font-bold text-gray-900 mb-4">Platform</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="#" className="hover:text-gray-900">Directory</a></li>
-                <li><a href="#" className="hover:text-gray-900">Jobs Board</a></li>
-                <li><a href="#" className="hover:text-gray-900">Mentorship</a></li>
-                <li><a href="#" className="hover:text-gray-900">Events</a></li>
+              <h4 className="font-bold text-gray-900 mb-4 uppercase text-xs tracking-widest">Platform</h4>
+              <ul className="space-y-2 text-sm text-gray-500">
+                <li><a href="#" className="hover:text-red-600 transition-colors">Directory</a></li>
+                <li><a href="#" className="hover:text-red-600 transition-colors">Jobs Board</a></li>
+                <li><a href="#" className="hover:text-red-600 transition-colors">Mentorship</a></li>
+                <li><a href="#" className="hover:text-red-600 transition-colors">Events</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-gray-900 mb-4">Contact</h4>
-              <ul className="space-y-2 text-sm text-gray-400">
+              <h4 className="font-bold text-gray-900 mb-4 uppercase text-xs tracking-widest">Contact</h4>
+              <ul className="space-y-2 text-sm text-gray-500">
                 <li>alumni@iiitl.ac.in</li>
                 <li>+91 1234567890</li>
                 <li>123 IIIT Lucknow</li>
@@ -301,10 +296,10 @@ export default function Landing() {
             </div>
           </div>
           <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-            <div>&copy; 2026 College Alumni Platform. All rights reserved.</div>
+            <div>&copy; 2026 NetGrud Alumni. All rights reserved.</div>
             <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-gray-900">Privacy Policy</a>
-              <a href="#" className="hover:text-gray-900">Terms of Use</a>
+              <a href="#" className="hover:text-red-600 transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-red-600 transition-colors">Terms of Use</a>
             </div>
           </div>
         </div>
@@ -326,13 +321,13 @@ function StatItem({ number, label }) {
 
 function AlumniCard({ name, role, batch }) {
   return (
-    <div className="p-6 border transition-all hover:shadow-lg bg-white border-gray-200">
-      <div className="w-16 h-16 mb-4 flex items-center justify-center text-xl font-bold bg-gray-100 text-gray-600">
+    <div className="p-6 border transition-all hover:shadow-lg bg-white border-gray-200 rounded-none">
+      <div className="w-16 h-16 mb-4 flex items-center justify-center text-xl font-bold bg-gray-100 text-gray-600 rounded-none">
         {name.charAt(0)}
       </div>
       <h3 className="font-bold text-lg mb-1 text-gray-900">{name}</h3>
       <p className="text-sm mb-3 text-red-600">{role}</p>
-      <div className="text-xs font-medium px-2 py-1 inline-block bg-gray-100 text-gray-500">
+      <div className="text-xs font-medium px-2 py-1 inline-block bg-gray-100 text-gray-500 rounded-none">
         {batch}
       </div>
     </div>
@@ -341,9 +336,9 @@ function AlumniCard({ name, role, batch }) {
 
 function JobRow({ title, company, location }) {
   return (
-    <div className="flex items-center justify-between p-4 border transition-all bg-white border-gray-200 hover:shadow-md">
+    <div className="flex items-center justify-between p-4 border transition-all bg-white border-gray-200 hover:shadow-md rounded-none">
       <div className="flex items-center gap-4">
-        <div className="w-10 h-10 flex items-center justify-center bg-gray-100">
+        <div className="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-none">
           <FaBuilding className="text-gray-400" />
         </div>
         <div>
@@ -351,7 +346,7 @@ function JobRow({ title, company, location }) {
           <p className="text-sm text-gray-500">{company} • {location}</p>
         </div>
       </div>
-      <button className="text-sm font-medium px-4 py-2 border border-gray-300 hover:bg-gray-50 text-gray-900">
+      <button className="text-sm font-medium px-4 py-2 border border-gray-300 hover:bg-gray-50 text-gray-900 rounded-none">
         Apply
       </button>
     </div>
@@ -360,8 +355,8 @@ function JobRow({ title, company, location }) {
 
 function EventRow({ day, month, title, type }) {
   return (
-    <div className="flex items-center gap-4 p-4 border bg-white border-gray-200">
-      <div className="flex flex-col items-center justify-center w-14 h-14 font-bold bg-gray-100 text-gray-700">
+    <div className="flex items-center gap-4 p-4 border bg-white border-gray-200 rounded-none">
+      <div className="flex flex-col items-center justify-center w-14 h-14 font-bold bg-gray-100 text-gray-700 rounded-none">
         <span className="text-sm opacity-60">{month}</span>
         <span className="text-xl">{day}</span>
       </div>
@@ -378,8 +373,8 @@ function EventRow({ day, month, title, type }) {
 
 function BenefitCard({ icon, title, desc }) {
   return (
-    <div className="p-6 border transition-all hover:-translate-y-1 hover:shadow-lg bg-white border-gray-200">
-      <div className="w-12 h-12 flex items-center justify-center text-xl mb-4 bg-red-50 text-red-600">
+    <div className="p-6 border transition-all hover:-translate-y-1 hover:shadow-lg bg-white border-gray-200 rounded-none">
+      <div className="w-12 h-12 flex items-center justify-center text-xl mb-4 bg-red-50 text-red-600 rounded-none">
         {icon}
       </div>
       <h3 className="font-bold text-lg mb-2 text-gray-900">{title}</h3>
@@ -390,7 +385,7 @@ function BenefitCard({ icon, title, desc }) {
 
 function TestimonialCard({ quote, author, role }) {
   return (
-    <div className="p-8 relative bg-white border text-gray-900 border-gray-200">
+    <div className="p-8 relative bg-white border text-gray-900 border-gray-200 rounded-none">
       <FaQuoteLeft className="text-3xl mb-4 opacity-20 text-red-600" />
       <p className="text-lg italic mb-6 text-gray-700">"{quote}"</p>
       <div>
@@ -403,7 +398,7 @@ function TestimonialCard({ quote, author, role }) {
 
 function FAQItem({ question, answer }) {
   return (
-    <div className="p-6 border bg-white border-gray-200">
+    <div className="p-6 border bg-white border-gray-200 rounded-none">
       <h3 className="font-bold text-lg mb-2 flex items-center gap-2 text-gray-900">
         <FaQuestionCircle className="text-red-500 text-sm" /> {question}
       </h3>
