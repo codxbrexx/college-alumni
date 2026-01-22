@@ -78,7 +78,7 @@ function Home() {
 
                 {/* Lead Text */}
                 <p className="text-lg md:text-xl font-serif leading-relaxed mb-10 text-gray-600">
-                  Connect, collaborate, and grow with thousands of alumni building lifelong connections. Your journey doesn't end at graduation—it's just beginning.
+                  Connect, collaborate, and grow with thousands of alumni building lifelong connections. Your journey doesn't end at graduation it's just beginning.
                 </p>
 
                 {/* Actions */}

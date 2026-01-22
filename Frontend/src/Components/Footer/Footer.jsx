@@ -10,8 +10,8 @@ function Footer() {
 
   return (
     <footer className={`py-12 px-4 transition-colors duration-200 ${isDarkMode
-        ? 'bg-gray-900 text-white border-t border-gray-700'
-        : 'bg-white text-gray-900 border-t border-gray-200'
+      ? 'bg-gray-900 text-white border-t border-gray-700'
+      : 'bg-white text-gray-900 border-t border-gray-200'
       }`}>
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         <div className="flex flex-col items-center md:items-start">
@@ -44,8 +44,9 @@ function Footer() {
             }`}>
             <li><Link to="/about" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>About Us</Link></li>
             <li><Link to="/contact" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>Contact</Link></li>
-            <li><a href="#" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>Privacy Policy</a></li>
-            <li><a href="#" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>Terms of Service</a></li>
+            <li><Link to="/support" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>Support</Link></li>
+            <li><Link to="/privacy" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>Privacy Policy</Link></li>
+            <li><Link to="/terms" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>Terms of Service</Link></li>
           </ul>
         </div>
 
@@ -59,8 +60,8 @@ function Footer() {
               rel="noopener noreferrer"
               aria-label="Facebook"
               className={`p-2  transition-all ${isDarkMode
-                  ? 'bg-gray-700 hover:bg-red-600 text-gray-300'
-                  : 'bg-gray-100 hover:bg-red-600 hover:text-white text-gray-700'
+                ? 'bg-gray-700 hover:bg-red-600 text-gray-300'
+                : 'bg-gray-100 hover:bg-red-600 hover:text-white text-gray-700'
                 }`}
             >
               <FaFacebookF className="w-4 h-4" />
@@ -71,8 +72,8 @@ function Footer() {
               rel="noopener noreferrer"
               aria-label="Twitter"
               className={`p-2  transition-all ${isDarkMode
-                  ? 'bg-gray-700 hover:bg-red-600 text-gray-300'
-                  : 'bg-gray-100 hover:bg-red-600 hover:text-white text-gray-700'
+                ? 'bg-gray-700 hover:bg-red-600 text-gray-300'
+                : 'bg-gray-100 hover:bg-red-600 hover:text-white text-gray-700'
                 }`}
             >
               <FaTwitter className="w-4 h-4" />
@@ -83,8 +84,8 @@ function Footer() {
               rel="noopener noreferrer"
               aria-label="LinkedIn"
               className={`p-2  transition-all ${isDarkMode
-                  ? 'bg-gray-700 hover:bg-red-600 text-gray-300'
-                  : 'bg-gray-100 hover:bg-red-600 hover:text-white text-gray-700'
+                ? 'bg-gray-700 hover:bg-red-600 text-gray-300'
+                : 'bg-gray-100 hover:bg-red-600 hover:text-white text-gray-700'
                 }`}
             >
               <FaLinkedinIn className="w-4 h-4" />
@@ -95,8 +96,8 @@ function Footer() {
               rel="noopener noreferrer"
               aria-label="Instagram"
               className={`p-2  transition-all ${isDarkMode
-                  ? 'bg-gray-700 hover:bg-red-600 text-gray-300'
-                  : 'bg-gray-100 hover:bg-red-600 hover:text-white text-gray-700'
+                ? 'bg-gray-700 hover:bg-red-600 text-gray-300'
+                : 'bg-gray-100 hover:bg-red-600 hover:text-white text-gray-700'
                 }`}
             >
               <FaInstagram className="w-4 h-4" />
@@ -111,8 +112,8 @@ function Footer() {
       </div>
 
       <div className={`border-t mt-8 pt-6 text-center text-sm ${isDarkMode
-          ? 'border-gray-700 text-gray-400'
-          : 'border-gray-200 text-gray-500'
+        ? 'border-gray-700 text-gray-400'
+        : 'border-gray-200 text-gray-500'
         }`}>
         <p>© 2026 NetGrud. All rights reserved.</p>
       </div>

@@ -103,7 +103,7 @@ const PlacementSection = () => {
     {
       label: 'Highest Package',
       value: currentStat.highest,
-      icon: FaBuilding, 
+      icon: FaBuilding,
       prefix: '₹',
       suffix: ' LPA',
       border: 'border-l-4 border-green-600',
@@ -228,7 +228,7 @@ const PlacementSection = () => {
               Total Students Placed
             </h4>
             <p className={`text-6xl font-bold mb-2 text-red-500`}>
-              <CountUp end={450} duration={2.5} />+
+              <CountUp end={1250} duration={2.5} />+
             </p>
             <p className="text-gray-400">Across various industries including Tech, Finance, and Consulting.</p>
           </div>

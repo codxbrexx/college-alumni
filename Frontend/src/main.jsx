@@ -22,8 +22,11 @@ import Placements from './pages/Placements/Placements.jsx'
 import { ThemeProvider } from './context/ThemeContext.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import NotFound from './pages/NotFound.jsx'
-import Landing from './pages/Landing.jsx'
+import Landing from './pages/Landing/Landing.jsx'
+import Support from './pages/Support/Support.jsx'
 import Register from './pages/log/register.jsx'
+import PrivacyPolicy from './pages/Legal/PrivacyPolicy.jsx'
+import TermsOfUse from './pages/Legal/TermsOfUse.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -41,10 +44,13 @@ const router = createBrowserRouter(
         <Route path='placement' element={<Placements />} />
         <Route path='about' element={<AboutUs />} />
         <Route path='contact' element={<ContactUs />} />
+        <Route path='support' element={<Support />} />
         <Route path='*' element={<NotFound />} />
       </Route>
       <Route path='register' element={<Register />} />
       <Route path='login' element={<Login />} />
+      <Route path='privacy' element={<PrivacyPolicy />} />
+      <Route path='terms' element={<TermsOfUse />} />
       <Route path='forgot' element={<Forgot />} />
       <Route path='createpassword' element={<Createpassword />} />
     </>

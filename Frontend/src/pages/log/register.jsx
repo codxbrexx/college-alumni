@@ -242,7 +242,7 @@ export default function Register() {
           </div>
 
           <div className="mt-12 text-sm text-gray-500">
-            * Aligns with University alumni verification policy.
+            * Aligns with IIIT Lucknow alumni verification policy.
           </div>
         </div>
 

@@ -149,6 +149,7 @@ export default function Login() {
           </form>
 
           <div className="mt-10 text-center pt-8 border-t border-gray-100">
+            <Link to="/support" className="block text-xs text-gray-400 hover:text-red-600 mb-2">Trouble logging in? Contact Support</Link>
             <p className="text-gray-500 text-sm">
               New to the network? <Link to="/register" className="text-red-700 font-bold hover:underline">Register Now</Link>
             </p>
