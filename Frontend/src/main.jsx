@@ -8,10 +8,10 @@ import Layout from './Layout.jsx'
 import Login from './pages/log/Login.jsx'
 import Forgot from './pages/log/Forgot.jsx'
 import Home from './pages/Home/Home.jsx'
-import Postprofile from './pages/Profile/Postprofile.jsx'
+import EditProfile from './pages/Profile/EditProfile.jsx'
 import ProfileView from './pages/Profile/ProfileView.jsx'
 import Alumni from './pages/Alumni/Alumni.jsx'
-import AlumniDetails from './pages/Alumni/AlumniDetails.jsx'
+import AlumniProfile from './pages/Alumni/AlumniProfile.jsx'
 import Job from './pages/Job/Job.jsx'
 import PostJob from './pages/Job/Postjob.jsx'
 import Postnews from './pages/News/Postnews.jsx'
@@ -36,9 +36,9 @@ const router = createBrowserRouter(
       <Route path='/' element={<Layout />}>
         <Route path='home' element={<Home />} />
         <Route path='profile' element={<ProfileView />} />
-        <Route path='profile/edit' element={<Postprofile />} />
+        <Route path='profile/edit' element={<EditProfile />} />
         <Route path='alumni' element={<Alumni />} />
-        <Route path='alumni/:id' element={<AlumniDetails />} />
+        <Route path='alumni/:id' element={<AlumniProfile />} />
         <Route path='job' element={<Job />} />
         <Route path='post-job' element={<PostJob />} />
         <Route path='post-news' element={<Postnews />} />

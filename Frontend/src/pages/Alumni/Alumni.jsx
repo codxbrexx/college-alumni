@@ -1,6 +1,6 @@
 import React from "react";
 import Heroalumni from "../../Components/Hero/Heroalumni";
-import Alumnicard from "./Alumnicard";
+import AlumniList from "./AlumniList";
 
 function Alumni() {
   return (
@@ -9,7 +9,7 @@ function Alumni() {
         <Heroalumni />
       </div>
       <div>
-        <Alumnicard />
+        <AlumniList />
       </div>
     </div>
   );

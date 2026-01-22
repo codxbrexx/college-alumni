@@ -1,18 +1,17 @@
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Link } from 'react-router-dom';
-import { FaLinkedin, FaGithub, FaBriefcase, FaGraduationCap, FaMapMarkerAlt, FaEdit, FaUserCircle } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaBriefcase, FaGraduationCap, FaMapMarkerAlt, FaEdit, FaUserCircle, FaEnvelope } from 'react-icons/fa';
 
 export default function ProfileView() {
     const { user, loading } = useAuth();
 
-    if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+    if (loading) return <div className="min-h-screen flex items-center justify-center font-serif text-gray-500 animate-pulse">Loading Profile...</div>;
 
     if (!user) {
         return (
-            <div className="min-h-screen flex items-center justify-center">
+            <div className="min-h-screen flex items-center justify-center bg-gray-50">
                 <div className="text-center">
-                    <h2 className="text-2xl font-bold mb-4">Please Login</h2>
                     <Link to="/login" className="px-6 py-2 bg-red-700 text-white rounded">Login</Link>
                 </div>
             </div>
@@ -33,7 +32,7 @@ export default function ProfileView() {
             <div className="max-w-5xl mx-auto">
 
                 {/* Profile Header Card */}
-                <div className="bg-white shadow-xl overflow-hidden mb-8 border-t-4 border-red-700 relative">
+                <div className="bg-white border border-gray-200 overflow-hidden mb-8 relative">
 
                     {/* Cover / Background Pattern */}
                     <div className="h-32 bg-gray-900 relative">

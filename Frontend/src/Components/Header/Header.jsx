@@ -33,7 +33,7 @@ function Header() {
   return (
     <header className={`w-full shadow-sm sticky top-0 z-40 transition-colors duration-200 ${isDarkMode ? 'bg-gray-900 text-white border-gray-700' : 'bg-white text-gray-900 border-b border-gray-200'
       }`}>
-      <div className="flex items-center justify-between px-4 py-3 md:py-4 max-w-7xl mx-auto">
+      <div className="flex items-center justify-between px-6 md:px-12 py-3 md:py-4 w-full">
 
         {/* Logo */}
         <div className="flex-shrink-0 w-32 md:w-40">
