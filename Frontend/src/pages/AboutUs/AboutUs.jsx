@@ -27,80 +27,99 @@ function AboutUs() {
         </div>
       </div>
 
-      {/* Stats Section */}
-      <div className="max-w-6xl mx-auto px-4 -mt-10 relative z-20">
-        <div className="bg-white rounded-xl shadow-xl grid grid-cols-2 md:grid-cols-4 gap-8 p-8 md:p-12">
-          {stats.map((stat) => (
-            <div key={stat.id} className="text-center group">
-              <div className="inline-flex items-center justify-center p-3 rounded-full bg-red-50 text-red-700 mb-4 group-hover:scale-110 transition-transform">
-                <stat.icon className="text-2xl" />
+      {/* Stats Section with CountUp */}
+      <div className="py-16 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="bg-white shadow-xl grid grid-cols-2 md:grid-cols-4 gap-8 p-12 border border-gray-100">
+            <div className="text-center group border-r border-gray-100 last:border-0">
+              <div className="inline-flex items-center justify-center p-3 text-red-700 mb-4 group-hover:scale-110 transition-transform">
+                <FaUsers size={32} />
               </div>
-              <div className="text-3xl font-bold text-gray-900 mb-1">
-                <CountUp end={stat.value} duration={2.5} separator="," />{stat.suffix}
+              <div className="text-4xl font-bold text-gray-900 mb-2 font-serif">
+                <CountUp end={5000} duration={2.5} separator="," />+
               </div>
-              <div className="text-sm text-gray-600 font-medium uppercase tracking-wider">{stat.label}</div>
+              <div className="text-sm text-gray-500 uppercase tracking-widest font-semibold">Active Alumni</div>
             </div>
-          ))}
+            <div className="text-center group border-r border-gray-100 last:border-0">
+              <div className="inline-flex items-center justify-center p-3 text-red-700 mb-4 group-hover:scale-110 transition-transform">
+                <FaGlobe size={32} />
+              </div>
+              <div className="text-4xl font-bold text-gray-900 mb-2 font-serif">
+                <CountUp end={25} duration={3} />+
+              </div>
+              <div className="text-sm text-gray-500 uppercase tracking-widest font-semibold">Countries</div>
+            </div>
+            <div className="text-center group border-r border-gray-100 last:border-0">
+              <div className="inline-flex items-center justify-center p-3 text-red-700 mb-4 group-hover:scale-110 transition-transform">
+                <FaGraduationCap size={32} />
+              </div>
+              <div className="text-4xl font-bold text-gray-900 mb-2 font-serif">
+                <CountUp end={50} duration={3} />+
+              </div>
+              <div className="text-sm text-gray-500 uppercase tracking-widest font-semibold">Years History</div>
+            </div>
+            <div className="text-center group border-r border-gray-100 last:border-0">
+              <div className="inline-flex items-center justify-center p-3 text-red-700 mb-4 group-hover:scale-110 transition-transform">
+                <FaHandshake size={32} />
+              </div>
+              <div className="text-4xl font-bold text-gray-900 mb-2 font-serif">
+                <CountUp end={1200} duration={2.5} separator="," />+
+              </div>
+              <div className="text-sm text-gray-500 uppercase tracking-widest font-semibold">Mentorships</div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Mission Section */}
-      <section className="max-w-6xl mx-auto px-4 py-20 flex flex-col md:flex-row items-center gap-12 lg:gap-20">
-        <div className="flex-1 space-y-6">
-          <div className="inline-block px-3 py-1 bg-red-100 text-red-800 text-sm font-semibold rounded-full uppercase tracking-wider">
-            Our Mission
+      <div className="py-20 px-4 max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center gap-16">
+          <div className="md:w-1/2">
+            <div className="inline-block px-3 py-1 bg-red-50 text-red-800 text-xs font-bold uppercase tracking-wider mb-4 border-l-2 border-red-800">Our Mission</div>
+            <h2 className="text-4xl font-serif font-bold text-gray-900 mb-6 leading-tight">Empowering Alumni, <br />Inspiring Future Generations.</h2>
+            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              We foster a lifelong connection between the university and its graduates, providing a platform for professional growth, mentorship, and community engagement.
+            </p>
+            <div className="border-l-4 border-red-700 pl-6 py-2 my-8 italic text-gray-700 bg-gray-50 text-lg">
+              "Our strength lies in the bonds we share and the impact we create together across the globe."
+            </div>
           </div>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 leading-tight">
-            Building bridges beyond graduation
-          </h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            At College Alumni Connection, we believe that the bond between students and alumni goes far beyond graduation. Our mission is to build a vibrant and inclusive platform where former students can reconnect, share opportunities, mentor, and grow together.
-          </p>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            In a world full of fragmented communication, we bring purpose and connection back to the forefront — not just through features, but through shared values. Whether it's helping someone land their first job, offering career advice, or simply reminiscing about campus memories — we're here to keep the spirit alive.
-          </p>
+          <div className="md:w-1/2 relative">
+            <div className="absolute top-4 left-4 w-full h-full border-4 border-gray-100 z-0"></div>
+            <img
+              src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              alt="Graduation"
+              className="w-full h-96 object-cover shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700"
+            />
+          </div>
         </div>
-        <div className="flex-1 relative">
-          <div className="absolute top-4 left-4 w-full h-full border-4 border-red-100 rounded-2xl z-0"></div>
-          <img
-            src={reunionImg}
-            alt="Alumni Reunion"
-            className="w-full h-96 object-cover rounded-2xl shadow-xl relative z-10"
-          />
-        </div>
-      </section>
+      </div>
 
       {/* Story Section */}
-      <section className="max-w-6xl mx-auto px-4 py-12 flex flex-col md:flex-row-reverse items-center gap-12 lg:gap-20">
-        <div className="flex-1 space-y-6">
-          <div className="inline-block px-3 py-1 bg-red-100 text-red-800 text-sm font-semibold rounded-full uppercase tracking-wider">
-            Our Story
+      <div className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row-reverse items-center gap-16">
+            <div className="md:w-1/2">
+              <div className="inline-block px-3 py-1 bg-red-50 text-red-800 text-xs font-bold uppercase tracking-wider mb-4 border-l-2 border-red-800">Our Story</div>
+              <h2 className="text-4xl font-serif font-bold text-gray-900 mb-6">A Legacy of Excellence</h2>
+              <p className="text-gray-600 mb-6 leading-relaxed text-lg">
+                Founded in 1970, our Alumni Association started as a small gathering of graduates. Today, it has grown into a global network of over 50,000 professionals, leaders, and change-makers.
+              </p>
+              <p className="text-gray-600 leading-relaxed text-lg">
+                From organizing annual reunions to funding scholarships for underprivileged students, we have consistently upheld the values of our institution.
+              </p>
+            </div>
+            <div className="md:w-1/2 relative">
+              <div className="absolute -bottom-4 -right-4 w-full h-full bg-red-900/5 z-0"></div>
+              <img
+                src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="College History"
+                className="w-full h-96 object-cover shadow-2xl relative z-10 sepia-[.15]"
+              />
+            </div>
           </div>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 leading-tight">
-            Founded on friendship, grown by community
-          </h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            The idea for College Alumni Connection was born in the heart of a college dorm room, where a group of graduating friends realized that once they left campus, staying in touch with their seniors, juniors, and even batchmates wouldn't be easy.
-          </p>
-          <div className="border-l-4 border-red-700 pl-6 py-2 my-6 bg-white shadow-sm rounded-r-lg">
-            <p className="text-xl font-serif text-gray-800 italic">
-              "What started as a simple idea — 'Let's stay connected' — evolved into a powerful platform to unite thousands."
-            </p>
-          </div>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            Today, we're more than just a social network. We're a career partner, a memory keeper, and a support system — powered by students, run by alumni, and built with love.
-          </p>
         </div>
-        <div className="flex-1 relative">
-          <div className="absolute -bottom-4 -right-4 w-full h-full bg-gray-100 rounded-2xl z-0"></div>
-          <img
-            src={storyImg}
-            alt="Our Story"
-            className="w-full h-96 object-cover rounded-2xl shadow-xl relative z-10 filter sepia-[.15]"
-          />
-        </div>
-      </section>
-
+      </div>
     </div>
   );
 }

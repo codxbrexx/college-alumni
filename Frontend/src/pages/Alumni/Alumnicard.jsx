@@ -1,252 +1,107 @@
-// import { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaLinkedin, FaMapMarkerAlt, FaBriefcase, FaGraduationCap, FaEnvelope } from "react-icons/fa";
 import { ImTwitter } from "react-icons/im";
-import { useTheme } from '../../context/ThemeContext';
-
-const alumni = [
-  {
-    image: '/avtar.jpg',
-    name: 'Ali Ahmed',
-    profession: 'Full Stack Web Developer',
-    company: 'Google',
-    experience: '1+ years',
-    about: 'Passionate about building scalable web apps and mentoring juniors in modern web technologies.',
-    linkedin: 'https://linkedin.com',
-    social: 'https://twitter.com',
-    email: 'ali@example.com',
-    rollNo: 'lcs2024035',
-    branch: 'CSE',
-    passingYear: 2025,
-    skills: ['React', 'Node.js', 'MongoDB', 'AWS', 'Docker'],
-    city: 'Hyderabad',
-  },
-  {
-    image: '/avtar.jpg',
-    name: 'Taha Khan',
-    profession: 'Software Engineer',
-    company: 'Microsoft',
-    experience: '2+ years',
-    about: 'Building cloud solutions and working on cutting-edge AI/ML projects. Love to contribute to open source.',
-    linkedin: 'https://linkedin.com',
-    social: 'https://twitter.com',
-    email: 'taha@example.com',
-    rollNo: 'lcs2024043',
-    branch: 'CSE',
-    passingYear: 2025,
-    skills: ['Python', 'Azure', 'Machine Learning', 'FastAPI'],
-    city: 'Lucknow',
-  },
-  {
-    image: '/avtar.jpg',
-    name: 'Priya Sharma',
-    profession: 'Product Designer',
-    company: 'Adobe',
-    experience: '3+ years',
-    about: 'Creating beautiful and intuitive user experiences. Passionate about design systems and accessibility.',
-    linkedin: 'https://linkedin.com',
-    social: 'https://twitter.com',
-    email: 'priya@example.com',
-    rollNo: 'lcs2022018',
-    branch: 'IT',
-    passingYear: 2023,
-    skills: ['Figma', 'UI/UX', 'Design Systems', 'Prototyping'],
-    city: 'Bangalore',
-  },
-  {
-    image: '/avtar.jpg',
-    name: 'Rahul Verma',
-    profession: 'Data Scientist',
-    company: 'Amazon',
-    experience: '4+ years',
-    about: 'Leveraging data to drive business decisions. Specializing in NLP and predictive analytics.',
-    linkedin: 'https://linkedin.com',
-    social: 'https://twitter.com',
-    email: 'rahul@example.com',
-    rollNo: 'lcs2020022',
-    branch: 'CSE',
-    passingYear: 2021,
-    skills: ['Python', 'TensorFlow', 'SQL', 'Tableau', 'R'],
-    city: 'Mumbai',
-  },
-  {
-    image: '/avtar.jpg',
-    name: 'Sarah Johnson',
-    profession: 'DevOps Engineer',
-    company: 'Netflix',
-    experience: '2+ years',
-    about: 'Automating infrastructure and ensuring seamless deployments. CI/CD enthusiast.',
-    linkedin: 'https://linkedin.com',
-    social: 'https://twitter.com',
-    email: 'sarah@example.com',
-    rollNo: 'lcs2021015',
-    branch: 'IT',
-    passingYear: 2022,
-    skills: ['Kubernetes', 'Jenkins', 'Terraform', 'AWS', 'Linux'],
-    city: 'Pune',
-  },
-  {
-    image: '/avtar.jpg',
-    name: 'Amit Patel',
-    profession: 'Mobile App Developer',
-    company: 'Uber',
-    experience: '3+ years',
-    about: 'Creating seamless mobile experiences for millions of users. Cross-platform development expert.',
-    linkedin: 'https://linkedin.com',
-    social: 'https://twitter.com',
-    email: 'amit@example.com',
-    rollNo: 'lcs2019009',
-    branch: 'CSE',
-    passingYear: 2020,
-    skills: ['React Native', 'Flutter', 'iOS', 'Android', 'Firebase'],
-    city: 'Delhi',
-  },
-];
+import { alumniData } from '../../data/alumniData';
 
 function Alumnicard() {
-  const { isDarkMode } = useTheme();
-
   return (
-    <div className={`py-12 px-4 ${isDarkMode ? 'bg-gray-950' : 'bg-gray-50'}`}>
+    <div className="py-16 px-4 bg-gray-50 min-h-screen">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <span className={`inline-block px-4 py-2  font-semibold mb-4 shadow ${
-            isDarkMode ? 'bg-red-900/80 text-red-300' : 'bg-red-100 text-red-700'
-          }`}>Alumni Network</span>
-          <h2 className={`text-4xl md:text-5xl font-extrabold mb-4 tracking-tight gradient-text`}>Meet Our Alumni</h2>
-          <p className={`text-lg max-w-2xl mx-auto ${
-            isDarkMode ? 'text-gray-400' : 'text-gray-600'
-          }`}>
-            Discover and connect with talented professionals from our community
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 bg-red-100 text-red-700 font-semibold text-sm mb-4 tracking-wide uppercase">
+            Alumni Network
+          </span>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+            Meet Our Alumni
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Discover and connect with talented professionals from our community who are making waves across the globe.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {alumni.map((alum, idx) => (
+          {alumniData.map((alum) => (
             <div
-              key={idx}
-              className={`group relative  shadow-xl overflow-hidden glass-effect transition-shadow duration-300 ${
-                isDarkMode 
-                  ? 'bg-gradient-to-br from-gray-800 to-gray-900/80 border border-red-900 hover:border-red-500/50' 
-                  : 'bg-white/80 border border-red-100 hover:border-red-500/50'
-              }`}
+              key={alum.id}
+              className="group bg-white shadow-sm hover:border-gray-300 border border-gray-100 transition-all duration-300 overflow-hidden flex flex-col"
             >
-              {/* Header with Gradient */}
-              <div className={`relative h-32 bg-gradient-to-br ${
-                isDarkMode 
-                  ? 'from-red-700 via-red-800 to-blue-900' 
-                  : 'from-red-300 via-red-400 to-blue-400'
-              }`}>
-                <div className="absolute inset-0 bg-black/10" />
-                {/* Profile Image */}
-                <div className="absolute -bottom-14 left-1/2 transform -translate-x-1/2">
-                  <div className="relative">
+              {/* Card Header & Avatar */}
+              <div className="relative pt-8 px-6 pb-0 flex flex-col items-center">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-red-100 rounded-full scale-110 group-hover:scale-125 transition-transform duration-500 opacity-50"></div>
+                  <Link to={`/alumni/${alum.id}`}>
                     <img
                       src={alum.image}
                       alt={alum.name}
-                      className="w-28 h-28  border-4 border-white shadow-xl object-cover transition-transform duration-300 group-hover:scale-110"
+                      className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-md relative z-10 cursor-pointer"
                     />
-                    <span className={`absolute -top-2 -right-2 px-3 py-1 text-xs font-bold  shadow ${
-                      isDarkMode ? 'bg-green-700 text-white' : 'bg-green-200 text-green-800'
-                    }`}>Mentor</span>
-                  </div>
+                  </Link>
+                  {/* <div className="absolute bottom-1 right-2 z-20 bg-green-500 w-4 h-4 rounded-full border-2 border-white" title="Active"></div> */}
+                </div>
+
+                <div className="mt-4 text-center">
+                  <Link to={`/alumni/${alum.id}`} className="block">
+                    <h3 className="text-2xl font-serif font-bold text-gray-900 group-hover:text-red-700 transition-colors uppercase tracking-wide">
+                      {alum.name}
+                    </h3>
+                  </Link>
+                  <p className="text-red-600 font-medium text-sm mt-1 uppercase tracking-wider">{alum.profession}</p>
+                  <p className="text-gray-500 text-sm mt-1 flex items-center justify-center gap-1.5">
+                    <FaBriefcase className="text-gray-400 text-xs" />
+                    {alum.experience} at <span className="font-semibold">{alum.company}</span>
+                  </p>
                 </div>
               </div>
 
-              {/* Card Content */}
-              <div className="pt-16 pb-8 px-8">
-                {/* Name and Title */}
-                <div className="text-center mb-4">
-                  <h3 className={`text-2xl font-bold mb-1 gradient-text`}>{alum.name}</h3>
-                  <p className={`text-base font-semibold mb-1 ${isDarkMode ? 'text-red-300' : 'text-red-600'}`}>{alum.profession}</p>
-                  <div className={`flex items-center justify-center gap-2 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                    <FaBriefcase className="w-4 h-4" />
-                    <span>{alum.experience} at <span className="font-bold">{alum.company}</span></span>
-                  </div>
-                </div>
+              {/* Divider */}
+              <div className="w-full h-px bg-gray-100 my-6"></div>
 
-                {/* About */}
-                <p className={`text-base text-center mb-4 line-clamp-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{alum.about}</p>
-
-                {/* Details Grid */}
-                <div className={`space-y-2 text-base mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                  <div className="flex items-center gap-2 justify-center">
-                    <FaGraduationCap className={`w-5 h-5 ${isDarkMode ? 'text-red-400' : 'text-red-600'}`} />
-                    <span className="font-medium">{alum.branch}</span>
-                    <span className={isDarkMode ? 'text-gray-500' : 'text-gray-400'}>•</span>
-                    <span>Class of {alum.passingYear}</span>
+              {/* Card Body */}
+              <div className="px-6 flex-grow">
+                {/* Academic Info */}
+                <div className="flex justify-center gap-6 text-sm text-gray-600 mb-6">
+                  <div className="flex items-center gap-2">
+                    <FaGraduationCap className="text-red-400" />
+                    <span>{alum.branch} '{alum.passingYear.toString().slice(-2)}</span>
                   </div>
-                  <div className="flex items-center gap-2 justify-center">
-                    <FaMapMarkerAlt className={`w-5 h-5 ${isDarkMode ? 'text-red-400' : 'text-red-600'}`} />
+                  <div className="flex items-center gap-2">
+                    <FaMapMarkerAlt className="text-red-400" />
                     <span>{alum.city}</span>
                   </div>
                 </div>
 
                 {/* Skills */}
-                <div className="mb-4">
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {alum.skills.slice(0, 4).map((skill, i) => (
-                      <span
-                        key={i}
-                        className={`px-4 py-1 text-xs font-semibold  transition-colors shadow ${
-                          isDarkMode 
-                            ? 'bg-red-900/60 text-red-300 border border-red-700/50' 
-                            : 'bg-red-50 text-red-700 border border-red-200'
-                        }`}
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                    {alum.skills.length > 4 && (
-                      <span className={`px-4 py-1 text-xs font-semibold  ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>+{alum.skills.length - 4}</span>
-                    )}
-                  </div>
+                <div className="flex flex-wrap gap-2 justify-center mb-6">
+                  {alum.skills.slice(0, 3).map((skill, i) => (
+                    <span key={i} className="px-3 py-1 bg-gray-50 text-gray-600 text-xs font-semibold uppercase tracking-wide border border-gray-200 hover:bg-red-50 hover:text-red-700 transition-colors">
+                      {skill}
+                    </span>
+                  ))}
+                  {alum.skills.length > 3 && (
+                    <span className="px-3 py-1 bg-gray-50 text-gray-500 text-xs font-semibold uppercase tracking-wide border border-gray-200">
+                      +{alum.skills.length - 3}
+                    </span>
+                  )}
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex gap-2 justify-center mt-2">
-                  <button className={`flex-1 py-2.5 px-4  font-semibold transition-colors duration-300 ${
-                    isDarkMode 
-                      ? 'bg-red-600 hover:bg-red-500 text-white' 
-                      : 'bg-red-600 hover:bg-red-700 text-white'
-                  }`}>
-                    Connect
-                  </button>
-                  <a
-                    href={alum.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-2.5  transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gray-700 hover:bg-gray-600 text-red-400' 
-                        : 'bg-gray-100 hover:bg-gray-200 text-red-600'
-                    }`}
-                    title="LinkedIn Profile"
-                  >
-                    <FaLinkedin className="w-5 h-5" />
+                {/* About Truncated */}
+                <p className="text-gray-500 text-sm text-center line-clamp-2 leading-relaxed px-2 font-light">
+                  {alum.about}
+                </p>
+              </div>
+
+              {/* Card Footer / Actions */}
+              <div className="p-6 mt-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between gap-3">
+                <Link to={`/alumni/${alum.id}`} className="flex-1 bg-red-700 hover:bg-red-800 text-white text-sm font-bold uppercase tracking-widest py-3 transition-colors shadow-sm hover:shadow-md text-center">
+                  Connect
+                </Link>
+                <div className="flex gap-2">
+                  <a href={alum.linkedin} className="w-10 h-10 flex items-center justify-center bg-white border border-gray-200 text-gray-500 hover:bg-gray-900 hover:text-white transition-colors">
+                    <FaLinkedin />
                   </a>
-                  <a
-                    href={alum.social}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-2.5  transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gray-700 hover:bg-gray-600 text-red-400' 
-                        : 'bg-gray-100 hover:bg-gray-200 text-red-600'
-                    }`}
-                    title="Twitter Profile"
-                  >
-                    <ImTwitter className="w-5 h-5" />
-                  </a>
-                  <a
-                    href={`mailto:${alum.email}`}
-                    className={`p-2.5  transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gray-700 hover:bg-gray-600 text-red-400' 
-                        : 'bg-gray-100 hover:bg-gray-200 text-red-600'
-                    }`}
-                    title="Send Email"
-                  >
-                    <FaEnvelope className="w-5 h-5" />
+                  <a href={alum.social} className="w-10 h-10 flex items-center justify-center bg-white border border-gray-200 text-gray-500 hover:bg-gray-900 hover:text-white transition-colors">
+                    <ImTwitter />
                   </a>
                 </div>
               </div>

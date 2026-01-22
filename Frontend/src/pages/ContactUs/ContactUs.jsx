@@ -1,127 +1,124 @@
 import React from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { ImTwitter } from "react-icons/im";
 
 function ContactUs() {
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-['Poppins']">
-      <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-2xl shadow-xl overflow-hidden">
+    <div className="min-h-screen bg-white py-16 px-4 font-sans">
+      <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 bg-white shadow-xl border border-gray-100 mx-auto">
 
-        {/* Left Side: Contact Info */}
-        <div className="bg-red-700 p-10 text-white flex flex-col justify-between relative overflow-hidden">
-          {/* Decorative Circle */}
-          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-red-600 rounded-full opacity-50"></div>
-          <div className="absolute top-[-50px] left-[-50px] w-48 h-48 bg-red-600 rounded-full opacity-30"></div>
+        {/* Left Side - Info */}
+        <div className="bg-gray-900 p-12 text-white flex flex-col justify-between relative overflow-hidden">
+          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-red-800 opacity-20 rotate-45"></div>
+          <div className="absolute top-[-50px] left-[-50px] w-48 h-48 bg-red-900 opacity-20"></div>
 
-          <div className="relative z-10">
-            <h1 className="text-4xl font-serif font-bold mb-6">Get in Touch</h1>
-            <p className="text-red-100 text-lg mb-12">
-              Have questions or need assistance? We're here to help you connect with your alumni network.
+          <div>
+            <span className="text-red-500 font-bold tracking-widest uppercase text-xs mb-2 block">Get in Touch</span>
+            <h2 className="text-4xl font-serif font-bold mb-6">Let's Connect</h2>
+            <p className="text-gray-400 text-lg mb-12 font-light leading-relaxed">
+              Have questions about the alumni association? We're here to help you stay connected with your alma mater.
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               <div className="flex items-start gap-4">
-                <div className="bg-red-600 p-3 rounded-lg text-white">
-                  <FaEnvelope className="text-xl" />
+                <div className="bg-red-700 p-3 text-white">
+                  <FaMapMarkerAlt className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">Email Us</h3>
-                  <p className="text-red-100">alumni@college.edu</p>
+                  <h3 className="font-bold text-lg mb-1 font-serif">Visit Us</h3>
+                  <p className="text-gray-400 text-sm">123 University Avenue<br />Administration Block, Floor 2</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="bg-red-600 p-3 rounded-lg text-white">
-                  <FaPhone className="text-xl" />
+                <div className="bg-red-700 p-3 text-white">
+                  <FaEnvelope className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">Call Us</h3>
-                  <p className="text-red-100 text-sm">+91 12345 67890</p>
+                  <h3 className="font-bold text-lg mb-1 font-serif">Email Us</h3>
+                  <p className="text-gray-400 text-sm">alumni@college.edu<br />support@college.edu</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="bg-red-600 p-3 rounded-lg text-white">
-                  <FaMapMarkerAlt className="text-xl" />
+                <div className="bg-red-700 p-3 text-white">
+                  <FaPhone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg">Visit Us</h3>
-                  <p className="text-red-100 text-sm">
-                    Alumni Cell, Admin Block<br />
-                    College of Engineering, Pune
-                  </p>
+                  <h3 className="font-bold text-lg mb-1 font-serif">Call Us</h3>
+                  <p className="text-gray-400 text-sm">+1 (555) 123-4567<br />Mon-Fri, 9am - 5pm</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="relative z-10 mt-12">
-            <h3 className="text-lg font-medium mb-4">Connect with us</h3>
+          <div className="mt-12">
+            <p className="font-bold mb-4 font-serif">Follow Us</p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center hover:bg-white hover:text-red-700 transition-all duration-300">
-                <FaLinkedin className="text-xl" />
+              <a href="#" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-red-700 text-white transition-all duration-300">
+                <FaLinkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center hover:bg-white hover:text-red-700 transition-all duration-300">
-                <FaTwitter className="text-xl" />
+              <a href="#" className="w-10 h-10 bg-white/10 flex items-center justify-center hover:bg-red-700 text-white transition-all duration-300">
+                <ImTwitter className="w-5 h-5" />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Right Side: Contact Form */}
-        <div className="p-10 lg:p-12 bg-white">
+        {/* Right Side - Form */}
+        <div className="p-12 w-full">
           <form className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2">First Name</label>
                 <input
                   type="text"
-                  placeholder="Enter your name"
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:outline-none focus:border-red-700 focus:ring-0 transition-all placeholder-gray-400"
+                  placeholder="John"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2">Last Name</label>
                 <input
                   type="text"
-                  placeholder="Enter your last name"
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:outline-none focus:border-red-700 focus:ring-0 transition-all placeholder-gray-400"
+                  placeholder="Doe"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+              <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2">Email Address</label>
               <input
                 type="email"
-                placeholder="Enter your email"
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:outline-none focus:border-red-700 focus:ring-0 transition-all placeholder-gray-400"
+                placeholder="john@example.com"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
-              <select className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all">
-                <option value="">Select a topic</option>
-                <option value="general">General Inquiry</option>
-                <option value="technical">Technical Support</option>
-                <option value="events">Alumni Events</option>
-                <option value="career">Career Services</option>
-              </select>
+              <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2">Subject</label>
+              <div className="relative">
+                <select className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:outline-none focus:border-red-700 focus:ring-0 transition-all appearance-none">
+                  <option>General Inquiry</option>
+                  <option>Membership Support</option>
+                  <option>Event Registration</option>
+                  <option>Donation / Giving</option>
+                </select>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">▼</div>
+              </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+              <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2">Message</label>
               <textarea
-                rows={4}
-                placeholder="Enter your message"
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none transition-all"
-              />
+                rows="4"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:outline-none focus:border-red-700 focus:ring-0 resize-none transition-all placeholder-gray-400"
+                placeholder="How can we help you?"
+              ></textarea>
             </div>
 
-            <button
-              type="submit"
-              className="w-full py-4 bg-red-700 hover:bg-red-800 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300"
-            >
+            <button className="w-full py-4 bg-red-700 hover:bg-red-800 text-white font-bold text-xs uppercase tracking-widest shadow-lg hover:shadow-xl transition-all duration-300">
               Send Message
             </button>
           </form>
