@@ -51,30 +51,30 @@ export default function Landing() {
       </nav>
 
       {/* Hero Section - Reference Style (Immersive Background) */}
-      <section className="relative h-[600px] flex items-center justify-center text-center overflow-hidden">
+      <section className="relative h-[660px] flex items-center justify-center text-center overflow-hidden">
         {/* Background Image with Dark Overlay */}
-        <div className="absolute inset-0 mt-20">
+        <div className="absolute inset-0 mt-12">
           <img
-            src="/college_hero2.png"
-            alt="University Campus"
+            src="/college_hero.png"
+            alt="NetGrud Alumni Association"
             className="w-full h-full object-cover"
           />
           {/* Overlay Removed */}
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-white pt-20">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8 lg:px-12 lg:py-12 text-white pt-20 backdrop-blur-[5px] bg-black/20 border-black/20 border-2">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="text-lg md:text-xl font-medium mb-4 tracking-wide font-serif opacity-90">
+            <div className="text-lg md:text-xl font-medium mb-4 tracking-wide font-serif">
               NetGrud Alumni Association
             </div>
             <h1 className="text-6xl md:text-7xl font-bold mb-6 font-serif">
               Welcome Home
             </h1>
-            <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto opacity-90 leading-relaxed font-light">
+            <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto text-white leading-relaxed font-light">
               Helping you keep your alma mater close, wherever your journey takes you.
             </p>
 
@@ -97,10 +97,10 @@ export default function Landing() {
       {/* "All Together" Section (Reference Match) - Changed to Red for Light Theme consistency */}
       <section className="py-12 bg-red-900 text-white text-center">
         <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-bold font-serif mb-8">
+          <h2 className="text-3xl md:text-5xl font-bold font-serif mb-4">
             All Alumni, all together, <br /> all in one place.
           </h2>
-          <p className="text-lg text-gray-100 mb-4 leading-relaxed">
+          <p className="text-lg text-gray-100 mb-2 leading-relaxed">
             The Alumni Directory is your gateway to the global community. Update your profile, connect with old friends, and unlock exclusive opportunities. It's safe, verified, and built for you.
           </p>
           <Link to="/home" className="text-red-200 font-semibold text-lg hover:underline underline-offset-4">

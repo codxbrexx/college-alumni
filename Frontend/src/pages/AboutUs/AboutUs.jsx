@@ -6,10 +6,10 @@ const reunionImg = 'https://wpcdn.us-midwest-1.vip.tn-cloud.net/www.charlottepar
 const storyImg = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.deJFtz_PtCM1_81dZRtfewHaE8%3Fr%3D0%26pid%3DApi&f=1&ipt=f11132ca61f98975e30c4bf6f7b47c4b7bee7ed97e3a35ee5fae8fd8f572dc61&ipo=images';
 
 const stats = [
-  { id: 1, label: 'Active Alumni', value: 5000, suffix: '+', icon: FaUsers },
+  { id: 1, label: 'Active Alumni', value: 1000, suffix: '+', icon: FaUsers },
   { id: 2, label: 'Countries Represented', value: 10, suffix: '+', icon: FaGlobe },
   { id: 3, label: 'Years of History', value: 10, suffix: '+', icon: FaGraduationCap },
-  { id: 4, label: 'Mentorships Connected', value: 1200, suffix: '+', icon: FaHandshake },
+  { id: 4, label: 'Mentorships Connected', value: 500, suffix: '+', icon: FaHandshake },
 ];
 
 function AboutUs() {

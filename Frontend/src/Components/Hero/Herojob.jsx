@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Search from '../Search/Search';
-import Filter from '../Filter/Filter';
-import { IoIosAddCircleOutline } from "react-icons/io";
 import { useTheme } from '../../context/ThemeContext';
+import { FaSearch, FaMapMarkerAlt, FaBriefcase } from 'react-icons/fa';
 
 function Herojob() {
   const { isDarkMode } = useTheme();
@@ -13,185 +11,133 @@ function Herojob() {
   const [jobType, setJobType] = useState('all');
 
   return (
-    <div className="relative w-full min-h-[400px] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full min-h-[500px] flex flex-col justify-center overflow-hidden font-sans">
+      {/* Background Image with Sharp Overlay */}
       <img
-        src="/alumnibg.jpg"
+        src="/college_hero.png" // Using the same high-quality asset as landing
         alt="Hero Background"
         className="absolute inset-0 w-full h-full object-cover object-center z-0"
       />
-      <div className={`absolute inset-0 z-10 ${
-        isDarkMode ? 'bg-red-900/40' : 'bg-red-200/30'
-      }`} />
+      <div className={`absolute inset-0 z-10 ${isDarkMode ? 'bg-gray-900/85 mix-blend-multiply' : 'bg-red-900/80 mix-blend-multiply'
+        }`} />
 
-      <div className="relative z-20 w-full max-w-6xl mx-auto px-4 py-12">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
-            Find  Opportunity
+      {/* Hero Content */}
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-20 mt-10">
+        <div className="max-w-3xl mb-12">
+          <h4 className="text-white/80 font-bold tracking-widest uppercase text-sm mb-3">
+            Career Department
+          </h4>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 font-serif">
+            Find Your Next <br /> Chapter.
           </h1>
-          <p className={`text-xl mb-6 drop-shadow-md ${
-            isDarkMode ? 'text-gray-200' : 'text-gray-800'
-          }`}>
-            Connect with alumni-shared jobs, internships, and career opportunities
+          <p className="text-xl md:text-2xl text-white/90 font-light max-w-2xl leading-relaxed">
+            Exclusive career opportunities curated for our alumni network.
           </p>
         </div>
 
-        <div className="flex justify-center mb-6">
-          <div className={`backdrop-blur-sm  p-1 ${
-            isDarkMode ? 'bg-gray-900/20' : 'bg-white/20'
-          }`}>
-            <button
-              onClick={() => setActiveTab('jobs')}
-              className={`px-6 py-2  text-sm font-medium transition-colors ${
-                activeTab === 'jobs'
-                  ? isDarkMode 
-                    ? 'bg-gray-700 text-white shadow-md' 
-                    : 'bg-white text-red-700 shadow-md'
-                  : isDarkMode 
-                    ? 'text-gray-300 hover:text-white' 
-                    : 'text-gray-600 hover:text-gray-600/80'
+        {/* Tab Switcher - Sharp */}
+        <div className="flex mb-0">
+          <button
+            onClick={() => setActiveTab('jobs')}
+            className={`px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all ${activeTab === 'jobs'
+                ? 'bg-white text-black'
+                : 'bg-black/40 text-white hover:bg-black/60 backdrop-blur-sm'
               }`}
-            >
-              Jobs
-            </button>
-            <button
-              onClick={() => setActiveTab('internships')}
-              className={`px-6 py-2  text-sm font-medium transition-colors ${
-                activeTab === 'internships'
-                  ? isDarkMode 
-                    ? 'bg-gray-700 text-white shadow-md' 
-                    : 'bg-white text-red-700 shadow-md'
-                  : isDarkMode 
-                    ? 'text-gray-300 hover:text-white' 
-                    : 'text-gray-600 hover:text-gray-600/80'
+          >
+            Jobs
+          </button>
+          <button
+            onClick={() => setActiveTab('internships')}
+            className={`px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all ${activeTab === 'internships'
+                ? 'bg-white text-black'
+                : 'bg-black/40 text-white hover:bg-black/60 backdrop-blur-sm'
               }`}
-            >
-              Internships
-            </button>
-          </div>
+          >
+            Internships
+          </button>
         </div>
 
-        <div className={`backdrop-blur-sm  p-6 shadow-xl border transition-colors duration-300 ${
-          isDarkMode 
-            ? 'bg-gray-900/95 border-gray-700' 
-            : 'bg-white/95 border-white/20'
-        }`}>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="md:col-span-2">
-              <label className={`block text-sm font-medium mb-2 ${
-                isDarkMode ? 'text-gray-200' : 'text-gray-700'
-              }`}>
-                Search {activeTab === 'jobs' ? 'Jobs' : 'Internships'}
+        {/* Search Bar - Sharp & Professional */}
+        <div className="bg-white p-6 shadow-2xl">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+
+            {/* Search Input */}
+            <div className="md:col-span-5 border-b-2 md:border-b-0 md:border-r-2 border-gray-100 pb-4 md:pb-0 md:pr-4">
+              <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">
+                Keyword
               </label>
-              <input
-                type="text"
-                placeholder={`Search by title, company, or skills...`}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                  isDarkMode 
-                    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                    : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                }`}
-              />
-            </div>
-            <div>
-              <label className={`block text-sm font-medium mb-2 ${
-                isDarkMode ? 'text-gray-200' : 'text-gray-700'
-              }`}>Location</label>
-              <select
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                  isDarkMode 
-                    ? 'bg-gray-700 border-gray-600 text-white' 
-                    : 'border-gray-200 text-gray-900'
-                }`}
-              >
-                <option value="">All Locations</option>
-                <option value="remote">Remote</option>
-                <option value="bangalore">Bangalore</option>
-                <option value="mumbai">Mumbai</option>
-                <option value="delhi">Delhi</option>
-                <option value="hyderabad">Hyderabad</option>
-                <option value="pune">Pune</option>
-              </select>
+              <div className="flex items-center gap-3">
+                <FaSearch className="text-red-700" />
+                <input
+                  type="text"
+                  placeholder="Title, Company, or Skills"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-transparent outline-none text-gray-900 font-medium placeholder-gray-400"
+                />
+              </div>
             </div>
 
-            <div>
-              <label className={`block text-sm font-medium mb-2 ${
-                isDarkMode ? 'text-gray-200' : 'text-gray-700'
-              }`}>Type</label>
-              <select
-                value={jobType}
-                onChange={(e) => setJobType(e.target.value)}
-                className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                  isDarkMode 
-                    ? 'bg-gray-700 border-gray-600 text-white' 
-                    : 'border-gray-200 text-gray-900'
-                }`}
-              >
-                <option value="all">All Types</option>
-                <option value="full-time">Full Time</option>
-                <option value="part-time">Part Time</option>
-                <option value="contract">Contract</option>
-                <option value="freelance">Freelance</option>
-              </select>
+            {/* Location Input */}
+            <div className="md:col-span-3 border-b-2 md:border-b-0 md:border-r-2 border-gray-100 pb-4 md:pb-0 md:pr-4 md:pl-4">
+              <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">
+                Location
+              </label>
+              <div className="flex items-center gap-3">
+                <FaMapMarkerAlt className="text-red-700" />
+                <select
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  className="w-full bg-transparent outline-none text-gray-900 font-medium cursor-pointer appearance-none"
+                >
+                  <option value="">Anywhere</option>
+                  <option value="remote">Remote</option>
+                  <option value="bangalore">Bangalore</option>
+                  <option value="delhi">Delhi</option>
+                </select>
+              </div>
             </div>
-          </div>
-                {/* tag link */}
-          <div className={`mt-4 pt-4 border-t ${
-            isDarkMode ? 'border-gray-700' : 'border-gray-200'
-          }`}>
-            <div className="flex flex-wrap gap-4 items-center">
-              <span className={`text-sm font-medium ${
-                isDarkMode ? 'text-gray-200' : 'text-gray-700'
-              }`}>Quick Filters:</span>
-              <button className={`px-3 py-1 text-xs  hover:bg-red-200 transition-colors ${
-                isDarkMode 
-                  ? 'bg-red-900 text-red-300 hover:bg-red-800' 
-                  : 'bg-red-100 text-red-700'
-              }`}>
-                Remote Only
-              </button>
-              <button className={`px-3 py-1 text-xs  hover:bg-red-200 transition-colors ${
-                isDarkMode 
-                  ? 'bg-red-900 text-red-300 hover:bg-red-800' 
-                  : 'bg-red-100 text-red-700'
-              }`}>
-                Entry Level
-              </button>
-              <button className={`px-3 py-1 text-xs  hover:bg-red-200 transition-colors ${
-                isDarkMode 
-                  ? 'bg-red-900 text-red-300 hover:bg-red-800' 
-                  : 'bg-red-100 text-red-700'
-              }`}>
-                Alumni Referrals
-              </button>
-              <button className={`px-3 py-1 text-xs  hover:bg-red-200 transition-colors ${
-                isDarkMode 
-                  ? 'bg-red-900 text-red-300 hover:bg-red-800' 
-                  : 'bg-red-100 text-red-700'
-              }`}>
-                Recent Posts
+
+            {/* Type Input */}
+            <div className="md:col-span-2 pb-4 md:pb-0 md:pl-4">
+              <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">
+                Type
+              </label>
+              <div className="flex items-center gap-3">
+                <FaBriefcase className="text-red-700" />
+                <select
+                  value={jobType}
+                  onChange={(e) => setJobType(e.target.value)}
+                  className="w-full bg-transparent outline-none text-gray-900 font-medium cursor-pointer appearance-none"
+                >
+                  <option value="all">Any Type</option>
+                  <option value="full-time">Full Time</option>
+                  <option value="contract">Contract</option>
+                </select>
+              </div>
+            </div>
+
+            {/* Search Button */}
+            <div className="md:col-span-2">
+              <button className="w-full h-full min-h-[50px] bg-red-700 hover:bg-black text-white font-bold uppercase tracking-widest transition-all duration-300 text-sm">
+                Search
               </button>
             </div>
-          </div>
-          <div className="mt-6 flex justify-between items-center">
-            <button className="px-8 py-3 bg-red-400 hover:bg-red-500 cursor-pointer text-white font-semibold  shadow-lg transition-colors">
-              Search {activeTab === 'jobs' ? 'Jobs' : 'Internships'}
-            </button>
-            <Link 
-              to="/post-job"
-              className={`px-8 py-3 hover:bg-red-100 cursor-pointer font-semibold  shadow-lg transition-colors border ${
-                isDarkMode 
-                  ? 'bg-gray-700 hover:bg-gray-600 text-red-400 border-red-400' 
-                  : 'bg-white text-red-600 border-red-600'
-              }`}
-            >
-              Post a Job
-            </Link>
           </div>
         </div>
+
+        {/* Quick Links */}
+        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-white/80 text-sm font-medium">
+          <span className="text-white/50 uppercase tracking-widest text-xs font-bold mr-2">Quick Search:</span>
+          <button className="hover:text-white hover:underline decoration-red-500 underline-offset-4 transition-all">Remote</button>
+          <button className="hover:text-white hover:underline decoration-red-500 underline-offset-4 transition-all">Engineering</button>
+          <button className="hover:text-white hover:underline decoration-red-500 underline-offset-4 transition-all">Design</button>
+          <button className="hover:text-white hover:underline decoration-red-500 underline-offset-4 transition-all">Product</button>
+          <Link to="/post-job" className="ml-auto flex items-center gap-2 hover:text-white hover:underline decoration-red-500 underline-offset-4 transition-all text-red-200">
+            Post a Job &rarr;
+          </Link>
+        </div>
+
       </div>
     </div>
   );

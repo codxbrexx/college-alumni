@@ -18,10 +18,10 @@ import CountUp from 'react-countup'
 
 function Home() {
   const stats = [
-    { id: 1, label: 'Active Alumni', value: 5000, icon: <FaUsers className="w-8 h-8" />, suffix: '+' },
+    { id: 1, label: 'Active Alumni', value: 1000, icon: <FaUsers className="w-8 h-8" />, suffix: '+' },
     { id: 2, label: 'Job Opportunities', value: 850, icon: <FaBriefcase className="w-8 h-8" />, suffix: '+' },
     { id: 3, label: 'Success Stories', value: 1200, icon: <FaGraduationCap className="w-8 h-8" />, suffix: '+' },
-    { id: 4, label: 'Network Connections', value: 15000, icon: <FaNetworkWired className="w-8 h-8" />, suffix: '+' }
+    { id: 4, label: 'Network Connections Soon', value: 15000, icon: <FaNetworkWired className="w-8 h-8" />, suffix: '+' }
   ];
 
   /* features array removed */
@@ -31,7 +31,7 @@ function Home() {
       {/* Hero Section - Editorial Style with Overlap */}
       <section className="relative flex flex-col w-full mb-12">
         {/* Top: Image Area */}
-        <div className="w-full h-[500px] md:h-[650px] overflow-hidden relative">
+        <div className="w-full h-[500px] md:h-[620px] overflow-hidden relative">
           <img
             src="/Homehero.jpg"
             alt="University Campus"
@@ -40,7 +40,7 @@ function Home() {
         </div>
 
         {/* Overlapping Content Area */}
-        <div className="relative z-10 px-6 -mt-48 md:-mt-64">
+        <div className="relative z-10 px-6 -mt-48 md:-mt-58">
           <div className="max-w-5xl mx-auto p-8 md:p-14 shadow-2xl bg-white">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

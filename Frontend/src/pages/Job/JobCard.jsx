@@ -7,196 +7,98 @@ function JobCard({ job }) {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   return (
-    <div className={`group relative overflow-hidden  border shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-effect ${
-      isDarkMode 
-        ? 'bg-gradient-to-br from-gray-800 to-gray-900/80 border-red-900 hover:border-red-500/50' 
-        : 'bg-white/80 border-red-100 hover:border-red-500/50'
-    }`}>
-      {/* Gradient Header */}
-      <div className={`relative h-24 bg-gradient-to-br ${
-        isDarkMode 
-          ? 'from-red-700 via-red-800 to-blue-900' 
-          : 'from-red-300 via-red-400 to-blue-400'
+    <div className={`group relative border transition-all duration-300 hover:shadow-2xl hover:border-red-600 ${isDarkMode
+        ? 'bg-gray-900 border-gray-800'
+        : 'bg-white border-gray-200'
       }`}>
-        <div className="absolute inset-0 bg-black/10" />
-        
-        {/* Bookmark Button */}
-        <button
-          onClick={() => setIsBookmarked(!isBookmarked)}
-          className={`absolute top-4 right-4 p-2  transition-all duration-300 ${
-            isDarkMode 
-              ? 'bg-gray-950/50 hover:bg-gray-950/80 backdrop-blur-sm' 
-              : 'bg-white/50 hover:bg-white/80 backdrop-blur-sm'
-          }`}
-        >
-          {isBookmarked ? (
-            <FaBookmark className={`w-4 h-4 ${isDarkMode ? 'text-red-400' : 'text-red-600'}`} />
-          ) : (
-            <FaRegBookmark className={`w-4 h-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`} />
-          )}
-        </button>
 
-        {/* Company Badge */}
-        <div className="absolute -bottom-8 left-6">
-          <div className={`w-16 h-16  shadow-lg flex items-center justify-center border-4 ${
-            isDarkMode 
-              ? 'bg-gray-900 border-gray-900' 
-              : 'bg-white border-white'
-          }`}>
-            <FaBuilding className={`text-2xl ${
-              isDarkMode ? 'text-red-400' : 'text-red-600'
-            }`} />
-          </div>
-        </div>
-      </div>
-      
-      <div className="relative p-6 pt-12">
-        {/* Job Type & Internship Badge */}
-        <div className="absolute top-3 right-6 flex gap-2">
-          {job.isInternship && (
-            <span className={`px-3 py-1  text-xs font-bold shadow ${
-              isDarkMode 
-                ? 'bg-blue-900/80 text-blue-300' 
-                : 'bg-blue-100 text-blue-700'
+      {/* Top Accent Line (Optional, or left border) - We use Left Border to match Alumni */}
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-700 transition-all group-hover:w-2"></div>
+
+      <div className="p-8 pl-10">
+
+        {/* Header: Company Icon & Bookmark */}
+        <div className="flex justify-between items-start mb-6">
+          <div className={`w-16 h-16 flex items-center justify-center border ${isDarkMode ? 'bg-gray-800 border-gray-700 text-red-500' : 'bg-gray-50 border-gray-100 text-red-700'
             }`}>
-              Internship
-            </span>
-          )}
+            <FaBuilding className="text-3xl" />
+          </div>
+          <button
+            onClick={() => setIsBookmarked(!isBookmarked)}
+            className={`transition-colors text-xl ${isBookmarked
+                ? 'text-red-600'
+                : isDarkMode ? 'text-gray-600 hover:text-white' : 'text-gray-300 hover:text-gray-600'
+              }`}
+          >
+            {isBookmarked ? <FaBookmark /> : <FaRegBookmark />}
+          </button>
         </div>
 
-        {/* Title and Company */}
-        <div className="mb-4">
-          <h3 className={`text-2xl font-bold mb-1 gradient-text leading-tight`}>
+        {/* Content */}
+        <div className="mb-6">
+          {/* Tags */}
+          <div className="flex gap-2 mb-3">
+            {job.isInternship && (
+              <span className={`text-xs font-bold uppercase tracking-widest px-2 py-1 ${isDarkMode ? 'bg-blue-900/40 text-blue-300' : 'bg-blue-50 text-blue-700'
+                }`}>
+                Internship
+              </span>
+            )}
+            <span className={`text-xs font-bold uppercase tracking-widest px-2 py-1 ${isDarkMode ? 'bg-red-900/40 text-red-300' : 'bg-red-50 text-red-700'
+              }`}>
+              {job.type}
+            </span>
+          </div>
+
+          <h3 className={`text-2xl font-bold font-serif mb-2 leading-tight ${isDarkMode ? 'text-white' : 'text-gray-900'
+            }`}>
             {job.title}
           </h3>
-          <p className={`text-base font-semibold ${
-            isDarkMode ? 'text-red-300' : 'text-red-600'
-          }`}>{job.company}</p>
-        </div>
+          <p className={`text-lg font-medium mb-1 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}>{job.company}</p>
 
-        {/* Salary Badge */}
-        <div className="mb-4">
-          <div className={`inline-flex items-center gap-2 px-4 py-2  font-bold text-lg shadow ${
-            isDarkMode 
-              ? 'bg-green-900/60 text-green-300 border border-green-700/50' 
-              : 'bg-green-50 text-green-700 border border-green-200'
-          }`}>
-            💰 {job.salary}
-          </div>
-        </div>
-
-        {/* Location, Type, and Experience */}
-        <div className="grid grid-cols-1 gap-2 mb-4">
-          <div className={`flex items-center gap-2 text-sm ${
-            isDarkMode ? 'text-gray-300' : 'text-gray-700'
-          }`}>
-            <FaMapMarkerAlt className={`w-4 h-4 ${
-              isDarkMode ? 'text-red-400' : 'text-red-600'
-            }`} />
-            <span className="font-medium">{job.location}</span>
-            <span className={isDarkMode ? 'text-gray-600' : 'text-gray-400'}>•</span>
-            <FaClock className={`w-4 h-4 ${
-              isDarkMode ? 'text-red-400' : 'text-red-600'
-            }`} />
-            <span className="font-medium">{job.type}</span>
-          </div>
-          <div className={`text-sm ${
-            isDarkMode ? 'text-gray-400' : 'text-gray-600'
-          }`}>
-            <span className="font-semibold">Experience:</span> {job.experience}
+          <div className={`flex items-center gap-4 text-sm mt-4 pb-4 border-b ${isDarkMode ? 'border-gray-800' : 'border-gray-100'
+            } ${isDarkMode ? 'text-gray-500' : 'text-gray-400'
+            }`}>
+            <span className="flex items-center gap-2">
+              <FaMapMarkerAlt /> {job.location}
+            </span>
+            <span className="flex items-center gap-2">
+              <FaClock /> {job.experience}
+            </span>
           </div>
         </div>
 
         {/* Description */}
-        <p className={`text-base mb-4 line-clamp-2 ${
-          isDarkMode ? 'text-gray-300' : 'text-gray-600'
-        }`}>
+        <p className={`text-sm leading-relaxed mb-6 line-clamp-3 font-light ${isDarkMode ? 'text-gray-300' : 'text-gray-600'
+          }`}>
           {job.description}
         </p>
 
-        {/* Skills */}
-        <div className="mb-4">
-          <div className="flex flex-wrap gap-2 justify-center">
-            {job.skills.slice(0, 4).map((skill, index) => (
-              <span key={index} className={`px-4 py-1  text-xs font-semibold shadow ${
-                isDarkMode 
-                  ? 'bg-red-900/60 text-red-300 border border-red-700/50' 
-                  : 'bg-red-50 text-red-700 border border-red-200'
+        {/* Footer */}
+        <div className="flex items-center justify-between mt-auto">
+          <div className="flex items-center gap-3">
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-black text-white'
               }`}>
-                {skill}
-              </span>
-            ))}
-            {job.skills.length > 4 && (
-              <span className={`px-4 py-1  text-xs font-semibold ${
-                isDarkMode ? 'text-gray-400' : 'text-gray-500'
-              }`}>
-                +{job.skills.length - 4} more
-              </span>
-            )}
-          </div>
-        </div>
-
-        {/* Benefits */}
-        {job.benefits.length > 0 && (
-          <div className="mb-4">
-            <p className={`text-xs font-semibold mb-2 ${
-              isDarkMode ? 'text-gray-400' : 'text-gray-600'
-            }`}>Benefits:</p>
-            <div className="flex flex-wrap gap-2">
-              {job.benefits.slice(0, 3).map((benefit, index) => (
-                <span key={index} className={`px-3 py-1  text-xs font-medium ${
-                  isDarkMode 
-                    ? 'bg-purple-900/50 text-purple-300' 
-                    : 'bg-purple-50 text-purple-700'
-                }`}>
-                  ✓ {benefit}
-                </span>
-              ))}
-              {job.benefits.length > 3 && (
-                <span className={`px-3 py-1  text-xs font-medium ${
-                  isDarkMode 
-                    ? 'bg-purple-900/50 text-purple-300' 
-                    : 'bg-purple-50 text-purple-700'
-                }`}>
-                  +{job.benefits.length - 3}
-                </span>
-              )}
+              {job.alumnus.charAt(0)}
+            </div>
+            <div className="flex flex-col">
+              <span className={`text-xs font-bold uppercase tracking-wider ${isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                }`}>Referral By</span>
+              <span className={`text-xs font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>{job.alumnus} '{job.batch.slice(2)}</span>
             </div>
           </div>
-        )}
 
-        {/* Footer */}
-        <div className={`flex justify-between items-center pt-4 border-t ${
-          isDarkMode ? 'border-gray-700' : 'border-gray-200'
-        }`}>
-          <div className="flex items-center gap-2">
-            <FaGraduationCap className={`text-base ${
-              isDarkMode ? 'text-red-400' : 'text-red-600'
-            }`} />
-            <span className={`text-sm font-medium ${
-              isDarkMode ? 'text-gray-300' : 'text-gray-600'
-            }`}>
-              {job.alumnus}
-            </span>
-            <span className={`text-xs ${
-              isDarkMode ? 'text-gray-500' : 'text-gray-400'
-            }`}>
-              ({job.batch})
-            </span>
-          </div>
-          
-          <a 
-            href={job.link} 
-            className={`flex items-center gap-2 px-5 py-2.5  font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover-glow ${
-              isDarkMode 
-                ? 'bg-red-600 hover:bg-red-500 text-white' 
-                : 'bg-red-600 hover:bg-red-700 text-white'
-            }`}
+          <a
+            href={job.link}
+            className={`flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:underline decoration-2 underline-offset-4 decoration-red-600 ${isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}
           >
-            Apply Now
-            <FaExternalLinkAlt className="text-xs" />
+            Apply <FaExternalLinkAlt className="text-xs text-red-600" />
           </a>
         </div>
+
       </div>
     </div>
   );

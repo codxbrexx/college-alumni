@@ -72,7 +72,7 @@ function Postprofile() {
                     name="rollNo"
                     value={form.rollNo}
                     onChange={handleFormChange}
-                    placeholder="e.g., lcs2024035"
+                    placeholder="e.g., lcs20240XX"
                     className="w-full px-4 py-3 border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 border-gray-200 text-gray-900 placeholder-gray-500"
                     required
                   />
