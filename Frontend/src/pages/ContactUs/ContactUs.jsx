@@ -1,69 +1,126 @@
 import React from 'react';
-import { useTheme } from '../../context/ThemeContext';
-
-
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 function ContactUs() {
-  const { isDarkMode } = useTheme();
-
   return (
-    <div className={`min-h-screen flex flex-col md:flex-row items-center justify-center font-['Poppins'] transition-colors duration-300 ${isDarkMode ? 'bg-gray-950' : 'bg-white'
-      }`}>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 font-['Poppins']">
+      <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-2xl shadow-xl overflow-hidden">
 
-      {/* Contact Form Card */}
-      <div className={`w-full max-w-md  flex flex-col items-center justify-center p-12 border shadow-2xl backdrop-blur-md z-10 transition-colors duration-300 ${isDarkMode
-          ? 'bg-gray-900/50 border-gray-700 text-white'
-          : 'bg-white/50 border-white/30 text-gray-900'
-        }`}>
-        <div className="w-full max-w-md">
-          <div className="text-center mb-8">
-            <h1 className={`text-2xl font-semibold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'
-              }`}>Let's Connect</h1>
-            <p className={`text-sm mb-8 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'
-              }`}>
-              We'd love to hear from you!
+        {/* Left Side: Contact Info */}
+        <div className="bg-red-700 p-10 text-white flex flex-col justify-between relative overflow-hidden">
+          {/* Decorative Circle */}
+          <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-red-600 rounded-full opacity-50"></div>
+          <div className="absolute top-[-50px] left-[-50px] w-48 h-48 bg-red-600 rounded-full opacity-30"></div>
+
+          <div className="relative z-10">
+            <h1 className="text-4xl font-serif font-bold mb-6">Get in Touch</h1>
+            <p className="text-red-100 text-lg mb-12">
+              Have questions or need assistance? We're here to help you connect with your alumni network.
             </p>
-          </div>
-          <form className="space-y-6">
-            <div>
-              <label className={`block text-sm font-medium pl-2 mb-2 ${isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                }`}>Name</label>
-              <input
-                type="text"
-                placeholder="Enter your name"
-                className={`w-full h-12 px-4  border shadow-md focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${isDarkMode
-                    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-red-500'
-                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-500 focus:border-red-500'
-                  }`}
-              />
+
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="bg-red-600 p-3 rounded-lg text-white">
+                  <FaEnvelope className="text-xl" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg">Email Us</h3>
+                  <p className="text-red-100">alumni@college.edu</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="bg-red-600 p-3 rounded-lg text-white">
+                  <FaPhone className="text-xl" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg">Call Us</h3>
+                  <p className="text-red-100 text-sm">+91 12345 67890</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="bg-red-600 p-3 rounded-lg text-white">
+                  <FaMapMarkerAlt className="text-xl" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-lg">Visit Us</h3>
+                  <p className="text-red-100 text-sm">
+                    Alumni Cell, Admin Block<br />
+                    College of Engineering, Pune
+                  </p>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div className="relative z-10 mt-12">
+            <h3 className="text-lg font-medium mb-4">Connect with us</h3>
+            <div className="flex gap-4">
+              <a href="#" className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center hover:bg-white hover:text-red-700 transition-all duration-300">
+                <FaLinkedin className="text-xl" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center hover:bg-white hover:text-red-700 transition-all duration-300">
+                <FaTwitter className="text-xl" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side: Contact Form */}
+        <div className="p-10 lg:p-12 bg-white">
+          <form className="space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter your name"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                <input
+                  type="text"
+                  placeholder="Enter your last name"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
+                />
+              </div>
+            </div>
+
             <div>
-              <label className={`block text-sm font-medium pl-2 mb-2 ${isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                }`}>Email</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
               <input
                 type="email"
                 placeholder="Enter your email"
-                className={`w-full h-12 px-4  border shadow-md focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${isDarkMode
-                    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-red-500'
-                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-500 focus:border-red-500'
-                  }`}
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
               />
             </div>
+
             <div>
-              <label className={`block text-sm font-medium pl-2 mb-2 ${isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                }`}>Message</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+              <select className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all">
+                <option value="">Select a topic</option>
+                <option value="general">General Inquiry</option>
+                <option value="technical">Technical Support</option>
+                <option value="events">Alumni Events</option>
+                <option value="career">Career Services</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
               <textarea
-                placeholder="Type your message..."
                 rows={4}
-                className={`w-full px-4 py-2  border shadow-md focus:outline-none focus:ring-1 focus:ring-red-500 resize-none transition-colors duration-300 ${isDarkMode
-                    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-red-500'
-                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-500 focus:border-red-500'
-                  }`}
+                placeholder="Enter your message"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none transition-all"
               />
             </div>
+
             <button
               type="submit"
-              className="w-full h-12 bg-red-500 shadow-md hover:bg-red-600 text-white font-medium  transition-colors"
+              className="w-full py-4 bg-red-700 hover:bg-red-800 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300"
             >
               Send Message
             </button>
