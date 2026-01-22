@@ -24,7 +24,7 @@ function Search() {
           placeholder="Search here"
           type="text"
         />
-        <button className="bg-teal-400 hover:bg-teal-500 text-white font-semibold px-6 py-2  ml-2 transition-colors">Search</button>
+        <button className="bg-red-400 hover:bg-red-500 text-white font-semibold px-6 py-2  ml-2 transition-colors">Search</button>
       </div>
     </div>
   )

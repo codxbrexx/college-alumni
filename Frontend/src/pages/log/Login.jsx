@@ -71,7 +71,7 @@ export default function Login() {
           }`}>
             <div className={`flex-1 py-2.5  text-sm font-medium text-center transition-all ${
               isDarkMode
-                ? 'bg-teal-600 text-white shadow-sm'
+                ? 'bg-red-600 text-white shadow-sm'
                 : 'bg-white text-gray-900 shadow-sm'
             }`}>
               Login
@@ -115,7 +115,7 @@ export default function Login() {
                   value={formData.identifier}
                   onChange={handleChange}
                   placeholder="Enter your email or username"
-                  className={`w-full h-11 pl-10 pr-4  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
+                  className={`w-full h-11 pl-10 pr-4  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${
                     isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
@@ -143,7 +143,7 @@ export default function Login() {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Enter your password"
-                  className={`w-full h-11 pl-10 pr-11  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
+                  className={`w-full h-11 pl-10 pr-11  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${
                     isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
@@ -168,7 +168,7 @@ export default function Login() {
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4  border-2 text-teal-600 focus:ring-teal-500"
+                  className="w-4 h-4  border-2 text-red-600 focus:ring-red-500"
                 />
                 <span className={`ml-2 text-sm ${
                   isDarkMode ? 'text-gray-400' : 'text-gray-600'
@@ -180,8 +180,8 @@ export default function Login() {
                 to="/forgot" 
                 className={`text-sm font-medium transition-colors ${
                   isDarkMode 
-                    ? 'text-teal-400 hover:text-teal-300' 
-                    : 'text-teal-600 hover:text-teal-700'
+                    ? 'text-red-400 hover:text-red-300' 
+                    : 'text-red-600 hover:text-red-700'
                 }`}
               >
                 Forgot Password?
@@ -194,8 +194,8 @@ export default function Login() {
               disabled={loading}
               className={`w-full h-11  font-medium text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
                 isDarkMode
-                  ? 'bg-teal-600 hover:bg-teal-700'
-                  : 'bg-teal-600 hover:bg-teal-700'
+                  ? 'bg-red-600 hover:bg-red-700'
+                  : 'bg-red-600 hover:bg-red-700'
               }`}
             >
               {loading ? (
@@ -225,8 +225,8 @@ export default function Login() {
               to="/register"
               className={`font-medium ${
                 isDarkMode
-                  ? 'text-teal-400 hover:text-teal-300'
-                  : 'text-teal-600 hover:text-teal-700'
+                  ? 'text-red-400 hover:text-red-300'
+                  : 'text-red-600 hover:text-red-700'
               }`}
             >
               Create Account

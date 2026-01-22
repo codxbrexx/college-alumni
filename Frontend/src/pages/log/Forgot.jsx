@@ -55,7 +55,7 @@ export default function Forgot() {
           {/* Header */}
           <div className="mb-8">
             <div className={`inline-flex items-center justify-center w-12 h-12  mb-4 ${
-              isDarkMode ? 'bg-teal-600' : 'bg-teal-500'
+              isDarkMode ? 'bg-red-600' : 'bg-red-500'
             }`}>
               <FaEnvelope className="w-6 h-6 text-white" />
             </div>
@@ -73,7 +73,7 @@ export default function Forgot() {
           }`}>
             <div className={`flex-1 py-2.5  text-sm font-medium text-center transition-all ${
               isDarkMode
-                ? 'bg-teal-600 text-white shadow-sm'
+                ? 'bg-red-600 text-white shadow-sm'
                 : 'bg-white text-gray-900 shadow-sm'
             }`}>
               Reset Password
@@ -115,7 +115,7 @@ export default function Forgot() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className={`w-full h-11 pl-10 pr-24  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
+                  className={`w-full h-11 pl-10 pr-24  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${
                     isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
@@ -127,8 +127,8 @@ export default function Forgot() {
                   disabled={loading || otpSent}
                   className={`absolute right-2 top-1/2 -translate-y-1/2 h-8 px-3 text-xs font-medium  transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
                     isDarkMode 
-                      ? 'bg-teal-600 hover:bg-teal-700 text-white' 
-                      : 'bg-teal-600 hover:bg-teal-700 text-white'
+                      ? 'bg-red-600 hover:bg-red-700 text-white' 
+                      : 'bg-red-600 hover:bg-red-700 text-white'
                   }`}
                 >
                   {loading ? 'Sending...' : otpSent ? 'Sent' : 'Send OTP'}
@@ -153,7 +153,7 @@ export default function Forgot() {
                     inputMode="numeric"
                     pattern="[0-9]*"
                     placeholder="Enter 6-digit OTP"
-                    className={`w-full h-11 pl-4 pr-24  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
+                    className={`w-full h-11 pl-4 pr-24  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${
                       isDarkMode
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                         : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
@@ -164,8 +164,8 @@ export default function Forgot() {
                     onClick={handleVerifyOTP}
                     className={`absolute right-2 top-1/2 -translate-y-1/2 h-8 px-3 text-xs font-medium  flex items-center gap-1 transition-colors ${
                       isDarkMode 
-                        ? 'bg-teal-600 hover:bg-teal-700 text-white' 
-                        : 'bg-teal-600 hover:bg-teal-700 text-white'
+                        ? 'bg-red-600 hover:bg-red-700 text-white' 
+                        : 'bg-red-600 hover:bg-red-700 text-white'
                     }`}
                   >
                     <TbShieldCheckFilled className="w-3.5 h-3.5" />
@@ -181,8 +181,8 @@ export default function Forgot() {
               disabled={loading}
               className={`w-full h-11  font-medium text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
                 isDarkMode
-                  ? 'bg-teal-600 hover:bg-teal-700'
-                  : 'bg-teal-600 hover:bg-teal-700'
+                  ? 'bg-red-600 hover:bg-red-700'
+                  : 'bg-red-600 hover:bg-red-700'
               }`}
             >
               {loading ? (
@@ -211,8 +211,8 @@ export default function Forgot() {
               to="/login"
               className={`font-medium ${
                 isDarkMode
-                  ? 'text-teal-400 hover:text-teal-300'
-                  : 'text-teal-600 hover:text-teal-700'
+                  ? 'text-red-400 hover:text-red-300'
+                  : 'text-red-600 hover:text-red-700'
               }`}
             >
               Sign In

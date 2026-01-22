@@ -19,7 +19,7 @@ function Heronews() {
         className="absolute inset-0 w-full h-full object-cover object-center z-0"
       />
       <div className={`absolute inset-0 z-10 ${
-        isDarkMode ? 'bg-teal-900/40' : 'bg-teal-200/30'
+        isDarkMode ? 'bg-red-900/40' : 'bg-red-200/30'
       }`} />
 
       <div className="relative z-20 w-full max-w-6xl mx-auto px-4 py-12">
@@ -44,7 +44,7 @@ function Heronews() {
                 activeTab === 'news'
                   ? isDarkMode 
                     ? 'bg-gray-700 text-white shadow-md' 
-                    : 'bg-white text-teal-700 shadow-md'
+                    : 'bg-white text-red-700 shadow-md'
                   : isDarkMode 
                     ? 'text-gray-300 hover:text-white' 
                     : 'text-gray-600 hover:text-gray-600/80'
@@ -58,7 +58,7 @@ function Heronews() {
                 activeTab === 'events'
                   ? isDarkMode 
                     ? 'bg-gray-700 text-white shadow-md' 
-                    : 'bg-white text-teal-700 shadow-md'
+                    : 'bg-white text-red-700 shadow-md'
                   : isDarkMode 
                     ? 'text-gray-300 hover:text-white' 
                     : 'text-gray-600 hover:text-gray-600/80'
@@ -86,7 +86,7 @@ function Heronews() {
                 placeholder={`Search by title, author, or content...`}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
                   isDarkMode 
                     ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                     : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -100,7 +100,7 @@ function Heronews() {
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
                   isDarkMode 
                     ? 'bg-gray-700 border-gray-600 text-white' 
                     : 'border-gray-200 text-gray-900'
@@ -126,46 +126,46 @@ function Heronews() {
               <span className={`text-sm font-medium ${
                 isDarkMode ? 'text-gray-200' : 'text-gray-700'
               }`}>Quick Filters:</span>
-              <button className={`px-3 py-1 text-xs  hover:bg-teal-200 transition-colors ${
+              <button className={`px-3 py-1 text-xs  hover:bg-red-200 transition-colors ${
                 isDarkMode 
-                  ? 'bg-teal-900 text-teal-300 hover:bg-teal-800' 
-                  : 'bg-teal-100 text-teal-700'
+                  ? 'bg-red-900 text-red-300 hover:bg-red-800' 
+                  : 'bg-red-100 text-red-700'
               }`}>
                 Latest News
               </button>
-              <button className={`px-3 py-1 text-xs  hover:bg-teal-200 transition-colors ${
+              <button className={`px-3 py-1 text-xs  hover:bg-red-200 transition-colors ${
                 isDarkMode 
-                  ? 'bg-teal-900 text-teal-300 hover:bg-teal-800' 
-                  : 'bg-teal-100 text-teal-700'
+                  ? 'bg-red-900 text-red-300 hover:bg-red-800' 
+                  : 'bg-red-100 text-red-700'
               }`}>
                 Upcoming Events
               </button>
-              <button className={`px-3 py-1 text-xs  hover:bg-teal-200 transition-colors ${
+              <button className={`px-3 py-1 text-xs  hover:bg-red-200 transition-colors ${
                 isDarkMode 
-                  ? 'bg-teal-900 text-teal-300 hover:bg-teal-800' 
-                  : 'bg-teal-100 text-teal-700'
+                  ? 'bg-red-900 text-red-300 hover:bg-red-800' 
+                  : 'bg-red-100 text-red-700'
               }`}>
                 Alumni Stories
               </button>
-              <button className={`px-3 py-1 text-xs  hover:bg-teal-200 transition-colors ${
+              <button className={`px-3 py-1 text-xs  hover:bg-red-200 transition-colors ${
                 isDarkMode 
-                  ? 'bg-teal-900 text-teal-300 hover:bg-teal-800' 
-                  : 'bg-teal-100 text-teal-700'
+                  ? 'bg-red-900 text-red-300 hover:bg-red-800' 
+                  : 'bg-red-100 text-red-700'
               }`}>
                 Campus Updates
               </button>
             </div>
           </div>
           <div className="mt-6 flex justify-between items-center">
-            <button className="px-8 py-3 bg-teal-400 hover:bg-teal-500 cursor-pointer text-white font-semibold  shadow-lg transition-colors">
+            <button className="px-8 py-3 bg-red-400 hover:bg-red-500 cursor-pointer text-white font-semibold  shadow-lg transition-colors">
               Search {activeTab === 'news' ? 'News' : 'Events'}
             </button>
             <Link 
               to="/post-news"
-              className={`px-8 py-3 hover:bg-teal-100 cursor-pointer font-semibold  shadow-lg transition-colors border ${
+              className={`px-8 py-3 hover:bg-red-100 cursor-pointer font-semibold  shadow-lg transition-colors border ${
                 isDarkMode 
-                  ? 'bg-gray-700 hover:bg-gray-600 text-teal-400 border-teal-400' 
-                  : 'bg-white text-teal-600 border-teal-600'
+                  ? 'bg-gray-700 hover:bg-gray-600 text-red-400 border-red-400' 
+                  : 'bg-white text-red-600 border-red-600'
               }`}
             >
               Post News/Event

@@ -76,8 +76,8 @@ function NewsCard({ news }) {
   return (
     <div className={`group relative overflow-hidden  border shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-effect ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-gray-800 to-gray-900/80 border-teal-900 hover:border-teal-500/50' 
-        : 'bg-white/80 border-teal-100 hover:border-teal-500/50'
+        ? 'bg-gradient-to-br from-gray-800 to-gray-900/80 border-red-900 hover:border-red-500/50' 
+        : 'bg-white/80 border-red-100 hover:border-red-500/50'
     }`}>
       {/* Header with Gradient */}
       <div className={`relative h-20 bg-gradient-to-br ${
@@ -86,8 +86,8 @@ function NewsCard({ news }) {
             ? 'from-blue-700 via-blue-800 to-purple-900' 
             : 'from-blue-300 via-blue-400 to-purple-400'
           : isDarkMode 
-            ? 'from-teal-700 via-teal-800 to-blue-900' 
-            : 'from-teal-300 via-teal-400 to-blue-400'
+            ? 'from-red-700 via-red-800 to-blue-900' 
+            : 'from-red-300 via-red-400 to-blue-400'
       }`}>
         <div className="absolute inset-0 bg-black/10" />
         
@@ -99,8 +99,8 @@ function NewsCard({ news }) {
                 ? 'bg-blue-900/80 text-blue-300 border border-blue-700' 
                 : 'bg-blue-100 text-blue-700 border border-blue-200'
               : isDarkMode 
-                ? 'bg-teal-900/80 text-teal-300 border border-teal-700' 
-                : 'bg-teal-100 text-teal-700 border border-teal-200'
+                ? 'bg-red-900/80 text-red-300 border border-red-700' 
+                : 'bg-red-100 text-red-700 border border-red-200'
           }`}>
             {news.category}
           </span>
@@ -134,12 +134,12 @@ function NewsCard({ news }) {
           isDarkMode ? 'text-gray-400' : 'text-gray-600'
         }`}>
           <div className="flex items-center gap-2">
-            <FaCalendar className={`w-4 h-4 ${isDarkMode ? 'text-teal-400' : 'text-teal-600'}`} />
+            <FaCalendar className={`w-4 h-4 ${isDarkMode ? 'text-red-400' : 'text-red-600'}`} />
             <span className="font-medium">{news.date}</span>
           </div>
           <span className={isDarkMode ? 'text-gray-600' : 'text-gray-400'}>•</span>
           <div className="flex items-center gap-2">
-            <FaClock className={`w-4 h-4 ${isDarkMode ? 'text-teal-400' : 'text-teal-600'}`} />
+            <FaClock className={`w-4 h-4 ${isDarkMode ? 'text-red-400' : 'text-red-600'}`} />
             <span className="font-medium">{news.readTime}</span>
           </div>
         </div>
@@ -195,7 +195,7 @@ function NewsCard({ news }) {
           <div className="flex items-center gap-4">
             {/* Author */}
             <div className="flex items-center gap-2">
-              <FaUser className={`w-4 h-4 ${isDarkMode ? 'text-teal-400' : 'text-teal-600'}`} />
+              <FaUser className={`w-4 h-4 ${isDarkMode ? 'text-red-400' : 'text-red-600'}`} />
               <span className={`text-sm font-medium ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-600'
               }`}>
@@ -229,8 +229,8 @@ function NewsCard({ news }) {
                 ? 'bg-blue-600 hover:bg-blue-500 text-white' 
                 : 'bg-blue-600 hover:bg-blue-700 text-white'
               : isDarkMode 
-                ? 'bg-teal-600 hover:bg-teal-500 text-white' 
-                : 'bg-teal-600 hover:bg-teal-700 text-white'
+                ? 'bg-red-600 hover:bg-red-500 text-white' 
+                : 'bg-red-600 hover:bg-red-700 text-white'
           }`}>
             {news.isEvent ? 'Register' : 'Read More'}
           </button>
@@ -278,7 +278,7 @@ export default function News() {
         {/* Header Section */}
         <div className="text-center mb-12">
           <span className={`inline-block px-4 py-2  font-semibold mb-4 shadow ${
-            isDarkMode ? 'bg-teal-900/80 text-teal-300' : 'bg-teal-100 text-teal-700'
+            isDarkMode ? 'bg-red-900/80 text-red-300' : 'bg-red-100 text-red-700'
           }`}>Latest Updates</span>
           <h2 className={`text-4xl md:text-5xl font-extrabold mb-4 tracking-tight gradient-text`}>
             News & Events
@@ -304,8 +304,8 @@ export default function News() {
                   className={`flex items-center gap-2 px-6 py-3  font-semibold transition-all duration-300 ${
                     activeTab === tab.id
                       ? isDarkMode
-                        ? 'bg-teal-600 text-white'
-                        : 'bg-teal-600 text-white'
+                        ? 'bg-red-600 text-white'
+                        : 'bg-red-600 text-white'
                       : isDarkMode
                         ? 'text-gray-400 hover:text-white hover:bg-gray-700'
                         : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
@@ -322,8 +322,8 @@ export default function News() {
         {/* Search and Filter */}
         <div className={`mb-8 p-6  shadow-lg border ${
           isDarkMode 
-            ? 'bg-gray-900/50 border-teal-900 backdrop-blur-sm' 
-            : 'bg-white/80 border-teal-100 backdrop-blur-sm'
+            ? 'bg-gray-900/50 border-red-900 backdrop-blur-sm' 
+            : 'bg-white/80 border-red-100 backdrop-blur-sm'
         }`}>
           {/* Search Bar */}
           <div className="flex flex-col md:flex-row gap-4">
@@ -338,8 +338,8 @@ export default function News() {
                 onChange={(e) => setSearch(e.target.value)}
                 className={`w-full pl-12 pr-4 py-3  border-2 outline-none transition-all duration-300 ${
                   isDarkMode 
-                    ? 'bg-gray-950 border-gray-700 text-white placeholder-gray-500 focus:border-teal-500' 
-                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-teal-500'
+                    ? 'bg-gray-950 border-gray-700 text-white placeholder-gray-500 focus:border-red-500' 
+                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-red-500'
                 }`}
               />
             </div>
@@ -361,8 +361,8 @@ export default function News() {
                   className={`px-4 py-2  font-medium transition-all duration-300 ${
                     category === cat.toLowerCase()
                       ? isDarkMode
-                        ? 'bg-teal-600 text-white'
-                        : 'bg-teal-600 text-white'
+                        ? 'bg-red-600 text-white'
+                        : 'bg-red-600 text-white'
                       : isDarkMode
                         ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'

@@ -34,11 +34,11 @@ function Footer() {
           <ul className={`space-y-2 text-sm ${
             isDarkMode ? 'text-gray-400' : 'text-gray-600'
           }`}>
-            <li><Link to="/home" className={`hover:${isDarkMode ? 'text-teal-400' : 'text-teal-600'} transition-colors`}>Home</Link></li>
-            <li><Link to="/alumni" className={`hover:${isDarkMode ? 'text-teal-400' : 'text-teal-600'} transition-colors`}>Alumni</Link></li>
-            <li><Link to="/job" className={`hover:${isDarkMode ? 'text-teal-400' : 'text-teal-600'} transition-colors`}>Jobs</Link></li>
-            <li><Link to="/news" className={`hover:${isDarkMode ? 'text-teal-400' : 'text-teal-600'} transition-colors`}>News</Link></li>
-            <li><Link to="/placement" className={`hover:${isDarkMode ? 'text-teal-400' : 'text-teal-600'} transition-colors`}>Placements</Link></li>
+            <li><Link to="/home" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>Home</Link></li>
+            <li><Link to="/alumni" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>Alumni</Link></li>
+            <li><Link to="/job" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>Jobs</Link></li>
+            <li><Link to="/news" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>News</Link></li>
+            <li><Link to="/placement" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>Placements</Link></li>
           </ul>
         </div>
         
@@ -49,10 +49,10 @@ function Footer() {
           <ul className={`space-y-2 text-sm ${
             isDarkMode ? 'text-gray-400' : 'text-gray-600'
           }`}>
-            <li><Link to="/about" className={`hover:${isDarkMode ? 'text-teal-400' : 'text-teal-600'} transition-colors`}>About Us</Link></li>
-            <li><Link to="/contact" className={`hover:${isDarkMode ? 'text-teal-400' : 'text-teal-600'} transition-colors`}>Contact</Link></li>
-            <li><a href="#" className={`hover:${isDarkMode ? 'text-teal-400' : 'text-teal-600'} transition-colors`}>Privacy Policy</a></li>
-            <li><a href="#" className={`hover:${isDarkMode ? 'text-teal-400' : 'text-teal-600'} transition-colors`}>Terms of Service</a></li>
+            <li><Link to="/about" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>About Us</Link></li>
+            <li><Link to="/contact" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>Contact</Link></li>
+            <li><a href="#" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>Privacy Policy</a></li>
+            <li><a href="#" className={`hover:${isDarkMode ? 'text-red-400' : 'text-red-600'} transition-colors`}>Terms of Service</a></li>
           </ul>
         </div>
         
@@ -68,8 +68,8 @@ function Footer() {
               aria-label="Facebook" 
               className={`p-2  transition-all ${
                 isDarkMode 
-                  ? 'bg-gray-700 hover:bg-teal-600 text-gray-300' 
-                  : 'bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700'
+                  ? 'bg-gray-700 hover:bg-red-600 text-gray-300' 
+                  : 'bg-gray-100 hover:bg-red-600 hover:text-white text-gray-700'
               }`}
             >
               <FaFacebookF className="w-4 h-4" />
@@ -81,8 +81,8 @@ function Footer() {
               aria-label="Twitter" 
               className={`p-2  transition-all ${
                 isDarkMode 
-                  ? 'bg-gray-700 hover:bg-teal-600 text-gray-300' 
-                  : 'bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700'
+                  ? 'bg-gray-700 hover:bg-red-600 text-gray-300' 
+                  : 'bg-gray-100 hover:bg-red-600 hover:text-white text-gray-700'
               }`}
             >
               <FaTwitter className="w-4 h-4" />
@@ -94,8 +94,8 @@ function Footer() {
               aria-label="LinkedIn" 
               className={`p-2  transition-all ${
                 isDarkMode 
-                  ? 'bg-gray-700 hover:bg-teal-600 text-gray-300' 
-                  : 'bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700'
+                  ? 'bg-gray-700 hover:bg-red-600 text-gray-300' 
+                  : 'bg-gray-100 hover:bg-red-600 hover:text-white text-gray-700'
               }`}
             >
               <FaLinkedinIn className="w-4 h-4" />
@@ -107,8 +107,8 @@ function Footer() {
               aria-label="Instagram" 
               className={`p-2  transition-all ${
                 isDarkMode 
-                  ? 'bg-gray-700 hover:bg-teal-600 text-gray-300' 
-                  : 'bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700'
+                  ? 'bg-gray-700 hover:bg-red-600 text-gray-300' 
+                  : 'bg-gray-100 hover:bg-red-600 hover:text-white text-gray-700'
               }`}
             >
               <FaInstagram className="w-4 h-4" />

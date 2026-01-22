@@ -68,7 +68,7 @@ function Createpassword() {
           {/* Header */}
           <div className="mb-8">
             <div className={`inline-flex items-center justify-center w-12 h-12  mb-4 ${
-              isDarkMode ? 'bg-teal-600' : 'bg-teal-500'
+              isDarkMode ? 'bg-red-600' : 'bg-red-500'
             }`}>
               <FaLock className="w-6 h-6 text-white" />
             </div>
@@ -111,7 +111,7 @@ function Createpassword() {
                   value={formData.newPassword}
                   onChange={handleChange}
                   placeholder="Enter new password"
-                  className={`w-full h-11 pl-10 pr-11  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
+                  className={`w-full h-11 pl-10 pr-11  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${
                     isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
@@ -148,7 +148,7 @@ function Createpassword() {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   placeholder="Re-enter new password"
-                  className={`w-full h-11 pl-10 pr-11  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
+                  className={`w-full h-11 pl-10 pr-11  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${
                     isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
@@ -183,8 +183,8 @@ function Createpassword() {
               disabled={loading}
               className={`w-full h-11  font-medium text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
                 isDarkMode
-                  ? 'bg-teal-600 hover:bg-teal-700'
-                  : 'bg-teal-600 hover:bg-teal-700'
+                  ? 'bg-red-600 hover:bg-red-700'
+                  : 'bg-red-600 hover:bg-red-700'
               }`}
             >
               {loading ? (
@@ -213,8 +213,8 @@ function Createpassword() {
               to="/login"
               className={`font-medium ${
                 isDarkMode
-                  ? 'text-teal-400 hover:text-teal-300'
-                  : 'text-teal-600 hover:text-teal-700'
+                  ? 'text-red-400 hover:text-red-300'
+                  : 'text-red-600 hover:text-red-700'
               }`}
             >
               Sign In

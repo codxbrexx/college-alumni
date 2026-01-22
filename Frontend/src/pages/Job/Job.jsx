@@ -92,7 +92,7 @@ export default function Job() {
         {/* Header Section */}
         <div className="text-center mb-12">
           <span className={`inline-block px-4 py-2  font-semibold mb-4 shadow ${
-            isDarkMode ? 'bg-teal-900/80 text-teal-300' : 'bg-teal-100 text-teal-700'
+            isDarkMode ? 'bg-red-900/80 text-red-300' : 'bg-red-100 text-red-700'
           }`}>Career Opportunities</span>
           <h2 className={`text-4xl md:text-5xl font-extrabold mb-4 tracking-tight gradient-text`}>
             Discover Your Next Role
@@ -107,8 +107,8 @@ export default function Job() {
         {/* Search and Filter Bar */}
         <div className={`mb-8 p-6  shadow-lg border ${
           isDarkMode 
-            ? 'bg-gray-900/50 border-teal-900 backdrop-blur-sm' 
-            : 'bg-white/80 border-teal-100 backdrop-blur-sm'
+            ? 'bg-gray-900/50 border-red-900 backdrop-blur-sm' 
+            : 'bg-white/80 border-red-100 backdrop-blur-sm'
         }`}>
           {/* Search Bar */}
           <div className="flex flex-col md:flex-row gap-4 mb-4">
@@ -123,8 +123,8 @@ export default function Job() {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className={`w-full pl-12 pr-4 py-3  border-2 outline-none transition-all duration-300 ${
                   isDarkMode 
-                    ? 'bg-gray-950 border-gray-700 text-white placeholder-gray-500 focus:border-teal-500' 
-                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-teal-500'
+                    ? 'bg-gray-950 border-gray-700 text-white placeholder-gray-500 focus:border-red-500' 
+                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-red-500'
                 }`}
               />
             </div>
@@ -132,8 +132,8 @@ export default function Job() {
               onClick={() => setShowFilters(!showFilters)}
               className={`flex items-center gap-2 px-6 py-3  font-semibold transition-all duration-300 ${
                 isDarkMode 
-                  ? 'bg-teal-600 hover:bg-teal-500 text-white' 
-                  : 'bg-teal-600 hover:bg-teal-700 text-white'
+                  ? 'bg-red-600 hover:bg-red-500 text-white' 
+                  : 'bg-red-600 hover:bg-red-700 text-white'
               }`}
             >
               <FaFilter />
@@ -161,8 +161,8 @@ export default function Job() {
                       className={`px-4 py-2  font-medium transition-all duration-300 ${
                         selectedType === type
                           ? isDarkMode
-                            ? 'bg-teal-600 text-white'
-                            : 'bg-teal-600 text-white'
+                            ? 'bg-red-600 text-white'
+                            : 'bg-red-600 text-white'
                           : isDarkMode
                             ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -188,8 +188,8 @@ export default function Job() {
                       className={`px-4 py-2  font-medium transition-all duration-300 ${
                         selectedLocation === location
                           ? isDarkMode
-                            ? 'bg-teal-600 text-white'
-                            : 'bg-teal-600 text-white'
+                            ? 'bg-red-600 text-white'
+                            : 'bg-red-600 text-white'
                           : isDarkMode
                             ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'

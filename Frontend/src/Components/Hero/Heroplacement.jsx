@@ -14,7 +14,7 @@ function Herojob() {
         className="absolute inset-0 w-full h-full object-cover object-center z-0"
       />
       <div className={`absolute inset-0 z-10 ${
-        isDarkMode ? 'bg-teal-900/40' : 'bg-teal-200/30'
+        isDarkMode ? 'bg-red-900/40' : 'bg-red-200/30'
       }`} />
 
       <div className="relative z-20 w-full flex flex-col items-center px-4 py-8">

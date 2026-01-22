@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useTheme } from "../../context/ThemeContext";
+
 
 const navItems = [
   { to: "home", label: "Home" },
@@ -13,7 +13,7 @@ const navItems = [
 ];
 
 function Navbar({ navClass }) {
-  const { isDarkMode } = useTheme();
+
 
   return (
     <nav
@@ -27,14 +27,10 @@ function Navbar({ navClass }) {
           key={item.to}
           to={item.to}
           className={({ isActive }) =>
-            `relative px-4 py-2 font-serif uppercase tracking-widest text-xs font-bold transition-all duration-300 border
+            `relative px-2 py-1 font-serif uppercase tracking-widest text-xs font-bold transition-all duration-300
             ${isActive
-              ? isDarkMode
-                ? "text-black bg-white border-white"
-                : "text-white bg-black border-black"
-              : isDarkMode
-                ? "text-gray-400 border-transparent hover:text-white hover:border-white"
-                : "text-gray-500 border-transparent hover:text-black hover:border-black"
+              ? "text-red-700 underline underline-offset-8 decoration-2"
+              : "text-gray-500 hover:text-red-700 hover:underline underline-offset-8 decoration-2"
             }`
           }
         >

@@ -14,7 +14,7 @@ function AboutUs() {
         : 'bg-gray-50'
     }`}>
       <div className={`absolute top-1/2 right-0 w-72 h-72  opacity-20 blur-2xl z-0 ${
-        isDarkMode ? 'bg-teal-400' : 'bg-teal-200'
+        isDarkMode ? 'bg-red-400' : 'bg-red-200'
       }`} />
 
       <section className="relative z-10 max-w-5xl mx-auto px-4 py-12 md:py-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">

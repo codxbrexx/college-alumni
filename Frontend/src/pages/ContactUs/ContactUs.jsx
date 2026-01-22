@@ -31,9 +31,9 @@ function ContactUs() {
               <input
                 type="text"
                 placeholder="Enter your name"
-                className={`w-full h-12 px-4  border shadow-md focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${isDarkMode
-                    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-teal-500'
-                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-500 focus:border-teal-500'
+                className={`w-full h-12 px-4  border shadow-md focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${isDarkMode
+                    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-red-500'
+                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-500 focus:border-red-500'
                   }`}
               />
             </div>
@@ -43,9 +43,9 @@ function ContactUs() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className={`w-full h-12 px-4  border shadow-md focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${isDarkMode
-                    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-teal-500'
-                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-500 focus:border-teal-500'
+                className={`w-full h-12 px-4  border shadow-md focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${isDarkMode
+                    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-red-500'
+                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-500 focus:border-red-500'
                   }`}
               />
             </div>
@@ -55,15 +55,15 @@ function ContactUs() {
               <textarea
                 placeholder="Type your message..."
                 rows={4}
-                className={`w-full px-4 py-2  border shadow-md focus:outline-none focus:ring-1 focus:ring-teal-500 resize-none transition-colors duration-300 ${isDarkMode
-                    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-teal-500'
-                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-500 focus:border-teal-500'
+                className={`w-full px-4 py-2  border shadow-md focus:outline-none focus:ring-1 focus:ring-red-500 resize-none transition-colors duration-300 ${isDarkMode
+                    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-red-500'
+                    : 'bg-white border-gray-200 text-gray-900 placeholder-gray-500 focus:border-red-500'
                   }`}
               />
             </div>
             <button
               type="submit"
-              className="w-full h-12 bg-teal-500 shadow-md hover:bg-teal-600 text-white font-medium  transition-colors"
+              className="w-full h-12 bg-red-500 shadow-md hover:bg-red-600 text-white font-medium  transition-colors"
             >
               Send Message
             </button>

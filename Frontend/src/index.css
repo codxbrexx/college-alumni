@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+@theme {
+  --color-red-50: #fdf2f4;
+  --color-red-100: #fce7ea;
+  --color-red-200: #f8d3d9;
+  --color-red-300: #f2aab6;
+  --color-red-400: #e8788d;
+  --color-red-500: #d6455f;
+  --color-red-600: #c02645;
+  --color-red-700: #a51c37;
+  --color-red-800: #8a1b32;
+  --color-red-900: #741b2f;
+  --color-red-950: #400b16;
+}
+
 /* Smooth transitions for theme switching */
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;

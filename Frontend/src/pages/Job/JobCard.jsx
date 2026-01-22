@@ -9,14 +9,14 @@ function JobCard({ job }) {
   return (
     <div className={`group relative overflow-hidden  border shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-effect ${
       isDarkMode 
-        ? 'bg-gradient-to-br from-gray-800 to-gray-900/80 border-teal-900 hover:border-teal-500/50' 
-        : 'bg-white/80 border-teal-100 hover:border-teal-500/50'
+        ? 'bg-gradient-to-br from-gray-800 to-gray-900/80 border-red-900 hover:border-red-500/50' 
+        : 'bg-white/80 border-red-100 hover:border-red-500/50'
     }`}>
       {/* Gradient Header */}
       <div className={`relative h-24 bg-gradient-to-br ${
         isDarkMode 
-          ? 'from-teal-700 via-teal-800 to-blue-900' 
-          : 'from-teal-300 via-teal-400 to-blue-400'
+          ? 'from-red-700 via-red-800 to-blue-900' 
+          : 'from-red-300 via-red-400 to-blue-400'
       }`}>
         <div className="absolute inset-0 bg-black/10" />
         
@@ -30,7 +30,7 @@ function JobCard({ job }) {
           }`}
         >
           {isBookmarked ? (
-            <FaBookmark className={`w-4 h-4 ${isDarkMode ? 'text-teal-400' : 'text-teal-600'}`} />
+            <FaBookmark className={`w-4 h-4 ${isDarkMode ? 'text-red-400' : 'text-red-600'}`} />
           ) : (
             <FaRegBookmark className={`w-4 h-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`} />
           )}
@@ -44,7 +44,7 @@ function JobCard({ job }) {
               : 'bg-white border-white'
           }`}>
             <FaBuilding className={`text-2xl ${
-              isDarkMode ? 'text-teal-400' : 'text-teal-600'
+              isDarkMode ? 'text-red-400' : 'text-red-600'
             }`} />
           </div>
         </div>
@@ -70,7 +70,7 @@ function JobCard({ job }) {
             {job.title}
           </h3>
           <p className={`text-base font-semibold ${
-            isDarkMode ? 'text-teal-300' : 'text-teal-600'
+            isDarkMode ? 'text-red-300' : 'text-red-600'
           }`}>{job.company}</p>
         </div>
 
@@ -91,12 +91,12 @@ function JobCard({ job }) {
             isDarkMode ? 'text-gray-300' : 'text-gray-700'
           }`}>
             <FaMapMarkerAlt className={`w-4 h-4 ${
-              isDarkMode ? 'text-teal-400' : 'text-teal-600'
+              isDarkMode ? 'text-red-400' : 'text-red-600'
             }`} />
             <span className="font-medium">{job.location}</span>
             <span className={isDarkMode ? 'text-gray-600' : 'text-gray-400'}>•</span>
             <FaClock className={`w-4 h-4 ${
-              isDarkMode ? 'text-teal-400' : 'text-teal-600'
+              isDarkMode ? 'text-red-400' : 'text-red-600'
             }`} />
             <span className="font-medium">{job.type}</span>
           </div>
@@ -120,8 +120,8 @@ function JobCard({ job }) {
             {job.skills.slice(0, 4).map((skill, index) => (
               <span key={index} className={`px-4 py-1  text-xs font-semibold shadow ${
                 isDarkMode 
-                  ? 'bg-teal-900/60 text-teal-300 border border-teal-700/50' 
-                  : 'bg-teal-50 text-teal-700 border border-teal-200'
+                  ? 'bg-red-900/60 text-red-300 border border-red-700/50' 
+                  : 'bg-red-50 text-red-700 border border-red-200'
               }`}>
                 {skill}
               </span>
@@ -171,7 +171,7 @@ function JobCard({ job }) {
         }`}>
           <div className="flex items-center gap-2">
             <FaGraduationCap className={`text-base ${
-              isDarkMode ? 'text-teal-400' : 'text-teal-600'
+              isDarkMode ? 'text-red-400' : 'text-red-600'
             }`} />
             <span className={`text-sm font-medium ${
               isDarkMode ? 'text-gray-300' : 'text-gray-600'
@@ -189,8 +189,8 @@ function JobCard({ job }) {
             href={job.link} 
             className={`flex items-center gap-2 px-5 py-2.5  font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover-glow ${
               isDarkMode 
-                ? 'bg-teal-600 hover:bg-teal-500 text-white' 
-                : 'bg-teal-600 hover:bg-teal-700 text-white'
+                ? 'bg-red-600 hover:bg-red-500 text-white' 
+                : 'bg-red-600 hover:bg-red-700 text-white'
             }`}
           >
             Apply Now

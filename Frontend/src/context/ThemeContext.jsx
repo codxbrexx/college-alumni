@@ -14,31 +14,24 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved ? saved === 'dark' : false;
-  });
+  // Force light mode
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    // Save theme preference to local
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-
-    // Update document class for global styles
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDarkMode]);
+    // Ensure dark class is removed
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
+  }, []);
 
   const toggleTheme = () => {
-    setIsDarkMode(prev => !prev);
+    // Disabled
+    setIsDarkMode(false);
   };
 
   const value = {
     isDarkMode,
     toggleTheme,
-    theme: isDarkMode ? 'dark' : 'light'
+    theme: 'light'
   };
 
   return (

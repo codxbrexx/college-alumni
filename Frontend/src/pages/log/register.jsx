@@ -241,7 +241,7 @@ export default function Register() {
     }),
   };
 
-  const inputClassName = `w-full h-11 pl-10 pr-4  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
+  const inputClassName = `w-full h-11 pl-10 pr-4  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${isDarkMode
     ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
     : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
     }`;
@@ -272,7 +272,7 @@ export default function Register() {
               Login
             </Link>
             <div className={`flex-1 py-2.5  text-sm font-medium text-center transition-all ${isDarkMode
-              ? 'bg-teal-600 text-white shadow-sm'
+              ? 'bg-red-600 text-white shadow-sm'
               : 'bg-white text-gray-900 shadow-sm'
               }`}>
               Register
@@ -281,13 +281,13 @@ export default function Register() {
 
           {/* Progress Steps */}
           <div className="flex items-center justify-center gap-2 mb-6">
-            <div className={`w-2.5 h-2.5  transition-all ${step >= 1 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-8 h-0.5  transition-all ${step >= 2 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-2.5 h-2.5  transition-all ${step >= 2 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-8 h-0.5  transition-all ${step >= 3 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-2.5 h-2.5  transition-all ${step >= 3 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-8 h-0.5  transition-all ${step >= 4 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-2.5 h-2.5  transition-all ${step >= 4 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-2.5 h-2.5  transition-all ${step >= 1 ? 'bg-red-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-8 h-0.5  transition-all ${step >= 2 ? 'bg-red-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-2.5 h-2.5  transition-all ${step >= 2 ? 'bg-red-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-8 h-0.5  transition-all ${step >= 3 ? 'bg-red-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-2.5 h-2.5  transition-all ${step >= 3 ? 'bg-red-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-8 h-0.5  transition-all ${step >= 4 ? 'bg-red-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-2.5 h-2.5  transition-all ${step >= 4 ? 'bg-red-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
           </div>
 
           {/* Error Message */}
@@ -474,7 +474,7 @@ export default function Register() {
                     value={formData.profession}
                     onChange={handleChange}
                     placeholder="e.g., Software Engineer"
-                    className={`w-full h-11 px-4  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
+                    className={`w-full h-11 px-4  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
                       }`}
@@ -496,7 +496,7 @@ export default function Register() {
                     value={formData.linkedInProfileLink}
                     onChange={handleChange}
                     placeholder="https://linkedin.com/in/yourprofile"
-                    className={`w-full h-11 px-4  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
+                    className={`w-full h-11 px-4  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
                       }`}
@@ -513,7 +513,7 @@ export default function Register() {
                     value={formData.skills}
                     onChange={handleChange}
                     placeholder="React, Node.js, Python"
-                    className={`w-full h-11 px-4  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
+                    className={`w-full h-11 px-4  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all ${isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
                       }`}
@@ -530,7 +530,7 @@ export default function Register() {
                     onChange={handleChange}
                     placeholder="Tell us about yourself..."
                     rows={3}
-                    className={`w-full px-4 py-2.5  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all resize-none ${isDarkMode
+                    className={`w-full px-4 py-2.5  border focus:outline-none focus:ring-2 focus:ring-red-500 transition-all resize-none ${isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
                       }`}
@@ -546,8 +546,8 @@ export default function Register() {
                   type="button"
                   onClick={handlePrevStep}
                   className={`flex-1 h-11  font-medium transition-all border ${isDarkMode
-                    ? 'border-gray-600 text-gray-300 hover:border-teal-500 hover:text-teal-400'
-                    : 'border-gray-300 text-gray-700 hover:border-teal-500 hover:text-teal-600'
+                    ? 'border-gray-600 text-gray-300 hover:border-red-500 hover:text-red-400'
+                    : 'border-gray-300 text-gray-700 hover:border-red-500 hover:text-red-600'
                     }`}
                 >
                   Back
@@ -557,8 +557,8 @@ export default function Register() {
                 type="submit"
                 disabled={loading}
                 className={`${step === 1 ? 'w-full' : 'flex-1'} h-11  font-medium text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${isDarkMode
-                  ? 'bg-teal-600 hover:bg-teal-700'
-                  : 'bg-teal-600 hover:bg-teal-700'
+                  ? 'bg-red-600 hover:bg-red-700'
+                  : 'bg-red-600 hover:bg-red-700'
                   }`}
               >
                 {loading ? (
@@ -578,7 +578,7 @@ export default function Register() {
           {/* Login Link */}
           <p className={`text-center mt-6 text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             Already have an account?{' '}
-            <Link to="/login" className={`font-medium ${isDarkMode ? 'text-teal-400 hover:text-teal-300' : 'text-teal-600 hover:text-teal-700'}`}>
+            <Link to="/login" className={`font-medium ${isDarkMode ? 'text-red-400 hover:text-red-300' : 'text-red-600 hover:text-red-700'}`}>
               Sign In
             </Link>
           </p>

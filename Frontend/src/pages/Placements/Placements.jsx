@@ -105,7 +105,7 @@ const PlacementSection = () => {
       <div className="max-w-7xl mx-auto px-4 mb-12">
         <div className="text-center mb-12">
           <span className={`inline-block px-4 py-2  font-semibold mb-4 shadow ${
-            isDarkMode ? 'bg-teal-900/80 text-teal-300' : 'bg-teal-100 text-teal-700'
+            isDarkMode ? 'bg-red-900/80 text-red-300' : 'bg-red-100 text-red-700'
           }`}>Placement Statistics</span>
           <h2 className={`text-4xl md:text-5xl font-extrabold mb-4 tracking-tight gradient-text`}>
             Outstanding Placement Records
@@ -128,7 +128,7 @@ const PlacementSection = () => {
                 onClick={() => setSelectedYear(stat.year)}
                 className={`px-6 py-3  font-bold transition-all duration-300 transform hover:scale-105 ${
                   selectedYear === stat.year
-                    ? "bg-gradient-to-r from-teal-600 to-blue-600 text-white shadow-lg"
+                    ? "bg-gradient-to-r from-red-600 to-blue-600 text-white shadow-lg"
                     : isDarkMode 
                       ? "bg-gray-700 text-gray-300 hover:bg-gray-600" 
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -149,8 +149,8 @@ const PlacementSection = () => {
                 key={index}
                 className={`relative group  p-8 shadow-xl border transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl glass-effect ${
                   isDarkMode 
-                    ? 'bg-gradient-to-br from-gray-800 to-gray-900/80 border-teal-900 hover:border-teal-500/50' 
-                    : 'bg-white/80 border-teal-100 hover:border-teal-500/50'
+                    ? 'bg-gradient-to-br from-gray-800 to-gray-900/80 border-red-900 hover:border-red-500/50' 
+                    : 'bg-white/80 border-red-100 hover:border-red-500/50'
                 }`}
               >
                 {/* Icon Circle */}
@@ -193,10 +193,10 @@ const PlacementSection = () => {
           }`}>
             <div className="flex items-center gap-3 mb-6">
               <div className={`p-3  ${
-                isDarkMode ? 'bg-teal-900/50' : 'bg-teal-100'
+                isDarkMode ? 'bg-red-900/50' : 'bg-red-100'
               }`}>
                 <Briefcase className={`h-6 w-6 ${
-                  isDarkMode ? 'text-teal-400' : 'text-teal-600'
+                  isDarkMode ? 'text-red-400' : 'text-red-600'
                 }`} />
               </div>
               <h3 className={`text-2xl font-bold ${
