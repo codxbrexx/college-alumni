@@ -16,7 +16,7 @@
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #14b8a6, #0d9488);
-  border-radius: 5px;
+  /* border-radius: 5px; removed */
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -47,6 +47,7 @@ html {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -58,6 +59,7 @@ html {
     opacity: 0;
     transform: translateX(-50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -69,6 +71,7 @@ html {
     opacity: 0;
     transform: translateX(50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -76,9 +79,12 @@ html {
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
@@ -88,6 +94,7 @@ html {
   0% {
     background-position: -1000px 0;
   }
+
   100% {
     background-position: 1000px 0;
   }
@@ -133,25 +140,21 @@ html {
 
 /* Skeleton loader */
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.2) 20%,
-    rgba(255, 255, 255, 0.5) 60%,
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 20%,
+      rgba(255, 255, 255, 0.5) 60%,
+      rgba(255, 255, 255, 0));
   background-size: 1000px 100%;
   animation: shimmer 2s infinite;
 }
 
 .dark .skeleton {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.05) 20%,
-    rgba(255, 255, 255, 0.1) 60%,
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.05) 20%,
+      rgba(255, 255, 255, 0.1) 60%,
+      rgba(255, 255, 255, 0));
   background-size: 1000px 100%;
 }
 
@@ -195,7 +198,7 @@ select:focus {
 .spinner {
   border: 3px solid rgba(20, 184, 166, 0.1);
   border-top-color: #14b8a6;
-  border-radius: 50%;
+  /* border-radius: 50%; removed */
   width: 40px;
   height: 40px;
   animation: spin 1s linear infinite;
@@ -221,7 +224,7 @@ select:focus {
   padding: 0.5rem 0.75rem;
   background-color: #1f2937;
   color: white;
-  border-radius: 0.375rem;
+  /* border-radius: 0.375rem; removed */
   font-size: 0.75rem;
   white-space: nowrap;
   opacity: 0;
@@ -274,9 +277,12 @@ select:focus {
 
 /* Floating animation */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }
@@ -291,9 +297,11 @@ select:focus {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -317,7 +325,7 @@ select:focus {
   left: 50%;
   width: 0;
   height: 0;
-  border-radius: 50%;
+  /* border-radius: 50%; removed */
   background: rgba(255, 255, 255, 0.5);
   transform: translate(-50%, -50%);
   transition: width 0.6s, height 0.6s;

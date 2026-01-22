@@ -34,7 +34,7 @@ export default function PostJob() {
 
   return (
     <div className={`min-h-screen py-12 transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+      isDarkMode ? 'bg-gray-950' : 'bg-gray-50'
     }`}>
       <div className="max-w-2xl mx-auto px-4">
         <div className="text-center mb-8">
@@ -46,9 +46,9 @@ export default function PostJob() {
           }`}>Share opportunities with your College</p>
         </div>
 
-        <div className={`rounded-2xl shadow-lg border p-8 transition-colors duration-300 ${
+        <div className={` shadow-lg border p-8 transition-colors duration-300 ${
           isDarkMode 
-            ? 'bg-gray-800 border-gray-700' 
+            ? 'bg-gray-900 border-gray-700' 
             : 'bg-white border-gray-100'
         }`}>
           <form className="space-y-6" onSubmit={handleFormSubmit}>
@@ -64,7 +64,7 @@ export default function PostJob() {
                   value={form.company}
                   onChange={handleFormChange}
                   placeholder="Enter company name"
-                  className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                  className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                       : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -82,7 +82,7 @@ export default function PostJob() {
                   value={form.title}
                   onChange={handleFormChange}
                   placeholder="Enter job title"
-                  className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                  className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                       : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -102,7 +102,7 @@ export default function PostJob() {
                 onChange={handleFormChange}
                 placeholder="Describe the role, responsibilities, and requirements..."
                 rows={4}
-                className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 resize-none transition-colors duration-300 ${
+                className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 resize-none transition-colors duration-300 ${
                   isDarkMode 
                     ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                     : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -122,7 +122,7 @@ export default function PostJob() {
                   value={form.location}
                   onChange={handleFormChange}
                   placeholder=" Remote, Bangalore, Mumbai"
-                  className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                  className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                       : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -138,7 +138,7 @@ export default function PostJob() {
                   name="type"
                   value={form.type}
                   onChange={handleFormChange}
-                  className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                  className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-gray-700 border-gray-600 text-white' 
                       : 'border-gray-200 text-gray-900'
@@ -164,7 +164,7 @@ export default function PostJob() {
                   value={form.salary}
                   onChange={handleFormChange}
                   placeholder=" ₹8L - ₹12L or $50K - $80K"
-                  className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                  className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                       : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -182,7 +182,7 @@ export default function PostJob() {
                   value={form.experience}
                   onChange={handleFormChange}
                   placeholder=" 2-4 years, Entry Level"
-                  className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                  className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                       : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -202,7 +202,7 @@ export default function PostJob() {
                 value={form.skills}
                 onChange={handleFormChange}
                 placeholder="e.g., React, Python, AWS (comma separated)"
-                className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                   isDarkMode 
                     ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                     : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -222,7 +222,7 @@ export default function PostJob() {
                   value={form.alumnus}
                   onChange={handleFormChange}
                   placeholder="Enter your full name"
-                  className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                  className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                       : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -240,7 +240,7 @@ export default function PostJob() {
                   value={form.batch}
                   onChange={handleFormChange}
                   placeholder="e.g., 2019, 2020"
-                  className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                  className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                       : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -261,7 +261,7 @@ export default function PostJob() {
                 value={form.contact}
                 onChange={handleFormChange}
                 placeholder="Email, LinkedIn, or phone number"
-                className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                   isDarkMode 
                     ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                     : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -270,7 +270,7 @@ export default function PostJob() {
               />
             </div>
             {/* backend work check post are internship or job  */}
-            <div className={`flex items-center p-4 rounded-lg ${
+            <div className={`flex items-center p-4  ${
               isDarkMode ? 'bg-gray-700' : 'bg-gray-50'
             }`}>
               <input
@@ -278,7 +278,7 @@ export default function PostJob() {
                 name="isInternship"
                 checked={form.isInternship}
                 onChange={handleFormChange}
-                className={`w-5 h-5 text-teal-500 border-gray-300 rounded focus:ring-teal-500 ${
+                className={`w-5 h-5 text-teal-500 border-gray-300  focus:ring-teal-500 ${
                   isDarkMode ? 'bg-gray-600 border-gray-500' : 'bg-white border-gray-300'
                 }`}
               />
@@ -292,7 +292,7 @@ export default function PostJob() {
             <div className="pt-4">
               <button
                 type="submit"
-                className="w-full py-4 bg-teal-400 hover:bg-teal-500 text-white font-semibold rounded-lg shadow-lg transition-colors text-lg"
+                className="w-full py-4 bg-teal-400 hover:bg-teal-500 text-white font-semibold  shadow-lg transition-colors text-lg"
               >
                 Submit {form.isInternship ? 'Internship' : 'Job'} Posting
               </button>

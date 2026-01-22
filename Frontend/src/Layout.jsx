@@ -9,11 +9,11 @@ function Layout() {
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'
+      isDarkMode ? 'bg-gray-950 text-white' : 'bg-gray-50 text-gray-900'
     }`}>
       <Header />
       <main className={`transition-colors duration-300 ${
-        isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+        isDarkMode ? 'bg-gray-950' : 'bg-gray-50'
       }`}>
         <Outlet />
       </main>

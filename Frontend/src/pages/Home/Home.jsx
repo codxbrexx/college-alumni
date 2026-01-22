@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useTheme } from '../../context/ThemeContext'
-import { 
-  FaUsers, 
-  FaBriefcase, 
-  FaNewspaper, 
+import {
+  FaUsers,
+  FaBriefcase,
+  FaNewspaper,
   FaGraduationCap,
   FaArrowRight,
   FaLinkedin,
@@ -27,88 +27,85 @@ function Home() {
     { id: 4, label: 'Network Connections', value: 15000, icon: <FaNetworkWired className="w-8 h-8" />, suffix: '+' }
   ];
 
-  const features = [
-    {
-      id: 1,
-      icon: <FaUsers className="w-12 h-12" />,
-      title: 'Connect with Alumni',
-      description: 'Build meaningful connections with alumni across different batches and industries.',
-      gradient: 'from-blue-500 to-cyan-500'
-    },
-    {
-      id: 2,
-      icon: <FaBriefcase className="w-12 h-12" />,
-      title: 'Find Opportunities',
-      description: 'Discover exclusive job openings and internships posted by fellow alumni.',
-      gradient: 'from-purple-500 to-pink-500'
-    },
-    {
-      id: 3,
-      icon: <FaNewspaper className="w-12 h-12" />,
-      title: 'Stay Updated',
-      description: 'Get the latest news, events, and achievements from the alumni community.',
-      gradient: 'from-orange-500 to-red-500'
-    },
-    {
-      id: 4,
-      icon: <FaHandshake className="w-12 h-12" />,
-      title: 'Mentor & Grow',
-      description: 'Share your expertise and help upcoming students achieve their career goals.',
-      gradient: 'from-teal-500 to-green-500'
-    }
-  ];
+  /* features array removed */
 
   return (
-    <div className={`min-h-screen font-sans transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-950 text-white' : 'bg-white text-gray-900'
-    }`}>
-      {/* Hero Section with Image Background */}
-      <section className="relative h-[600px] flex items-center justify-center text-center overflow-hidden">
-        {/* Background Image with Dark Overlay */}
-        <div className="absolute inset-0">
+    <div className={`min-h-screen font-sans transition-colors duration-300 ${isDarkMode ? 'bg-gray-950 text-white' : 'bg-white text-gray-900'
+      }`}>
+      {/* Hero Section - Editorial Style with Overlap */}
+      <section className="relative flex flex-col w-full mb-12">
+        {/* Top: Image Area */}
+        <div className="w-full h-[500px] md:h-[650px] overflow-hidden relative">
           <img
-            src="/college_hero.png"
+            src="/Homehero.jpg"
             alt="University Campus"
             className="w-full h-full object-cover"
           />
-          {/* Subtle dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/40" />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-6 text-white pt-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="text-lg md:text-xl font-medium mb-4 tracking-wide font-serif opacity-90">
-              NetGrud Alumni Association
-            </div>
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 font-serif">
-              Welcome Home
-            </h1>
-            <p className="text-xl md:text-2xl mb-10 max-w-2xl mx-auto opacity-90 leading-relaxed font-light">
-              Connect, collaborate, and grow with thousands of alumni building lifelong connections.
-            </p>
+        {/* Overlapping Content Area */}
+        <div className="relative z-10 px-6 -mt-48 md:-mt-64">
+          <div className={`max-w-5xl mx-auto p-8 md:p-14 shadow-2xl ${isDarkMode ? 'bg-gray-950' : 'bg-white'}`}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="flex flex-col md:flex-row gap-8 md:gap-12"
+            >
+              {/* Decorative Red Line & Subhead Container */}
+              <div className="flex flex-row md:flex-col gap-4 md:gap-0 shrink-0 md:w-48 pt-2">
+                <div className="w-12 h-1 md:w-full md:h-1 bg-red-600 mb-4"></div>
+                <div className="flex flex-col gap-1">
+                  <span className="text-red-600 font-bold tracking-widest text-xs uppercase">
+                    Ideas made to matter
+                  </span>
+                  <span className={`text-xs font-bold uppercase tracking-widest ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+                    Future of Alumni
+                  </span>
+                </div>
+              </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/alumni">
-                <button className="px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white rounded-md font-semibold text-lg transition-all shadow-lg hover:shadow-xl">
-                  Explore Alumni Network
-                </button>
-              </Link>
-              <Link to="/job">
-                <button className="px-8 py-4 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/30 rounded-md font-semibold text-lg transition-all">
-                  Find Opportunities
-                </button>
-              </Link>
-            </div>
-          </motion.div>
+              {/* Main Content */}
+              <div className="flex flex-col flex-grow">
+                {/* Headline */}
+                <h1 className={`text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Welcome Home
+                </h1>
+
+                {/* Byline */}
+                <div className={`flex items-center gap-2 text-xs font-medium mb-8 border-b pb-8 ${isDarkMode ? 'text-gray-400 border-gray-800' : 'text-gray-500 border-gray-200'}`}>
+                  <FaGraduationCap className="text-red-600 text-lg" />
+                  <span className="font-bold text-sm uppercase text-black dark:text-white">NetGrud Association</span>
+                  <span className="mx-2">|</span>
+                  <span>Est. 2015</span>
+                </div>
+
+                {/* Lead Text */}
+                <p className={`text-lg md:text-xl font-serif leading-relaxed mb-10 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                  Connect, collaborate, and grow with thousands of alumni building lifelong connections. Your journey doesn't end at graduation—it's just beginning.
+                </p>
+
+                {/* Actions */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link to="/alumni">
+                    <button className={`px-8 py-3.5 font-bold uppercase tracking-wider text-sm transition-all shadow-sm hover:shadow-md border ${isDarkMode ? 'bg-white text-black border-white hover:bg-gray-200' : 'bg-black text-white border-black hover:bg-gray-800'}`}>
+                      Explore Alumni Network
+                    </button>
+                  </Link>
+                  <Link to="/job">
+                    <button className={`px-8 py-3.5 font-medium uppercase tracking-wider text-sm transition-all border ${isDarkMode ? 'text-white border-gray-700 hover:border-white' : 'text-black border-gray-300 hover:border-black'}`}>
+                      Find Opportunities
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Stats Strip */}
-      <section className={`py-12 border-y ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-gray-50 border-gray-200'}`}>
+      <section className={`py-12 border-y ${isDarkMode ? 'bg-gray-950 border-gray-800' : 'bg-gray-50 border-gray-200'}`}>
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat) => (
             <div key={stat.id} className="transition-transform duration-300 hover:scale-105">
@@ -198,8 +195,8 @@ function Home() {
 // Helper Components
 function BenefitCard({ icon, title, desc, isDark }) {
   return (
-    <div className={`p-6 rounded-xl border transition-all hover:-translate-y-1 hover:shadow-lg ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
-      <div className={`w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 ${isDark ? 'bg-teal-900/50 text-teal-400' : 'bg-teal-50 text-teal-600'}`}>
+    <div className={`p-6  border transition-all hover:-translate-y-1 hover:shadow-lg ${isDark ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'}`}>
+      <div className={`w-12 h-12  flex items-center justify-center text-xl mb-4 ${isDark ? 'bg-teal-900/50 text-teal-400' : 'bg-teal-50 text-teal-600'}`}>
         {icon}
       </div>
       <h3 className={`font-bold text-lg mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{title}</h3>

@@ -11,7 +11,7 @@ function Header() {
   return (
     <header className={`w-full shadow-sm overflow-x-hidden transition-colors duration-200 ${
       isDarkMode 
-        ? 'bg-gray-800 text-white border-b border-gray-700' 
+        ? 'bg-gray-900 text-white border-b border-gray-700' 
         : 'bg-white text-gray-900 border-b border-gray-200'
     }`}>
       <div className="flex items-center justify-between px-4 py-3 md:py-4 w-full min-w-0">
@@ -29,7 +29,7 @@ function Header() {
           {/* theme  Button */}
           <button
             onClick={toggleTheme}
-            className={`p-2 rounded-lg transition-all duration-200 ${
+            className={`p-2  transition-all duration-200 ${
               isDarkMode
                 ? 'bg-gray-700 text-teal-400 hover:bg-gray-600'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'

@@ -44,17 +44,17 @@ export default function Forgot() {
 
   return (
     <div className={`min-h-screen flex justify-center items-center font-['Inter'] transition-colors duration-200 px-4 py-12 ${
-      isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+      isDarkMode ? 'bg-gray-950' : 'bg-gray-50'
     }`}>
-      <div className={`w-full max-w-md rounded-2xl p-8 md:p-10 shadow-lg transition-all duration-200 ${
+      <div className={`w-full max-w-md  p-8 md:p-10 shadow-lg transition-all duration-200 ${
         isDarkMode
-          ? 'bg-gray-800 border border-gray-700'
+          ? 'bg-gray-900 border border-gray-700'
           : 'bg-white border border-gray-200'
       }`}>
         <div className="w-full">
           {/* Header */}
           <div className="mb-8">
-            <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-4 ${
+            <div className={`inline-flex items-center justify-center w-12 h-12  mb-4 ${
               isDarkMode ? 'bg-teal-600' : 'bg-teal-500'
             }`}>
               <FaEnvelope className="w-6 h-6 text-white" />
@@ -68,17 +68,17 @@ export default function Forgot() {
           </div>
 
           {/* Tab Toggle */}
-          <div className={`flex gap-2 p-1 mb-8 rounded-lg ${
+          <div className={`flex gap-2 p-1 mb-8  ${
             isDarkMode ? 'bg-gray-700/50' : 'bg-gray-100'
           }`}>
-            <div className={`flex-1 py-2.5 rounded-md text-sm font-medium text-center transition-all ${
+            <div className={`flex-1 py-2.5  text-sm font-medium text-center transition-all ${
               isDarkMode
                 ? 'bg-teal-600 text-white shadow-sm'
                 : 'bg-white text-gray-900 shadow-sm'
             }`}>
               Reset Password
             </div>
-            <Link to="/login" className={`flex-1 py-2.5 rounded-md text-sm font-medium text-center transition-all ${
+            <Link to="/login" className={`flex-1 py-2.5  text-sm font-medium text-center transition-all ${
               isDarkMode ? 'text-gray-400 hover:text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
             }`}>
               Login
@@ -87,7 +87,7 @@ export default function Forgot() {
 
           {/* Error Message */}
           {(error || authError) && (
-            <div className={`mb-6 p-3.5 rounded-lg text-sm ${
+            <div className={`mb-6 p-3.5  text-sm ${
               isDarkMode 
                 ? 'bg-red-500/10 text-red-400 border border-red-500/20' 
                 : 'bg-red-50 text-red-700 border border-red-100'
@@ -115,7 +115,7 @@ export default function Forgot() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  className={`w-full h-11 pl-10 pr-24 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
+                  className={`w-full h-11 pl-10 pr-24  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
                     isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
@@ -125,7 +125,7 @@ export default function Forgot() {
                   type="button"
                   onClick={handleSendOTP}
                   disabled={loading || otpSent}
-                  className={`absolute right-2 top-1/2 -translate-y-1/2 h-8 px-3 text-xs font-medium rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
+                  className={`absolute right-2 top-1/2 -translate-y-1/2 h-8 px-3 text-xs font-medium  transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
                     isDarkMode 
                       ? 'bg-teal-600 hover:bg-teal-700 text-white' 
                       : 'bg-teal-600 hover:bg-teal-700 text-white'
@@ -153,7 +153,7 @@ export default function Forgot() {
                     inputMode="numeric"
                     pattern="[0-9]*"
                     placeholder="Enter 6-digit OTP"
-                    className={`w-full h-11 pl-4 pr-24 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
+                    className={`w-full h-11 pl-4 pr-24  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
                       isDarkMode
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                         : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
@@ -162,7 +162,7 @@ export default function Forgot() {
                   <button
                     type="button"
                     onClick={handleVerifyOTP}
-                    className={`absolute right-2 top-1/2 -translate-y-1/2 h-8 px-3 text-xs font-medium rounded-md flex items-center gap-1 transition-colors ${
+                    className={`absolute right-2 top-1/2 -translate-y-1/2 h-8 px-3 text-xs font-medium  flex items-center gap-1 transition-colors ${
                       isDarkMode 
                         ? 'bg-teal-600 hover:bg-teal-700 text-white' 
                         : 'bg-teal-600 hover:bg-teal-700 text-white'
@@ -179,7 +179,7 @@ export default function Forgot() {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full h-11 rounded-lg font-medium text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
+              className={`w-full h-11  font-medium text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
                 isDarkMode
                   ? 'bg-teal-600 hover:bg-teal-700'
                   : 'bg-teal-600 hover:bg-teal-700'

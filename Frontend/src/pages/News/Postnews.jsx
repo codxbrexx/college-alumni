@@ -53,7 +53,7 @@ export default function Postnews() {
 
   return (
     <div className={`min-h-screen py-12 transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+      isDarkMode ? 'bg-gray-950' : 'bg-gray-50'
     }`}>
       <div className="max-w-2xl mx-auto px-4">
         <div className="text-center mb-8">
@@ -65,21 +65,21 @@ export default function Postnews() {
           }`}>Post news updates or upcoming events</p>
         </div>
 
-        <div className={`rounded-2xl shadow-lg border p-8 transition-colors duration-300 ${
+        <div className={` shadow-lg border p-8 transition-colors duration-300 ${
           isDarkMode 
-            ? 'bg-gray-800 border-gray-700' 
+            ? 'bg-gray-900 border-gray-700' 
             : 'bg-white border-gray-100'
         }`}>
           {/* tag tab */}
           <div className="flex justify-center mb-8">
-            <div className={`backdrop-blur-sm rounded-full p-1 border ${
+            <div className={`backdrop-blur-sm  p-1 border ${
               isDarkMode 
                 ? 'bg-gray-700/20 border-gray-600' 
                 : 'bg-gray-500/20 border-gray-200'
             }`}>
               <button
                 onClick={() => setActiveTab('news')}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-6 py-2  text-sm font-medium transition-colors ${
                   activeTab === 'news'
                     ? isDarkMode 
                       ? 'bg-gray-600 text-white shadow-md' 
@@ -93,7 +93,7 @@ export default function Postnews() {
               </button>
               <button
                 onClick={() => setActiveTab('event')}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-6 py-2  text-sm font-medium transition-colors ${
                   activeTab === 'event'
                     ? isDarkMode 
                       ? 'bg-gray-600 text-white shadow-md' 
@@ -122,7 +122,7 @@ export default function Postnews() {
                     value={newsForm.title}
                     onChange={handleNewsFormChange}
                     placeholder="Enter news title"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -138,7 +138,7 @@ export default function Postnews() {
                     name="category"
                     value={newsForm.category}
                     onChange={handleNewsFormChange}
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white' 
                         : 'border-gray-200 text-gray-900'
@@ -168,7 +168,7 @@ export default function Postnews() {
                   onChange={handleNewsFormChange}
                   placeholder="Describe the news details..."
                   rows={4}
-                  className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 resize-none transition-colors duration-300 ${
+                  className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 resize-none transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                       : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -188,7 +188,7 @@ export default function Postnews() {
                     value={newsForm.author}
                     onChange={handleNewsFormChange}
                     placeholder="Enter your full name"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -205,7 +205,7 @@ export default function Postnews() {
                     name="date"
                     value={newsForm.date}
                     onChange={handleNewsFormChange}
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white' 
                         : 'border-gray-200 text-gray-900'
@@ -218,7 +218,7 @@ export default function Postnews() {
               <div className="pt-4">
                 <button
                   type="submit"
-                  className="w-full py-4 bg-teal-400 hover:bg-teal-500 text-white font-semibold rounded-lg shadow-lg transition-colors text-lg"
+                  className="w-full py-4 bg-teal-400 hover:bg-teal-500 text-white font-semibold  shadow-lg transition-colors text-lg"
                 >
                   Submit News Posting
                 </button>
@@ -240,7 +240,7 @@ export default function Postnews() {
                     value={eventForm.title}
                     onChange={handleEventFormChange}
                     placeholder="Enter event title"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -256,7 +256,7 @@ export default function Postnews() {
                     name="category"
                     value={eventForm.category}
                     onChange={handleEventFormChange}
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white' 
                         : 'border-gray-200 text-gray-900'
@@ -284,7 +284,7 @@ export default function Postnews() {
                   onChange={handleEventFormChange}
                   placeholder="Describe the event details, agenda, and what attendees can expect..."
                   rows={4}
-                  className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 resize-none transition-colors duration-300 ${
+                  className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 resize-none transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                       : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -303,7 +303,7 @@ export default function Postnews() {
                     name="date"
                     value={eventForm.date}
                     onChange={handleEventFormChange}
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white' 
                         : 'border-gray-200 text-gray-900'
@@ -320,7 +320,7 @@ export default function Postnews() {
                     name="time"
                     value={eventForm.time}
                     onChange={handleEventFormChange}
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white' 
                         : 'border-gray-200 text-gray-900'
@@ -341,7 +341,7 @@ export default function Postnews() {
                     value={eventForm.location}
                     onChange={handleEventFormChange}
                     placeholder="Enter event location"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -359,7 +359,7 @@ export default function Postnews() {
                     value={eventForm.attendees}
                     onChange={handleEventFormChange}
                     placeholder="Number of attendees"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -371,7 +371,7 @@ export default function Postnews() {
               <div className="pt-4">
                 <button
                   type="submit"
-                  className="w-full py-4 bg-teal-400 hover:bg-teal-500 text-white font-semibold rounded-lg shadow-lg transition-colors text-lg"
+                  className="w-full py-4 bg-teal-400 hover:bg-teal-500 text-white font-semibold  shadow-lg transition-colors text-lg"
                 >
                   Submit Event Posting
                 </button>

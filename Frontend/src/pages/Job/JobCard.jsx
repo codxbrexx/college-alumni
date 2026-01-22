@@ -7,7 +7,7 @@ function JobCard({ job }) {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   return (
-    <div className={`group relative overflow-hidden rounded-2xl border shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-effect ${
+    <div className={`group relative overflow-hidden  border shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-effect ${
       isDarkMode 
         ? 'bg-gradient-to-br from-gray-800 to-gray-900/80 border-teal-900 hover:border-teal-500/50' 
         : 'bg-white/80 border-teal-100 hover:border-teal-500/50'
@@ -23,9 +23,9 @@ function JobCard({ job }) {
         {/* Bookmark Button */}
         <button
           onClick={() => setIsBookmarked(!isBookmarked)}
-          className={`absolute top-4 right-4 p-2 rounded-full transition-all duration-300 ${
+          className={`absolute top-4 right-4 p-2  transition-all duration-300 ${
             isDarkMode 
-              ? 'bg-gray-900/50 hover:bg-gray-900/80 backdrop-blur-sm' 
+              ? 'bg-gray-950/50 hover:bg-gray-950/80 backdrop-blur-sm' 
               : 'bg-white/50 hover:bg-white/80 backdrop-blur-sm'
           }`}
         >
@@ -38,9 +38,9 @@ function JobCard({ job }) {
 
         {/* Company Badge */}
         <div className="absolute -bottom-8 left-6">
-          <div className={`w-16 h-16 rounded-xl shadow-lg flex items-center justify-center border-4 ${
+          <div className={`w-16 h-16  shadow-lg flex items-center justify-center border-4 ${
             isDarkMode 
-              ? 'bg-gray-800 border-gray-900' 
+              ? 'bg-gray-900 border-gray-900' 
               : 'bg-white border-white'
           }`}>
             <FaBuilding className={`text-2xl ${
@@ -54,7 +54,7 @@ function JobCard({ job }) {
         {/* Job Type & Internship Badge */}
         <div className="absolute top-3 right-6 flex gap-2">
           {job.isInternship && (
-            <span className={`px-3 py-1 rounded-full text-xs font-bold shadow ${
+            <span className={`px-3 py-1  text-xs font-bold shadow ${
               isDarkMode 
                 ? 'bg-blue-900/80 text-blue-300' 
                 : 'bg-blue-100 text-blue-700'
@@ -76,7 +76,7 @@ function JobCard({ job }) {
 
         {/* Salary Badge */}
         <div className="mb-4">
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl font-bold text-lg shadow ${
+          <div className={`inline-flex items-center gap-2 px-4 py-2  font-bold text-lg shadow ${
             isDarkMode 
               ? 'bg-green-900/60 text-green-300 border border-green-700/50' 
               : 'bg-green-50 text-green-700 border border-green-200'
@@ -118,7 +118,7 @@ function JobCard({ job }) {
         <div className="mb-4">
           <div className="flex flex-wrap gap-2 justify-center">
             {job.skills.slice(0, 4).map((skill, index) => (
-              <span key={index} className={`px-4 py-1 rounded-full text-xs font-semibold shadow ${
+              <span key={index} className={`px-4 py-1  text-xs font-semibold shadow ${
                 isDarkMode 
                   ? 'bg-teal-900/60 text-teal-300 border border-teal-700/50' 
                   : 'bg-teal-50 text-teal-700 border border-teal-200'
@@ -127,7 +127,7 @@ function JobCard({ job }) {
               </span>
             ))}
             {job.skills.length > 4 && (
-              <span className={`px-4 py-1 rounded-full text-xs font-semibold ${
+              <span className={`px-4 py-1  text-xs font-semibold ${
                 isDarkMode ? 'text-gray-400' : 'text-gray-500'
               }`}>
                 +{job.skills.length - 4} more
@@ -144,7 +144,7 @@ function JobCard({ job }) {
             }`}>Benefits:</p>
             <div className="flex flex-wrap gap-2">
               {job.benefits.slice(0, 3).map((benefit, index) => (
-                <span key={index} className={`px-3 py-1 rounded-lg text-xs font-medium ${
+                <span key={index} className={`px-3 py-1  text-xs font-medium ${
                   isDarkMode 
                     ? 'bg-purple-900/50 text-purple-300' 
                     : 'bg-purple-50 text-purple-700'
@@ -153,7 +153,7 @@ function JobCard({ job }) {
                 </span>
               ))}
               {job.benefits.length > 3 && (
-                <span className={`px-3 py-1 rounded-lg text-xs font-medium ${
+                <span className={`px-3 py-1  text-xs font-medium ${
                   isDarkMode 
                     ? 'bg-purple-900/50 text-purple-300' 
                     : 'bg-purple-50 text-purple-700'
@@ -187,7 +187,7 @@ function JobCard({ job }) {
           
           <a 
             href={job.link} 
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover-glow ${
+            className={`flex items-center gap-2 px-5 py-2.5  font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover-glow ${
               isDarkMode 
                 ? 'bg-teal-600 hover:bg-teal-500 text-white' 
                 : 'bg-teal-600 hover:bg-teal-700 text-white'

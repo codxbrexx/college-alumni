@@ -7,7 +7,7 @@ const navItems = [
   { to: "alumni", label: "Alumni" },
   { to: "job", label: "Jobs" },
   { to: "news", label: "News" },
-  { to: "placement", label: "Placements"},
+  { to: "placement", label: "Placements" },
   { to: "about", label: "About" },
   { to: "contact", label: "Contact" },
 ];
@@ -27,14 +27,14 @@ function Navbar({ navClass }) {
           key={item.to}
           to={item.to}
           className={({ isActive }) =>
-            `relative px-3 py-2 whitespace-nowrap font-medium rounded-lg transition-all duration-200
-            ${isActive 
-              ? isDarkMode 
-                ? "text-white bg-teal-600" 
-                : "text-white bg-teal-600" 
-              : isDarkMode 
-                ? "text-gray-300 hover:text-white hover:bg-gray-700" 
-                : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+            `relative px-4 py-2 font-serif uppercase tracking-widest text-xs font-bold transition-all duration-300 border
+            ${isActive
+              ? isDarkMode
+                ? "text-black bg-white border-white"
+                : "text-white bg-black border-black"
+              : isDarkMode
+                ? "text-gray-400 border-transparent hover:text-white hover:border-white"
+                : "text-gray-500 border-transparent hover:text-black hover:border-black"
             }`
           }
         >

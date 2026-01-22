@@ -81,7 +81,7 @@ export default function Job() {
 
   return (
     <div className={`min-h-screen pb-16 transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+      isDarkMode ? 'bg-gray-950' : 'bg-gray-50'
     }`}>
       <div className="w-full flex justify-center">
         <Herojob />
@@ -91,7 +91,7 @@ export default function Job() {
       <section className="max-w-7xl mx-auto px-4 mt-8 mb-16">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <span className={`inline-block px-4 py-2 rounded-full font-semibold mb-4 shadow ${
+          <span className={`inline-block px-4 py-2  font-semibold mb-4 shadow ${
             isDarkMode ? 'bg-teal-900/80 text-teal-300' : 'bg-teal-100 text-teal-700'
           }`}>Career Opportunities</span>
           <h2 className={`text-4xl md:text-5xl font-extrabold mb-4 tracking-tight gradient-text`}>
@@ -105,9 +105,9 @@ export default function Job() {
         </div>
 
         {/* Search and Filter Bar */}
-        <div className={`mb-8 p-6 rounded-2xl shadow-lg border ${
+        <div className={`mb-8 p-6  shadow-lg border ${
           isDarkMode 
-            ? 'bg-gray-800/50 border-teal-900 backdrop-blur-sm' 
+            ? 'bg-gray-900/50 border-teal-900 backdrop-blur-sm' 
             : 'bg-white/80 border-teal-100 backdrop-blur-sm'
         }`}>
           {/* Search Bar */}
@@ -121,16 +121,16 @@ export default function Job() {
                 placeholder="Search by title, company, or skills..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 outline-none transition-all duration-300 ${
+                className={`w-full pl-12 pr-4 py-3  border-2 outline-none transition-all duration-300 ${
                   isDarkMode 
-                    ? 'bg-gray-900 border-gray-700 text-white placeholder-gray-500 focus:border-teal-500' 
+                    ? 'bg-gray-950 border-gray-700 text-white placeholder-gray-500 focus:border-teal-500' 
                     : 'bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-teal-500'
                 }`}
               />
             </div>
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+              className={`flex items-center gap-2 px-6 py-3  font-semibold transition-all duration-300 ${
                 isDarkMode 
                   ? 'bg-teal-600 hover:bg-teal-500 text-white' 
                   : 'bg-teal-600 hover:bg-teal-700 text-white'
@@ -158,7 +158,7 @@ export default function Job() {
                     <button
                       key={type}
                       onClick={() => setSelectedType(type)}
-                      className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                      className={`px-4 py-2  font-medium transition-all duration-300 ${
                         selectedType === type
                           ? isDarkMode
                             ? 'bg-teal-600 text-white'
@@ -185,7 +185,7 @@ export default function Job() {
                     <button
                       key={location}
                       onClick={() => setSelectedLocation(location)}
-                      className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                      className={`px-4 py-2  font-medium transition-all duration-300 ${
                         selectedLocation === location
                           ? isDarkMode
                             ? 'bg-teal-600 text-white'
@@ -219,8 +219,8 @@ export default function Job() {
             <div className={`col-span-full text-center py-12 ${
               isDarkMode ? 'text-gray-400' : 'text-gray-500'
             }`}>
-              <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
-                isDarkMode ? 'bg-gray-800' : 'bg-gray-200'
+              <div className={`w-16 h-16 mx-auto mb-4  flex items-center justify-center ${
+                isDarkMode ? 'bg-gray-900' : 'bg-gray-200'
               }`}>
                 <svg className={`w-8 h-8 ${
                   isDarkMode ? 'text-gray-600' : 'text-gray-400'

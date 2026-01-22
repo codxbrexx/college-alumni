@@ -40,17 +40,17 @@ export default function Landing() {
           <div className="flex items-center gap-6">
             <button
               onClick={toggleTheme}
-              className={`p-2 rounded-full transition-colors ${isDarkMode ? 'hover:bg-gray-800 text-gray-300' : 'hover:bg-gray-100 text-gray-600'}`}
+              className={`p-2  transition-colors ${isDarkMode ? 'hover:bg-gray-800 text-gray-300' : 'hover:bg-gray-100 text-gray-600'}`}
               aria-label="Toggle Theme"
             >
               {isDarkMode ? <FaSun className="text-xl" /> : <FaMoon className="text-xl" />}
             </button>
-            <div className="hidden md:flex items-center gap-4">
-              <Link to="/login" className={`font-medium hover:underline underline-offset-4 ${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'}`}>
+            <div className="hidden md:flex items-center gap-8">
+              <Link to="/login" className={`font-serif uppercase tracking-widest text-sm font-medium hover:underline underline-offset-8 transition-all ${isDarkMode ? 'text-gray-300 hover:text-white decoration-teal-400' : 'text-gray-600 hover:text-black decoration-teal-600'}`}>
                 Log In
               </Link>
               <Link to="/register">
-                <button className={`px-6 py-2.5 rounded-lg font-semibold transition-all ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-gray-900 text-white hover:bg-gray-800'}`}>
+                <button className={`px-8 py-2.5 font-serif uppercase tracking-widest text-xs font-bold border transition-all duration-300 ${isDarkMode ? 'bg-white text-black border-white hover:bg-transparent hover:text-white' : 'bg-gray-900 text-white border-gray-900 hover:bg-transparent hover:text-gray-900'}`}>
                   Join Platform
                 </button>
               </Link>
@@ -64,7 +64,7 @@ export default function Landing() {
         {/* Background Image with Dark Overlay */}
         <div className="absolute inset-0 mt-20">
           <img
-            src="/college_hero.png"
+            src="/college_hero2.png"
             alt="University Campus"
             className="w-full h-full object-cover"
           />
@@ -90,12 +90,12 @@ export default function Landing() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/register">
-                <button className="px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white rounded-md font-semibold text-lg transition-all shadow-lg hover:shadow-xl">
+                <button className="px-8 py-4 bg-teal-600 hover:bg-teal-700 text-white  font-semibold text-lg transition-all shadow-lg hover:shadow-xl">
                   Join the Community
                 </button>
               </Link>
               <Link to="/home">
-                <button className="px-8 py-4 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/30 rounded-md font-semibold text-lg transition-all">
+                <button className="px-8 py-4 bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/30  font-semibold text-lg transition-all">
                   Explore Directory
                 </button>
               </Link>
@@ -105,12 +105,12 @@ export default function Landing() {
       </section>
 
       {/* "All Together" Section (Reference Match) */}
-      <section className={`py-20 ${isDarkMode ? 'bg-gray-950' : 'bg-gray-900'} text-white text-center`}>
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-3xl md:text-5xl font-bold font-serif mb-6">
+      <section className={`py-12 ${isDarkMode ? 'bg-gray-950' : 'bg-gray-700'} text-white text-center`}>
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="text-3xl md:text-5xl font-bold font-serif mb-8">
             All Alumni, all together, <br /> all in one place.
           </h2>
-          <p className="text-lg text-gray-300 mb-8 leading-relaxed">
+          <p className="text-lg text-gray-300 mb-4 leading-relaxed">
             The Alumni Directory is your gateway to the global community. Update your profile, connect with old friends, and unlock exclusive opportunities. It's safe, verified, and built for you.
           </p>
           <Link to="/home" className="text-teal-400 font-semibold text-lg hover:underline underline-offset-4">
@@ -304,7 +304,7 @@ export default function Landing() {
             <div className="col-span-1 md:col-span-2">
               <h3 className="text-2xl font-bold text-white mb-4">Alumni_Connect</h3>
               <p className="text-gray-400 max-w-xs">
-                The official professional network for graduates. Fostering lifelong connections since 1998.
+                The official professional network for graduates. Fostering lifelong connections since 2015.
               </p>
             </div>
             <div>
@@ -351,13 +351,13 @@ function StatItem({ number, label, isDark }) {
 
 function AlumniCard({ name, role, batch, isDark }) {
   return (
-    <div className={`p-6 rounded-xl border transition-all hover:shadow-lg ${isDark ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'}`}>
-      <div className={`w-16 h-16 rounded-full mb-4 flex items-center justify-center text-xl font-bold ${isDark ? 'bg-gray-950 text-gray-300' : 'bg-gray-100 text-gray-600'}`}>
+    <div className={`p-6  border transition-all hover:shadow-lg ${isDark ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'}`}>
+      <div className={`w-16 h-16  mb-4 flex items-center justify-center text-xl font-bold ${isDark ? 'bg-gray-950 text-gray-300' : 'bg-gray-100 text-gray-600'}`}>
         {name.charAt(0)}
       </div>
       <h3 className={`font-bold text-lg mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>{name}</h3>
       <p className={`text-sm mb-3 ${isDark ? 'text-teal-400' : 'text-teal-600'}`}>{role}</p>
-      <div className={`text-xs font-medium px-2 py-1 inline-block rounded ${isDark ? 'bg-gray-800 text-gray-400' : 'bg-gray-100 text-gray-500'}`}>
+      <div className={`text-xs font-medium px-2 py-1 inline-block  ${isDark ? 'bg-gray-800 text-gray-400' : 'bg-gray-100 text-gray-500'}`}>
         {batch}
       </div>
     </div>
@@ -366,9 +366,9 @@ function AlumniCard({ name, role, batch, isDark }) {
 
 function JobRow({ title, company, location, isDark }) {
   return (
-    <div className={`flex items-center justify-between p-4 rounded-lg border transition-all ${isDark ? 'bg-gray-800 border-gray-700 hover:bg-gray-700' : 'bg-white border-gray-200 hover:shadow-md'}`}>
+    <div className={`flex items-center justify-between p-4  border transition-all ${isDark ? 'bg-gray-800 border-gray-700 hover:bg-gray-700' : 'bg-white border-gray-200 hover:shadow-md'}`}>
       <div className="flex items-center gap-4">
-        <div className={`w-10 h-10 rounded flex items-center justify-center ${isDark ? 'bg-gray-700' : 'bg-gray-100'}`}>
+        <div className={`w-10 h-10  flex items-center justify-center ${isDark ? 'bg-gray-700' : 'bg-gray-100'}`}>
           <FaBuilding className="text-gray-400" />
         </div>
         <div>
@@ -376,7 +376,7 @@ function JobRow({ title, company, location, isDark }) {
           <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{company} • {location}</p>
         </div>
       </div>
-      <button className={`text-sm font-medium px-4 py-2 rounded border ${isDark ? 'border-gray-600 hover:bg-gray-700 text-white' : 'border-gray-300 hover:bg-gray-50 text-gray-900'}`}>
+      <button className={`text-sm font-medium px-4 py-2  border ${isDark ? 'border-gray-600 hover:bg-gray-700 text-white' : 'border-gray-300 hover:bg-gray-50 text-gray-900'}`}>
         Apply
       </button>
     </div>
@@ -385,8 +385,8 @@ function JobRow({ title, company, location, isDark }) {
 
 function EventRow({ day, month, title, type, isDark }) {
   return (
-    <div className={`flex items-center gap-4 p-4 rounded-lg border ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
-      <div className={`flex flex-col items-center justify-center w-14 h-14 rounded-lg font-bold ${isDark ? 'bg-gray-900 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>
+    <div className={`flex items-center gap-4 p-4  border ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+      <div className={`flex flex-col items-center justify-center w-14 h-14  font-bold ${isDark ? 'bg-gray-900 text-gray-300' : 'bg-gray-100 text-gray-700'}`}>
         <span className="text-sm opacity-60">{month}</span>
         <span className="text-xl">{day}</span>
       </div>
@@ -403,8 +403,8 @@ function EventRow({ day, month, title, type, isDark }) {
 
 function BenefitCard({ icon, title, desc, isDark }) {
   return (
-    <div className={`p-6 rounded-xl border transition-all hover:-translate-y-1 hover:shadow-lg ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
-      <div className={`w-12 h-12 rounded-lg flex items-center justify-center text-xl mb-4 ${isDark ? 'bg-teal-900/50 text-teal-400' : 'bg-teal-50 text-teal-600'}`}>
+    <div className={`p-6  border transition-all hover:-translate-y-1 hover:shadow-lg ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+      <div className={`w-12 h-12  flex items-center justify-center text-xl mb-4 ${isDark ? 'bg-teal-900/50 text-teal-400' : 'bg-teal-50 text-teal-600'}`}>
         {icon}
       </div>
       <h3 className={`font-bold text-lg mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{title}</h3>
@@ -415,7 +415,7 @@ function BenefitCard({ icon, title, desc, isDark }) {
 
 function TestimonialCard({ quote, author, role, isDark }) {
   return (
-    <div className={`p-8 rounded-2xl relative ${isDark ? 'bg-gray-900 border border-gray-800' : 'bg-white border text-gray-900 border-gray-200'}`}>
+    <div className={`p-8  relative ${isDark ? 'bg-gray-900 border border-gray-800' : 'bg-white border text-gray-900 border-gray-200'}`}>
       <FaQuoteLeft className={`text-3xl mb-4 opacity-20 ${isDark ? 'text-teal-400' : 'text-teal-600'}`} />
       <p className={`text-lg italic mb-6 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>"{quote}"</p>
       <div>
@@ -428,7 +428,7 @@ function TestimonialCard({ quote, author, role, isDark }) {
 
 function FAQItem({ question, answer, isDark }) {
   return (
-    <div className={`p-6 rounded-lg border ${isDark ? 'bg-gray-800/50 border-gray-700' : 'bg-white border-gray-200'}`}>
+    <div className={`p-6  border ${isDark ? 'bg-gray-800/50 border-gray-700' : 'bg-white border-gray-200'}`}>
       <h3 className={`font-bold text-lg mb-2 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
         <FaQuestionCircle className="text-teal-500 text-sm" /> {question}
       </h3>

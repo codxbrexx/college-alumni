@@ -100,9 +100,9 @@ function Filter() {
 
   return (
     <div className="w-full flex justify-center items-center mt-4 gap-4">
-      <div className={`w-full max-w-4xl flex items-center rounded-lg shadow-md p-2 gap-3 transition-colors duration-300 ${
+      <div className={`w-full max-w-4xl flex items-center  shadow-md p-2 gap-3 transition-colors duration-300 ${
         isDarkMode 
-          ? 'bg-gray-800/80 text-white' 
+          ? 'bg-gray-900/80 text-white' 
           : 'bg-white/80'
       }`}>
         <FilterButton labelName="Year" filterOptions={year} className="min-w-[120px]" />

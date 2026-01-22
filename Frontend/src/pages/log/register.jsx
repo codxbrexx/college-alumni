@@ -191,56 +191,66 @@ export default function Register() {
   const customSelectStyles = {
     control: (provided, state) => ({
       ...provided,
-      borderRadius: '0.5rem',
+      // borderRadius: '0.5rem', removed
       borderColor: state.isFocused
-        ? '#14b8a6'
+        ? isDarkMode ? '#ffffff' : '#000000'
         : isDarkMode ? '#4b5563' : '#d1d5db',
-      backgroundColor: isDarkMode ? '#374151' : 'white',
-      boxShadow: state.isFocused ? '0 0 0 2px rgba(20, 184, 166, 0.2)' : 'none',
-      minHeight: '2.75rem',
+      backgroundColor: isDarkMode ? '#030712' : 'white',
+      boxShadow: 'none',
+      borderWidth: '1px',
+      minHeight: '3rem',
+      fontFamily: 'serif',
+      fontSize: '0.875rem',
       '&:hover': {
-        borderColor: '#14b8a6'
+        borderColor: isDarkMode ? '#ffffff' : '#000000'
       }
     }),
     menu: (provided) => ({
       ...provided,
-      borderRadius: '0.5rem',
-      backgroundColor: isDarkMode ? '#1f2937' : 'white',
+      // borderRadius: '0.5rem', removed
+      backgroundColor: isDarkMode ? '#030712' : 'white',
       border: isDarkMode ? '1px solid #374151' : '1px solid #e5e7eb',
       zIndex: 20,
+      fontFamily: 'serif',
     }),
     option: (provided, state) => ({
       ...provided,
       backgroundColor: state.isFocused
-        ? isDarkMode ? '#374151' : '#f0fdfa'
+        ? isDarkMode ? '#1f2937' : '#f3f4f6'
         : 'transparent',
       color: isDarkMode ? '#e5e7eb' : '#111827',
       cursor: 'pointer',
+      fontFamily: 'serif',
+      fontSize: '0.875rem',
+      padding: '10px 14px',
     }),
     singleValue: (provided) => ({
       ...provided,
       color: isDarkMode ? '#e5e7eb' : '#111827',
+      fontFamily: 'serif',
     }),
     placeholder: (provided) => ({
       ...provided,
       color: isDarkMode ? '#6b7280' : '#9ca3af',
+      fontFamily: 'serif',
     }),
     input: (provided) => ({
       ...provided,
       color: isDarkMode ? '#e5e7eb' : '#111827',
+      fontFamily: 'serif',
     }),
   };
 
-  const inputClassName = `w-full h-11 pl-10 pr-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
+  const inputClassName = `w-full h-11 pl-10 pr-4  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
     ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
     : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
     }`;
 
   return (
-    <div className={`min-h-screen flex justify-center items-center font-['Inter'] transition-colors duration-200 px-4 py-12 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+    <div className={`min-h-screen flex justify-center items-center font-['Inter'] transition-colors duration-200 px-4 py-12 ${isDarkMode ? 'bg-gray-950' : 'bg-gray-50'
       }`}>
-      <div className={`w-full max-w-lg rounded-2xl p-8 md:p-10 shadow-lg transition-all duration-200 ${isDarkMode
-        ? 'bg-gray-800 border border-gray-700'
+      <div className={`w-full max-w-lg  p-8 md:p-10 shadow-lg transition-all duration-200 ${isDarkMode
+        ? 'bg-gray-900 border border-gray-700'
         : 'bg-white border border-gray-200'
         }`}>
         <div className="w-full">
@@ -255,13 +265,13 @@ export default function Register() {
           </div>
 
           {/* Tab Toggle */}
-          <div className={`flex gap-2 p-1 mb-8 rounded-lg ${isDarkMode ? 'bg-gray-700/50' : 'bg-gray-100'
+          <div className={`flex gap-2 p-1 mb-8  ${isDarkMode ? 'bg-gray-700/50' : 'bg-gray-100'
             }`}>
-            <Link to="/login" className={`flex-1 py-2.5 rounded-md text-sm font-medium text-center transition-all ${isDarkMode ? 'text-gray-400 hover:text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+            <Link to="/login" className={`flex-1 py-2.5  text-sm font-medium text-center transition-all ${isDarkMode ? 'text-gray-400 hover:text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}>
               Login
             </Link>
-            <div className={`flex-1 py-2.5 rounded-md text-sm font-medium text-center transition-all ${isDarkMode
+            <div className={`flex-1 py-2.5  text-sm font-medium text-center transition-all ${isDarkMode
               ? 'bg-teal-600 text-white shadow-sm'
               : 'bg-white text-gray-900 shadow-sm'
               }`}>
@@ -271,18 +281,18 @@ export default function Register() {
 
           {/* Progress Steps */}
           <div className="flex items-center justify-center gap-2 mb-6">
-            <div className={`w-2.5 h-2.5 rounded-full transition-all ${step >= 1 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-8 h-0.5 rounded transition-all ${step >= 2 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-2.5 h-2.5 rounded-full transition-all ${step >= 2 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-8 h-0.5 rounded transition-all ${step >= 3 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-2.5 h-2.5 rounded-full transition-all ${step >= 3 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-8 h-0.5 rounded transition-all ${step >= 4 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
-            <div className={`w-2.5 h-2.5 rounded-full transition-all ${step >= 4 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-2.5 h-2.5  transition-all ${step >= 1 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-8 h-0.5  transition-all ${step >= 2 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-2.5 h-2.5  transition-all ${step >= 2 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-8 h-0.5  transition-all ${step >= 3 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-2.5 h-2.5  transition-all ${step >= 3 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-8 h-0.5  transition-all ${step >= 4 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
+            <div className={`w-2.5 h-2.5  transition-all ${step >= 4 ? 'bg-teal-600' : isDarkMode ? 'bg-gray-600' : 'bg-gray-300'}`} />
           </div>
 
           {/* Error Message */}
           {(error || authError) && (
-            <div className={`mb-6 p-3.5 rounded-lg text-sm ${isDarkMode
+            <div className={`mb-6 p-3.5  text-sm ${isDarkMode
               ? 'bg-red-500/10 text-red-400 border border-red-500/20'
               : 'bg-red-50 text-red-700 border border-red-100'
               }`}>
@@ -464,7 +474,7 @@ export default function Register() {
                     value={formData.profession}
                     onChange={handleChange}
                     placeholder="e.g., Software Engineer"
-                    className={`w-full h-11 px-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
+                    className={`w-full h-11 px-4  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
                       }`}
@@ -486,7 +496,7 @@ export default function Register() {
                     value={formData.linkedInProfileLink}
                     onChange={handleChange}
                     placeholder="https://linkedin.com/in/yourprofile"
-                    className={`w-full h-11 px-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
+                    className={`w-full h-11 px-4  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
                       }`}
@@ -503,7 +513,7 @@ export default function Register() {
                     value={formData.skills}
                     onChange={handleChange}
                     placeholder="React, Node.js, Python"
-                    className={`w-full h-11 px-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
+                    className={`w-full h-11 px-4  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
                       }`}
@@ -520,7 +530,7 @@ export default function Register() {
                     onChange={handleChange}
                     placeholder="Tell us about yourself..."
                     rows={3}
-                    className={`w-full px-4 py-2.5 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all resize-none ${isDarkMode
+                    className={`w-full px-4 py-2.5  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all resize-none ${isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
                       }`}
@@ -535,7 +545,7 @@ export default function Register() {
                 <button
                   type="button"
                   onClick={handlePrevStep}
-                  className={`flex-1 h-11 rounded-lg font-medium transition-all border ${isDarkMode
+                  className={`flex-1 h-11  font-medium transition-all border ${isDarkMode
                     ? 'border-gray-600 text-gray-300 hover:border-teal-500 hover:text-teal-400'
                     : 'border-gray-300 text-gray-700 hover:border-teal-500 hover:text-teal-600'
                     }`}
@@ -546,7 +556,7 @@ export default function Register() {
               <button
                 type="submit"
                 disabled={loading}
-                className={`${step === 1 ? 'w-full' : 'flex-1'} h-11 rounded-lg font-medium text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${isDarkMode
+                className={`${step === 1 ? 'w-full' : 'flex-1'} h-11  font-medium text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${isDarkMode
                   ? 'bg-teal-600 hover:bg-teal-700'
                   : 'bg-teal-600 hover:bg-teal-700'
                   }`}

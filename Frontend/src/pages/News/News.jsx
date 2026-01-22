@@ -74,7 +74,7 @@ function NewsCard({ news }) {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   return (
-    <div className={`group relative overflow-hidden rounded-2xl border shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-effect ${
+    <div className={`group relative overflow-hidden  border shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl glass-effect ${
       isDarkMode 
         ? 'bg-gradient-to-br from-gray-800 to-gray-900/80 border-teal-900 hover:border-teal-500/50' 
         : 'bg-white/80 border-teal-100 hover:border-teal-500/50'
@@ -93,7 +93,7 @@ function NewsCard({ news }) {
         
         {/* Category Badge */}
         <div className="absolute top-4 left-6">
-          <span className={`px-4 py-1.5 rounded-full text-xs font-bold shadow ${
+          <span className={`px-4 py-1.5  text-xs font-bold shadow ${
             news.isEvent 
               ? isDarkMode 
                 ? 'bg-blue-900/80 text-blue-300 border border-blue-700' 
@@ -109,9 +109,9 @@ function NewsCard({ news }) {
         {/* Bookmark Button */}
         <button
           onClick={() => setIsBookmarked(!isBookmarked)}
-          className={`absolute top-4 right-6 p-2 rounded-full transition-all duration-300 ${
+          className={`absolute top-4 right-6 p-2  transition-all duration-300 ${
             isDarkMode 
-              ? 'bg-gray-900/50 hover:bg-gray-900/80 backdrop-blur-sm' 
+              ? 'bg-gray-950/50 hover:bg-gray-950/80 backdrop-blur-sm' 
               : 'bg-white/50 hover:bg-white/80 backdrop-blur-sm'
           }`}
         >
@@ -153,7 +153,7 @@ function NewsCard({ news }) {
 
         {/* Event Details */}
         {news.isEvent && (
-          <div className={`mb-4 p-4 rounded-xl border ${
+          <div className={`mb-4 p-4  border ${
             isDarkMode 
               ? 'bg-blue-900/30 border-blue-700/50' 
               : 'bg-blue-50 border-blue-200'
@@ -178,7 +178,7 @@ function NewsCard({ news }) {
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-4">
           {news.tags.map((tag, index) => (
-            <span key={index} className={`px-3 py-1 rounded-full text-xs font-semibold shadow ${
+            <span key={index} className={`px-3 py-1  text-xs font-semibold shadow ${
               isDarkMode 
                 ? 'bg-gray-700/60 text-gray-300' 
                 : 'bg-gray-100 text-gray-700'
@@ -223,7 +223,7 @@ function NewsCard({ news }) {
             </div>
           </div>
           
-          <button className={`px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover-glow ${
+          <button className={`px-5 py-2.5  font-semibold text-sm transition-all duration-300 transform hover:scale-105 hover-glow ${
             news.isEvent
               ? isDarkMode 
                 ? 'bg-blue-600 hover:bg-blue-500 text-white' 
@@ -267,7 +267,7 @@ export default function News() {
 
   return (
     <div className={`min-h-screen pb-16 transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+      isDarkMode ? 'bg-gray-950' : 'bg-gray-50'
     }`}>
       <div className="w-full flex justify-center">
         <Heronews />
@@ -277,7 +277,7 @@ export default function News() {
       <section className="max-w-7xl mx-auto px-4 mt-8 mb-16">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <span className={`inline-block px-4 py-2 rounded-full font-semibold mb-4 shadow ${
+          <span className={`inline-block px-4 py-2  font-semibold mb-4 shadow ${
             isDarkMode ? 'bg-teal-900/80 text-teal-300' : 'bg-teal-100 text-teal-700'
           }`}>Latest Updates</span>
           <h2 className={`text-4xl md:text-5xl font-extrabold mb-4 tracking-tight gradient-text`}>
@@ -292,8 +292,8 @@ export default function News() {
 
         {/* Tabs */}
         <div className="flex justify-center mb-8">
-          <div className={`inline-flex gap-2 p-2 rounded-xl ${
-            isDarkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200 shadow'
+          <div className={`inline-flex gap-2 p-2  ${
+            isDarkMode ? 'bg-gray-900 border border-gray-700' : 'bg-white border border-gray-200 shadow'
           }`}>
             {tabs.map(tab => {
               const Icon = tab.icon;
@@ -301,7 +301,7 @@ export default function News() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  className={`flex items-center gap-2 px-6 py-3  font-semibold transition-all duration-300 ${
                     activeTab === tab.id
                       ? isDarkMode
                         ? 'bg-teal-600 text-white'
@@ -320,9 +320,9 @@ export default function News() {
         </div>
 
         {/* Search and Filter */}
-        <div className={`mb-8 p-6 rounded-2xl shadow-lg border ${
+        <div className={`mb-8 p-6  shadow-lg border ${
           isDarkMode 
-            ? 'bg-gray-800/50 border-teal-900 backdrop-blur-sm' 
+            ? 'bg-gray-900/50 border-teal-900 backdrop-blur-sm' 
             : 'bg-white/80 border-teal-100 backdrop-blur-sm'
         }`}>
           {/* Search Bar */}
@@ -336,9 +336,9 @@ export default function News() {
                 placeholder="Search news, events, or tags..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className={`w-full pl-12 pr-4 py-3 rounded-xl border-2 outline-none transition-all duration-300 ${
+                className={`w-full pl-12 pr-4 py-3  border-2 outline-none transition-all duration-300 ${
                   isDarkMode 
-                    ? 'bg-gray-900 border-gray-700 text-white placeholder-gray-500 focus:border-teal-500' 
+                    ? 'bg-gray-950 border-gray-700 text-white placeholder-gray-500 focus:border-teal-500' 
                     : 'bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-teal-500'
                 }`}
               />
@@ -358,7 +358,7 @@ export default function News() {
                 <button
                   key={cat}
                   onClick={() => setCategory(cat.toLowerCase())}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                  className={`px-4 py-2  font-medium transition-all duration-300 ${
                     category === cat.toLowerCase()
                       ? isDarkMode
                         ? 'bg-teal-600 text-white'
@@ -390,8 +390,8 @@ export default function News() {
             <div className={`col-span-full text-center py-12 ${
               isDarkMode ? 'text-gray-400' : 'text-gray-500'
             }`}>
-              <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
-                isDarkMode ? 'bg-gray-800' : 'bg-gray-200'
+              <div className={`w-16 h-16 mx-auto mb-4  flex items-center justify-center ${
+                isDarkMode ? 'bg-gray-900' : 'bg-gray-200'
               }`}>
                 <FaSearch className={`w-8 h-8 ${
                   isDarkMode ? 'text-gray-600' : 'text-gray-400'

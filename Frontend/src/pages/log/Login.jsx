@@ -46,12 +46,12 @@ export default function Login() {
 
   return (
     <div className={`min-h-screen flex justify-center items-center font-['Inter'] transition-colors duration-200 px-4 py-12 ${
-      isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+      isDarkMode ? 'bg-gray-950' : 'bg-gray-50'
     }`}>
       {/* Login Form Card */}
-      <div className={`w-full max-w-md rounded-2xl p-8 md:p-10 shadow-lg transition-all duration-200 ${
+      <div className={`w-full max-w-md  p-8 md:p-10 shadow-lg transition-all duration-200 ${
         isDarkMode
-          ? 'bg-gray-800 border border-gray-700'
+          ? 'bg-gray-900 border border-gray-700'
           : 'bg-white border border-gray-200'
       }`}>
         <div className="w-full">
@@ -66,17 +66,17 @@ export default function Login() {
           </div>
 
           {/* Tab Toggle */}
-          <div className={`flex gap-2 p-1 mb-8 rounded-lg ${
+          <div className={`flex gap-2 p-1 mb-8  ${
             isDarkMode ? 'bg-gray-700/50' : 'bg-gray-100'
           }`}>
-            <div className={`flex-1 py-2.5 rounded-md text-sm font-medium text-center transition-all ${
+            <div className={`flex-1 py-2.5  text-sm font-medium text-center transition-all ${
               isDarkMode
                 ? 'bg-teal-600 text-white shadow-sm'
                 : 'bg-white text-gray-900 shadow-sm'
             }`}>
               Login
             </div>
-            <Link to="/register" className={`flex-1 py-2.5 rounded-md text-sm font-medium text-center transition-all ${
+            <Link to="/register" className={`flex-1 py-2.5  text-sm font-medium text-center transition-all ${
               isDarkMode ? 'text-gray-400 hover:text-gray-300 hover:bg-gray-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
             }`}>
               Register
@@ -85,7 +85,7 @@ export default function Login() {
 
           {/* Error Message */}
           {(error || authError) && (
-            <div className={`mb-6 p-3.5 rounded-lg text-sm ${
+            <div className={`mb-6 p-3.5  text-sm ${
               isDarkMode 
                 ? 'bg-red-500/10 text-red-400 border border-red-500/20' 
                 : 'bg-red-50 text-red-700 border border-red-100'
@@ -115,7 +115,7 @@ export default function Login() {
                   value={formData.identifier}
                   onChange={handleChange}
                   placeholder="Enter your email or username"
-                  className={`w-full h-11 pl-10 pr-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
+                  className={`w-full h-11 pl-10 pr-4  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
                     isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
@@ -143,7 +143,7 @@ export default function Login() {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Enter your password"
-                  className={`w-full h-11 pl-10 pr-11 rounded-lg border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
+                  className={`w-full h-11 pl-10 pr-11  border focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
                     isDarkMode
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-500'
                       : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
@@ -152,7 +152,7 @@ export default function Login() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className={`absolute right-3.5 top-1/2 -translate-y-1/2 p-1 rounded transition-colors ${
+                  className={`absolute right-3.5 top-1/2 -translate-y-1/2 p-1  transition-colors ${
                     isDarkMode ? 'text-gray-500 hover:text-gray-300' : 'text-gray-400 hover:text-gray-600'
                   }`}
                 >
@@ -168,7 +168,7 @@ export default function Login() {
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="w-4 h-4 rounded border-2 text-teal-600 focus:ring-teal-500"
+                  className="w-4 h-4  border-2 text-teal-600 focus:ring-teal-500"
                 />
                 <span className={`ml-2 text-sm ${
                   isDarkMode ? 'text-gray-400' : 'text-gray-600'
@@ -192,7 +192,7 @@ export default function Login() {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full h-11 rounded-lg font-medium text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
+              className={`w-full h-11  font-medium text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 ${
                 isDarkMode
                   ? 'bg-teal-600 hover:bg-teal-700'
                   : 'bg-teal-600 hover:bg-teal-700'

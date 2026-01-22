@@ -9,7 +9,7 @@ function Footer() {
   return (
     <footer className={`py-12 px-4 transition-colors duration-200 ${
       isDarkMode 
-        ? 'bg-gray-800 text-white border-t border-gray-700' 
+        ? 'bg-gray-900 text-white border-t border-gray-700' 
         : 'bg-white text-gray-900 border-t border-gray-200'
     }`}>
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -66,7 +66,7 @@ function Footer() {
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="Facebook" 
-              className={`p-2 rounded-lg transition-all ${
+              className={`p-2  transition-all ${
                 isDarkMode 
                   ? 'bg-gray-700 hover:bg-teal-600 text-gray-300' 
                   : 'bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700'
@@ -79,7 +79,7 @@ function Footer() {
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="Twitter" 
-              className={`p-2 rounded-lg transition-all ${
+              className={`p-2  transition-all ${
                 isDarkMode 
                   ? 'bg-gray-700 hover:bg-teal-600 text-gray-300' 
                   : 'bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700'
@@ -92,7 +92,7 @@ function Footer() {
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="LinkedIn" 
-              className={`p-2 rounded-lg transition-all ${
+              className={`p-2  transition-all ${
                 isDarkMode 
                   ? 'bg-gray-700 hover:bg-teal-600 text-gray-300' 
                   : 'bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700'
@@ -105,7 +105,7 @@ function Footer() {
               target="_blank" 
               rel="noopener noreferrer" 
               aria-label="Instagram" 
-              className={`p-2 rounded-lg transition-all ${
+              className={`p-2  transition-all ${
                 isDarkMode 
                   ? 'bg-gray-700 hover:bg-teal-600 text-gray-300' 
                   : 'bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700'

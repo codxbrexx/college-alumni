@@ -10,10 +10,10 @@ function AboutUs() {
   return (
     <div className={`min-h-screen pb-12 mt-1 relative overflow-hidden transition-colors duration-300 ${
       isDarkMode 
-        ? 'bg-gray-900' 
+        ? 'bg-gray-950' 
         : 'bg-gray-50'
     }`}>
-      <div className={`absolute top-1/2 right-0 w-72 h-72 rounded-full opacity-20 blur-2xl z-0 ${
+      <div className={`absolute top-1/2 right-0 w-72 h-72  opacity-20 blur-2xl z-0 ${
         isDarkMode ? 'bg-teal-400' : 'bg-teal-200'
       }`} />
 
@@ -31,8 +31,8 @@ function AboutUs() {
         </div>
 
         <div className="flex-1 flex flex-col items-center">
-          <div className={`w-90 h-72 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center mb-4 mt-8 ${
-            isDarkMode ? 'bg-gray-800' : 'bg-white'
+          <div className={`w-90 h-72  overflow-hidden shadow-2xl flex items-center justify-center mb-4 mt-8 ${
+            isDarkMode ? 'bg-gray-900' : 'bg-white'
           }`}>
             <img src={reunionImg} alt="our misson image" className="object-cover w-full h-full scale-105" />
           </div>
@@ -42,8 +42,8 @@ function AboutUs() {
 
       <section className="relative z-10 max-w-5xl mx-auto px-4 py-12 md:py-20 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16">
       <div className="flex-1 flex flex-col items-center">
-          <div className={`w-90 h-72 rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center mb-4 mt-8 ${
-            isDarkMode ? 'bg-gray-800' : 'bg-white'
+          <div className={`w-90 h-72  overflow-hidden shadow-2xl flex items-center justify-center mb-4 mt-8 ${
+            isDarkMode ? 'bg-gray-900' : 'bg-white'
           }`}>
             <img src={storyImg} alt="our story " className="object-cover w-full h-full scale-105" />
           </div>

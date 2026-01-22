@@ -8,7 +8,7 @@ function Alumni() {
 
   return (
     <div className={`transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'
+      isDarkMode ? 'bg-gray-950 text-white' : 'bg-gray-50 text-gray-900'
     }`}>
       <div className="w-full flex justify-center">
         <Heroalumni/>

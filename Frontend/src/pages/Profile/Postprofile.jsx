@@ -41,7 +41,7 @@ function Postprofile() {
 
   return (
     <div className={`min-h-screen py-12 transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+      isDarkMode ? 'bg-gray-950' : 'bg-gray-50'
     }`}>
       <div className="max-w-3xl mx-auto px-4">
         <div className="text-center mb-8">
@@ -53,9 +53,9 @@ function Postprofile() {
           }`}>Share your journey and connect with fellow alumni</p>
         </div>
 
-        <div className={`rounded-2xl shadow-lg border p-8 transition-colors duration-300 ${
+        <div className={` shadow-lg border p-8 transition-colors duration-300 ${
           isDarkMode 
-            ? 'bg-gray-800 border-gray-700' 
+            ? 'bg-gray-900 border-gray-700' 
             : 'bg-white border-gray-100'
         }`}>
           <form className="space-y-6" onSubmit={handleFormSubmit}>
@@ -77,7 +77,7 @@ function Postprofile() {
                     value={form.name}
                     onChange={handleFormChange}
                     placeholder="Enter your full name"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -95,7 +95,7 @@ function Postprofile() {
                     value={form.rollNo}
                     onChange={handleFormChange}
                     placeholder="e.g., lcs2024035"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -114,7 +114,7 @@ function Postprofile() {
                     name="branch"
                     value={form.branch}
                     onChange={handleFormChange}
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white' 
                         : 'border-gray-200 text-gray-900'
@@ -137,7 +137,7 @@ function Postprofile() {
                     name="passingYear"
                     value={form.passingYear}
                     onChange={handleFormChange}
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white' 
                         : 'border-gray-200 text-gray-900'
@@ -170,7 +170,7 @@ function Postprofile() {
                     value={form.email}
                     onChange={handleFormChange}
                     placeholder="Enter your email address"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -188,7 +188,7 @@ function Postprofile() {
                     value={form.phone}
                     onChange={handleFormChange}
                     placeholder="Enter your phone number"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -215,7 +215,7 @@ function Postprofile() {
                     value={form.profession}
                     onChange={handleFormChange}
                     placeholder="Full Stack Developer, Data Scientist"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -233,7 +233,7 @@ function Postprofile() {
                     value={form.experience}
                     onChange={handleFormChange}
                     placeholder="2+ years at Google"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -254,7 +254,7 @@ function Postprofile() {
                     value={form.company}
                     onChange={handleFormChange}
                     placeholder="Enter your company name"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -271,7 +271,7 @@ function Postprofile() {
                     value={form.designation}
                     onChange={handleFormChange}
                     placeholder="Senior Software Engineer"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -290,7 +290,7 @@ function Postprofile() {
                   value={form.skills}
                   onChange={handleFormChange}
                   placeholder="e.g., React, Node.js, Python, AWS (comma separated)"
-                  className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                  className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                       : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -316,7 +316,7 @@ function Postprofile() {
                   onChange={handleFormChange}
                   placeholder="Tell us about your journey, interests, and what you're passionate about..."
                   rows={4}
-                  className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 resize-none transition-colors duration-300 ${
+                  className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 resize-none transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                       : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -335,7 +335,7 @@ function Postprofile() {
                   value={form.city}
                   onChange={handleFormChange}
                   placeholder="Enter your current city"
-                  className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                  className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                       : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -362,7 +362,7 @@ function Postprofile() {
                     value={form.linkedin}
                     onChange={handleFormChange}
                     placeholder="https://linkedin.com/in/yourprofile"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -379,7 +379,7 @@ function Postprofile() {
                     value={form.twitter}
                     onChange={handleFormChange}
                     placeholder="https://twitter.com/yourhandle"
-                    className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                    className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                         : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -405,7 +405,7 @@ function Postprofile() {
                   value={form.profileImage}
                   onChange={handleFormChange}
                   placeholder="https://example.com/your-image.jpg"
-                  className={`w-full px-4 py-3 rounded-lg border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
+                  className={`w-full px-4 py-3  border focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 transition-colors duration-300 ${
                     isDarkMode 
                       ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
                       : 'border-gray-200 text-gray-900 placeholder-gray-500'
@@ -420,7 +420,7 @@ function Postprofile() {
             <div className="pt-6">
               <button
                 type="submit"
-                className="w-full py-4 bg-teal-400 hover:bg-teal-500 text-white font-semibold rounded-lg shadow-lg transition-colors text-lg"
+                className="w-full py-4 bg-teal-400 hover:bg-teal-500 text-white font-semibold  shadow-lg transition-colors text-lg"
               >
                 Create Alumni Profile
               </button>

@@ -99,12 +99,12 @@ const PlacementSection = () => {
 
   return (
     <section className={`py-16 transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-900' : 'bg-gray-50'
+      isDarkMode ? 'bg-gray-950' : 'bg-gray-50'
     }`}>
       {/* Header */}
       <div className="max-w-7xl mx-auto px-4 mb-12">
         <div className="text-center mb-12">
-          <span className={`inline-block px-4 py-2 rounded-full font-semibold mb-4 shadow ${
+          <span className={`inline-block px-4 py-2  font-semibold mb-4 shadow ${
             isDarkMode ? 'bg-teal-900/80 text-teal-300' : 'bg-teal-100 text-teal-700'
           }`}>Placement Statistics</span>
           <h2 className={`text-4xl md:text-5xl font-extrabold mb-4 tracking-tight gradient-text`}>
@@ -118,15 +118,15 @@ const PlacementSection = () => {
         </div>
 
         {/* Year Selector */}
-        <div className={`w-full flex justify-center mb-8 p-4 rounded-2xl ${
-          isDarkMode ? 'bg-gray-800/50 backdrop-blur-sm' : 'bg-white/80 backdrop-blur-sm shadow-lg'
+        <div className={`w-full flex justify-center mb-8 p-4  ${
+          isDarkMode ? 'bg-gray-900/50 backdrop-blur-sm' : 'bg-white/80 backdrop-blur-sm shadow-lg'
         }`}>
           <div className="flex flex-wrap justify-center gap-2">
             {placementStats.map((stat) => (
               <button
                 key={stat.year}
                 onClick={() => setSelectedYear(stat.year)}
-                className={`px-6 py-3 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 ${
+                className={`px-6 py-3  font-bold transition-all duration-300 transform hover:scale-105 ${
                   selectedYear === stat.year
                     ? "bg-gradient-to-r from-teal-600 to-blue-600 text-white shadow-lg"
                     : isDarkMode 
@@ -147,14 +147,14 @@ const PlacementSection = () => {
             return (
               <div
                 key={index}
-                className={`relative group rounded-2xl p-8 shadow-xl border transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl glass-effect ${
+                className={`relative group  p-8 shadow-xl border transition-all duration-300 transform hover:-translate-y-1 hover:shadow-2xl glass-effect ${
                   isDarkMode 
                     ? 'bg-gradient-to-br from-gray-800 to-gray-900/80 border-teal-900 hover:border-teal-500/50' 
                     : 'bg-white/80 border-teal-100 hover:border-teal-500/50'
                 }`}
               >
                 {/* Icon Circle */}
-                <div className={`inline-flex p-4 rounded-xl mb-6 bg-gradient-to-br ${card.gradient} text-white shadow-lg`}>
+                <div className={`inline-flex p-4  mb-6 bg-gradient-to-br ${card.gradient} text-white shadow-lg`}>
                   <Icon className="h-8 w-8" />
                 </div>
                 
@@ -175,7 +175,7 @@ const PlacementSection = () => {
                 </h3>
 
                 {/* Animated Background */}
-                <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${card.gradient}`} style={{ opacity: 0.05 }} />
+                <div className={`absolute inset-0  opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${card.gradient}`} style={{ opacity: 0.05 }} />
               </div>
             );
           })}
@@ -186,13 +186,13 @@ const PlacementSection = () => {
           isDarkMode ? '' : ''
         }`}>
           {/* Top Recruiters */}
-          <div className={`p-8 rounded-2xl border shadow-lg ${
+          <div className={`p-8  border shadow-lg ${
             isDarkMode 
-              ? 'bg-gray-800/50 border-gray-700' 
+              ? 'bg-gray-900/50 border-gray-700' 
               : 'bg-white border-gray-200'
           }`}>
             <div className="flex items-center gap-3 mb-6">
-              <div className={`p-3 rounded-xl ${
+              <div className={`p-3  ${
                 isDarkMode ? 'bg-teal-900/50' : 'bg-teal-100'
               }`}>
                 <Briefcase className={`h-6 w-6 ${
@@ -207,7 +207,7 @@ const PlacementSection = () => {
               {['Microsoft', 'Google', 'Amazon', 'TCS', 'Infosys', 'Wipro'].map((company, idx) => (
                 <div
                   key={idx}
-                  className={`p-3 rounded-lg font-semibold text-center transition-all duration-300 hover:scale-105 ${
+                  className={`p-3  font-semibold text-center transition-all duration-300 hover:scale-105 ${
                     isDarkMode 
                       ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' 
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -220,13 +220,13 @@ const PlacementSection = () => {
           </div>
 
           {/* Placement Insights */}
-          <div className={`p-8 rounded-2xl border shadow-lg ${
+          <div className={`p-8  border shadow-lg ${
             isDarkMode 
-              ? 'bg-gray-800/50 border-gray-700' 
+              ? 'bg-gray-900/50 border-gray-700' 
               : 'bg-white border-gray-200'
           }`}>
             <div className="flex items-center gap-3 mb-6">
-              <div className={`p-3 rounded-xl ${
+              <div className={`p-3  ${
                 isDarkMode ? 'bg-blue-900/50' : 'bg-blue-100'
               }`}>
                 <Users className={`h-6 w-6 ${
@@ -238,7 +238,7 @@ const PlacementSection = () => {
               }`}>Placement Insights</h3>
             </div>
             <div className="space-y-4">
-              <div className={`p-4 rounded-lg ${
+              <div className={`p-4  ${
                 isDarkMode ? 'bg-gray-700/50' : 'bg-gray-50'
               }`}>
                 <p className={`text-sm font-semibold mb-1 ${
@@ -250,7 +250,7 @@ const PlacementSection = () => {
                   <CountUp end={450} duration={2.5} />+
                 </p>
               </div>
-              <div className={`p-4 rounded-lg ${
+              <div className={`p-4  ${
                 isDarkMode ? 'bg-gray-700/50' : 'bg-gray-50'
               }`}>
                 <p className={`text-sm font-semibold mb-1 ${
@@ -275,7 +275,7 @@ function Placements() {
 
   return (
     <div className={`transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'
+      isDarkMode ? 'bg-gray-950 text-white' : 'bg-gray-50 text-gray-900'
     }`}>
       <div className="w-fill flex justify-center">
         <Hero />
