@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Herojob from "../../Components/Hero/Herojob";
 import JobCard from './JobCard';
 import { useTheme } from '../../context/ThemeContext';
@@ -62,13 +62,82 @@ const jobs = [
 
 export default function Job() {
   const { isDarkMode } = useTheme();
-  // State for jobs is currently mocked, but in real app would be filtered by params passed from Hero
+
+  // State for filtering
+  const [searchQuery, setSearchQuery] = useState('');
+  const [location, setLocation] = useState('');
+  const [jobType, setJobType] = useState('all');
+  const [activeTab, setActiveTab] = useState('jobs'); // 'jobs' or 'internships'
+
+  // Debounce State
+  const [debouncedFilters, setDebouncedFilters] = useState({
+    searchQuery: '',
+    location: '',
+    jobType: 'all',
+    activeTab: 'jobs'
+  });
+  const [isSearching, setIsSearching] = useState(false);
+
+  // Debounce Effect
+  useEffect(() => {
+    setIsSearching(true);
+    const timer = setTimeout(() => {
+      setDebouncedFilters({
+        searchQuery,
+        location,
+        jobType,
+        activeTab
+      });
+      setIsSearching(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [searchQuery, location, jobType, activeTab]);
+
+  // Filter Logic
+  const filteredJobs = jobs.filter(job => {
+    // 1. Tab Filter (Job vs Internship)
+    if (debouncedFilters.activeTab === 'internships' && !job.isInternship) return false;
+    if (debouncedFilters.activeTab === 'jobs' && job.isInternship) return false;
+
+    // 2. Search Query (Title, Company, Skills)
+    const query = debouncedFilters.searchQuery.toLowerCase();
+    const matchQuery =
+      job.title.toLowerCase().includes(query) ||
+      job.company.toLowerCase().includes(query) ||
+      job.skills.some(skill => skill.toLowerCase().includes(query));
+    if (!matchQuery) return false;
+
+    // 3. Location Filter
+    if (debouncedFilters.location && !job.location.toLowerCase().includes(debouncedFilters.location.toLowerCase())) {
+      if (debouncedFilters.location === 'remote' && job.location.toLowerCase() !== 'remote') return false;
+      // For other locations, partial match is fine
+      if (debouncedFilters.location !== 'remote' && !job.location.toLowerCase().includes(debouncedFilters.location.toLowerCase())) return false;
+    }
+
+    // 4. Type Filter
+    if (debouncedFilters.jobType !== 'all') {
+      if (debouncedFilters.jobType === 'full-time' && job.type !== 'Full Time') return false;
+      if (debouncedFilters.jobType === 'contract' && job.type !== 'Contract') return false;
+    }
+
+    return true;
+  });
 
   return (
     <div className={`min-h-screen pb-16 transition-colors duration-300 ${isDarkMode ? 'bg-black' : 'bg-white'
       }`}>
       <div className="w-full">
-        <Herojob />
+        <Herojob
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          location={location}
+          setLocation={setLocation}
+          jobType={jobType}
+          setJobType={setJobType}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
       </div>
 
       {/* Main Content */}
@@ -88,19 +157,35 @@ export default function Job() {
           </div>
           <div className={`text-sm font-semibold uppercase tracking-widest ${isDarkMode ? 'text-gray-500' : 'text-gray-400'
             }`}>
-            Showing {jobs.length} opportunities
+            Showing {filteredJobs.length} opportunities
           </div>
         </div>
 
         {/* Jobs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 shadow-none">
-          {jobs.length > 0 ? (
-            jobs.map(job => <JobCard key={job.id} job={job} />)
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 shadow-none min-h-[200px]">
+          {isSearching ? (
+            <div className="col-span-full py-20 text-center">
+              <div className="inline-block px-4 py-2 border border-gray-200 rounded-sm bg-gray-50 text-gray-500 text-sm font-bold animate-pulse">
+                Searching Opportunities...
+              </div>
+            </div>
+          ) : filteredJobs.length > 0 ? (
+            filteredJobs.map(job => <JobCard key={job.id} job={job} />)
           ) : (
             <div className="col-span-full py-20 text-center">
               <h3 className={`text-2xl font-serif font-bold mb-4 ${isDarkMode ? 'text-gray-800' : 'text-gray-200'
                 }`}>No opportunities found</h3>
               <p className="text-gray-500">Try adjusting your filters.</p>
+              <button
+                onClick={() => {
+                  setSearchQuery('');
+                  setLocation('');
+                  setJobType('all');
+                }}
+                className="mt-4 text-red-700 font-bold uppercase text-xs tracking-widest hover:underline"
+              >
+                Clear All Filters
+              </button>
             </div>
           )}
         </div>
@@ -108,8 +193,8 @@ export default function Job() {
         {/* Pagination / Load More - Sharp Style */}
         <div className="mt-20 flex justify-center">
           <button className={`px-10 py-4 font-bold uppercase tracking-widest text-sm border-2 transition-all hover:bg-red-700 hover:border-red-700 hover:text-white ${isDarkMode
-              ? 'border-gray-800 text-white'
-              : 'border-black text-black'
+            ? 'border-gray-800 text-white'
+            : 'border-black text-black'
             }`}>
             Load More Opportunities
           </button>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Heronews from '../../Components/Hero/Heronews';
 import { useTheme } from '../../context/ThemeContext';
 import { FaHeart, FaRegHeart, FaBookmark, FaRegBookmark, FaEye, FaClock, FaCalendar, FaUser, FaArrowRight } from 'react-icons/fa';
@@ -74,14 +74,14 @@ function NewsCard({ news }) {
 
   return (
     <div className={`group relative flex flex-col h-full border transition-all duration-300 hover:shadow-2xl ${isDarkMode
-        ? 'bg-gray-900 border-gray-800'
-        : 'bg-white border-gray-200'
+      ? 'bg-gray-900 border-gray-800'
+      : 'bg-white border-gray-200'
       }`}>
 
       {/* Editorial Header Image Placeholder (or Gradient if no image) */}
       <div className={`h-48 relative overflow-hidden ${news.isEvent
-          ? 'bg-gradient-to-r from-blue-900 to-gray-900'
-          : 'bg-gradient-to-r from-red-900 to-gray-900'
+        ? 'bg-gradient-to-r from-blue-900 to-gray-900'
+        : 'bg-gradient-to-r from-red-900 to-gray-900'
         }`}>
         <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('/alumnibg.jpg')] bg-cover bg-center"></div>
         <div className="absolute top-4 left-4">
@@ -142,13 +142,74 @@ function NewsCard({ news }) {
 
 export default function News() {
   const { isDarkMode } = useTheme();
-  // State for search/filter would be handled here or passed from Hero
+
+  // State for filtering
+  const [searchQuery, setSearchQuery] = useState('');
+  const [category, setCategory] = useState('all');
+  const [activeTab, setActiveTab] = useState('news'); // 'news' or 'events'
+
+  // Debounce State
+  const [debouncedFilters, setDebouncedFilters] = useState({
+    searchQuery: '',
+    category: 'all',
+    activeTab: 'news'
+  });
+  const [isSearching, setIsSearching] = useState(false);
+
+  // Debounce Effect
+  useEffect(() => {
+    setIsSearching(true);
+    const timer = setTimeout(() => {
+      setDebouncedFilters({
+        searchQuery,
+        category,
+        activeTab
+      });
+      setIsSearching(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [searchQuery, category, activeTab]);
+
+  // Filter Logic
+  const filteredNews = newsArticles.filter(item => {
+    // 1. Tab Filter (News vs Events)
+    if (debouncedFilters.activeTab === 'events' && !item.isEvent) return false;
+    if (debouncedFilters.activeTab === 'news' && item.isEvent) return false;
+
+    // 2. Search Query (Title, Excerpt, Author, Tags)
+    const query = debouncedFilters.searchQuery.toLowerCase();
+    const matchQuery =
+      item.title.toLowerCase().includes(query) ||
+      item.excerpt.toLowerCase().includes(query) ||
+      item.author.toLowerCase().includes(query) ||
+      (item.tags && item.tags.some(tag => tag.toLowerCase().includes(query)));
+
+    if (!matchQuery) return false;
+
+    // 3. Category Filter
+    if (debouncedFilters.category !== 'all') {
+      if (debouncedFilters.category === 'academics' && item.category !== 'Placements' && item.category !== 'Academics') return false; // Basic mapping
+      if (debouncedFilters.category === 'alumni' && item.category !== 'Alumni') return false;
+      if (debouncedFilters.category === 'campus' && item.category !== 'Infrastructure' && item.category !== 'Campus') return false;
+      if (debouncedFilters.category === 'sports' && item.category !== 'Sports') return false;
+    }
+
+    return true;
+  });
 
   return (
     <div className={`min-h-screen pb-16 transition-colors duration-300 ${isDarkMode ? 'bg-black' : 'bg-white'
       }`}>
       <div className="w-full">
-        <Heronews />
+        <Heronews
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          category={category}
+          setCategory={setCategory}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
       </div>
 
       {/* Main Content */}
@@ -179,13 +240,28 @@ export default function News() {
         </div>
 
         {/* Headlines Grid (Featured Layout?) - For now detailed grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {newsArticles.length > 0 ? (
-            newsArticles.map(news => <NewsCard key={news.id} news={news} />)
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[200px]">
+          {isSearching ? (
+            <div className="col-span-full py-20 text-center">
+              <div className="inline-block px-4 py-2 border border-gray-200 rounded-sm bg-gray-50 text-gray-500 text-sm font-bold animate-pulse">
+                Searching Stories...
+              </div>
+            </div>
+          ) : filteredNews.length > 0 ? (
+            filteredNews.map(news => <NewsCard key={news.id} news={news} />)
           ) : (
             <div className="col-span-full py-20 text-center">
               <h3 className={`text-2xl font-serif font-bold mb-4 ${isDarkMode ? 'text-gray-800' : 'text-gray-200'
-                }`}>No news found</h3>
+                }`}>No matching stories found</h3>
+              <button
+                onClick={() => {
+                  setSearchQuery('');
+                  setCategory('all');
+                }}
+                className="text-red-700 font-bold uppercase text-xs tracking-widest hover:underline"
+              >
+                Clear Filters
+              </button>
             </div>
           )}
         </div>
@@ -193,8 +269,8 @@ export default function News() {
         {/* Pagination / Load More - Sharp Style */}
         <div className="mt-20 flex justify-center">
           <button className={`px-10 py-4 font-bold uppercase tracking-widest text-sm border-2 transition-all hover:bg-red-700 hover:border-red-700 hover:text-white ${isDarkMode
-              ? 'border-gray-800 text-white'
-              : 'border-black text-black'
+            ? 'border-gray-800 text-white'
+            : 'border-black text-black'
             }`}>
             View Archives
           </button>

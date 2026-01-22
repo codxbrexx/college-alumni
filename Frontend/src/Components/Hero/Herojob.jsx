@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import { FaSearch, FaMapMarkerAlt, FaBriefcase } from 'react-icons/fa';
 
-function Herojob() {
+function Herojob({
+  searchQuery, setSearchQuery,
+  location, setLocation,
+  jobType, setJobType,
+  activeTab, setActiveTab
+}) {
   const { isDarkMode } = useTheme();
-  const [activeTab, setActiveTab] = useState('jobs');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [location, setLocation] = useState('');
-  const [jobType, setJobType] = useState('all');
 
   return (
-    <div className="relative w-full min-h-[500px] flex flex-col justify-center overflow-hidden font-sans">
+    <div className="relative w-full min-h-[350px] flex flex-col justify-center overflow-hidden font-sans">
       {/* Background Image with Sharp Overlay */}
       <img
         src="/college_hero.png" // Using the same high-quality asset as landing
@@ -22,15 +23,15 @@ function Herojob() {
         }`} />
 
       {/* Hero Content */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-20 mt-10">
-        <div className="max-w-3xl mb-12">
-          <h4 className="text-white/80 font-bold tracking-widest uppercase text-sm mb-3">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-10 mt-10">
+        <div className="max-w-3xl mb-8">
+          <h4 className="text-white/80 font-bold tracking-widest uppercase text-xs mb-2">
             Career Department
           </h4>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 font-serif">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 font-serif">
             Find Your Next <br /> Chapter.
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 font-light max-w-2xl leading-relaxed">
+          <p className="text-lg md:text-xl text-white/90 font-light max-w-2xl leading-relaxed">
             Exclusive career opportunities curated for our alumni network.
           </p>
         </div>
