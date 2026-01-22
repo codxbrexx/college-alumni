@@ -90,7 +90,9 @@ const userSchema = new mongoose.Schema({
         type: Date
     }
 }, {
-    timestamps: true
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true }
 })
 
 userSchema.methods.isPasswordCorrect = async function (candidatePassword) {
@@ -131,5 +133,11 @@ userSchema.methods.toSafeObject = function () {
     delete userObject.resetPasswordExpires
     return userObject
 }
+
+userSchema.virtual('role').get(function () {
+    const currentYear = new Date().getFullYear();
+    if (!this.yearOfPassout) return 'Alumni'; // Default to Alumni if unknown
+    return this.yearOfPassout > currentYear ? 'Student' : 'Alumni';
+});
 
 export const User = mongoose.model('User', userSchema)

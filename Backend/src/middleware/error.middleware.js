@@ -6,18 +6,19 @@ export const notFoundHandler = (_req, res) => {
 }
 
 export const errorHandler = (err, _req, res, _next) => {
-    if (err instanceof ApiError) {
-        return res.status(err.statusCode).json({
-            success: false,
-            message: err.message,
-            errors: err.errors || [],
-            data: err.data || null
-        })
+    let error = err
+
+    if (!(error instanceof ApiError)) {
+        const statusCode = error.statusCode || 500
+        const message = error.message || "Internal Server Error"
+        error = new ApiError(statusCode, message, [], error.stack)
     }
 
-    console.error("Unhandled error", err)
-    return res.status(500).json({
-        success: false,
-        message: "Internal server error"
-    })
+    const response = {
+        ...error,
+        message: error.message,
+        ...(process.env.NODE_ENV === "development" ? { stack: error.stack } : {})
+    }
+
+    return res.status(error.statusCode).json(response)
 }
