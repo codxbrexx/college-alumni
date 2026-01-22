@@ -75,7 +75,7 @@ export default function AlumniList() {
                     </p>
                 </div>
 
-                <div className="bg-white border border-gray-200 shadow-sm rounded-lg overflow-hidden">
+                <div className="bg-white border border-gray-200 shadow-sm rounded-sm overflow-hidden">
                     {/* List Header (Desktop) */}
                     <div className="hidden md:grid grid-cols-12 gap-4 bg-gray-50 text-gray-500 py-3 px-6 text-xs font-bold uppercase tracking-wider border-b border-gray-200">
                         <div className="col-span-4">Member</div>
@@ -100,7 +100,7 @@ export default function AlumniList() {
                                         {/* Column 1: Profile */}
                                         <div className="col-span-12 md:col-span-4 flex items-center gap-4">
                                             {/* Initials Avatar */}
-                                            <div className="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center font-serif font-bold text-sm shadow-sm border-2 border-white group-hover:bg-red-700 transition-colors">
+                                            <div className="w-10 h-10 rounded-sm bg-gray-900 text-white flex items-center justify-center font-serif font-bold text-sm shadow-sm border border-gray-200 group-hover:bg-red-700 transition-colors">
                                                 {initials}
                                             </div>
                                             <div>
@@ -117,23 +117,23 @@ export default function AlumniList() {
                                         <div className="col-span-6 md:col-span-3 text-sm text-gray-600 space-y-1">
                                             <div className="flex items-center gap-2">
                                                 <FaBriefcase className="text-xs text-gray-400" />
-                                                <span className="truncate font-medium text-xs">{alum.company}</span>
+                                                <span className="truncate font-medium text-xs text-gray-900 uppercase tracking-wide">{alum.company}</span>
                                             </div>
                                             <div className="flex items-center gap-2">
                                                 <FaGraduationCap className="text-xs text-gray-400" />
-                                                <span className="text-xs">Class of {alum.passingYear}</span>
+                                                <span className="text-xs text-gray-500">Class of <span className="font-bold text-gray-900">{alum.passingYear}</span></span>
                                             </div>
                                         </div>
 
                                         {/* Column 3: Location */}
                                         <div className="col-span-6 md:col-span-3 flex items-center gap-2 text-sm text-gray-500">
                                             <FaMapMarkerAlt className="text-xs text-gray-400" />
-                                            <span className="text-xs">{alum.city}</span>
+                                            <span className="text-xs font-medium text-gray-700">{alum.city}</span>
                                         </div>
 
                                         {/* Column 4: Toggle Action */}
                                         <div className="col-span-12 md:col-span-2 flex justify-end items-center gap-2">
-                                            <div className={`w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center transition-all bg-white text-gray-400 group-hover:border-red-600 group-hover:text-red-600 ${isExpanded ? 'bg-red-50 rotate-180' : ''}`}>
+                                            <div className={`w-8 h-8 rounded-sm border border-gray-200 flex items-center justify-center transition-all bg-white text-gray-400 group-hover:border-red-600 group-hover:text-red-600 ${isExpanded ? 'bg-red-50 rotate-180' : ''}`}>
                                                 <FaChevronDown size={10} />
                                             </div>
                                         </div>

@@ -87,7 +87,7 @@ function AboutUs() {
           <div className="md:w-1/2 relative">
             <div className="absolute top-4 left-4 w-full h-full border-4 border-gray-100 z-0"></div>
             <img
-              src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+              src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
               alt="Graduation"
               className="w-full h-96 object-cover shadow-2xl relative z-10 grayscale hover:grayscale-0 transition-all duration-700"
             />

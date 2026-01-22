@@ -124,7 +124,7 @@ function AlumniProfile() {
 
                                 <button
                                     onClick={() => setIsMessageOpen(true)}
-                                    className="w-full py-2.5 bg-gray-900 hover:bg-black text-white font-bold text-sm rounded-sm shadow-sm transition-colors uppercase tracking-wide"
+                                    className="w-full py-2.5 bg-red-700 hover:bg-red-800 text-white font-bold text-sm rounded-sm shadow-sm transition-colors uppercase tracking-wide"
                                 >
                                     Message
                                 </button>
@@ -240,7 +240,7 @@ function AlumniProfile() {
                                     <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Subject</label>
                                     <input
                                         type="text"
-                                        className="w-full border border-gray-300 p-3 rounded-sm text-sm focus:border-gray-900 focus:ring-0 outline-none transition-all placeholder-gray-300"
+                                        className="w-full bg-white border border-gray-300 p-3 rounded-sm text-sm text-gray-900 focus:border-red-700 focus:ring-1 focus:ring-red-700 outline-none transition-all placeholder-gray-400"
                                         placeholder="e.g. Inquiry regarding mentorship"
                                         value={formData.subject}
                                         onChange={e => setFormData({ ...formData, subject: e.target.value })}
@@ -251,7 +251,7 @@ function AlumniProfile() {
                                     <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Message</label>
                                     <textarea
                                         rows="5"
-                                        className="w-full border border-gray-300 p-3 rounded-sm text-sm focus:border-gray-900 focus:ring-0 outline-none resize-none transition-all placeholder-gray-300"
+                                        className="w-full bg-white border border-gray-300 p-3 rounded-sm text-sm text-gray-900 focus:border-red-700 focus:ring-1 focus:ring-red-700 outline-none resize-none transition-all placeholder-gray-400"
                                         placeholder="Write your message here..."
                                         value={formData.message}
                                         onChange={e => setFormData({ ...formData, message: e.target.value })}
@@ -262,13 +262,13 @@ function AlumniProfile() {
                                     <button
                                         type="button"
                                         onClick={() => setIsMessageOpen(false)}
-                                        className="px-5 py-2 text-gray-500 font-bold hover:text-gray-900 hover:bg-gray-50 rounded-sm transition-colors text-xs uppercase tracking-widest"
+                                        className="px-5 py-2 text-gray-500 font-bold hover:text-red-700 hover:bg-gray-50 rounded-sm transition-colors text-xs uppercase tracking-widest"
                                     >
                                         Cancel
                                     </button>
                                     <button
                                         type="submit"
-                                        className="px-6 py-2 bg-gray-900 hover:bg-black text-white font-bold rounded-sm shadow-sm transition-colors text-xs uppercase tracking-widest"
+                                        className="px-6 py-2 bg-red-700 hover:bg-red-800 text-white font-bold rounded-sm shadow-sm transition-colors text-xs uppercase tracking-widest"
                                     >
                                         Send
                                     </button>
