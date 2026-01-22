@@ -74,7 +74,7 @@ function ContactUs() {
                 <input
                   type="text"
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:outline-none focus:border-red-700 focus:ring-0 transition-all placeholder-gray-400"
-                  placeholder="John"
+                  placeholder="Enter First Name"
                 />
               </div>
               <div>
@@ -82,7 +82,7 @@ function ContactUs() {
                 <input
                   type="text"
                   className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:outline-none focus:border-red-700 focus:ring-0 transition-all placeholder-gray-400"
-                  placeholder="Doe"
+                  placeholder="Enter Last Name"
                 />
               </div>
             </div>
@@ -92,7 +92,7 @@ function ContactUs() {
               <input
                 type="email"
                 className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:outline-none focus:border-red-700 focus:ring-0 transition-all placeholder-gray-400"
-                placeholder="john@example.com"
+                placeholder="Enter Email Address"
               />
             </div>
 
@@ -114,7 +114,7 @@ function ContactUs() {
               <textarea
                 rows="4"
                 className="w-full px-4 py-3 bg-gray-50 border border-gray-200 focus:outline-none focus:border-red-700 focus:ring-0 resize-none transition-all placeholder-gray-400"
-                placeholder="How can we help you?"
+                placeholder="Enter Your Message"
               ></textarea>
             </div>
 

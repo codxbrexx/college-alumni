@@ -44,7 +44,7 @@ const router = createBrowserRouter(
         <Route path='placement' element={<Placements />} />
         <Route path='about' element={<AboutUs />} />
         <Route path='contact' element={<ContactUs />} />
-        <Route path='support' element={<Support />} />
+
         <Route path='*' element={<NotFound />} />
       </Route>
       <Route path='register' element={<Register />} />
@@ -53,6 +53,7 @@ const router = createBrowserRouter(
       <Route path='terms' element={<TermsOfUse />} />
       <Route path='forgot' element={<Forgot />} />
       <Route path='createpassword' element={<Createpassword />} />
+      <Route path='support' element={<Support />} />
     </>
   )
 )

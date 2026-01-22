@@ -14,7 +14,7 @@ import {
   FaTicketAlt,
   FaGlobeAmericas
 } from 'react-icons/fa'
-import CountUp from 'react-countup'
+
 
 function Home() {
   const stats = [
@@ -106,7 +106,7 @@ function Home() {
           {stats.map((stat) => (
             <div key={stat.id} className="transition-transform duration-300 hover:scale-105">
               <div className="text-3xl md:text-4xl font-bold mb-2 text-gray-900">
-                <CountUp end={stat.value} duration={2.5} separator="," />
+                {stat.value.toLocaleString()}
                 {stat.suffix}
               </div>
               <div className="text-sm font-medium text-gray-600">

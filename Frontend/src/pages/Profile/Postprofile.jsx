@@ -178,8 +178,8 @@ export default function Postprofile() {
                   <div className="space-y-6">
                     <h3 className="text-xl font-bold font-serif mb-8 text-gray-900 border-b-2 border-red-100 pb-2 inline-block">Basic Information</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <InputField label="Full Name" name="name" value={form.name} onChange={handleFormChange} placeholder="JOHN DOE" required />
-                      <InputField label="Roll Number" name="rollNo" value={form.rollNo} onChange={handleFormChange} placeholder="LCS2021001" required />
+                      <InputField label="Full Name" name="name" value={form.name} onChange={handleFormChange} placeholder="Enter Full Name" required />
+                      <InputField label="Roll Number" name="rollNo" value={form.rollNo} onChange={handleFormChange} placeholder="LCS20240XX" required />
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <SelectField
@@ -214,14 +214,14 @@ export default function Postprofile() {
                   <div className="space-y-6">
                     <h3 className="text-xl font-bold font-serif mb-8 text-gray-900 border-b-2 border-red-100 pb-2 inline-block">Career Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <InputField label="Profession" name="profession" value={form.profession} onChange={handleFormChange} placeholder="SOFTWARE ENGINEER" required />
-                      <InputField label="Experience" name="experience" value={form.experience} onChange={handleFormChange} placeholder="e.g. 2 YEARS" />
+                      <InputField label="Profession" name="profession" value={form.profession} onChange={handleFormChange} placeholder="Software Engineer" required />
+                      <InputField label="Experience" name="experience" value={form.experience} onChange={handleFormChange} placeholder="e.g. 2 Years" />
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <InputField label="Company" name="company" value={form.company} onChange={handleFormChange} placeholder="COMPANY NAME" />
-                      <InputField label="Designation" name="designation" value={form.designation} onChange={handleFormChange} placeholder="e.g. SENIOR ENGINEER" />
+                      <InputField label="Company" name="company" value={form.company} onChange={handleFormChange} placeholder="Company Name" />
+                      <InputField label="Designation" name="designation" value={form.designation} onChange={handleFormChange} placeholder="e.g. Senior Engineer" />
                     </div>
-                    <InputField label="Skills" name="skills" value={form.skills} onChange={handleFormChange} placeholder="REACT, NODE, AWS" required />
+                    <InputField label="Skills" name="skills" value={form.skills} onChange={handleFormChange} placeholder="React, Node, AWS" required />
                   </div>
                 )}
 
@@ -241,14 +241,14 @@ export default function Postprofile() {
                       ></textarea>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <InputField label="LinkedIn URL" name="linkedin" value={form.linkedin} onChange={handleFormChange} placeholder="HTTPS://LINKEDIN.COM/IN/..." type="url" />
-                      <InputField label="Twitter URL" name="twitter" value={form.twitter} onChange={handleFormChange} placeholder="HTTPS://TWITTER.COM/..." type="url" />
+                      <InputField label="LinkedIn URL" name="linkedin" value={form.linkedin} onChange={handleFormChange} placeholder="https://linkedin.com/in/..." type="url" />
+                      <InputField label="Twitter URL" name="twitter" value={form.twitter} onChange={handleFormChange} placeholder="https://twitter.com/..." type="url" />
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <InputField label="Email" name="email" value={form.email} onChange={handleFormChange} placeholder="EMAIL ADDRESS" type="email" required />
-                      <InputField label="Phone" name="phone" value={form.phone} onChange={handleFormChange} placeholder="PHONE NUMBER" type="tel" />
+                      <InputField label="Email" name="email" value={form.email} onChange={handleFormChange} placeholder="Email Address" type="email" required />
+                      <InputField label="Phone" name="phone" value={form.phone} onChange={handleFormChange} placeholder="Phone Number" type="tel" />
                     </div>
-                    <InputField label="Profile Image URL" name="profileImage" value={form.profileImage} onChange={handleFormChange} placeholder="HTTPS://..." type="url" />
+                    <InputField label="Profile Image URL" name="profileImage" value={form.profileImage} onChange={handleFormChange} placeholder="https://..." type="url" />
                   </div>
                 )}
               </motion.div>

@@ -51,7 +51,7 @@ function AlumniDetails() {
 
                     {/* Profile Sidebar Card - Sharp Corners */}
                     <div className="w-full md:w-1/3 bg-white shadow-xl border-t-4 border-red-700 sticky top-24">
-                        <div className="p-8 flex flex-col items-center border-b border-gray-100">
+                        <div className="p-8 flex flex-col items-center border-gray-100">
                             <div className="relative mb-6">
                                 <img src={alum.image} alt={alum.name} className="w-48 h-48 rounded-full object-cover border-4 border-white" />
                                 {/* <div className="absolute bottom-2 right-2 w-4 h-4 bg-green-500 rounded-full border-2 border-white" title="Active"></div> */}

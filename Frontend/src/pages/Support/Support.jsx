@@ -17,6 +17,11 @@ export default function Support() {
     return (
         <div className={`min-h-screen py-24 px-4 font-sans ${isDarkMode ? 'bg-gray-950 text-white' : 'bg-white text-gray-900'}`}>
             <div className="max-w-4xl mx-auto">
+                <div className="mb-8">
+                    <Link to="/login" className="text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-red-600 transition-colors">
+                        &larr; Back to Login
+                    </Link>
+                </div>
 
                 <div className="text-center mb-16">
                     <h1 className="text-4xl font-bold font-serif mb-4">Support Center</h1>

@@ -40,8 +40,8 @@ function Herojob() {
           <button
             onClick={() => setActiveTab('jobs')}
             className={`px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all ${activeTab === 'jobs'
-                ? 'bg-white text-black'
-                : 'bg-black/40 text-white hover:bg-black/60 backdrop-blur-sm'
+              ? 'bg-white text-black'
+              : 'bg-black/40 text-white hover:bg-black/60 backdrop-blur-sm'
               }`}
           >
             Jobs
@@ -49,8 +49,8 @@ function Herojob() {
           <button
             onClick={() => setActiveTab('internships')}
             className={`px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all ${activeTab === 'internships'
-                ? 'bg-white text-black'
-                : 'bg-black/40 text-white hover:bg-black/60 backdrop-blur-sm'
+              ? 'bg-white text-black'
+              : 'bg-black/40 text-white hover:bg-black/60 backdrop-blur-sm'
               }`}
           >
             Internships
@@ -62,7 +62,7 @@ function Herojob() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
 
             {/* Search Input */}
-            <div className="md:col-span-5 border-b-2 md:border-b-0 md:border-r-2 border-gray-100 pb-4 md:pb-0 md:pr-4">
+            <div className="md:col-span-5 pb-4 md:pb-0 md:pr-4">
               <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">
                 Keyword
               </label>
@@ -73,13 +73,13 @@ function Herojob() {
                   placeholder="Title, Company, or Skills"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-transparent outline-none text-gray-900 font-medium placeholder-gray-400"
+                  className="w-full bg-transparent outline-none text-gray-900 font-medium placeholder-gray-400 border-b-2 border-gray-200 focus:border-red-700 transition-colors pb-2"
                 />
               </div>
             </div>
 
             {/* Location Input */}
-            <div className="md:col-span-3 border-b-2 md:border-b-0 md:border-r-2 border-gray-100 pb-4 md:pb-0 md:pr-4 md:pl-4">
+            <div className="md:col-span-3 pb-4 md:pb-0 md:pr-4 md:pl-4">
               <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">
                 Location
               </label>
@@ -88,7 +88,7 @@ function Herojob() {
                 <select
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
-                  className="w-full bg-transparent outline-none text-gray-900 font-medium cursor-pointer appearance-none"
+                  className="w-full bg-transparent outline-none text-gray-900 font-medium cursor-pointer appearance-none border-b-2 border-gray-200 focus:border-red-700 transition-colors pb-2"
                 >
                   <option value="">Anywhere</option>
                   <option value="remote">Remote</option>
@@ -108,7 +108,7 @@ function Herojob() {
                 <select
                   value={jobType}
                   onChange={(e) => setJobType(e.target.value)}
-                  className="w-full bg-transparent outline-none text-gray-900 font-medium cursor-pointer appearance-none"
+                  className="w-full bg-transparent outline-none text-gray-900 font-medium cursor-pointer appearance-none border-b-2 border-gray-200 focus:border-red-700 transition-colors pb-2"
                 >
                   <option value="all">Any Type</option>
                   <option value="full-time">Full Time</option>

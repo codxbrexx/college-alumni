@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CountUp from "react-countup";
+
 import { FaGoogle, FaMicrosoft, FaAmazon, FaApple, FaFacebook, FaLinkedin, FaUber, FaAirbnb, FaBuilding, FaChartLine, FaUniversity, FaUserGraduate, FaPaypal, FaCcAmex, FaAtlassian } from "react-icons/fa";
 import { SiNetflix, SiTesla, SiSamsung } from "react-icons/si";
 import { MdBusiness } from "react-icons/md";
@@ -179,13 +179,7 @@ const PlacementSection = () => {
 
                 <h3 className={`text-5xl md:text-6xl font-serif font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                  <CountUp
-                    end={card.value}
-                    duration={2.5}
-                    decimals={card.label === 'Average Package' || card.label === 'Placement Rate' ? 1 : 0}
-                    prefix={card.prefix}
-                    suffix={card.suffix}
-                  />
+                  {card.prefix}{card.value}{card.suffix}
                 </h3>
               </div>
             );
@@ -228,7 +222,7 @@ const PlacementSection = () => {
               Total Students Placed
             </h4>
             <p className={`text-6xl font-bold mb-2 text-red-500`}>
-              <CountUp end={1250} duration={2.5} />+
+              1250+
             </p>
             <p className="text-gray-400">Across various industries including Tech, Finance, and Consulting.</p>
           </div>
@@ -240,7 +234,7 @@ const PlacementSection = () => {
               Companies Visited
             </h4>
             <p className={`text-6xl font-bold mb-2 text-blue-600`}>
-              <CountUp end={85} duration={2.5} />+
+              85+
             </p>
             <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>Including Fortune 500 companies and high-growth startups.</p>
           </div>

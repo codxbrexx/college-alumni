@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaGraduationCap, FaUsers, FaGlobe, FaHandshake } from 'react-icons/fa';
-import CountUp from 'react-countup';
+
 
 const reunionImg = 'https://wpcdn.us-midwest-1.vip.tn-cloud.net/www.charlotteparent.com/content/uploads/data-import/a86308ab/shutterstock_658847998.jpg';
 const storyImg = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.deJFtz_PtCM1_81dZRtfewHaE8%3Fr%3D0%26pid%3DApi&f=1&ipt=f11132ca61f98975e30c4bf6f7b47c4b7bee7ed97e3a35ee5fae8fd8f572dc61&ipo=images';
@@ -36,7 +36,7 @@ function AboutUs() {
                 <FaUsers size={32} />
               </div>
               <div className="text-4xl font-bold text-gray-900 mb-2 font-serif">
-                <CountUp end={5000} duration={2.5} separator="," />+
+                5,000+
               </div>
               <div className="text-sm text-gray-500 uppercase tracking-widest font-semibold">Active Alumni</div>
             </div>
@@ -45,7 +45,7 @@ function AboutUs() {
                 <FaGlobe size={32} />
               </div>
               <div className="text-4xl font-bold text-gray-900 mb-2 font-serif">
-                <CountUp end={25} duration={3} />+
+                25+
               </div>
               <div className="text-sm text-gray-500 uppercase tracking-widest font-semibold">Countries</div>
             </div>
@@ -54,7 +54,7 @@ function AboutUs() {
                 <FaGraduationCap size={32} />
               </div>
               <div className="text-4xl font-bold text-gray-900 mb-2 font-serif">
-                <CountUp end={50} duration={3} />+
+                50+
               </div>
               <div className="text-sm text-gray-500 uppercase tracking-widest font-semibold">Years History</div>
             </div>
@@ -63,7 +63,7 @@ function AboutUs() {
                 <FaHandshake size={32} />
               </div>
               <div className="text-4xl font-bold text-gray-900 mb-2 font-serif">
-                <CountUp end={1200} duration={2.5} separator="," />+
+                1,200+
               </div>
               <div className="text-sm text-gray-500 uppercase tracking-widest font-semibold">Mentorships</div>
             </div>

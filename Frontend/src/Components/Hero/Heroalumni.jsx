@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+
 import { FaSearch, FaFilter } from "react-icons/fa";
 
 function Heroalumni() {
@@ -61,10 +61,12 @@ function Heroalumni() {
               placeholder="Search by name, company, or skills..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-16 pl-14 pr-6 bg-white text-gray-900 placeholder-gray-500 focus:outline-none transition-all font-medium border-r border-gray-100"
+              className="w-full h-16 pl-14 pr-6 bg-white text-gray-900 border-b-2 border-gray-200 focus:border-red-700 focus:bg-white focus:outline-none placeholder-gray-500 transition-all font-medium border-gray-200"
             />
           </div>
+          <div>
 
+          </div>
           <div className="relative md:w-56">
             <select
               value={batch}

@@ -92,7 +92,7 @@ export default function Login() {
           </div>
 
           <div className="mt-12 text-sm text-gray-500">
-            * Issues logging in? Contact alumni support.
+            * Issues logging in? <Link to="/support" className="text-red-400 hover:text-red-300 hover:underline transition-colors font-bold">Contact alumni support</Link>.
           </div>
         </div>
 
@@ -105,7 +105,7 @@ export default function Login() {
           </div>
 
           {/* Error Message */}
-          {(error || authError) && (
+          {(error || (authError && !authError.includes('fetch'))) && (
             <div className="mb-6 px-4 py-3 bg-red-50 text-red-700 text-sm border-l-4 border-red-600 font-medium">
               {error || authError}
             </div>

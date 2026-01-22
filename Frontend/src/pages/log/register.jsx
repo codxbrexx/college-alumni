@@ -255,7 +255,7 @@ export default function Register() {
           </div>
 
           {/* Error Message */}
-          {(error || authError) && (
+          {(error || (authError && !authError.includes('fetch'))) && (
             <div className="mb-6 px-4 py-3 bg-red-50 text-red-700 text-sm border-l-4 border-red-600 font-medium">
               {error || authError}
             </div>
@@ -273,18 +273,18 @@ export default function Register() {
               >
                 {step === 1 && (
                   <>
-                    <InputField label="Full Name" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="ENTER FULL NAME" required />
-                    <InputField label="Username" name="username" value={formData.username} onChange={handleChange} placeholder="CHOOSE USERNAME" required />
+                    <InputField label="Full Name" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="Enter Your Name" required />
+                    <InputField label="Username" name="username" value={formData.username} onChange={handleChange} placeholder="Choose Username" required />
                   </>
                 )}
 
                 {step === 2 && (
                   <>
-                    <InputField label="Email Address" name="email" value={formData.email} onChange={handleChange} placeholder="ENTER EMAIL" required type="email" />
-                    <InputField label="Roll Number" name="rollNo" value={formData.rollNo} onChange={handleChange} placeholder="COLLEGE ROLL NO" required />
+                    <InputField label="Email Address" name="email" value={formData.email} onChange={handleChange} placeholder="Enter Email" required type="email" />
+                    <InputField label="Roll Number" name="rollNo" value={formData.rollNo} onChange={handleChange} placeholder="College Roll No" required />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <InputField label="Password" name="password" value={formData.password} onChange={handleChange} type="password" placeholder="********" required />
-                      <InputField label="Confirm Password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} type="password" placeholder="********" required />
+                      <InputField label="Password" name="password" value={formData.password} onChange={handleChange} type="password" placeholder="Enter Password" required />
+                      <InputField label="Confirm Password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} type="password" placeholder="Confirm Password" required />
                     </div>
                   </>
                 )}
@@ -298,11 +298,11 @@ export default function Register() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="group">
                         <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2 group-focus-within:text-red-700 transition-colors">State</label>
-                        <Select options={states} value={formData.state} onChange={(v) => handleSelectChange("state", v)} placeholder="SELECT STATE" styles={customSelectStyles} />
+                        <Select options={states} value={formData.state} onChange={(v) => handleSelectChange("state", v)} placeholder="Select State" styles={customSelectStyles} />
                       </div>
                       <div className="group">
                         <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2 group-focus-within:text-red-700 transition-colors">City</label>
-                        <Select options={filteredCities} value={formData.city} onChange={(v) => handleSelectChange("city", v)} placeholder="SELECT CITY" isDisabled={!formData.state} styles={customSelectStyles} />
+                        <Select options={filteredCities} value={formData.city} onChange={(v) => handleSelectChange("city", v)} placeholder="Select City" isDisabled={!formData.state} styles={customSelectStyles} />
                       </div>
                     </div>
                     <InputField label="Current Profession" name="profession" value={formData.profession} onChange={handleChange} placeholder="e.g. Software Engineer" />
@@ -311,7 +311,7 @@ export default function Register() {
 
                 {step === 4 && (
                   <>
-                    <InputField label="LinkedIn Profile" name="linkedInProfileLink" value={formData.linkedInProfileLink} onChange={handleChange} placeholder="HTTPS://LINKEDIN.COM/IN/..." type="url" />
+                    <InputField label="LinkedIn Profile" name="linkedInProfileLink" value={formData.linkedInProfileLink} onChange={handleChange} placeholder="https://linkedin.com/in/..." type="url" />
                     <InputField label="Skills (Comma Separate)" name="skills" value={formData.skills} onChange={handleChange} placeholder="React, Node, Java..." />
                     <div className="group">
                       <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2 group-focus-within:text-red-700 transition-colors">About You</label>

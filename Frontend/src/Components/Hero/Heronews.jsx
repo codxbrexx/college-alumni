@@ -39,8 +39,8 @@ function Heronews() {
           <button
             onClick={() => setActiveTab('news')}
             className={`px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all ${activeTab === 'news'
-                ? 'bg-white text-black'
-                : 'bg-black/40 text-white hover:bg-black/60 backdrop-blur-sm'
+              ? 'bg-white text-black'
+              : 'bg-black/40 text-white hover:bg-black/60 backdrop-blur-sm'
               }`}
           >
             News
@@ -48,8 +48,8 @@ function Heronews() {
           <button
             onClick={() => setActiveTab('events')}
             className={`px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all ${activeTab === 'events'
-                ? 'bg-white text-black'
-                : 'bg-black/40 text-white hover:bg-black/60 backdrop-blur-sm'
+              ? 'bg-white text-black'
+              : 'bg-black/40 text-white hover:bg-black/60 backdrop-blur-sm'
               }`}
           >
             Events
@@ -61,7 +61,7 @@ function Heronews() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
 
             {/* Search Input */}
-            <div className="md:col-span-6 border-b-2 md:border-b-0 md:border-r-2 border-gray-100 pb-4 md:pb-0 md:pr-4">
+            <div className="md:col-span-6 pb-4 md:pb-0 md:pr-4">
               <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">
                 Search
               </label>
@@ -72,13 +72,13 @@ function Heronews() {
                   placeholder="Headlines, Topics, or Authors"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-transparent outline-none text-gray-900 font-medium placeholder-gray-400"
+                  className="w-full bg-transparent outline-none text-gray-900 font-medium placeholder-gray-400 border-b-2 border-gray-200 focus:border-red-700 transition-colors pb-2"
                 />
               </div>
             </div>
 
             {/* Category Input */}
-            <div className="md:col-span-4 border-b-2 md:border-b-0 md:border-r-2 border-gray-100 pb-4 md:pb-0 md:pr-4 md:pl-4">
+            <div className="md:col-span-4 pb-4 md:pb-0 md:pr-4 md:pl-4">
               <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">
                 Topic
               </label>
@@ -87,7 +87,7 @@ function Heronews() {
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full bg-transparent outline-none text-gray-900 font-medium cursor-pointer appearance-none"
+                  className="w-full bg-transparent outline-none text-gray-900 font-medium cursor-pointer appearance-none border-b-2 border-gray-200 focus:border-red-700 transition-colors pb-2"
                 >
                   <option value="all">All Topics</option>
                   <option value="academics">Academics</option>

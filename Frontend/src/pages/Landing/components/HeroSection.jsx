@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function HeroSection() {
     return (
-        <section className="relative h-[660px] flex items-center justify-center text-center overflow-hidden">
+        <section className="relative h-[640px] flex items-center justify-center text-center overflow-hidden">
             <div className="absolute inset-0 mt-12">
                 <img
                     src="/college_hero2.png"
