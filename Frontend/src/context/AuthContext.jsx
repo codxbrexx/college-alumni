@@ -1,6 +1,10 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useState, useEffect, useCallback, useContext } from "react"
 import { authApi, alumniApi } from "../services/api"
 import { AuthContext } from "./AuthContextDef"
+
+export const useAuth = () => {
+    return useContext(AuthContext)
+}
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)

@@ -9,6 +9,7 @@ import Login from './pages/log/Login.jsx'
 import Forgot from './pages/log/Forgot.jsx'
 import Home from './pages/Home/Home.jsx'
 import Postprofile from './pages/Profile/Postprofile.jsx'
+import ProfileView from './pages/Profile/ProfileView.jsx'
 import Alumni from './pages/Alumni/Alumni.jsx'
 import AlumniDetails from './pages/Alumni/AlumniDetails.jsx'
 import Job from './pages/Job/Job.jsx'
@@ -34,7 +35,8 @@ const router = createBrowserRouter(
       <Route path='/' element={<Landing />} />
       <Route path='/' element={<Layout />}>
         <Route path='home' element={<Home />} />
-        <Route path='profile' element={<Postprofile />} />
+        <Route path='profile' element={<ProfileView />} />
+        <Route path='profile/edit' element={<Postprofile />} />
         <Route path='alumni' element={<Alumni />} />
         <Route path='alumni/:id' element={<AlumniDetails />} />
         <Route path='job' element={<Job />} />

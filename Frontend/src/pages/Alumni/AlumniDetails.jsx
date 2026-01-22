@@ -59,16 +59,18 @@ function AlumniDetails() {
                             <h1 className="text-3xl font-serif font-bold text-gray-900 text-center mb-1">{alum.name}</h1>
                             <p className="text-red-700 font-medium text-lg text-center mb-6 uppercase tracking-wider text-sm">{alum.profession}</p>
 
-                            <div className="flex gap-4 mt-2">
-                                <a href={alum.linkedin} target="_blank" rel="noreferrer" className="p-3 bg-gray-50 text-gray-600 hover:bg-gray-900 hover:text-white transition-all duration-300">
-                                    <FaLinkedin size={18} />
+                            <div className="flex flex-col gap-3 mt-4 w-full">
+                                <a href={alum.linkedin} target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 py-3 bg-[#0077b5] hover:bg-[#005e93] text-white font-bold text-sm uppercase tracking-widest transition-all shadow-md">
+                                    <FaLinkedin size={18} /> Connect on LinkedIn
                                 </a>
-                                <a href={alum.social} target="_blank" rel="noreferrer" className="p-3 bg-gray-50 text-gray-600 hover:bg-gray-900 hover:text-white transition-all duration-300">
-                                    <ImTwitter size={18} />
-                                </a>
-                                <a href={`mailto:${alum.email}`} className="p-3 bg-gray-50 text-gray-600 hover:bg-red-700 hover:text-white transition-all duration-300">
-                                    <FaEnvelope size={18} />
-                                </a>
+                                <div className="flex gap-2 justify-center">
+                                    <a href={alum.social} target="_blank" rel="noreferrer" className="p-3 bg-gray-100 text-gray-500 hover:bg-black hover:text-white transition-all flex-1 flex justify-center">
+                                        <ImTwitter size={18} />
+                                    </a>
+                                    <a href={`mailto:${alum.email}`} className="p-3 bg-gray-100 text-gray-500 hover:bg-red-700 hover:text-white transition-all flex-1 flex justify-center">
+                                        <FaEnvelope size={18} />
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
