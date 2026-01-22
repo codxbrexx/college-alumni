@@ -22,7 +22,7 @@ export default function PostJob() {
     const { name, value, type, checked } = e.target;
     setForm({ ...form, [name]: type === 'checkbox' ? checked : value });
   };
-//   handled through backend
+  //   handled through backend
   const handleFormSubmit = e => {
     e.preventDefault();
     alert('it will controled by backend (not done yet)');
@@ -33,266 +33,244 @@ export default function PostJob() {
   };
 
   return (
-    <div className={`min-h-screen py-12 transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-950' : 'bg-gray-50'
-    }`}>
-      <div className="max-w-2xl mx-auto px-4">
-        <div className="text-center mb-8">
-          <h1 className={`text-3xl font-bold mb-2 ${
-            isDarkMode ? 'text-white' : 'text-gray-800'
-          }`}>Post a Job / Internship</h1>
-          <p className={`${
-            isDarkMode ? 'text-gray-300' : 'text-gray-600'
-          }`}>Share opportunities with your College</p>
+    <div className={`min-h-screen py-20 transition-colors duration-300 ${isDarkMode ? 'bg-black' : 'bg-white'
+      }`}>
+      <div className="max-w-3xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <span className={`inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest mb-4 border ${isDarkMode ? 'border-red-500 text-red-400' : 'border-red-600 text-red-700'
+            }`}>
+            Opportunity
+          </span>
+          <h1 className={`text-4xl md:text-5xl font-bold font-serif mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'
+            }`}>Post a Job / Internship</h1>
+          <p className={`text-lg max-w-xl mx-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}>Share career opportunities with the NetGrud community and help alumni find their next chapter.</p>
         </div>
 
-        <div className={` shadow-lg border p-8 transition-colors duration-300 ${
-          isDarkMode 
-            ? 'bg-gray-900 border-gray-700' 
-            : 'bg-white border-gray-100'
-        }`}>
-          <form className="space-y-6" onSubmit={handleFormSubmit}>
+        <div className={`border-t-4 border-red-600 p-8 md:p-12 transition-colors duration-300 ${isDarkMode
+            ? 'bg-gray-900 border-x border-b border-gray-800'
+            : 'bg-gray-50 border-x border-b border-gray-200'
+          }`}>
+          <form className="space-y-8" onSubmit={handleFormSubmit}>
 
-            <div className="flex gap-4">
-              <div className="flex-1">
-                <label className={`block text-sm font-medium mb-2 ${
-                  isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                }`}>Company Name *</label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="group">
+                <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-red-400' : 'text-gray-500 group-focus-within:text-red-600'
+                  }`}>Company Name *</label>
                 <input
                   type="text"
                   name="company"
                   value={form.company}
                   onChange={handleFormChange}
-                  placeholder="Enter company name"
-                  className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                    isDarkMode 
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                      : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                  }`}
+                  placeholder="ENTER COMPANY NAME"
+                  className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                      ? 'border-gray-700 text-white focus:border-red-500 placeholder-gray-600'
+                      : 'border-gray-300 text-gray-900 focus:border-red-600 placeholder-gray-400'
+                    }`}
                   required
                 />
               </div>
-              <div className="flex-1">
-                <label className={`block text-sm font-medium mb-2 ${
-                  isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                }`}>Job Title *</label>
+              <div className="group">
+                <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-red-400' : 'text-gray-500 group-focus-within:text-red-600'
+                  }`}>Job Title *</label>
                 <input
                   type="text"
                   name="title"
                   value={form.title}
                   onChange={handleFormChange}
-                  placeholder="Enter job title"
-                  className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                    isDarkMode 
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                      : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                  }`}
+                  placeholder="ENTER JOB TITLE"
+                  className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                      ? 'border-gray-700 text-white focus:border-red-500 placeholder-gray-600'
+                      : 'border-gray-300 text-gray-900 focus:border-red-600 placeholder-gray-400'
+                    }`}
                   required
                 />
               </div>
             </div>
 
-            <div>
-              <label className={`block text-sm font-medium mb-2 ${
-                isDarkMode ? 'text-gray-200' : 'text-gray-700'
-              }`}>Job Description *</label>
+            <div className="group">
+              <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-red-400' : 'text-gray-500 group-focus-within:text-red-600'
+                }`}>Job Description *</label>
               <textarea
                 name="description"
                 value={form.description}
                 onChange={handleFormChange}
-                placeholder="Describe the role, responsibilities, and requirements..."
-                rows={4}
-                className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 resize-none transition-colors duration-300 ${
-                  isDarkMode 
-                    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                    : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                }`}
+                placeholder="Describe the role details..."
+                rows={6}
+                className={`w-full px-4 py-3 bg-transparent border-2 focus:outline-none transition-colors duration-300 resize-none rounded-none ${isDarkMode
+                    ? 'border-gray-700 text-white focus:border-red-500 placeholder-gray-600'
+                    : 'border-gray-300 text-gray-900 focus:border-red-600 placeholder-gray-400'
+                  }`}
                 required
               />
             </div>
 
-            <div className="flex gap-4">
-              <div className="flex-1">
-                <label className={`block text-sm font-medium mb-2 ${
-                  isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                }`}>Location *</label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="group">
+                <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-red-400' : 'text-gray-500 group-focus-within:text-red-600'
+                  }`}>Location *</label>
                 <input
                   type="text"
                   name="location"
                   value={form.location}
                   onChange={handleFormChange}
-                  placeholder=" Remote, Bangalore, Mumbai"
-                  className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                    isDarkMode 
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                      : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                  }`}
+                  placeholder="REMOTE, BANGALORE..."
+                  className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                      ? 'border-gray-700 text-white focus:border-red-500 placeholder-gray-600'
+                      : 'border-gray-300 text-gray-900 focus:border-red-600 placeholder-gray-400'
+                    }`}
                   required     // for backend
                 />
               </div>
-              <div className="flex-1">
-                <label className={`block text-sm font-medium mb-2 ${
-                  isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                }`}>Job Type *</label>
+              <div className="group">
+                <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-red-400' : 'text-gray-500 group-focus-within:text-red-600'
+                  }`}>Job Type *</label>
                 <select
                   name="type"
                   value={form.type}
                   onChange={handleFormChange}
-                  className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                    isDarkMode 
-                      ? 'bg-gray-700 border-gray-600 text-white' 
-                      : 'border-gray-200 text-gray-900'
-                  }`}
+                  className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                      ? 'border-gray-700 text-white focus:border-red-500'
+                      : 'border-gray-300 text-gray-900 focus:border-red-600'
+                    }`}
                 >
-                  <option value="Full Time">Full Time</option>
-                  <option value="Part Time">Part Time</option>
-                  <option value="Contract">Contract</option>
-                  <option value="Freelance">Freelance</option>
-                  <option value="Internship">Internship</option>
+                  <option value="Full Time" className="text-black">Full Time</option>
+                  <option value="Part Time" className="text-black">Part Time</option>
+                  <option value="Contract" className="text-black">Contract</option>
+                  <option value="Freelance" className="text-black">Freelance</option>
+                  <option value="Internship" className="text-black">Internship</option>
                 </select>
               </div>
             </div>
 
-            <div className="flex gap-4">
-              <div className="flex-1">
-                <label className={`block text-sm font-medium mb-2 ${
-                  isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                }`}>Salary Range *</label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="group">
+                <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-red-400' : 'text-gray-500 group-focus-within:text-red-600'
+                  }`}>Salary Range *</label>
                 <input
                   type="text"
                   name="salary"
                   value={form.salary}
                   onChange={handleFormChange}
-                  placeholder=" ₹8L - ₹12L or $50K - $80K"
-                  className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                    isDarkMode 
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                      : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                  }`}
+                  placeholder="e.g. ₹12L - ₹18L"
+                  className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                      ? 'border-gray-700 text-white focus:border-red-500 placeholder-gray-600'
+                      : 'border-gray-300 text-gray-900 focus:border-red-600 placeholder-gray-400'
+                    }`}
                   required
                 />
               </div>
-              <div className="flex-1">
-                <label className={`block text-sm font-medium mb-2 ${
-                  isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                }`}>Experience Level *</label>
+              <div className="group">
+                <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-red-400' : 'text-gray-500 group-focus-within:text-red-600'
+                  }`}>Experience Level *</label>
                 <input
                   type="text"
                   name="experience"
                   value={form.experience}
                   onChange={handleFormChange}
-                  placeholder=" 2-4 years, Entry Level"
-                  className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                    isDarkMode 
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                      : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                  }`}
+                  placeholder="e.g. 2-4 YEARS"
+                  className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                      ? 'border-gray-700 text-white focus:border-red-500 placeholder-gray-600'
+                      : 'border-gray-300 text-gray-900 focus:border-red-600 placeholder-gray-400'
+                    }`}
                   required
                 />
               </div>
             </div>
 
-            <div>
-              <label className={`block text-sm font-medium mb-2 ${
-                isDarkMode ? 'text-gray-200' : 'text-gray-700'
-              }`}>Skills Required *</label>
+            <div className="group">
+              <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-red-400' : 'text-gray-500 group-focus-within:text-red-600'
+                }`}>Skills Required *</label>
               <input
                 type="text"
                 name="skills"
                 value={form.skills}
                 onChange={handleFormChange}
-                placeholder="e.g., React, Python, AWS (comma separated)"
-                className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                  isDarkMode 
-                    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                    : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                }`}
+                placeholder="e.g. REACT, NODE.JS, AWS"
+                className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                    ? 'border-gray-700 text-white focus:border-red-500 placeholder-gray-600'
+                    : 'border-gray-300 text-gray-900 focus:border-red-600 placeholder-gray-400'
+                  }`}
                 required
               />
             </div>
 
-            <div className="flex gap-4">
-              <div className="flex-1">
-                <label className={`block text-sm font-medium mb-2 ${
-                  isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                }`}>Your Name *</label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="group">
+                <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-red-400' : 'text-gray-500 group-focus-within:text-red-600'
+                  }`}>Your Name *</label>
                 <input
                   type="text"
                   name="alumnus"
                   value={form.alumnus}
                   onChange={handleFormChange}
-                  placeholder="Enter your full name"
-                  className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                    isDarkMode 
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                      : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                  }`}
+                  placeholder="FULL NAME"
+                  className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                      ? 'border-gray-700 text-white focus:border-red-500 placeholder-gray-600'
+                      : 'border-gray-300 text-gray-900 focus:border-red-600 placeholder-gray-400'
+                    }`}
                   required
                 />
               </div>
-              <div className="flex-1">
-                <label className={`block text-sm font-medium mb-2 ${
-                  isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                }`}>Batch Year *</label>
+              <div className="group">
+                <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-red-400' : 'text-gray-500 group-focus-within:text-red-600'
+                  }`}>Batch Year *</label>
                 <input
                   type="text"
                   name="batch"
                   value={form.batch}
                   onChange={handleFormChange}
-                  placeholder="e.g., 2019, 2020"
-                  className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                    isDarkMode 
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                      : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                  }`}
+                  placeholder="e.g. 2020"
+                  className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                      ? 'border-gray-700 text-white focus:border-red-500 placeholder-gray-600'
+                      : 'border-gray-300 text-gray-900 focus:border-red-600 placeholder-gray-400'
+                    }`}
                   required
                 />
               </div>
             </div>
 
 
-            <div>
-              <label className={`block text-sm font-medium mb-2 ${
-                isDarkMode ? 'text-gray-200' : 'text-gray-700'
-              }`}>Contact Information *</label>
+            <div className="group">
+              <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-red-400' : 'text-gray-500 group-focus-within:text-red-600'
+                }`}>Contact Information *</label>
               <input
                 type="text"
                 name="contact"
                 value={form.contact}
                 onChange={handleFormChange}
-                placeholder="Email, LinkedIn, or phone number"
-                className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                  isDarkMode 
-                    ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                    : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                }`}
+                placeholder="EMAIL OR LINKEDIN"
+                className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                    ? 'border-gray-700 text-white focus:border-red-500 placeholder-gray-600'
+                    : 'border-gray-300 text-gray-900 focus:border-red-600 placeholder-gray-400'
+                  }`}
                 required
               />
             </div>
-            {/* backend work check post are internship or job  */}
-            <div className={`flex items-center p-4  ${
-              isDarkMode ? 'bg-gray-700' : 'bg-gray-50'
-            }`}>
+
+            <div className={`flex items-center p-4 border ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-100 border-gray-200'
+              }`}>
               <input
                 type="checkbox"
                 name="isInternship"
                 checked={form.isInternship}
                 onChange={handleFormChange}
-                className={`w-5 h-5 text-red-500 border-gray-300  focus:ring-red-500 ${
-                  isDarkMode ? 'bg-gray-600 border-gray-500' : 'bg-white border-gray-300'
-                }`}
+                className={`w-5 h-5 text-red-600 rounded-none focus:ring-red-500 ${isDarkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'
+                  }`}
               />
-              <label className={`ml-3 text-sm ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-700'
-              }`}>
+              <label className={`ml-3 text-sm font-bold uppercase tracking-wide ${isDarkMode ? 'text-gray-300' : 'text-gray-700'
+                }`}>
                 This is an internship opportunity
               </label>
             </div>
 
-            <div className="pt-4">
+            <div className="pt-6">
               <button
                 type="submit"
-                className="w-full py-4 bg-red-400 hover:bg-red-500 text-white font-semibold  shadow-lg transition-colors text-lg"
+                className={`w-full py-4 text-sm font-bold uppercase tracking-widest transition-all duration-300 border-2 ${isDarkMode
+                    ? 'bg-white text-black border-white hover:bg-transparent hover:text-white'
+                    : 'bg-black text-white border-black hover:bg-transparent hover:text-black'
+                  }`}
               >
                 Submit {form.isInternship ? 'Internship' : 'Job'} Posting
               </button>

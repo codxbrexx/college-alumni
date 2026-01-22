@@ -4,7 +4,7 @@ import { useTheme } from '../../context/ThemeContext';
 export default function Postnews() {
   const { isDarkMode } = useTheme();
   const [activeTab, setActiveTab] = useState('news');
-  
+
   const [newsForm, setNewsForm] = useState({
     title: '',
     category: '',
@@ -52,173 +52,162 @@ export default function Postnews() {
   };
 
   return (
-    <div className={`min-h-screen py-12 transition-colors duration-300 ${
-      isDarkMode ? 'bg-gray-950' : 'bg-gray-50'
-    }`}>
-      <div className="max-w-2xl mx-auto px-4">
-        <div className="text-center mb-8">
-          <h1 className={`text-3xl font-bold mb-2 ${
-            isDarkMode ? 'text-white' : 'text-gray-800'
-          }`}>Share with Community</h1>
-          <p className={`${
-            isDarkMode ? 'text-gray-300' : 'text-gray-600'
-          }`}>Post news updates or upcoming events</p>
+    <div className={`min-h-screen py-20 transition-colors duration-300 ${isDarkMode ? 'bg-black' : 'bg-white'
+      }`}>
+      <div className="max-w-3xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <span className={`inline-block px-3 py-1 text-xs font-bold uppercase tracking-widest mb-4 border ${isDarkMode ? 'border-blue-500 text-blue-400' : 'border-blue-600 text-blue-700'
+            }`}>
+            Community Updates
+          </span>
+          <h1 className={`text-4xl md:text-5xl font-bold font-serif mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'
+            }`}>Share with NetGrud</h1>
+          <p className={`text-lg max-w-xl mx-auto ${isDarkMode ? 'text-gray-400' : 'text-gray-600'
+            }`}>Post news updates or announce upcoming events to the alumni network.</p>
         </div>
 
-        <div className={` shadow-lg border p-8 transition-colors duration-300 ${
-          isDarkMode 
-            ? 'bg-gray-900 border-gray-700' 
-            : 'bg-white border-gray-100'
-        }`}>
+        <div className={`border-t-4 border-blue-600 p-8 md:p-12 transition-colors duration-300 ${isDarkMode
+            ? 'bg-gray-900 border-x border-b border-gray-800'
+            : 'bg-gray-50 border-x border-b border-gray-200'
+          }`}>
           {/* tag tab */}
-          <div className="flex justify-center mb-8">
-            <div className={`backdrop-blur-sm  p-1 border ${
-              isDarkMode 
-                ? 'bg-gray-700/20 border-gray-600' 
-                : 'bg-gray-500/20 border-gray-200'
-            }`}>
+          <div className="flex justify-center mb-12">
+            <div className={`flex border-2 ${isDarkMode ? 'border-gray-700' : 'border-gray-300'
+              }`}>
               <button
                 onClick={() => setActiveTab('news')}
-                className={`px-6 py-2  text-sm font-medium transition-colors ${
-                  activeTab === 'news'
-                    ? isDarkMode 
-                      ? 'bg-gray-600 text-white shadow-md' 
-                      : 'bg-white text-red-700 shadow-md'
-                    : isDarkMode 
-                      ? 'text-gray-300 hover:text-white' 
-                      : 'text-gray-600 hover:text-gray-600/80'
-                }`}
+                className={`px-8 py-3 text-xs font-bold uppercase tracking-widest transition-all duration-300 ${activeTab === 'news'
+                    ? isDarkMode
+                      ? 'bg-white text-black'
+                      : 'bg-black text-white'
+                    : isDarkMode
+                      ? 'text-gray-400 hover:text-white hover:bg-white/10'
+                      : 'text-gray-500 hover:text-black hover:bg-black/5'
+                  }`}
               >
-                News
+                Post News
               </button>
+              <div className={`w-0.5 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-300'}`}></div>
               <button
                 onClick={() => setActiveTab('event')}
-                className={`px-6 py-2  text-sm font-medium transition-colors ${
-                  activeTab === 'event'
-                    ? isDarkMode 
-                      ? 'bg-gray-600 text-white shadow-md' 
-                      : 'bg-white text-red-700 shadow-md'
-                    : isDarkMode 
-                      ? 'text-gray-300 hover:text-white' 
-                      : 'text-gray-600 hover:text-gray-600/80'
-                }`}
+                className={`px-8 py-3 text-xs font-bold uppercase tracking-widest transition-all duration-300 ${activeTab === 'event'
+                    ? isDarkMode
+                      ? 'bg-white text-black'
+                      : 'bg-black text-white'
+                    : isDarkMode
+                      ? 'text-gray-400 hover:text-white hover:bg-white/10'
+                      : 'text-gray-500 hover:text-black hover:bg-black/5'
+                  }`}
               >
-                Events
+                Host Event
               </button>
             </div>
           </div>
 
           {/* News form taged open*/}
           {activeTab === 'news' && (
-            <form className="space-y-6" onSubmit={handleNewsSubmit}>
-              <div className="flex gap-4">
-                <div className="flex-1">
-                  <label className={`block text-sm font-medium mb-2 ${
-                    isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                  }`}>Title *</label>
+            <form className="space-y-8" onSubmit={handleNewsSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="group">
+                  <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-blue-400' : 'text-gray-500 group-focus-within:text-blue-600'
+                    }`}>Title *</label>
                   <input
                     type="text"
                     name="title"
                     value={newsForm.title}
                     onChange={handleNewsFormChange}
-                    placeholder="Enter news title"
-                    className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                        : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                    }`}
+                    placeholder="ENTER NEWS TITLE"
+                    className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                        ? 'border-gray-700 text-white focus:border-blue-500 placeholder-gray-600'
+                        : 'border-gray-300 text-gray-900 focus:border-blue-600 placeholder-gray-400'
+                      }`}
                     required
                   />
                 </div>
-                <div className="flex-1">
-                  <label className={`block text-sm font-medium mb-2 ${
-                    isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                  }`}>Category *</label>
+                <div className="group">
+                  <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-blue-400' : 'text-gray-500 group-focus-within:text-blue-600'
+                    }`}>Category *</label>
                   <select
                     name="category"
                     value={newsForm.category}
                     onChange={handleNewsFormChange}
-                    className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gray-700 border-gray-600 text-white' 
-                        : 'border-gray-200 text-gray-900'
-                    }`}
+                    className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                        ? 'border-gray-700 text-white focus:border-blue-500'
+                        : 'border-gray-300 text-gray-900 focus:border-blue-600'
+                      }`}
                     required
                   >
-                    <option value="">Select Category</option>
-                    <option value="Academics">Academics</option>
-                    <option value="Infrastructure">Infrastructure</option>
-                    <option value="Achievements">Achievements</option>
-                    <option value="Technical">Technical</option>
-                    <option value="Career">Career</option>
-                    <option value="Cultural">Cultural</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Alumni">Alumni</option>
+                    <option value="" className="text-black">SELECT CATEGORY</option>
+                    <option value="Academics" className="text-black">Academics</option>
+                    <option value="Infrastructure" className="text-black">Infrastructure</option>
+                    <option value="Achievements" className="text-black">Achievements</option>
+                    <option value="Technical" className="text-black">Technical</option>
+                    <option value="Career" className="text-black">Career</option>
+                    <option value="Cultural" className="text-black">Cultural</option>
+                    <option value="Sports" className="text-black">Sports</option>
+                    <option value="Alumni" className="text-black">Alumni</option>
                   </select>
                 </div>
               </div>
 
-              <div>
-                <label className={`block text-sm font-medium mb-2 ${
-                  isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                }`}>Description *</label>
+              <div className="group">
+                <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-blue-400' : 'text-gray-500 group-focus-within:text-blue-600'
+                  }`}>Description *</label>
                 <textarea
                   name="description"
                   value={newsForm.description}
                   onChange={handleNewsFormChange}
                   placeholder="Describe the news details..."
-                  rows={4}
-                  className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 resize-none transition-colors duration-300 ${
-                    isDarkMode 
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                      : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                  }`}
+                  rows={6}
+                  className={`w-full px-4 py-3 bg-transparent border-2 focus:outline-none transition-colors duration-300 resize-none rounded-none ${isDarkMode
+                      ? 'border-gray-700 text-white focus:border-blue-500 placeholder-gray-600'
+                      : 'border-gray-300 text-gray-900 focus:border-blue-600 placeholder-gray-400'
+                    }`}
                   required
                 />
               </div>
 
-              <div className="flex gap-4">
-                <div className="flex-1">
-                  <label className={`block text-sm font-medium mb-2 ${
-                    isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                  }`}>Author Name *</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="group">
+                  <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-blue-400' : 'text-gray-500 group-focus-within:text-blue-600'
+                    }`}>Author Name *</label>
                   <input
                     type="text"
                     name="author"
                     value={newsForm.author}
                     onChange={handleNewsFormChange}
-                    placeholder="Enter your full name"
-                    className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                        : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                    }`}
+                    placeholder="FULL NAME"
+                    className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                        ? 'border-gray-700 text-white focus:border-blue-500 placeholder-gray-600'
+                        : 'border-gray-300 text-gray-900 focus:border-blue-600 placeholder-gray-400'
+                      }`}
                     required
                   />
                 </div>
-                <div className="flex-1">
-                  <label className={`block text-sm font-medium mb-2 ${
-                    isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                  }`}>Date *</label>
+                <div className="group">
+                  <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-blue-400' : 'text-gray-500 group-focus-within:text-blue-600'
+                    }`}>Date *</label>
                   <input
                     type="date"
                     name="date"
                     value={newsForm.date}
                     onChange={handleNewsFormChange}
-                    className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gray-700 border-gray-600 text-white' 
-                        : 'border-gray-200 text-gray-900'
-                    }`}
+                    className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                        ? 'border-gray-700 text-white focus:border-blue-500'
+                        : 'border-gray-300 text-gray-900 focus:border-blue-600'
+                      }`}
                     required
                   />
                 </div>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-6">
                 <button
                   type="submit"
-                  className="w-full py-4 bg-red-400 hover:bg-red-500 text-white font-semibold  shadow-lg transition-colors text-lg"
+                  className={`w-full py-4 text-sm font-bold uppercase tracking-widest transition-all duration-300 border-2 ${isDarkMode
+                      ? 'bg-white text-black border-white hover:bg-transparent hover:text-white'
+                      : 'bg-black text-white border-black hover:bg-transparent hover:text-black'
+                    }`}
                 >
                   Submit News Posting
                 </button>
@@ -228,150 +217,139 @@ export default function Postnews() {
 
           {/* event from by tag open sectation */}
           {activeTab === 'event' && (
-            <form className="space-y-6" onSubmit={handleEventSubmit}>
-              <div className="flex gap-4">
-                <div className="flex-1">
-                  <label className={`block text-sm font-medium mb-2 ${
-                    isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                  }`}>Event Title *</label>
+            <form className="space-y-8" onSubmit={handleEventSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="group">
+                  <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-blue-400' : 'text-gray-500 group-focus-within:text-blue-600'
+                    }`}>Event Title *</label>
                   <input
                     type="text"
                     name="title"
                     value={eventForm.title}
                     onChange={handleEventFormChange}
-                    placeholder="Enter event title"
-                    className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                        : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                    }`}
+                    placeholder="ENTER EVENT TITLE"
+                    className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                        ? 'border-gray-700 text-white focus:border-blue-500 placeholder-gray-600'
+                        : 'border-gray-300 text-gray-900 focus:border-blue-600 placeholder-gray-400'
+                      }`}
                     required
                   />
                 </div>
-                <div className="flex-1">
-                  <label className={`block text-sm font-medium mb-2 ${
-                    isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                  }`}>Category *</label>
+                <div className="group">
+                  <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-blue-400' : 'text-gray-500 group-focus-within:text-blue-600'
+                    }`}>Category *</label>
                   <select
                     name="category"
                     value={eventForm.category}
                     onChange={handleEventFormChange}
-                    className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gray-700 border-gray-600 text-white' 
-                        : 'border-gray-200 text-gray-900'
-                    }`}
+                    className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                        ? 'border-gray-700 text-white focus:border-blue-500'
+                        : 'border-gray-300 text-gray-900 focus:border-blue-600'
+                      }`}
                     required
                   >
-                    <option value="">Select Category</option>
-                    <option value="Events">Events</option>
-                    <option value="Technical">Technical</option>
-                    <option value="Cultural">Cultural</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Career">Career</option>
-                    <option value="Alumni">Alumni</option>
+                    <option value="" className="text-black">SELECT CATEGORY</option>
+                    <option value="Events" className="text-black">Events</option>
+                    <option value="Technical" className="text-black">Technical</option>
+                    <option value="Cultural" className="text-black">Cultural</option>
+                    <option value="Sports" className="text-black">Sports</option>
+                    <option value="Career" className="text-black">Career</option>
+                    <option value="Alumni" className="text-black">Alumni</option>
                   </select>
                 </div>
               </div>
 
-              <div>
-                <label className={`block text-sm font-medium mb-2 ${
-                  isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                }`}>Event Description *</label>
+              <div className="group">
+                <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-blue-400' : 'text-gray-500 group-focus-within:text-blue-600'
+                  }`}>Event Description *</label>
                 <textarea
                   name="description"
                   value={eventForm.description}
                   onChange={handleEventFormChange}
                   placeholder="Describe the event details, agenda, and what attendees can expect..."
-                  rows={4}
-                  className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 resize-none transition-colors duration-300 ${
-                    isDarkMode 
-                      ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                      : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                  }`}
+                  rows={6}
+                  className={`w-full px-4 py-3 bg-transparent border-2 focus:outline-none transition-colors duration-300 resize-none rounded-none ${isDarkMode
+                      ? 'border-gray-700 text-white focus:border-blue-500 placeholder-gray-600'
+                      : 'border-gray-300 text-gray-900 focus:border-blue-600 placeholder-gray-400'
+                    }`}
                   required
                 />
               </div>
 
-              <div className="flex gap-4">
-                <div className="flex-1">
-                  <label className={`block text-sm font-medium mb-2 ${
-                    isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                  }`}>Date *</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="group">
+                  <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-blue-400' : 'text-gray-500 group-focus-within:text-blue-600'
+                    }`}>Date *</label>
                   <input
                     type="date"
                     name="date"
                     value={eventForm.date}
                     onChange={handleEventFormChange}
-                    className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gray-700 border-gray-600 text-white' 
-                        : 'border-gray-200 text-gray-900'
-                    }`}
+                    className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                        ? 'border-gray-700 text-white focus:border-blue-500'
+                        : 'border-gray-300 text-gray-900 focus:border-blue-600'
+                      }`}
                     required
                   />
                 </div>
-                <div className="flex-1">
-                  <label className={`block text-sm font-medium mb-2 ${
-                    isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                  }`}>Time *</label>
+                <div className="group">
+                  <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-blue-400' : 'text-gray-500 group-focus-within:text-blue-600'
+                    }`}>Time *</label>
                   <input
                     type="time"
                     name="time"
                     value={eventForm.time}
                     onChange={handleEventFormChange}
-                    className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gray-700 border-gray-600 text-white' 
-                        : 'border-gray-200 text-gray-900'
-                    }`}
+                    className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                        ? 'border-gray-700 text-white focus:border-blue-500'
+                        : 'border-gray-300 text-gray-900 focus:border-blue-600'
+                      }`}
                     required
                   />
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <div className="flex-1">
-                  <label className={`block text-sm font-medium mb-2 ${
-                    isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                  }`}>Location *</label>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="group">
+                  <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-blue-400' : 'text-gray-500 group-focus-within:text-blue-600'
+                    }`}>Location *</label>
                   <input
                     type="text"
                     name="location"
                     value={eventForm.location}
                     onChange={handleEventFormChange}
-                    placeholder="Enter event location"
-                    className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                        : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                    }`}
+                    placeholder="ENTER EVENT LOCATION"
+                    className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                        ? 'border-gray-700 text-white focus:border-blue-500 placeholder-gray-600'
+                        : 'border-gray-300 text-gray-900 focus:border-blue-600 placeholder-gray-400'
+                      }`}
                     required
                   />
                 </div>
-                <div className="flex-1">
-                  <label className={`block text-sm font-medium mb-2 ${
-                    isDarkMode ? 'text-gray-200' : 'text-gray-700'
-                  }`}>Expected Attendees</label>
+                <div className="group">
+                  <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400 group-focus-within:text-blue-400' : 'text-gray-500 group-focus-within:text-blue-600'
+                    }`}>Expected Attendees</label>
                   <input
                     type="number"
                     name="attendees"
                     value={eventForm.attendees}
                     onChange={handleEventFormChange}
-                    placeholder="Number of attendees"
-                    className={`w-full px-4 py-3  border focus:border-red-500 focus:outline-none focus:ring-1 focus:ring-red-500 transition-colors duration-300 ${
-                      isDarkMode 
-                        ? 'bg-gray-700 border-gray-600 text-white placeholder-gray-400' 
-                        : 'border-gray-200 text-gray-900 placeholder-gray-500'
-                    }`}
+                    placeholder="NUMBER OF ATTENDEES"
+                    className={`w-full px-4 py-3 bg-transparent border-b-2 focus:outline-none transition-colors duration-300 font-medium rounded-none ${isDarkMode
+                        ? 'border-gray-700 text-white focus:border-blue-500 placeholder-gray-600'
+                        : 'border-gray-300 text-gray-900 focus:border-blue-600 placeholder-gray-400'
+                      }`}
                   />
                 </div>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-6">
                 <button
                   type="submit"
-                  className="w-full py-4 bg-red-400 hover:bg-red-500 text-white font-semibold  shadow-lg transition-colors text-lg"
+                  className={`w-full py-4 text-sm font-bold uppercase tracking-widest transition-all duration-300 border-2 ${isDarkMode
+                      ? 'bg-white text-black border-white hover:bg-transparent hover:text-white'
+                      : 'bg-black text-white border-black hover:bg-transparent hover:text-black'
+                    }`}
                 >
                   Submit Event Posting
                 </button>

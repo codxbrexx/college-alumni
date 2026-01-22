@@ -192,8 +192,6 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  /* Replaced non-standard ring-* with outline for compatibility */
-  outline: 2px solid #14b8a6;
   outline-offset: 2px;
 }
 

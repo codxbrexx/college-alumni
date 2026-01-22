@@ -7,7 +7,7 @@ function JobCard({ job }) {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   return (
-    <div className={`group relative border transition-all duration-300 hover:shadow-2xl hover:border-red-600 ${isDarkMode
+    <div className={`group relative border transition-all duration-300 hover:shadow-sm hover:border-red-600 ${isDarkMode
         ? 'bg-gray-900 border-gray-800'
         : 'bg-white border-gray-200'
       }`}>

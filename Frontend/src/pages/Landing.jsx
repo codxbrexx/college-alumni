@@ -55,14 +55,13 @@ export default function Landing() {
         {/* Background Image with Dark Overlay */}
         <div className="absolute inset-0 mt-12">
           <img
-            src="/college_hero.png"
+            src="/college_hero2.png"
             alt="NetGrud Alumni Association"
             className="w-full h-full object-cover"
           />
-          {/* Overlay Removed */}
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8 lg:px-12 lg:py-12 text-white pt-20 backdrop-blur-[5px] bg-black/20 border-black/20 border-2">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8 lg:px-12 lg:py-12 text-white pt-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
