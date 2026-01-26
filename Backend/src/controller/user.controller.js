@@ -1,6 +1,7 @@
 import crypto from "crypto"
 import bcrypt from "bcryptjs"
 import { User } from "../model/user.model.js"
+import { RefreshToken } from "../model/refreshToken.model.js"
 import { ApiError } from "../utils/ApiError.utils.js"
 import { ApiResponse } from "../utils/ApiResponse.utils.js"
 import { asyncHandler } from "../utils/asyncHandler.utils.js"
@@ -23,12 +24,24 @@ const attachAuthCookies = (res, accessToken, refreshToken) => {
     })
 }
 
-const issueTokens = async (user) => {
+const issueTokens = async (user, ipAddress = null) => {
     const accessToken = user.generateAccessToken()
-    const refreshToken = user.generateRefreshToken()
-    user.refreshToken = refreshToken
+    const refreshTokenValue = user.generateRefreshToken()
+
+    // Create refresh token in database for revocation support
+    const expiryDays = parseInt(process.env.REFRESH_TOKEN_EXPIRY_DAYS) || 10
+    const refreshToken = await RefreshToken.create({
+        token: refreshTokenValue,
+        userId: user._id,
+        expiresAt: new Date(Date.now() + expiryDays * 24 * 60 * 60 * 1000),
+        createdByIp: ipAddress
+    })
+
+    // Keep legacy refreshToken field for backward compatibility (can be removed later)
+    user.refreshToken = refreshTokenValue
     await user.save({ validateBeforeSave: false })
-    return { accessToken, refreshToken }
+
+    return { accessToken, refreshToken: refreshTokenValue }
 }
 
 const registerUser = asyncHandler(async (req, res) => {
@@ -123,6 +136,17 @@ const loginUser = asyncHandler(async (req, res) => {
 })
 
 const logoutUser = asyncHandler(async (req, res) => {
+    const refreshToken = req.cookies?.refreshToken
+
+    // Revoke refresh token in database
+    if (refreshToken) {
+        const storedToken = await RefreshToken.findOne({ token: refreshToken })
+        if (storedToken) {
+            await storedToken.revoke()
+        }
+    }
+
+    // Clear legacy field
     if (req.user) {
         req.user.refreshToken = null
         await req.user.save({ validateBeforeSave: false })
