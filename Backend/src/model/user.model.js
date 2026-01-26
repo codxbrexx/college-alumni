@@ -100,6 +100,14 @@ const userSchema = new mongoose.Schema({
     toObject: { virtuals: true }
 })
 
+// Text indexes for search optimization (SRS §3.3.2)
+userSchema.index({ fullName: 'text', companyDetails: 'text', city: 'text', profession: 'text' })
+userSchema.index({ yearOfPassout: 1 })
+userSchema.index({ branch: 1 })
+userSchema.index({ city: 1 })
+userSchema.index({ companyDetails: 1 })
+userSchema.index({ skills: 1 })
+
 userSchema.methods.isPasswordCorrect = async function (candidatePassword) {
     return bcrypt.compare(candidatePassword, this.password)
 }

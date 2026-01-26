@@ -96,29 +96,37 @@ const updateAvatar = async (req, res, next) => {
     }
 }
 
+/**
+ * Get all alumni with enhanced search and filtering
+ * Per SRS §3.3: Search by name, company, city, profession with filters
+ */
 const getAllAlumni = async (req, res, next) => {
     try {
         const {
-            search,
+            search, // Text search across name, company, city, profession
             branch,
             yearOfPassout,
             city,
             state,
+            company, // Filter by company name
+            skills, // Comma-separated skills
+            sortBy = 'createdAt',
+            order = 'desc',
             page = 1,
             limit = 12
         } = req.query
 
         const query = { isVerified: true }
+        const sort = {}
 
-        if (search) {
-            query.$or = [
-                { username: { $regex: search, $options: "i" } },
-                { fullName: { $regex: search, $options: "i" } },
-                { profession: { $regex: search, $options: "i" } },
-                { companyDetails: { $regex: search, $options: "i" } }
-            ]
+        // Text search using MongoDB text index (SRS §3.3.2)
+        if (search && search.trim()) {
+            query.$text = { $search: search.trim() }
+            // Add text score for relevance sorting
+            sort.score = { $meta: 'textScore' }
         }
 
+        // Field-specific filters
         if (branch) {
             query.branch = { $regex: branch, $options: "i" }
         }
@@ -135,25 +143,56 @@ const getAllAlumni = async (req, res, next) => {
             query.state = { $regex: state, $options: "i" }
         }
 
+        if (company) {
+            query.companyDetails = { $regex: company, $options: "i" }
+        }
+
+        // Skills filtering (match any skill in array)
+        if (skills) {
+            const skillsArray = skills.split(',').map(s => s.trim()).filter(Boolean)
+            if (skillsArray.length > 0) {
+                query.skills = { $in: skillsArray.map(skill => new RegExp(skill, 'i')) }
+            }
+        }
+
+        // Sorting
+        if (!search) { // Use custom sort only if not text searching
+            const sortOrder = order === 'asc' ? 1 : -1
+            sort[sortBy] = sortOrder
+        }
+
         const skip = (parseInt(page) - 1) * parseInt(limit)
 
         const [alumni, total] = await Promise.all([
             User.find(query)
                 .select("-password -refreshToken -resetPasswordToken -resetPasswordExpires")
-                .sort({ createdAt: -1 })
+                .sort(sort)
                 .skip(skip)
-                .limit(parseInt(limit)),
+                .limit(parseInt(limit))
+                .lean(),
             User.countDocuments(query)
         ])
 
+        // Add role virtual to each alumni (since we're using lean())
+        const alumniWithRole = alumni.map(user => {
+            const currentYear = new Date().getFullYear()
+            return {
+                ...user,
+                role: user.yearOfPassout && user.yearOfPassout > currentYear ? 'Student' : 'Alumni'
+            }
+        })
+
         return res.status(200).json(
             new ApiResponse(200, {
-                alumni,
+                alumni: alumniWithRole,
                 pagination: {
                     page: parseInt(page),
                     limit: parseInt(limit),
                     total,
                     pages: Math.ceil(total / parseInt(limit))
+                },
+                filters: {
+                    search, branch, yearOfPassout, city, state, company, skills
                 }
             }, "Alumni fetched successfully")
         )
