@@ -13,10 +13,10 @@ export default function StatsSection() {
     return (
         <section className="py-12 border-y bg-gray-50 border-gray-200">
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <StatItem number="2015" label="Established" />
-                <StatItem number="5k+" label="Alumni" />
-                <StatItem number="150+" label="Companies" />
-                <StatItem number="42" label="Chapters" />
+                <StatItem number="2025" label="Established" />
+                <StatItem number="500+" label="Alumni" />
+                <StatItem number="50+" label="Companies" />
+                <StatItem number="5+" label="Chapters" />
             </div>
         </section>
     );

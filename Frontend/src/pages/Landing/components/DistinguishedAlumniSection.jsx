@@ -29,18 +29,18 @@ export default function DistinguishedAlumniSection() {
             <div className="grid md:grid-cols-3 gap-8">
                 <AlumniCard
                     name="Sarah Jenkins"
-                    role="Senior Engineer at Google"
-                    batch="Batch of 2015"
+                    role="Tech Lead at Google"
+                    batch="Class of 2021"
                 />
                 <AlumniCard
                     name="David Chen"
-                    role="Software Engineer at TechFlow"
-                    batch="Batch of 2018"
+                    role="Product Manager at Microsoft"
+                    batch="Class of 2022"
                 />
                 <AlumniCard
                     name="Priya Patel"
-                    role="Product Director at Microsoft"
-                    batch="Batch of 2018"
+                    role="Founder, EcoTech Solutions"
+                    batch="Class of 2020"
                 />
             </div>
         </section>

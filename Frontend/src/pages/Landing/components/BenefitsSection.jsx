@@ -34,33 +34,33 @@ export default function BenefitsSection() {
                 <div className="grid md:grid-cols-3 gap-8">
                     <BenefitCard
                         icon={<FaBriefcase />}
-                        title="Career Support"
-                        desc="Access exclusive job boards, resume reviews, and career coaching sessions."
+                        title="Career Acceleration"
+                        desc="Access exclusive job boards, resume reviews, and fast-tracked referrals to top companies."
                     />
                     <BenefitCard
                         icon={<FaHandHoldingHeart />}
-                        title="Mentorship Programs"
-                        desc="Connect with industry leaders or become a mentor to guide the next generation."
+                        title="Mentorship & Guidance"
+                        desc="Connect with experienced alumni who can guide you through your early career challenges."
                     />
                     <BenefitCard
                         icon={<FaGraduationCap />}
-                        title="Lifelong Learning"
-                        desc="Get discounts on continuing education courses and access to the university library."
+                        title="Skill Development"
+                        desc="Participate in workshops, hackathons, and guest lectures to stay ahead of industry trends."
                     />
                     <BenefitCard
                         icon={<FaTicketAlt />}
                         title="Exclusive Events"
-                        desc="Priority access to reunions, networking mixers, and guest lectures."
+                        desc="Priority access to annual reunions, networking mixers, and tech talks."
                     />
                     <BenefitCard
                         icon={<FaGlobeAmericas />}
-                        title="Global Chapters"
-                        desc="Join regional alumni chapters to stay connected wherever you live."
+                        title="Global Network"
+                        desc="Join a worldwide community of professionals across 25+ countries."
                     />
                     <BenefitCard
                         icon={<FaUserGraduate />}
-                        title="Give Back"
-                        desc="Opportunities to volunteer, donate, and support current students."
+                        title="Community Impact"
+                        desc="Give back by volunteering, mentoring students, or supporting scholarship funds."
                     />
                 </div>
             </div>

@@ -21,14 +21,14 @@ export default function TestimonialsSection() {
                 <h2 className="text-3xl font-bold mb-12 text-center font-serif text-gray-900">Community Voices</h2>
                 <div className="grid md:grid-cols-2 gap-8">
                     <TestimonialCard
-                        quote="This platform helped me transition from engineering to product management. The mentorship I received was invaluable."
+                        quote="The alumni network has been instrumental in my startup journey. The support from fellow graduates is unmatched."
                         author="James Wilson"
-                        role="PM at Spotify, Class of '19"
+                        role="CEO, FutureTech (Class of 2024)"
                     />
                     <TestimonialCard
                         quote="I found my co-founder through the Alumni Annual Meet. It's amazing to see how strong our community really is."
                         author="Anita Roy"
-                        role="Founder, GreenTech, Class of '14"
+                        role="Partner, GreenVentures (Class of 2023)"
                     />
                 </div>
             </div>

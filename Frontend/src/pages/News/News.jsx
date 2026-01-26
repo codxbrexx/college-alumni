@@ -79,15 +79,20 @@ function NewsCard({ news }) {
       }`}>
 
       {/* Editorial Header Image Placeholder (or Gradient if no image) */}
-      <div className={`h-48 relative overflow-hidden ${news.isEvent
-        ? 'bg-gradient-to-r from-blue-900 to-gray-900'
-        : 'bg-gradient-to-r from-red-900 to-gray-900'
-        }`}>
-        <div className="absolute inset-0 opacity-30 mix-blend-overlay bg-[url('/alumnibg.jpg')] bg-cover bg-center"></div>
-        <div className="absolute top-4 left-4">
-          <span className={`text-xs font-bold uppercase tracking-widest px-3 py-1 text-white bg-black/50 backdrop-blur-md`}>
+      {/* Editorial Header Image Placeholder */}
+      <div className={`h-48 relative overflow-hidden bg-gray-100 border-b-2 border-red-600`}>
+        {/* Placeholder Pattern */}
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,#000_1px,transparent_0)] bg-[length:10px_10px]"></div>
+
+        <div className="absolute top-4 left-4 z-10">
+          <span className={`text-[10px] font-bold uppercase tracking-widest px-3 py-1 text-white bg-red-700 shadow-sm`}>
             {news.category}
           </span>
+        </div>
+
+        {/* Decoration */}
+        <div className="absolute bottom-0 right-0 p-4 opacity-10">
+          <FaCalendar size={60} className="text-black" />
         </div>
       </div>
 

@@ -7,12 +7,12 @@ export default function LandingFooter() {
         <footer className="py-12 bg-white text-gray-900 border-t border-gray-200">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid md:grid-cols-4 gap-8 mb-12">
-                    <div className="col-span-1 md:col-span-2">
+                    <div className="col-span-1 md:col-span-1">
                         <div className="mb-4">
                             <Logo />
                         </div>
-                        <p className="text-gray-500 max-w-xs leading-relaxed">
-                            The official professional network for graduates. Fostering lifelong connections, career growth, and community impact since 2015.
+                        <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                            The official professional network for graduates. Fostering lifelong connections since 2025.
                         </p>
                     </div>
                     <div>
@@ -20,18 +20,24 @@ export default function LandingFooter() {
                         <ul className="space-y-2 text-sm text-gray-500">
                             <li><a href="#" className="hover:text-red-600 transition-colors">Directory</a></li>
                             <li><a href="#" className="hover:text-red-600 transition-colors">Jobs Board</a></li>
-                            <li><a href="#" className="hover:text-red-600 transition-colors">Mentorship</a></li>
-                            <li><a href="#" className="hover:text-red-600 transition-colors">Events</a></li>
                             <li><Link to="/support" className="hover:text-red-600 transition-colors">Support Center</Link></li>
                         </ul>
                     </div>
                     <div>
                         <h4 className="font-bold text-gray-900 mb-4 uppercase text-xs tracking-widest">Contact</h4>
                         <ul className="space-y-2 text-sm text-gray-500">
-                            <li>alumni@iiitl.ac.in</li>
-                            <li>+91 1234567890</li>
-                            <li>123 IIIT Lucknow</li>
+                            <li>alumni@netgrud.edu</li>
+                            <li>+1 (555) 123-4567</li>
+                            <li>NetGrud Campus, Tech City</li>
                         </ul>
+                    </div>
+                    <div>
+                        <h4 className="font-bold text-gray-900 mb-4 uppercase text-xs tracking-widest">Stay Connected</h4>
+                        <p className="text-gray-500 text-sm mb-2">Subscribe to our newsletter.</p>
+                        <div className="flex flex-col gap-2">
+                            <input type="email" placeholder="Enter email" className="bg-gray-50 border border-gray-200 p-2 text-sm outline-none focus:border-red-600 w-full" />
+                            <button className="bg-gray-900 text-white text-xs font-bold uppercase tracking-widest py-2 px-4 hover:bg-black transition-colors">Subscribe</button>
+                        </div>
                     </div>
                 </div>
                 <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">

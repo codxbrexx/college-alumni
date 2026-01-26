@@ -10,17 +10,16 @@ function Heroalumni({ filters, setFilters, searchTerm, setSearchTerm }) {
   return (
     <div className="w-full bg-white border-b-2 border-gray-200">
       {/* Top Bar with Institution Branding */}
-      <div className="bg-gray-900 text-white py-6">
+      <div className="bg-gray-900 border-b-4 border-red-600 text-white py-6">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-3 mb-2">
-            <FaUniversity className="text-2xl text-red-600" />
             <div>
-              <p className="text-xs uppercase tracking-widest text-gray-400 font-bold">NetGrud College</p>
-              <h1 className="text-3xl md:text-4xl font-serif font-bold">Alumni Directory</h1>
+              <p className="text-xs uppercase tracking-[0.2em] text-red-100 font-bold mb-1">NetGrud College</p>
+              <h1 className="text-4xl md:text-5xl font-serif font-bold tracking-tight text-white">Alumni Directory</h1>
             </div>
           </div>
-          <p className="text-sm text-gray-400 mt-2 max-w-2xl">
-            Connect with 500+ graduates worldwide. Discover mentors, explore career paths, and strengthen your professional network.
+          <p className="text-lg text-red-50 mt-4 max-w-2xl font-light border-l-2 border-red-400 pl-4">
+            Connect with graduates worldwide. Discover mentors, explore career paths, and strengthen your professional network.
           </p>
         </div>
       </div>
@@ -50,7 +49,7 @@ function Heroalumni({ filters, setFilters, searchTerm, setSearchTerm }) {
             {/* Graduation Year Filter */}
             <div className="md:col-span-3">
               <label className="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-2">
-                Class Year
+                Batch Year
               </label>
               <div className="relative">
                 <FaGraduationCap className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
@@ -60,13 +59,13 @@ function Heroalumni({ filters, setFilters, searchTerm, setSearchTerm }) {
                   className="w-full h-12 pl-11 pr-10 bg-white border-2 border-gray-300 text-gray-900 text-sm font-medium focus:outline-none focus:border-red-600 appearance-none cursor-pointer transition-colors"
                 >
                   <option value="all">All Years</option>
-                  <option value="2024">Class of 2024</option>
-                  <option value="2023">Class of 2023</option>
-                  <option value="2022">Class of 2022</option>
-                  <option value="2021">Class of 2021</option>
-                  <option value="2020">Class of 2020</option>
-                  <option value="2019">Class of 2019</option>
-                  <option value="2018">Class of 2018</option>
+                  <option value="2024">Batch of 2024</option>
+                  <option value="2023">Batch of 2023</option>
+                  <option value="2022">Batch of 2022</option>
+                  <option value="2021">Batch of 2021</option>
+                  <option value="2020">Batch of 2020</option>
+                  <option value="2019">Batch of 2019</option>
+                  <option value="2018">Batch of 2018</option>
                 </select>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
                   <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">

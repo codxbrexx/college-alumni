@@ -8,8 +8,8 @@ function JobCard({ job }) {
 
   return (
     <div className={`group relative border transition-all duration-300 hover:shadow-sm hover:border-red-600 ${isDarkMode
-        ? 'bg-gray-900 border-gray-800'
-        : 'bg-white border-gray-200'
+      ? 'bg-gray-900 border-gray-800'
+      : 'bg-white border-gray-200'
       }`}>
 
       {/* Top Accent Line (Optional, or left border) - We use Left Border to match Alumni */}
@@ -26,8 +26,8 @@ function JobCard({ job }) {
           <button
             onClick={() => setIsBookmarked(!isBookmarked)}
             className={`transition-colors text-xl ${isBookmarked
-                ? 'text-red-600'
-                : isDarkMode ? 'text-gray-600 hover:text-white' : 'text-gray-300 hover:text-gray-600'
+              ? 'text-red-600'
+              : isDarkMode ? 'text-gray-600 hover:text-white' : 'text-gray-300 hover:text-gray-600'
               }`}
           >
             {isBookmarked ? <FaBookmark /> : <FaRegBookmark />}
@@ -78,7 +78,7 @@ function JobCard({ job }) {
         {/* Footer */}
         <div className="flex items-center justify-between mt-auto">
           <div className="flex items-center gap-3">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${isDarkMode ? 'bg-gray-800 text-white' : 'bg-black text-white'
+            <div className={`w-10 h-10 flex items-center justify-center text-sm font-serif font-bold border-2 ${isDarkMode ? 'bg-gray-800 text-white border-gray-700' : 'bg-gray-900 text-white border-gray-900 group-hover:bg-red-700 group-hover:border-red-700 transition-colors'
               }`}>
               {job.alumnus.charAt(0)}
             </div>

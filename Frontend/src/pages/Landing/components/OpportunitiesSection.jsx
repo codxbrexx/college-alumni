@@ -73,9 +73,9 @@ export default function OpportunitiesSection() {
                         Upcoming Events
                     </h2>
                     <div className="space-y-4">
-                        <EventRow day="15" month="MAR" title="Annual Alumni Reunion 2026" type="In-Person" />
-                        <EventRow day="22" month="MAR" title="Tech Talk: AI in 2026" type="Virtual" />
-                        <EventRow day="05" month="APR" title="Campus Mentorship Drive" type="Campus" />
+                        <EventRow day="15" month="MAR" title="Alumni Tech Summit 2025" type="In-Person" />
+                        <EventRow day="22" month="APR" title="Global Networking Night" type="Virtual" />
+                        <EventRow day="05" month="MAY" title="Founder's Day Celebration" type="Campus" />
                     </div>
                     <button className="mt-6 font-semibold flex items-center gap-2 hover:underline text-red-700">
                         View calendar <FaArrowRight />

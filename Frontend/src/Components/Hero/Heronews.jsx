@@ -11,114 +11,106 @@ function Heronews({
   const { isDarkMode } = useTheme();
 
   return (
-    <div className="relative w-full min-h-[350px] flex flex-col justify-center overflow-hidden font-sans">
-      {/* Background Image with Sharp Overlay */}
-      <img
-        src="/alumnibg.jpg"
-        alt="Hero Background"
-        className="absolute inset-0 w-full h-full object-cover object-center z-0"
-      />
-      <div className={`absolute inset-0 z-10 ${isDarkMode ? 'bg-gray-900/85 mix-blend-multiply' : 'bg-red-900/80 mix-blend-multiply'
-        }`} />
+    <div className="w-full font-sans">
+      {/* Institutional Top Bar */}
+      <div className={`py-6 border-b-4 border-red-600 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-900 text-white'}`}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div>
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">NetGrud College</p>
+              <h1 className="text-3xl md:text-5xl font-serif font-bold text-white mb-2">
+                Campus Chronicles
+              </h1>
+              <p className="text-zinc-400 max-w-xl text-sm md:text-base font-light">
+                The latest news, research breakthroughs, and community achievements.
+              </p>
+            </div>
 
-      {/* Hero Content */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-10 mt-10">
-        <div className="max-w-3xl mb-8">
-          <h4 className="text-white/80 font-bold tracking-widest uppercase text-xs mb-2">
-            Campus Chronicles
-          </h4>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4 font-serif">
-            Stories That <br /> Matter.
-          </h1>
-          <p className="text-lg md:text-xl text-white/90 font-light max-w-2xl leading-relaxed">
-            Stay connected with the latest achievements, events, and narratives from our community.
-          </p>
+            {/* Tab Switcher - Sharp & Integrated */}
+            <div className="flex border-2 border-white/20">
+              <button
+                onClick={() => setActiveTab('news')}
+                className={`px-8 py-3 text-sm font-bold uppercase tracking-widest transition-all ${activeTab === 'news'
+                  ? 'bg-red-600 text-white'
+                  : 'bg-transparent text-gray-400 hover:text-white hover:bg-white/5'
+                  }`}
+              >
+                News
+              </button>
+              <button
+                onClick={() => setActiveTab('events')}
+                className={`px-8 py-3 text-sm font-bold uppercase tracking-widest transition-all ${activeTab === 'events'
+                  ? 'bg-red-600 text-white'
+                  : 'bg-transparent text-gray-400 hover:text-white hover:bg-white/5'
+                  }`}
+              >
+                Events
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
 
-        {/* Tab Switcher - Sharp */}
-        <div className="flex mb-0">
-          <button
-            onClick={() => setActiveTab('news')}
-            className={`px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all ${activeTab === 'news'
-              ? 'bg-white text-black'
-              : 'bg-black/40 text-white hover:bg-black/60 backdrop-blur-sm'
-              }`}
-          >
-            News
-          </button>
-          <button
-            onClick={() => setActiveTab('events')}
-            className={`px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all ${activeTab === 'events'
-              ? 'bg-white text-black'
-              : 'bg-black/40 text-white hover:bg-black/60 backdrop-blur-sm'
-              }`}
-          >
-            Events
-          </button>
-        </div>
-
-        {/* Search Bar - Sharp & Professional */}
-        <div className="bg-white p-6 shadow-2xl">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+      {/* Search Bar - Sharp & Professional */}
+      <div className={`border-b ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}>
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
 
             {/* Search Input */}
-            <div className="md:col-span-6 pb-4 md:pb-0 md:pr-4">
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">
-                Search
+            <div className="md:col-span-6">
+              <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                Headline / Author
               </label>
-              <div className="flex items-center gap-3">
-                <FaSearch className="text-red-700" />
+              <div className={`flex items-center gap-3 border-2 px-4 py-3 bg-transparent transition-colors ${isDarkMode ? 'border-gray-600 focus-within:border-red-500' : 'border-gray-300 focus-within:border-red-600 bg-gray-50'}`}>
+                <FaSearch className={isDarkMode ? 'text-gray-400' : 'text-gray-400'} />
                 <input
                   type="text"
-                  placeholder="Headlines, Topics, or Authors"
+                  placeholder="Convocation 2024..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-transparent outline-none text-gray-900 font-medium placeholder-gray-400 border-b-2 border-gray-200 focus:border-red-700 transition-colors pb-2"
+                  className={`w-full bg-transparent outline-none font-medium placeholder-gray-500 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}
                 />
               </div>
             </div>
 
             {/* Category Input */}
-            <div className="md:col-span-4 pb-4 md:pb-0 md:pr-4 md:pl-4">
-              <label className="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">
+            <div className="md:col-span-4">
+              <label className={`block text-xs font-bold uppercase tracking-widest mb-2 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                 Topic
               </label>
-              <div className="flex items-center gap-3">
-                <FaFilter className="text-red-700" />
+              <div className={`flex items-center gap-3 border-2 px-4 py-3 bg-transparent transition-colors ${isDarkMode ? 'border-gray-600 focus-within:border-red-500' : 'border-gray-300 focus-within:border-red-600 bg-gray-50'}`}>
+                <FaFilter className={isDarkMode ? 'text-gray-400' : 'text-gray-400'} />
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full bg-transparent outline-none text-gray-900 font-medium cursor-pointer appearance-none border-b-2 border-gray-200 focus:border-red-700 transition-colors pb-2"
+                  className={`w-full bg-transparent outline-none font-bold cursor-pointer appearance-none ${isDarkMode ? 'text-white' : 'text-gray-900'}`}
                 >
-                  <option value="all">All Topics</option>
-                  <option value="academics">Academics</option>
-                  <option value="alumni">Alumni Success</option>
-                  <option value="campus">Campus Life</option>
-                  <option value="sports">Sports</option>
+                  <option value="all" className="text-black">All Topics</option>
+                  <option value="academics" className="text-black">Academics</option>
+                  <option value="alumni" className="text-black">Alumni Success</option>
+                  <option value="campus" className="text-black">Campus Life</option>
+                  <option value="research" className="text-black">Research</option>
                 </select>
               </div>
             </div>
 
             {/* Search Button */}
             <div className="md:col-span-2">
-              <button className="w-full h-full min-h-[50px] bg-red-700 hover:bg-black text-white font-bold uppercase tracking-widest transition-all duration-300 text-sm">
-                Explore
-              </button>
+              <Link to="/post-news" className="flex items-center justify-center w-full h-[50px] bg-red-700 hover:bg-black text-white font-bold uppercase tracking-widest transition-all text-xs border-2 border-red-700 hover:border-black">
+                Submit Story
+              </Link>
             </div>
+
+          </div>
+
+          {/* Quick Filters Text */}
+          <div className="mt-4 flex flex-wrap gap-4 text-xs font-bold uppercase tracking-wider">
+            <span className="text-gray-400">Featured Topics:</span>
+            <button onClick={() => setCategory('research')} className="text-red-600 hover:underline hover:text-black">Research</button>
+            <button onClick={() => setCategory('alumni')} className="text-red-600 hover:underline hover:text-black">Alumni Spotlight</button>
+            <button onClick={() => setCategory('campus')} className="text-red-600 hover:underline hover:text-black">Campus Events</button>
           </div>
         </div>
-
-        {/* Quick Links */}
-        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-white/80 text-sm font-medium">
-          <span className="text-white/50 uppercase tracking-widest text-xs font-bold mr-2">Trending:</span>
-          <button className="hover:text-white hover:underline decoration-red-500 underline-offset-4 transition-all">Convocation 2024</button>
-          <button className="hover:text-white hover:underline decoration-red-500 underline-offset-4 transition-all">Research Grants</button>
-          <button className="hover:text-white hover:underline decoration-red-500 underline-offset-4 transition-all">Sports Meet</button>
-          <Link to="/post-news" className="ml-auto flex items-center gap-2 hover:text-white hover:underline decoration-red-500 underline-offset-4 transition-all text-red-200">
-            Submit a Story &rarr;
-          </Link>
-        </div>
-
       </div>
     </div>
   );

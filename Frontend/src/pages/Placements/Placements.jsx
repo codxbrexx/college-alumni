@@ -201,7 +201,7 @@ const PlacementSection = () => {
             {companies.map((company, idx) => {
               const Icon = company.icon;
               return (
-                <div key={idx} className={`flex flex-col items-center justify-center p-6 transition-all hover:bg-black/5 dark:hover:bg-white/5 group bg-transparent rounded-sm text-center`}>
+                <div key={idx} className={`flex flex-col items-center justify-center p-6 transition-all hover:bg-black/5 dark:hover:bg-white/5 group bg-transparent rounded-none text-center border-2 border-transparent hover:border-black/10`}>
                   <Icon className={`text-4xl mb-4 transition-transform group-hover:scale-110 ${company.color} opacity-80 group-hover:opacity-100`} />
                   <span className={`text-xs font-bold uppercase tracking-wider ${isDarkMode ? 'text-gray-500 group-hover:text-gray-300' : 'text-gray-500 group-hover:text-gray-700'
                     }`}>

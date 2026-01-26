@@ -41,7 +41,7 @@ function Home() {
 
         {/* Overlapping Content Area */}
         <div className="relative z-10 px-6 -mt-48 md:-mt-58">
-          <div className="max-w-5xl mx-auto p-8 md:p-14 shadow-2xl bg-white">
+          <div className="max-w-5xl mx-auto p-8 md:p-14 shadow-2xl bg-white border-t-4 border-red-600">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -64,32 +64,32 @@ function Home() {
               {/* Main Content */}
               <div className="flex flex-col flex-grow">
                 {/* Headline */}
-                <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight text-gray-900">
+                <h1 className="text-4xl md:text-6xl font-serif font-bold mb-6 leading-tight text-gray-900 tracking-tight">
                   Welcome Home
                 </h1>
 
                 {/* Byline */}
                 <div className="flex items-center gap-2 text-xs font-medium mb-8 border-b pb-8 text-gray-500 border-gray-200">
                   <FaGraduationCap className="text-red-600 text-lg" />
-                  <span className="font-bold text-sm uppercase text-black">NetGrud Association</span>
-                  <span className="mx-2">|</span>
-                  <span>Est. 2015</span>
+                  <span className="font-bold text-sm uppercase text-gray-900 tracking-wider">NetGrud Association</span>
+                  <span className="mx-2 text-gray-300">|</span>
+                  <span className="tracking-wide">Est. 2025</span>
                 </div>
 
                 {/* Lead Text */}
                 <p className="text-lg md:text-xl font-serif leading-relaxed mb-10 text-gray-600">
-                  Connect, collaborate, and grow with thousands of alumni building lifelong connections. Your journey doesn't end at graduation it's just beginning.
+                  Connect, collaborate, and grow with thousands of alumni building lifelong connections. Your journey doesn't end at graduation—it's just beginning.
                 </p>
 
                 {/* Actions */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link to="/alumni">
-                    <button className="px-8 py-3.5 font-bold uppercase tracking-wider text-sm transition-all shadow-sm hover:shadow-md border bg-black text-white border-black hover:bg-gray-800">
+                    <button className="px-8 py-3.5 font-bold uppercase tracking-widest text-xs transition-all shadow-lg hover:shadow-red-900/20 border-2 border-transparent bg-gray-900 text-white hover:bg-red-700 hover:border-red-700 rounded-none w-full sm:w-auto">
                       Explore Alumni Network
                     </button>
                   </Link>
                   <Link to="/job">
-                    <button className="px-8 py-3.5 font-medium uppercase tracking-wider text-sm transition-all border text-black border-gray-300 hover:border-black">
+                    <button className="px-8 py-3.5 font-bold uppercase tracking-widest text-xs transition-all border-2 text-gray-900 border-gray-900 hover:bg-gray-900 hover:text-white rounded-none w-full sm:w-auto">
                       Find Opportunities
                     </button>
                   </Link>
@@ -101,15 +101,15 @@ function Home() {
       </section>
 
       {/* Stats Strip */}
-      <section className="py-12 border-y bg-gray-50 border-gray-200">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <section className="py-16 border-y bg-white border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x-0 md:divide-x divide-gray-100">
           {stats.map((stat) => (
-            <div key={stat.id} className="transition-transform duration-300 hover:scale-105">
-              <div className="text-3xl md:text-4xl font-bold mb-2 text-gray-900">
+            <div key={stat.id} className="transition-transform duration-300 group">
+              <div className="text-4xl md:text-5xl font-bold mb-2 text-gray-900 font-serif group-hover:text-red-600 transition-colors">
                 {stat.value.toLocaleString()}
                 {stat.suffix}
               </div>
-              <div className="text-sm font-medium text-gray-600">
+              <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mt-2">
                 {stat.label}
               </div>
             </div>
