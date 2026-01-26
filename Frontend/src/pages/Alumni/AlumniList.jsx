@@ -103,30 +103,37 @@ export default function AlumniList({ heroFilters, searchTerm }) {
     }
 
     return (
-        <div className="py-12 px-4 bg-gray-50 min-h-screen font-sans">
-            <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-10">
-                    <p className="text-gray-500 max-w-2xl mx-auto text-sm md:text-base mb-8">
-                        Connect with graduates and expand your professional network.
-                    </p>
+        <div className="bg-white min-h-screen">
+            <div className="max-w-7xl mx-auto px-6 py-8">
 
-
+                {/* Results Header */}
+                <div className="flex justify-between items-center mb-6 pb-4 border-b-2 border-gray-200">
+                    <div>
+                        <h2 className="text-xl font-serif font-bold text-gray-900">
+                            {isSearching ? 'Searching...' : `${filteredAlumni.length} ${filteredAlumni.length === 1 ? 'Alumnus' : 'Alumni'} Found`}
+                        </h2>
+                        <p className="text-sm text-gray-500 mt-1">
+                            {searchTerm && `Results for "${searchTerm}"`}
+                            {heroFilters.batch !== 'all' && ` • Class of ${heroFilters.batch}`}
+                            {heroFilters.role && ` • ${heroFilters.role}`}
+                        </p>
+                    </div>
                 </div>
 
-                <div className="bg-white border border-gray-200 shadow-sm rounded-sm overflow-hidden">
+                <div className="bg-white border-2 border-gray-200 overflow-hidden">
                     {/* List Header (Desktop) */}
-                    <div className="hidden md:grid grid-cols-12 gap-4 bg-gray-50 text-gray-500 py-3 px-6 text-xs font-bold uppercase tracking-wider border-b border-gray-200">
-                        <div className="col-span-4">Member</div>
-                        <div className="col-span-3">Details</div>
+                    <div className="hidden md:grid grid-cols-12 gap-4 bg-gray-100 text-gray-700 py-4 px-6 text-xs font-bold uppercase tracking-wider border-b-2 border-gray-300">
+                        <div className="col-span-4">Name &amp; Position</div>
+                        <div className="col-span-3">Company &amp; Year</div>
                         <div className="col-span-3">Location</div>
-                        <div className="col-span-2 text-right">Action</div>
+                        <div className="col-span-2 text-right">Details</div>
                     </div>
 
                     {/* List Body */}
-                    <div className="divide-y divide-gray-100">
+                    <div className="divide-y-2 divide-gray-200">
                         {isSearching ? (
-                            <div className="py-12 text-center">
-                                <div className="inline-block px-4 py-2 border border-gray-200 rounded-sm bg-gray-50 text-gray-500 text-sm font-bold animate-pulse">
+                            <div className="py-16 text-center">
+                                <div className="inline-block px-6 py-3 border-2 border-gray-300 bg-gray-50 text-gray-600 text-sm font-bold">
                                     Searching Directory...
                                 </div>
                             </div>
@@ -136,16 +143,16 @@ export default function AlumniList({ heroFilters, searchTerm }) {
                                 const initials = getInitials(alum.name);
 
                                 return (
-                                    <div key={alum.id} className="transition-colors hover:bg-gray-50/50">
+                                    <div key={alum.id} className="transition-colors hover:bg-gray-50">
                                         {/* Main Row */}
                                         <div
                                             onClick={() => toggleExpand(alum.id)}
-                                            className="grid md:grid-cols-12 gap-4 p-4 md:px-6 items-center cursor-pointer group"
+                                            className="grid md:grid-cols-12 gap-4 p-5 md:px-6 items-center cursor-pointer group"
                                         >
                                             {/* Column 1: Profile */}
                                             <div className="col-span-12 md:col-span-4 flex items-center gap-4">
-                                                {/* Initials Avatar */}
-                                                <div className="w-10 h-10 rounded-sm bg-gray-900 text-white flex items-center justify-center font-serif font-bold text-sm shadow-sm border border-gray-200 group-hover:bg-red-700 transition-colors">
+                                                {/* Initials Avatar - Sharp Rectangle */}
+                                                <div className="w-12 h-12 bg-gray-900 text-white flex items-center justify-center font-serif font-bold text-sm border-2 border-gray-300 group-hover:bg-red-700 group-hover:border-red-700 transition-colors">
                                                     {initials}
                                                 </div>
                                                 <div>
@@ -178,25 +185,25 @@ export default function AlumniList({ heroFilters, searchTerm }) {
 
                                             {/* Column 4: Toggle Action */}
                                             <div className="col-span-12 md:col-span-2 flex justify-end items-center gap-2">
-                                                <div className={`w-8 h-8 rounded-sm border border-gray-200 flex items-center justify-center transition-all bg-white text-gray-400 group-hover:border-red-600 group-hover:text-red-600 ${isExpanded ? 'bg-red-50 rotate-180' : ''}`}>
-                                                    <FaChevronDown size={10} />
+                                                <div className={`w-9 h-9 border-2 border-gray-300 flex items-center justify-center transition-all bg-white text-gray-500 group-hover:border-red-600 group-hover:text-red-600 ${isExpanded ? 'bg-red-600 border-red-600 text-white rotate-180' : ''}`}>
+                                                    <FaChevronDown size={12} />
                                                 </div>
                                             </div>
                                         </div>
 
                                         {/* Expanded Accordion Content */}
                                         {isExpanded && (
-                                            <div className="bg-gray-50/50 px-6 py-6 md:px-20 border-t border-gray-100">
+                                            <div className="bg-gray-50 px-6 py-8 md:px-20 border-t-2 border-gray-200">
                                                 <div className="grid md:grid-cols-3 gap-8">
                                                     {/* Bio */}
                                                     <div className="md:col-span-2">
-                                                        <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">About</h4>
-                                                        <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                                                        <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3 border-l-4 border-red-600 pl-3">About</h4>
+                                                        <p className="text-gray-700 text-sm leading-relaxed mb-5">
                                                             {alum.about}
                                                         </p>
-                                                        <div className="flex flex-wrap gap-2 mt-4">
+                                                        <div className="flex flex-wrap gap-2">
                                                             {alum.skills && alum.skills.map((skill, i) => (
-                                                                <span key={i} className="px-2 py-1 bg-white border border-gray-200 text-gray-600 text-[10px] font-bold uppercase tracking-wide rounded-sm">
+                                                                <span key={i} className="px-3 py-1.5 bg-white border-2 border-gray-300 text-gray-700 text-[11px] font-bold uppercase tracking-wide">
                                                                     {skill}
                                                                 </span>
                                                             ))}
@@ -204,17 +211,17 @@ export default function AlumniList({ heroFilters, searchTerm }) {
                                                     </div>
 
                                                     {/* Actions */}
-                                                    <div className="border-l border-gray-200 pl-8 flex flex-col justify-between">
+                                                    <div className="border-l-2 border-gray-300 pl-8 flex flex-col justify-between">
                                                         <div>
-                                                            <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Professional</h4>
-                                                            <div className="flex gap-3 mb-6">
+                                                            <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4 border-l-4 border-red-600 pl-3">Connect</h4>
+                                                            <div className="flex gap-4 mb-6">
                                                                 {alum.linkedin !== '#' && (
-                                                                    <a href={alum.linkedin} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#0077b5] transition-colors text-xl">
+                                                                    <a href={alum.linkedin} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-[#0077b5] transition-colors text-2xl">
                                                                         <FaLinkedin />
                                                                     </a>
                                                                 )}
                                                                 {alum.social !== '#' && (
-                                                                    <a href={alum.social} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-black transition-colors text-xl">
+                                                                    <a href={alum.social} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-black transition-colors text-2xl">
                                                                         <ImTwitter />
                                                                     </a>
                                                                 )}
@@ -223,9 +230,9 @@ export default function AlumniList({ heroFilters, searchTerm }) {
 
                                                         <Link
                                                             to={`/alumni/${alum.id}`}
-                                                            className="flex items-center justify-center gap-2 w-full py-2 bg-white border border-gray-300 hover:border-red-700 hover:text-red-700 text-gray-600 text-xs font-bold uppercase tracking-widest transition-all rounded-sm"
+                                                            className="flex items-center justify-center gap-2 w-full py-3 bg-gray-900 hover:bg-red-600 text-white text-xs font-bold uppercase tracking-widest transition-all border-2 border-gray-900 hover:border-red-600"
                                                         >
-                                                            Full Profile <FaExternalLinkAlt size={10} />
+                                                            View Full Profile <FaExternalLinkAlt size={10} />
                                                         </Link>
                                                     </div>
                                                 </div>

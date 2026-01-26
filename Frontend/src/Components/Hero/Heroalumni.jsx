@@ -1,118 +1,162 @@
-import React, { useState } from 'react';
-import { FaFilter, FaBriefcase, FaGraduationCap, FaSearch } from "react-icons/fa";
+import React from 'react';
+import { FaSearch, FaGraduationCap, FaBriefcase, FaUniversity } from "react-icons/fa";
 
 function Heroalumni({ filters, setFilters, searchTerm, setSearchTerm }) {
-  const [activeTab, setActiveTab] = useState('alumni');
 
   const updateFilter = (key, value) => {
     setFilters(prev => ({ ...prev, [key]: value }));
   };
 
   return (
-    <div className="relative w-full min-h-[350px] flex items-center justify-center overflow-hidden bg-gray-900">
-      {/* Background with overlay */}
-      <img
-        src="/alumnibg.jpg"
-        alt="Hero Background"
-        className="absolute inset-0 w-full h-full object-cover object-center opacity-60"
-      />
-      <div className="absolute inset-0 bg-red-900/60 mix-blend-multiply" />
-
-      <div className="relative z-10 w-full max-w-5xl mx-auto px-4 py-10 flex flex-col items-center text-center">
-
-        {/* Main Heading */}
-        <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-[10px] font-bold mb-4 tracking-widest uppercase">
-          Welcome to the Community
-        </span>
-        <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-4 drop-shadow-lg leading-tight">
-          Connect with <br className="hidden md:block" /> Legends & Leaders
-        </h1>
-        <p className="text-lg md:text-xl text-red-50 max-w-3xl mb-8 font-light">
-          Your network is your net worth. Find mentors, batchmates, and future colleagues in our exclusive alumni directory.
-        </p>
-
-        {/* Filter Bar Container - No Search, Just Filters */}
-        <div className="w-full max-w-4xl bg-white shadow-2xl overflow-hidden p-6 flex flex-col md:flex-row gap-4 border-4 border-white/10  items-end">
-
-          {/* Search Input */}
-          <div className="flex-[2] w-full text-left">
-            <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">
-              Search Alumni
-            </label>
-            <div className="relative">
-              <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-red-700" />
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Name, Company, or City..."
-                className="w-full h-12 pl-10 pr-4 bg-gray-50 border-b-2 border-gray-200 text-gray-900 font-normal focus:outline-none focus:border-red-700 text-sm transition-colors placeholder-gray-400"
-              />
+    <div className="w-full bg-white border-b-2 border-gray-200">
+      {/* Top Bar with Institution Branding */}
+      <div className="bg-gray-900 text-white py-6">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center gap-3 mb-2">
+            <FaUniversity className="text-2xl text-red-600" />
+            <div>
+              <p className="text-xs uppercase tracking-widest text-gray-400 font-bold">NetGrud College</p>
+              <h1 className="text-3xl md:text-4xl font-serif font-bold">Alumni Directory</h1>
             </div>
           </div>
-
-          {/* Batch Filter */}
-          <div className="flex-1 w-full text-left">
-            <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">
-              Graduation Year
-            </label>
-            <div className="relative">
-              <FaGraduationCap className="absolute left-4 top-1/2 -translate-y-1/2 text-red-700" />
-              <select
-                value={filters.batch}
-                onChange={(e) => updateFilter('batch', e.target.value)}
-                className="w-full h-12 pl-10 pr-4 bg-gray-50 border border-gray-200 text-gray-900 font-bold focus:outline-none focus:border-red-700 appearance-none cursor-pointer text-sm transition-colors"
-              >
-                <option value="all">All Batches</option>
-                <option value="2024">Batch 2024</option>
-                <option value="2023">Batch 2023</option>
-                <option value="2022">Batch 2022</option>
-                <option value="2021">Batch 2021</option>
-                <option value="2020">Batch 2020</option>
-              </select>
-              <FaFilter className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none" />
-            </div>
-          </div>
-
-          {/* Role/Industry Filter */}
-          <div className="flex-1 w-full text-left">
-            <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">
-              Industry / Role
-            </label>
-            <div className="relative">
-              <FaBriefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-red-700" />
-              <select
-                value={filters.role}
-                onChange={(e) => updateFilter('role', e.target.value)}
-                className="w-full h-12 pl-10 pr-4 bg-gray-50 border border-gray-200 text-gray-900 font-bold focus:outline-none focus:border-red-700 appearance-none cursor-pointer text-sm transition-colors"
-              >
-                <option value="">Any Industry</option>
-                <option value="software">Software Engineering</option>
-                <option value="product">Product Management</option>
-                <option value="data">Data Science</option>
-                <option value="design">Design</option>
-                <option value="marketing">Marketing</option>
-              </select>
-              <FaFilter className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none" />
-            </div>
-          </div>
-
+          <p className="text-sm text-gray-400 mt-2 max-w-2xl">
+            Connect with 500+ graduates worldwide. Discover mentors, explore career paths, and strengthen your professional network.
+          </p>
         </div>
+      </div>
 
-        {/* Quick Links */}
-        <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-red-100">
-          <span className="opacity-80">Popular:</span>
-          {['Software Engineer', 'Product Manager', 'Data Scientist', 'Entrepreneur'].map((tag) => (
-            <button
-              key={tag}
-              onClick={() => updateFilter('role', tag.toLowerCase().split(' ')[0])}
-              className="hover:text-white underline decoration-red-400/50 hover:decoration-white transition-all"
-            >
-              {tag}
-            </button>
-          ))}
+      {/* Search & Filter Section */}
+      <div className="bg-gray-50 border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+
+            {/* Search Bar - Takes More Space */}
+            <div className="md:col-span-5">
+              <label className="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-2">
+                Search Directory
+              </label>
+              <div className="relative">
+                <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Name, Company, Location, or Skills..."
+                  className="w-full h-12 pl-11 pr-4 bg-white border-2 border-gray-300 text-gray-900 text-sm focus:outline-none focus:border-red-600 transition-colors placeholder-gray-400"
+                />
+              </div>
+            </div>
+
+            {/* Graduation Year Filter */}
+            <div className="md:col-span-3">
+              <label className="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-2">
+                Class Year
+              </label>
+              <div className="relative">
+                <FaGraduationCap className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
+                <select
+                  value={filters.batch}
+                  onChange={(e) => updateFilter('batch', e.target.value)}
+                  className="w-full h-12 pl-11 pr-10 bg-white border-2 border-gray-300 text-gray-900 text-sm font-medium focus:outline-none focus:border-red-600 appearance-none cursor-pointer transition-colors"
+                >
+                  <option value="all">All Years</option>
+                  <option value="2024">Class of 2024</option>
+                  <option value="2023">Class of 2023</option>
+                  <option value="2022">Class of 2022</option>
+                  <option value="2021">Class of 2021</option>
+                  <option value="2020">Class of 2020</option>
+                  <option value="2019">Class of 2019</option>
+                  <option value="2018">Class of 2018</option>
+                </select>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            {/* Industry Filter */}
+            <div className="md:col-span-4">
+              <label className="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-2">
+                Industry / Field
+              </label>
+              <div className="relative">
+                <FaBriefcase className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm" />
+                <select
+                  value={filters.role}
+                  onChange={(e) => updateFilter('role', e.target.value)}
+                  className="w-full h-12 pl-11 pr-10 bg-white border-2 border-gray-300 text-gray-900 text-sm font-medium focus:outline-none focus:border-red-600 appearance-none cursor-pointer transition-colors"
+                >
+                  <option value="">All Industries</option>
+                  <option value="software">Technology & Engineering</option>
+                  <option value="product">Product Management</option>
+                  <option value="data">Data Science & Analytics</option>
+                  <option value="design">Design & Creative</option>
+                  <option value="marketing">Marketing & Sales</option>
+                  <option value="finance">Finance & Banking</option>
+                  <option value="consulting">Consulting</option>
+                  <option value="education">Education & Research</option>
+                </select>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Quick Filter Tags */}
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            <span className="text-xs font-bold text-gray-500 uppercase tracking-wide">Quick Filters:</span>
+            {[
+              { label: 'Tech Leaders', value: 'software' },
+              { label: 'Entrepreneurs', value: 'entrepreneur' },
+              { label: 'Recent Grads', value: '2024' },
+              { label: 'Product', value: 'product' }
+            ].map((tag) => (
+              <button
+                key={tag.label}
+                onClick={() => {
+                  if (tag.value.match(/^\d{4}$/)) {
+                    updateFilter('batch', tag.value);
+                  } else {
+                    updateFilter('role', tag.value);
+                  }
+                }}
+                className="px-3 py-1.5 text-xs font-medium uppercase tracking-wide bg-white border-2 border-gray-300 text-gray-700 hover:border-red-600 hover:text-red-600 hover:bg-red-50 transition-all"
+              >
+                {tag.label}
+              </button>
+            ))}
+          </div>
         </div>
+      </div>
 
+      {/* Stats Bar */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="text-center border-r border-gray-200 last:border-r-0">
+              <p className="text-2xl font-serif font-bold text-gray-900">500+</p>
+              <p className="text-xs uppercase tracking-wide text-gray-500 font-medium mt-1">Alumni</p>
+            </div>
+            <div className="text-center border-r border-gray-200 last:border-r-0">
+              <p className="text-2xl font-serif font-bold text-gray-900">50+</p>
+              <p className="text-xs uppercase tracking-wide text-gray-500 font-medium mt-1">Companies</p>
+            </div>
+            <div className="text-center border-r border-gray-200 last:border-r-0">
+              <p className="text-2xl font-serif font-bold text-gray-900">75%</p>
+              <p className="text-xs uppercase tracking-wide text-gray-500 font-medium mt-1">Response Rate</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-serif font-bold text-gray-900">25+</p>
+              <p className="text-xs uppercase tracking-wide text-gray-500 font-medium mt-1">Countries</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
