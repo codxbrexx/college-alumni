@@ -131,7 +131,7 @@ function AlumniProfile() {
                                         <span className="font-bold text-gray-900">{alum.city || "Remote"}</span>
                                     </div>
                                     <div className="flex justify-between">
-                                        <span className="font-bold text-gray-400 uppercase">Class Of</span>
+                                        <span className="font-bold text-gray-400 uppercase">Beatch Year</span>
                                         <span className="font-bold text-gray-900">{alum.passingYear}</span>
                                     </div>
                                 </div>
