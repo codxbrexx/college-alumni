@@ -33,8 +33,34 @@ const jobPostSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    // Moderation fields (SRS §3.4.1)
+    status: {
+        type: String,
+        enum: ['pending', 'approved', 'rejected'],
+        default: 'pending',
+        index: true
+    },
+    moderatedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'  // Admin who moderated this job
+    },
+    moderationNotes: {
+        type: String,
+        trim: true
+    },
+    moderatedAt: {
+        type: Date
+    },
+    rejectionReason: {
+        type: String,
+        trim: true
+    }
 }, {
     timestamps: true
-})
+});
 
-export const jobPost = mongoose.model('jobPost', jobPostSchema)
+// Indexes for efficient moderation queries
+jobPostSchema.index({ status: 1, createdAt: -1 });
+jobPostSchema.index({ user: 1, status: 1 });
+
+export const jobPost = mongoose.model('jobPost', jobPostSchema);
