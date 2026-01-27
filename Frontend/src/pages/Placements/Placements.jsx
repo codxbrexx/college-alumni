@@ -1,5 +1,5 @@
 import React from "react";
-import Hero from "../../Components/Hero/Herojob";
+import Hero from "../../Components/Hero/Heroplacement";
 import { useTheme } from '../../context/ThemeContext';
 import PlacementStatistics from "./components/PlacementStatistics";
 

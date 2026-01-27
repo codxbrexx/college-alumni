@@ -1,27 +1,27 @@
 import React from 'react';
-import Search from '../Search/Search';
-import Filter from '../Filter/Filter';
 import { useTheme } from '../../context/ThemeContext';
 
-function Herojob() {
+function Heroplacement() {
   const { isDarkMode } = useTheme();
 
   return (
-    <div className="relative w-full min-h-[240px] flex items-center justify-center overflow-hidden">
-      <img
-        src="/alumnibg.jpg"
-        alt="Hero Background"
-        className="absolute inset-0 w-full h-full object-cover object-center z-0"
-      />
-      <div className={`absolute inset-0 z-10 ${
-        isDarkMode ? 'bg-red-900/40' : 'bg-red-200/30'
-      }`} />
-
-      <div className="relative z-20 w-full flex flex-col items-center px-4 py-8">
-        <Search />
+    <div className={`w-full border-b-2 ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'}`}>
+      {/* Top Bar with Title */}
+      <div className={`border-b-4 border-red-600 py-8 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-900'}`}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div>
+            <p className="text-xs uppercase tracking-[0.2em] text-red-100 font-bold mb-2">NetGrud College</p>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold tracking-tight text-white">
+              Placement Records
+            </h1>
+          </div>
+          <p className="text-lg text-red-50 mt-4 max-w-2xl font-light border-l-2 border-red-400 pl-4">
+            Celebrating outstanding placement achievements and career success of our graduates across leading companies worldwide.
+          </p>
+        </div>
       </div>
     </div>
   );
 }
 
-export default Herojob;
+export default Heroplacement;
