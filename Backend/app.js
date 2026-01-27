@@ -5,6 +5,7 @@ import userRoutes from "./src/routes/user.routes.js"
 import jobRoutes from "./src/routes/job.routes.js"
 import newsRoutes from "./src/routes/news.routes.js"
 import alumniRoutes from "./src/routes/alumni.routes.js"
+import placementRoutes from "./src/routes/placement.routes.js"
 import { errorHandler, notFoundHandler } from "./src/middleware/error.middleware.js"
 
 const app = express()
@@ -27,6 +28,7 @@ app.use("/api/auth", userRoutes)
 app.use("/api/jobs", jobRoutes)
 app.use("/api/news", newsRoutes)
 app.use("/api/alumni", alumniRoutes)
+app.use("/api/placements", placementRoutes)
 
 app.use(notFoundHandler)
 app.use(errorHandler)
