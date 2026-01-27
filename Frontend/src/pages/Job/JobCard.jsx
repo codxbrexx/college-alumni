@@ -1,10 +1,37 @@
 import React, { useState } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import { FaMapMarkerAlt, FaClock, FaBuilding, FaGraduationCap, FaExternalLinkAlt, FaBookmark, FaRegBookmark } from 'react-icons/fa';
+import axios from 'axios';
 
-function JobCard({ job }) {
+const API_BASE = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+
+function JobCard({ job, initialBookmarked = false }) {
   const { isDarkMode } = useTheme();
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(initialBookmarked);
+
+  const handleBookmark = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('Please log in to save jobs');
+        return;
+      }
+
+      if (isBookmarked) {
+        await axios.delete(`${API_BASE}/api/jobs/${job._id}/save`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setIsBookmarked(false);
+      } else {
+        await axios.post(`${API_BASE}/api/jobs/${job._id}/save`, {}, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setIsBookmarked(true);
+      }
+    } catch (err) {
+      alert(err.response?.data?.message || 'Failed to update bookmark');
+    }
+  };
 
   return (
     <div className={`group relative border transition-all duration-300 hover:shadow-sm hover:border-red-600 ${isDarkMode
@@ -24,7 +51,7 @@ function JobCard({ job }) {
             <FaBuilding className="text-3xl" />
           </div>
           <button
-            onClick={() => setIsBookmarked(!isBookmarked)}
+            onClick={handleBookmark}
             className={`transition-colors text-xl ${isBookmarked
               ? 'text-red-600'
               : isDarkMode ? 'text-gray-600 hover:text-white' : 'text-gray-300 hover:text-gray-600'
