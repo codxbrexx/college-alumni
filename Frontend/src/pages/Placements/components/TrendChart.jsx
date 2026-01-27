@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useTheme } from '../../../../context/ThemeContext';
+import { useTheme } from '../../../context/ThemeContext';
 import { Line } from 'react-chartjs-2';
 import axios from 'axios';
 import {

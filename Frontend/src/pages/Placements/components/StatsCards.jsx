@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../../../../context/ThemeContext';
+import { useTheme } from '../../../context/ThemeContext';
 import { FaChartLine, FaBuilding, FaUserGraduate, FaUniversity } from 'react-icons/fa';
 
 const StatsCards = ({ stats }) => {

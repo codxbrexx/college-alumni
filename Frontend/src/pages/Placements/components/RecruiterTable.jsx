@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../../../../context/ThemeContext';
+import { useTheme } from '../../../context/ThemeContext';
 import { FaMedal } from 'react-icons/fa';
 
 const RecruiterTable = ({ data }) => {
@@ -71,8 +71,8 @@ const RecruiterTable = ({ data }) => {
                                 <tr
                                     key={index}
                                     className={`border-b transition-colors ${isDarkMode
-                                            ? 'border-gray-800 hover:bg-gray-800/50'
-                                            : 'border-gray-200 hover:bg-gray-100'
+                                        ? 'border-gray-800 hover:bg-gray-800/50'
+                                        : 'border-gray-200 hover:bg-gray-100'
                                         }`}
                                 >
                                     <td className="py-4 px-4">

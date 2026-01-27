@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '../../../context/ThemeContext';
 import axios from 'axios';
-import StatsCards from './components/StatsCards';
-import BranchChart from './components/BranchChart';
-import TrendChart from './components/TrendChart';
-import RecruiterTable from './components/RecruiterTable';
+import StatsCards from './StatsCards';
+import BranchChart from './BranchChart';
+import TrendChart from './TrendChart';
+import RecruiterTable from './RecruiterTable';
 
 const PlacementDashboard = () => {
     const { isDarkMode } = useTheme();
@@ -87,8 +87,8 @@ const PlacementDashboard = () => {
                     <button
                         onClick={() => window.location.reload()}
                         className={`mt-6 px-6 py-3 border font-bold transition-all ${isDarkMode
-                                ? 'bg-white text-black border-white hover:bg-gray-100'
-                                : 'bg-black text-white border-black hover:bg-gray-900'
+                            ? 'bg-white text-black border-white hover:bg-gray-100'
+                            : 'bg-black text-white border-black hover:bg-gray-900'
                             }`}
                     >
                         Retry
@@ -122,12 +122,12 @@ const PlacementDashboard = () => {
                                     key={year}
                                     onClick={() => setSelectedYear(year)}
                                     className={`px-4 py-2 text-sm font-bold transition-all duration-300 border ${selectedYear === year
-                                            ? isDarkMode
-                                                ? 'bg-white text-black border-white'
-                                                : 'bg-black text-white border-black'
-                                            : isDarkMode
-                                                ? 'text-gray-400 border-gray-800 hover:border-gray-600 hover:text-white'
-                                                : 'text-gray-500 border-gray-200 hover:border-gray-400 hover:text-black'
+                                        ? isDarkMode
+                                            ? 'bg-white text-black border-white'
+                                            : 'bg-black text-white border-black'
+                                        : isDarkMode
+                                            ? 'text-gray-400 border-gray-800 hover:border-gray-600 hover:text-white'
+                                            : 'text-gray-500 border-gray-200 hover:border-gray-400 hover:text-black'
                                         }`}
                                 >
                                     {year}
