@@ -19,8 +19,13 @@ app.use(express.json({ limit: "1mb" }))
 app.use(express.urlencoded({ extended: true }))
 app.use(cors({
     credentials: true,
-    origin: allowedOrigins
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 }))
+
+// Enable pre-flight requests for all routes
+
 app.use(express.static("public"))
 app.use(cookieParser())
 

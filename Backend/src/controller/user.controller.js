@@ -205,7 +205,8 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
         rollNo,
         branch,
         companyDetails,
-        gitHubProfileLink
+        gitHubProfileLink,
+        onboardingComplete // Frontend sends this flag
     } = req.body
 
     const user = await User.findById(req.user?._id)
@@ -227,6 +228,7 @@ const updateAccountDetails = asyncHandler(async (req, res) => {
     if (branch) user.branch = branch
     if (companyDetails) user.companyDetails = companyDetails
     if (gitHubProfileLink) user.gitHubProfileLink = gitHubProfileLink
+    if (onboardingComplete !== undefined) user.isProfileComplete = onboardingComplete
 
     // Handle Skills (comma -> array)
     if (skills) {

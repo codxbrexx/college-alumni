@@ -7,12 +7,13 @@ import { upload } from "../middleware/multer.middleware.js"
 const router = Router()
 
 router.get("/", getAllAlumni)
+
+// Specific routes must come before wildcard routes
+router.get("/me", verifyJWT, getCurrentUser)
+router.patch("/me", verifyJWT, updateAccountDetails)
+router.patch("/me/avatar", verifyJWT, upload.single("avatar"), updateAvatar)
+
+// Wildcard route
 router.get("/:id", getAlumniById)
-
-router.use(verifyJWT)
-
-router.get("/me", getCurrentUser)
-router.patch("/me", updateAccountDetails)
-router.patch("/me/avatar", upload.single("avatar"), updateAvatar)
 
 export default router

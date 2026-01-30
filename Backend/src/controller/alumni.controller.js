@@ -96,27 +96,23 @@ const updateAvatar = async (req, res, next) => {
     }
 }
 
-/**
- * Get all alumni with enhanced search and filtering
- * Per SRS §3.3: Search by name, company, city, profession with filters
- */
 const getAllAlumni = async (req, res, next) => {
     try {
         const {
-            search, // Text search across name, company, city, profession
+            search,
             branch,
             yearOfPassout,
             city,
             state,
-            company, // Filter by company name
-            skills, // Comma-separated skills
+            company,
+            skills,
             sortBy = 'createdAt',
             order = 'desc',
             page = 1,
             limit = 12
         } = req.query
 
-        const query = { isVerified: true }
+        const query = { isVerified: true, isProfileComplete: true }
         const sort = {}
 
         // Text search using MongoDB text index (SRS §3.3.2)

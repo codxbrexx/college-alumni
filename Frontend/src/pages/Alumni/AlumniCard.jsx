@@ -33,7 +33,6 @@ function Alumnicard() {
             about: user.aboutYou || "No bio available."
           }));
 
-          // Merge: Mock Data + Real Data
           // Use a Map to distinct by ID if needed, or just append
           setAlumni([...alumniData, ...normalizedApiData]);
         }

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { FaLinkedin, FaMapMarkerAlt, FaBriefcase, FaGraduationCap, FaChevronDown, FaExternalLinkAlt } from "react-icons/fa";
 import { ImTwitter } from "react-icons/im";
 import { alumniData } from '../../data/alumniData';
+import { alumniApi } from '../../services/api';
 
 export default function AlumniList({ heroFilters, searchTerm }) {
     const [alumni, setAlumni] = useState(alumniData);
