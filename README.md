@@ -1,8 +1,8 @@
-# NetGrud Alumni Platform
+# NetGrad Alumni Platform
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg) ![License](https://img.shields.io/badge/license-MIT-green.svg) ![Status](https://img.shields.io/badge/status-production--ready-success.svg)
 
-**NetGrud** is a comprehensive, enterprise-grade alumni networking solution designed to bridge the gap between academic institutions and their graduates. It fosters professional growth, mentorship, and community engagement through a modern, seamless digital experience.
+**NetGrad** is a comprehensive, enterprise-grade alumni networking solution designed to bridge the gap between academic institutions and their graduates. It fosters professional growth, mentorship, and community engagement through a modern, seamless digital experience.
 
 ---
 
