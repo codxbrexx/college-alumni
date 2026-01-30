@@ -105,7 +105,7 @@ function Footer() {
           </div>
           <p className={`text-xs text-center md:text-left ${isDarkMode ? 'text-gray-400' : 'text-gray-500'
             }`}>
-            Email: info@netgrud.com<br />
+            Email: info@netgrad.com<br />
             Phone: +1 234 567 890
           </p>
         </div>
@@ -115,7 +115,7 @@ function Footer() {
         ? 'border-gray-700 text-gray-400'
         : 'border-gray-200 text-gray-500'
         }`}>
-        <p>© 2026 NetGrud. All rights reserved.</p>
+        <p>© 2026 NetGrad. All rights reserved.</p>
       </div>
     </footer>
   );

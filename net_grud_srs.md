@@ -1,10 +1,10 @@
-# NetGrud — Software Requirements Specification (SRS)
+# NetGrad — Software Requirements Specification (SRS)
 
 **Document Version:** 1.0
 
 **Date:** January 26, 2026
 
-**Author:** Project Team — NetGrud
+**Author:** Project Team — NetGrad
 
 ---
 
@@ -66,7 +66,7 @@
 
 ## 1.1 Purpose
 
-This Software Requirements Specification (SRS) document describes the functional and non-functional requirements for **NetGrud**, a full-stack alumni networking and career platform. The SRS is the authoritative guide for designers, front-end and back-end engineers, QA, DevOps, and stakeholders for development, testing, and acceptance.
+This Software Requirements Specification (SRS) document describes the functional and non-functional requirements for **NetGrad**, a full-stack alumni networking and career platform. The SRS is the authoritative guide for designers, front-end and back-end engineers, QA, DevOps, and stakeholders for development, testing, and acceptance.
 
 ## 1.2 Intended Audience
 
@@ -78,7 +78,7 @@ This Software Requirements Specification (SRS) document describes the functional
 
 ## 1.3 Scope
 
-NetGrud provides a specialized social network for colleges to manage alumni relationships, job postings, news, and placement analytics. The platform supports three primary user roles (Students, Alumni, Institution Admins) and offers features such as a searchable alumni directory, jobs board, editorial news, placements analytics, and secure authentication.
+NetGrad provides a specialized social network for colleges to manage alumni relationships, job postings, news, and placement analytics. The platform supports three primary user roles (Students, Alumni, Institution Admins) and offers features such as a searchable alumni directory, jobs board, editorial news, placements analytics, and secure authentication.
 
 ## 1.4 Definitions, acronyms, abbreviations
 
@@ -97,7 +97,7 @@ NetGrud provides a specialized social network for colleges to manage alumni rela
 
 ## 2.1 Product perspective
 
-NetGrud is a single product (SaaS) composed of a React + Vite frontend and a Node.js + Express backend with MongoDB persisting data. Media is stored on Cloudinary, and the system uses JWT for stateless session management (with refresh token flow). The product integrates with third-party identity providers (optional), analytics services, and email providers (SendGrid/SES).
+NetGrad is a single product (SaaS) composed of a React + Vite frontend and a Node.js + Express backend with MongoDB persisting data. Media is stored on Cloudinary, and the system uses JWT for stateless session management (with refresh token flow). The product integrates with third-party identity providers (optional), analytics services, and email providers (SendGrid/SES).
 
 ## 2.2 User classes and characteristics
 

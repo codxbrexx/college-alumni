@@ -47,7 +47,7 @@ export default function ProfileView() {
                     {/* Brand */}
                     <div className="flex items-center gap-4">
                         <Link to="/" className="text-xl font-serif font-bold text-gray-900 tracking-tighter">
-                            NETGRUD
+                            NETGRAD
                         </Link>
                         <span className="h-4 w-px bg-gray-300 hidden sm:block"></span>
                         <span className="text-xs font-bold text-gray-500 uppercase tracking-widest hidden sm:block">My Profile</span>

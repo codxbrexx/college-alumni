@@ -105,7 +105,7 @@ const PlacementStatistics = () => {
                         Our Trusted Partners
                     </h3>
                     <p className={`text-lg mb-8 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                        Leading companies from across the globe hire our graduates, a testament to the quality of education and talent at NetGrud.
+                        Leading companies from across the globe hire our graduates, a testament to the quality of education and talent at NetGrad.
                     </p>
 
                     {/* Company Grid */}

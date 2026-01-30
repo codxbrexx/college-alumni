@@ -10,7 +10,7 @@ function Heroplacement() {
       <div className={`border-b-4 border-red-600 py-8 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-900'}`}>
         <div className="max-w-7xl mx-auto px-6">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-red-100 font-bold mb-2">NetGrud College</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-red-100 font-bold mb-2">NetGrad College</p>
             <h1 className="text-4xl md:text-5xl font-serif font-bold tracking-tight text-white">
               Placement Records
             </h1>

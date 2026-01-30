@@ -12,7 +12,7 @@ export default function TermsOfUse() {
 
                 <section className="mb-10 space-y-4">
                     <p>
-                        Welcome to the NetGrud Alumni Association platform. By accessing or using our website, you agree to comply with and be bound by these Terms of Use.
+                        Welcome to the NetGrad Alumni Association platform. By accessing or using our website, you agree to comply with and be bound by these Terms of Use.
                     </p>
                 </section>
 
@@ -58,7 +58,7 @@ export default function TermsOfUse() {
                 <section className="mb-10">
                     <h2 className={`text-2xl font-bold mb-4 font-serif ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>6. Contact</h2>
                     <p>
-                        For any questions regarding these Terms, please contact us at <a href="mailto:admin@netgrud.com" className="text-red-600 hover:underline">admin@netgrud.com</a>.
+                        For any questions regarding these Terms, please contact us at <a href="mailto:admin@netgrad.com" className="text-red-600 hover:underline">admin@netgrad.com</a>.
                     </p>
                 </section>
             </div>

@@ -18,7 +18,7 @@ function Herojob({
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
-              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">NetGrud College Resource</p>
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">NetGrad College Resource</p>
               <h1 className="text-3xl md:text-5xl font-serif font-bold text-white mb-2">
                 Career Center
               </h1>

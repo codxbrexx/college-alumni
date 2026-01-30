@@ -206,7 +206,7 @@ function AlumniProfile() {
                                                 <h4 className="font-bold text-gray-900 text-xs uppercase tracking-wide">Education</h4>
                                             </div>
                                             <p className="text-xl font-serif font-bold text-gray-900 mb-1">{alum.branch || "University Degree"}</p>
-                                            <p className="text-sm text-gray-600 font-medium">NetGrud College</p>
+                                            <p className="text-sm text-gray-600 font-medium">NetGrad College</p>
                                             <div className="mt-4 pt-4 border-t border-gray-200 flex items-center justify-between">
                                                 <span className="text-[10px] font-bold uppercase text-gray-400">Class Of</span>
                                                 <span className="text-xs font-bold text-gray-900 bg-white px-2 py-1 border border-gray-200">{alum.passingYear}</span>

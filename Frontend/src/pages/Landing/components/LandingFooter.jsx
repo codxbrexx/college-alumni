@@ -26,9 +26,9 @@ export default function LandingFooter() {
                     <div>
                         <h4 className="font-bold text-gray-900 mb-4 uppercase text-xs tracking-widest">Contact</h4>
                         <ul className="space-y-2 text-sm text-gray-500">
-                            <li>alumni@netgrud.edu</li>
+                            <li>alumni@netgrad.edu</li>
                             <li>+1 (555) 123-4567</li>
-                            <li>NetGrud Campus, Tech City</li>
+                            <li>NetGrad Campus, Tech City</li>
                         </ul>
                     </div>
                     <div>
@@ -41,7 +41,7 @@ export default function LandingFooter() {
                     </div>
                 </div>
                 <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-                    <div>&copy; 2026 NetGrud Alumni. All rights reserved.</div>
+                    <div>&copy; 2026 NetGrad Alumni. All rights reserved.</div>
                     <div className="flex gap-6 mt-4 md:mt-0">
                         <Link to="/privacy" className="hover:text-red-600 transition-colors">Privacy Policy</Link>
                         <Link to="/terms" className="hover:text-red-600 transition-colors">Terms of Use</Link>

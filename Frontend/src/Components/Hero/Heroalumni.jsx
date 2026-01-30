@@ -14,7 +14,7 @@ function Heroalumni({ filters, setFilters, searchTerm, setSearchTerm }) {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-3 mb-2">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-red-100 font-bold mb-1">NetGrud College</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-red-100 font-bold mb-1">NetGrad College</p>
               <h1 className="text-4xl md:text-5xl font-serif font-bold tracking-tight text-white">Alumni Directory</h1>
             </div>
           </div>

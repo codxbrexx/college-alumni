@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
 
                 <section className="mb-10 space-y-4">
                     <p>
-                        At NetGrud Alumni Association, we are committed to protecting your privacy. This Privacy Policy explains how our organization collects, uses, and safeguards the personal information you provide to us when you use our website and services.
+                        At NetGrad Alumni Association, we are committed to protecting your privacy. This Privacy Policy explains how our organization collects, uses, and safeguards the personal information you provide to us when you use our website and services.
                     </p>
                 </section>
 
@@ -57,7 +57,7 @@ export default function PrivacyPolicy() {
                 <section className="mb-10">
                     <h2 className={`text-2xl font-bold mb-4 font-serif ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>5. Contact Us</h2>
                     <p>
-                        If you have any questions about this Privacy Policy, please contact us at <a href="mailto:privacy@netgrud.com" className="text-red-600 hover:underline">privacy@netgrud.com</a>.
+                        If you have any questions about this Privacy Policy, please contact us at <a href="mailto:privacy@netgrad.com" className="text-red-600 hover:underline">privacy@netgrad.com</a>.
                     </p>
                 </section>
             </div>

@@ -17,7 +17,7 @@ function AboutUs() {
       <div className="bg-gray-900 text-white py-12 border-b-4 border-red-600 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="flex flex-col items-start text-left">
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">NetGrud College</p>
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">NetGrad College</p>
             <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4 tracking-tight">Our Legacy</h1>
             <p className="text-xl text-gray-300 max-w-2xl leading-relaxed font-light font-serif italic border-l-2 border-red-600 pl-6 my-2">
               "Connecting generations of achievers, dreamers, and leaders to build a future rooted in shared history."

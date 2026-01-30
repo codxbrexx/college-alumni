@@ -71,7 +71,7 @@ function Home() {
                 {/* Byline */}
                 <div className="flex items-center gap-2 text-xs font-medium mb-8 border-b pb-8 text-gray-500 border-gray-200">
                   <FaGraduationCap className="text-red-600 text-lg" />
-                  <span className="font-bold text-sm uppercase text-gray-900 tracking-wider">NetGrud Association</span>
+                  <span className="font-bold text-sm uppercase text-gray-900 tracking-wider">NetGrad Association</span>
                   <span className="mx-2 text-gray-300">|</span>
                   <span className="tracking-wide">Est. 2025</span>
                 </div>
@@ -122,7 +122,7 @@ function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 font-serif text-gray-900">
-              Why Join NetGrud?
+              Why Join NetGrad?
             </h2>
             <p className="text-lg max-w-2xl mx-auto text-gray-600">
               Unlock a suite of exclusive resources designed to help you succeed at every stage of your career.

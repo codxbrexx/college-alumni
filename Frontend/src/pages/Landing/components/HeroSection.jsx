@@ -9,7 +9,7 @@ export default function HeroSection() {
             <div className="absolute inset-0 z-0">
                 <img
                     src="/college_hero2.png"
-                    alt="NetGrud Alumni Association"
+                    alt="NetGrad Alumni Association"
                     className="w-full h-full object-cover opacity-70"
                 />
             </div>
@@ -21,7 +21,7 @@ export default function HeroSection() {
                     transition={{ duration: 0.8 }}
                 >
                     <div className="inline-block px-3 py-1 bg-red-600 text-white text-xs font-bold uppercase tracking-[0.2em] mb-6 rounded-none">
-                        NetGrud Alumni Association
+                        NetGrad Alumni Association
                     </div>
                     <h1 className="text-5xl md:text-7xl font-bold mb-6 font-serif tracking-tight leading-tight">
                         Welcome Home
