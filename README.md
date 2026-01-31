@@ -6,7 +6,7 @@
 
 ---
 
-## 🚀 Project Overview
+##  Project Overview
 
 The platform addresses the challenge of disconnected alumni networks by providing a centralized hub for interaction. It features a high-performance frontend with an editorial design language and a scalable backend architecture capable of handling complex user relationships and content management.
 
@@ -20,7 +20,7 @@ The platform addresses the challenge of disconnected alumni networks by providin
 
 ---
 
-## 🛠️ Engineering Architecture
+##  Engineering Architecture
 
 ### Technology Stack
 
@@ -39,7 +39,7 @@ The platform addresses the challenge of disconnected alumni networks by providin
 
 ---
 
-## ⚡ Developer Setup
+##  Developer Setup
 
 Follow these steps to set up the development environment locally.
 
@@ -78,7 +78,7 @@ Follow these steps to set up the development environment locally.
 
 ---
 
-## 🔮 Future Roadmap
+##  Future Roadmap
 
 -   [ ] **AI-Powered Matching**: Recommendation engine for mentorship connections.
 -   [ ] **Real-time Messaging**: WebSocket integration for instant alumni-student chat.
@@ -86,7 +86,7 @@ Follow these steps to set up the development environment locally.
 
 ---
 
-## 📄 License
+##  License
 
 This project is open-source and available under the [MIT License](LICENSE).
 

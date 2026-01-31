@@ -24,7 +24,6 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"]
 }))
 
-// Enable pre-flight requests for all routes
 
 app.use(express.static("public"))
 app.use(cookieParser())

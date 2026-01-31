@@ -88,3 +88,8 @@ public
 
 # Mac OS X
 .DS_Store
+
+# Documentation
+BACKEND_STRUCTURE.md
+QUICK_REFERENCE.md
+TESTING_REPORT.md
