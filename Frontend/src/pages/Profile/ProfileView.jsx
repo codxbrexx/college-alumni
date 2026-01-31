@@ -31,9 +31,10 @@ export default function ProfileView() {
     }
 
     // Role Logic
-    const currentYear = new Date().getFullYear();
-    const passYear = user.yearOfPassout || user.passingYear;
-    const role = passYear > currentYear ? "Student" : "Alumni";
+    // Role Logic
+    // const currentYear = new Date().getFullYear(); // Unused
+    // const passYear = user.yearOfPassout || user.passingYear; // Unused
+    // const role = passYear > currentYear ? "Student" : "Alumni"; // Unused
 
     // Avatar Fallback
     const avatarUrl = user.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.fullName || 'User')}&background=random`;

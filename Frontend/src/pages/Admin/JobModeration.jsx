@@ -16,11 +16,7 @@ const JobModeration = () => {
     const [notes, setNotes] = useState('');
     const [pagination, setPagination] = useState({ page: 1, total: 0, pages: 1 });
 
-    useEffect(() => {
-        fetchPendingJobs();
-    }, [pagination.page]);
-
-    const fetchPendingJobs = async () => {
+    const fetchPendingJobs = React.useCallback(async () => {
         try {
             setLoading(true);
             const token = localStorage.getItem('token');
@@ -36,7 +32,11 @@ const JobModeration = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [pagination.page]);
+
+    useEffect(() => {
+        fetchPendingJobs();
+    }, [fetchPendingJobs]);
 
     const handleApprove = async (jobId) => {
         try {
@@ -164,8 +164,8 @@ const JobModeration = () => {
                                     <button
                                         onClick={() => handleApprove(job._id)}
                                         className={`flex items-center gap-2 px-4 py-2 font-bold border transition ${isDarkMode
-                                                ? 'border-green-600 text-green-400 hover:bg-green-600 hover:text-white'
-                                                : 'border-green-600 text-green-700 hover:bg-green-600 hover:text-white'
+                                            ? 'border-green-600 text-green-400 hover:bg-green-600 hover:text-white'
+                                            : 'border-green-600 text-green-700 hover:bg-green-600 hover:text-white'
                                             }`}
                                     >
                                         <FaCheckCircle /> Approve
@@ -176,8 +176,8 @@ const JobModeration = () => {
                                             setShowRejectModal(true);
                                         }}
                                         className={`flex items-center gap-2 px-4 py-2 font-bold border transition ${isDarkMode
-                                                ? 'border-red-600 text-red-400 hover:bg-red-600 hover:text-white'
-                                                : 'border-red-600 text-red-700 hover:bg-red-600 hover:text-white'
+                                            ? 'border-red-600 text-red-400 hover:bg-red-600 hover:text-white'
+                                            : 'border-red-600 text-red-700 hover:bg-red-600 hover:text-white'
                                             }`}
                                     >
                                         <FaTimesCircle /> Reject
@@ -195,8 +195,8 @@ const JobModeration = () => {
                             disabled={pagination.page === 1}
                             onClick={() => setPagination({ ...pagination, page: pagination.page - 1 })}
                             className={`px-4 py-2 border font-bold ${pagination.page === 1
-                                    ? 'opacity-50 cursor-not-allowed'
-                                    : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                                ? 'opacity-50 cursor-not-allowed'
+                                : 'hover:bg-gray-100 dark:hover:bg-gray-800'
                                 } ${isDarkMode ? 'border-gray-700 text-white' : 'border-gray-300'}`}
                         >
                             Previous
@@ -208,8 +208,8 @@ const JobModeration = () => {
                             disabled={pagination.page === pagination.pages}
                             onClick={() => setPagination({ ...pagination, page: pagination.page + 1 })}
                             className={`px-4 py-2 border font-bold ${pagination.page === pagination.pages
-                                    ? 'opacity-50 cursor-not-allowed'
-                                    : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                                ? 'opacity-50 cursor-not-allowed'
+                                : 'hover:bg-gray-100 dark:hover:bg-gray-800'
                                 } ${isDarkMode ? 'border-gray-700 text-white' : 'border-gray-300'}`}
                         >
                             Next

@@ -41,7 +41,7 @@ const OnboardingWizard = ({ user, onComplete }) => {
     ];
 
     const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
+        const { name, value, checked } = e.target;
         if (name.startsWith('privacy.')) {
             const privacyField = name.split('.')[1];
             setFormData(prev => ({
@@ -122,7 +122,7 @@ const OnboardingWizard = ({ user, onComplete }) => {
 
                 {/* Progress Bar */}
                 <div className="flex justify-between mb-12">
-                    {steps.map((step, index) => {
+                    {steps.map((step) => {
                         const Icon = step.icon;
                         const isActive = currentStep >= step.id;
                         const isCurrent = currentStep === step.id;
@@ -131,18 +131,18 @@ const OnboardingWizard = ({ user, onComplete }) => {
                             <div key={step.id} className="flex-1">
                                 <div className="flex flex-col items-center">
                                     <div className={`w-12 h-12 border-2 flex items-center justify-center transition ${isActive
-                                            ? isDarkMode
-                                                ? 'border-white bg-white text-black'
-                                                : 'border-black bg-black text-white'
-                                            : isDarkMode
-                                                ? 'border-gray-700 text-gray-700'
-                                                : 'border-gray-300 text-gray-300'
+                                        ? isDarkMode
+                                            ? 'border-white bg-white text-black'
+                                            : 'border-black bg-black text-white'
+                                        : isDarkMode
+                                            ? 'border-gray-700 text-gray-700'
+                                            : 'border-gray-300 text-gray-300'
                                         }`}>
                                         <Icon />
                                     </div>
                                     <span className={`text-xs mt-2 font-bold ${isCurrent
-                                            ? isDarkMode ? 'text-white' : 'text-black'
-                                            : isDarkMode ? 'text-gray-600' : 'text-gray-400'
+                                        ? isDarkMode ? 'text-white' : 'text-black'
+                                        : isDarkMode ? 'text-gray-600' : 'text-gray-400'
                                         }`}>
                                         {step.title}
                                     </span>
@@ -223,7 +223,7 @@ const OnboardingWizard = ({ user, onComplete }) => {
                                     <option value="PhD">PhD</option>
                                     <option value="MBA">MBA</option>
                                 </select>
-                                {errs.degree && <p className="text-red-600 text-sm mt-1">{errors.degree}</p>}
+                                {errors.degree && <p className="text-red-600 text-sm mt-1">{errors.degree}</p>}
                             </div>
                             <div>
                                 <label className={`block mb-2 font-bold ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>Branch *</label>
@@ -337,10 +337,10 @@ const OnboardingWizard = ({ user, onComplete }) => {
                         onClick={handleBack}
                         disabled={currentStep === 1}
                         className={`px-6 py-3 border font-bold ${currentStep === 1
-                                ? 'opacity-50 cursor-not-allowed'
-                                : isDarkMode
-                                    ? 'border-gray-700 text-white hover:bg-gray-800'
-                                    : 'border-gray-300 hover:bg-gray-100'
+                            ? 'opacity-50 cursor-not-allowed'
+                            : isDarkMode
+                                ? 'border-gray-700 text-white hover:bg-gray-800'
+                                : 'border-gray-300 hover:bg-gray-100'
                             }`}
                     >
                         Back
@@ -349,8 +349,8 @@ const OnboardingWizard = ({ user, onComplete }) => {
                         <button
                             onClick={handleNext}
                             className={`px-6 py-3 font-bold ${isDarkMode
-                                    ? 'bg-white text-black hover:bg-gray-200'
-                                    : 'bg-black text-white hover:bg-gray-900'
+                                ? 'bg-white text-black hover:bg-gray-200'
+                                : 'bg-black text-white hover:bg-gray-900'
                                 }`}
                         >
                             Next
@@ -360,8 +360,8 @@ const OnboardingWizard = ({ user, onComplete }) => {
                             onClick={handleSubmit}
                             disabled={loading}
                             className={`px-6 py-3 font-bold ${loading
-                                    ? 'opacity-50 cursor-not-allowed'
-                                    : ''
+                                ? 'opacity-50 cursor-not-allowed'
+                                : ''
                                 } ${isDarkMode ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-gray-900'}`}
                         >
                             {loading ? 'Saving...' : 'Complete'}

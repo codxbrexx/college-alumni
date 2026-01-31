@@ -4,7 +4,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { FaSpinner } from 'react-icons/fa';
 
 // Components defined outside to avoid focus loss
-const InputField = ({ label, name, type = "text", value, onChange, placeholder, icon }) => (
+const InputField = ({ label, name, type = "text", value, onChange, placeholder }) => (
   <div className="group">
     <label className="block text-xs font-bold text-gray-900 uppercase tracking-widest mb-2 group-focus-within:text-red-700 transition-colors">
       {label}

@@ -15,7 +15,7 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const TrendChart = ({ selectedYear, availableYears }) => {
+const TrendChart = ({ availableYears }) => {
     const { isDarkMode } = useTheme();
     const [trendData, setTrendData] = useState(null);
     const [loading, setLoading] = useState(true);

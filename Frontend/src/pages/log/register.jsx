@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Select from "react-select";
 import { useAuth } from "../../hooks/useAuth";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
-import { FaSpinner, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaSpinner } from "react-icons/fa";
 
 // Constants & Data
 const years = Array.from({ length: 50 }, (_, i) => {
@@ -124,7 +125,7 @@ export default function Register() {
   const totalSteps = 4;
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false); // Unused
 
   const [formData, setFormData] = useState({
     fullName: "", username: "", email: "", password: "", confirmPassword: "",

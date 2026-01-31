@@ -134,7 +134,7 @@ export const batchUpdates = (updates) => {
  * @param {Function} callback - Render function
  */
 export const measurePerformance = (componentName, callback) => {
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.MODE === 'development') {
         const start = performance.now();
         const result = callback();
         const end = performance.now();

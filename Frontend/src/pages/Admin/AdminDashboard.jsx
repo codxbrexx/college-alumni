@@ -49,7 +49,7 @@ const AdminDashboard = () => {
         {
             title: 'Total Users',
             value: stats.users.total,
-            subtitle: `\+${stats.users.newToday} today`,
+            subtitle: `+${stats.users.newToday} today`,
             icon: FaUsers,
             color: 'blue',
             link: '/admin/users'
@@ -155,7 +155,7 @@ const AdminDashboard = () => {
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {quickActions.map((action, index) => {
-                            constIcon = action.icon;
+                            const Icon = action.icon;
                             return (
                                 <Link
                                     key={index}
@@ -171,6 +171,7 @@ const AdminDashboard = () => {
                                     <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                                         {action.description}
                                     </p>
+
                                 </Link>
                             );
                         })}

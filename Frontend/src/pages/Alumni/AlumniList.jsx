@@ -15,9 +15,18 @@ export default function AlumniList({ heroFilters, searchTerm }) {
     useEffect(() => {
         const fetchAlumni = async () => {
             try {
-                const response = await axios.get('/api/v1/alumni');
-                if (response.data && response.data.data && response.data.data.alumni) {
-                    const apiData = response.data.data.alumni;
+                // Using the service layer instead of direct axios call
+                const response = await alumniApi.getAll();
+
+                // Check if response structure matches expectation
+                // The service returns response.data directly based on api.js implementation
+                // Wait, looking at api.js:
+                // const data = await response.json() ... return data
+                // So the response variable here IS the data object from backend.
+                // Backend response format: { success: true, data: { alumni: [...] }, ... }
+
+                if (response && response.data && response.data.alumni) {
+                    const apiData = response.data.alumni;
                     const normalizedApiData = apiData.map(user => ({
                         id: user._id,
                         name: user.fullName || "Alumni Member",

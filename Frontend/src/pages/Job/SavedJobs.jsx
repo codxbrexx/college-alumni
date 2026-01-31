@@ -13,11 +13,7 @@ const SavedJobs = () => {
     const [error, setError] = useState(null);
     const [pagination, setPagination] = useState({ page: 1, total: 0, pages: 1 });
 
-    useEffect(() => {
-        fetchSavedJobs();
-    }, [pagination.page]);
-
-    const fetchSavedJobs = async () => {
+    const fetchSavedJobs = React.useCallback(async () => {
         try {
             setLoading(true);
             const token = localStorage.getItem('token');
@@ -33,7 +29,11 @@ const SavedJobs = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [pagination.page]);
+
+    useEffect(() => {
+        fetchSavedJobs();
+    }, [fetchSavedJobs]);
 
     const handleUnsave = async (jobId) => {
         try {
@@ -101,8 +101,8 @@ const SavedJobs = () => {
                         <Link
                             to="/jobs"
                             className={`inline-block px-6 py-3 font-bold border transition ${isDarkMode
-                                    ? 'bg-white text-black border-white hover:bg-gray-200'
-                                    : 'bg-black text-white border-black hover:bg-gray-900'
+                                ? 'bg-white text-black border-white hover:bg-gray-200'
+                                : 'bg-black text-white border-black hover:bg-gray-900'
                                 }`}
                         >
                             Browse Jobs
@@ -146,8 +146,8 @@ const SavedJobs = () => {
                                             <Link
                                                 to={`/job/${job._id}`}
                                                 className={`flex items-center gap-2 px-4 py-2 font-bold border transition whitespace-nowrap ${isDarkMode
-                                                        ? 'border-white text-white hover:bg-white hover:text-black'
-                                                        : 'border-black text-black hover:bg-black hover:text-white'
+                                                    ? 'border-white text-white hover:bg-white hover:text-black'
+                                                    : 'border-black text-black hover:bg-black hover:text-white'
                                                     }`}
                                             >
                                                 <FaExternalLinkAlt /> View
@@ -155,8 +155,8 @@ const SavedJobs = () => {
                                             <button
                                                 onClick={() => handleUnsave(job._id)}
                                                 className={`flex items-center gap-2 px-4 py-2 font-bold border transition ${isDarkMode
-                                                        ? 'border-red-600 text-red-400 hover:bg-red-600 hover:text-white'
-                                                        : 'border-red-600 text-red-700 hover:bg-red-600 hover:text-white'
+                                                    ? 'border-red-600 text-red-400 hover:bg-red-600 hover:text-white'
+                                                    : 'border-red-600 text-red-700 hover:bg-red-600 hover:text-white'
                                                     }`}
                                             >
                                                 <FaTrash /> Remove
@@ -176,8 +176,8 @@ const SavedJobs = () => {
                             disabled={pagination.page === 1}
                             onClick={() => setPagination({ ...pagination, page: pagination.page - 1 })}
                             className={`px-4 py-2 border font-bold ${pagination.page === 1
-                                    ? 'opacity-50 cursor-not-allowed'
-                                    : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                                ? 'opacity-50 cursor-not-allowed'
+                                : 'hover:bg-gray-100 dark:hover:bg-gray-800'
                                 } ${isDarkMode ? 'border-gray-700 text-white' : 'border-gray-300'}`}
                         >
                             Previous
@@ -189,8 +189,8 @@ const SavedJobs = () => {
                             disabled={pagination.page === pagination.pages}
                             onClick={() => setPagination({ ...pagination, page: pagination.page + 1 })}
                             className={`px-4 py-2 border font-bold ${pagination.page === pagination.pages
-                                    ? 'opacity-50 cursor-not-allowed'
-                                    : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+                                ? 'opacity-50 cursor-not-allowed'
+                                : 'hover:bg-gray-100 dark:hover:bg-gray-800'
                                 } ${isDarkMode ? 'border-gray-700 text-white' : 'border-gray-300'}`}
                         >
                             Next

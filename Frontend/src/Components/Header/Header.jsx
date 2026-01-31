@@ -4,6 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import Profile from "../Profile/Profile";
 import { useTheme } from "../../context/ThemeContext";
 import { FaBars, FaTimes } from "react-icons/fa";
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLink } from "react-router-dom";
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '../../context/ThemeContext';
+// import { useTheme } from '../../context/ThemeContext';
 
 // Defined outside to prevent re-render focus loss
 const InputField = ({ label, name, value, onChange, placeholder, required = false, type = "text" }) => (
@@ -21,7 +22,7 @@ const InputField = ({ label, name, value, onChange, placeholder, required = fals
 );
 
 export default function PostJob() {
-  const { isDarkMode } = useTheme();
+  // const { isDarkMode } = useTheme(); // Unused
 
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 3;

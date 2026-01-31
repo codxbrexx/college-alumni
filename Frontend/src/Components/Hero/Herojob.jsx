@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import { FaSearch, FaMapMarkerAlt, FaBriefcase } from 'react-icons/fa';

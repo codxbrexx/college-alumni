@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useContext } from "react"
 import { authApi, alumniApi } from "../services/api"
 import { AuthContext } from "./AuthContextDef"
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => {
     return useContext(AuthContext)
 }

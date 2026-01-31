@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useTheme } from '../../context/ThemeContext';
+// import { useTheme } from '../../context/ThemeContext';
 
 export default function Postnews() {
-  const { isDarkMode } = useTheme();
+  // const { isDarkMode } = useTheme(); // Unused
   const [activeTab, setActiveTab] = useState('news');
 
   const [newsForm, setNewsForm] = useState({
